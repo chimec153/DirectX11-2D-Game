@@ -1,0 +1,23 @@
+﻿  pch.cpp
+  GameEditor.cpp
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\resource.h(8,1): warning C4005:  'IDI_ICON1': 매크로 재정의
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\resource.h(5): message :  'IDI_ICON1'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\GameEditor.cpp(17,1): warning C4005:  'new': 매크로 재정의
+  GameEditorDoc.cpp
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\Macro.h(74): message :  'new'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\resource.h(8,1): warning C4005:  'IDI_ICON1': 매크로 재정의
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\resource.h(5): message :  'IDI_ICON1'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\GameEditorDoc.cpp(18,1): warning C4005:  'new': 매크로 재정의
+  GameEditorView.cpp
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\Macro.h(74): message :  'new'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\resource.h(8,1): warning C4005:  'IDI_ICON1': 매크로 재정의
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\resource.h(5): message :  'IDI_ICON1'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\GameEditorView.cpp(18,1): warning C4005:  'new': 매크로 재정의
+  MainFrm.cpp
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\Macro.h(74): message :  'new'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\resource.h(8,1): warning C4005:  'IDI_ICON1': 매크로 재정의
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\resource.h(5): message :  'IDI_ICON1'의 이전 정의를 참조하십시오.
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\MainFrm.cpp(13,1): warning C4005:  'new': 매크로 재정의
+  코드를 생성하고 있습니다...
+C:\Users\assort\source\repos\DirectX11FrameWork2\Engine\Include\Macro.h(74): message :  'new'의 이전 정의를 참조하십시오.
+  GameEditor.vcxproj -> C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\../Bin/GameEditor_Debug.exe
