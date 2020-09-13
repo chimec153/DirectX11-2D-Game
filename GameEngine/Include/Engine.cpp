@@ -1,6 +1,10 @@
 #include "Engine.h"
 #include "Device.h"
 #include "Scene/SceneManager.h"
+#include "PathManager.h"
+#include "Timer.h"
+#include "Resource/ResourceManager.h"
+#include "Resource/Mesh2D.h"
 
 DEFINITION_SINGLE(CEngine)
 
@@ -20,6 +24,9 @@ CEngine::~CEngine()
 {
 	DESTROY_SINGLE(CDevice);
 	DESTROY_SINGLE(CSceneManager);
+	DESTROY_SINGLE(CResourceManager);
+	DESTROY_SINGLE(CPathManager);
+	DESTROY_SINGLE(CTimer);
 }
 
 bool CEngine::Init(const TCHAR* pClass, const TCHAR* pTitle,
@@ -44,16 +51,32 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd, const TCHAR* pClass, int iWidth, 
 	m_tRS.iWidth = iWidth;
 	m_tRS.iHeight = iHeight;
 
+	// 장치 초기화
+	if (!GET_SINGLE(CDevice)->Init(hWnd, iWidth, iHeight, bWindowMode))
+		return false;
+
+	// 시간 관리자 초기화
+	if (!GET_SINGLE(CTimer)->Init())
+		return false;
+
+	// 경로 관리자 초기화
+	if (!GET_SINGLE(CPathManager)->Init())
+		return false;
+
+	// 자원 관리자 초기화
+	if (!GET_SINGLE(CResourceManager)->Init())
+		return false;
+
 	// 장면 관리자 초기화
 	if (!GET_SINGLE(CSceneManager)->Init())
 		return false;
 
-	return GET_SINGLE(CDevice)->Init(hWnd, iWidth, iHeight, bWindowMode);
+	return true;
 }
 
 int CEngine::Run()
 {
-	MSG msg;
+	MSG msg = {};
 
 	// 기본 메시지 루프입니다:
 	while (m_bLoop)
@@ -74,30 +97,48 @@ int CEngine::Run()
 
 void CEngine::Logic()
 {
-	Input(0.f);
-	Update(0.f);
-	Collision(0.f);
-	Render(0.f);
+	GET_SINGLE(CTimer)->Update();
+
+	float fTime = GET_SINGLE(CTimer)->GetDeltaTime();
+
+	Input(fTime);
+	Update(fTime);
+	Collision(fTime);
+	Render(fTime);
 }
 
 int CEngine::Input(float fTime)
 {
+	GET_SINGLE(CSceneManager)->Input(fTime);
+
 	return 0;
 }
 
 int CEngine::Update(float fTime)
 {
+	GET_SINGLE(CSceneManager)->Update(fTime);
+
 	return 0;
 }
 
 int CEngine::Collision(float fTime)
 {
+	GET_SINGLE(CSceneManager)->Collision(fTime);
+
 	return 0;
 }
 
 int CEngine::Render(float fTime)
 {
 	GET_SINGLE(CDevice)->ClearState();
+
+	GET_SINGLE(CSceneManager)->Render(fTime);
+
+	CMesh2D* pMesh = GET_SINGLE(CResourceManager)->GetDefaultMesh();
+
+	pMesh->Render(fTime);
+
+	SAFE_RELEASE(pMesh);
 
 	GET_SINGLE(CDevice)->Render();
 

@@ -22,3 +22,47 @@ bool CSceneManager::Init()
 
 	return true;
 }
+
+int CSceneManager::Input(float fTime)
+{
+	m_pScene->Input(fTime);
+
+	return 0;
+}
+
+int CSceneManager::Update(float fTime)
+{
+	m_pScene->Update(fTime);
+
+	return 0;
+}
+
+int CSceneManager::PostUpdate(float fTime)
+{
+	m_pScene->PostUpdate(fTime);
+	return 0;
+}
+
+int CSceneManager::Collision(float fTime)
+{
+	m_pScene->Collision(fTime);
+	return 0;
+}
+
+int CSceneManager::PreRender(float fTime)
+{
+	m_pScene->PreRender(fTime);
+	return 0;
+}
+
+int CSceneManager::Render(float fTime)
+{
+	m_pScene->Render(fTime);
+	return 0;
+}
+
+int CSceneManager::PostRender(float fTime)
+{
+	m_pScene->PostRender(fTime);
+	return 0;
+}

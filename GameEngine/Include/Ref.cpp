@@ -1,9 +1,13 @@
 #include "Ref.h"
 
 CRef::CRef()	:
-	m_iRef(0),
+	m_iRef(1),
 	m_bActive(true),
 	m_bEnable(true)
+{
+}
+
+CRef::~CRef()
 {
 }
 

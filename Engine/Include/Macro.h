@@ -73,3 +73,8 @@
 #ifdef _DEBUG
 #define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #endif
+
+#define DEVICE		GET_SINGLE(CDevice)->GetDevice()
+#define CONTEXT		GET_SINGLE(CDevice)->GetContext()
+#define SWAPCHAIN	GET_SINGLE(CDevice)->GetSwapChain()
+#define RESOLUTION	GET_SINGLE(CDevice)->GetResolution()
