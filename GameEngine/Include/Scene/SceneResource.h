@@ -19,6 +19,6 @@ public:
 
 	class CMesh* FindMesh(const std::string& strName);
 
-	class CShader* FidnShader(const std::string& strName);
+	class CShader* FindShader(const std::string& strName);
 };
 

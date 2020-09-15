@@ -11,20 +11,12 @@ protected:
 	virtual ~CMeshComponent();
 
 protected:
-	class CScene* m_pScene;
-	class CObj* m_pObj;
+	class CMesh* m_pMesh;
 
 public:
-	class CObj* GetObj()	const;
-
-protected:
-	bool		m_bStart;
-
-public:
-	bool IsStart()	const
-	{
-		m_bStart;
-	}
+	class CMesh* GetMesh()	const;
+	void SetMesh(const std::string& strName);
+	void SetMesh(class CMesh* pMesh);
 
 public:
 	bool Init();

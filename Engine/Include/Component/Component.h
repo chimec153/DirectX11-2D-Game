@@ -15,6 +15,7 @@ protected:
 protected:
 	class CScene*		m_pScene;
 	class CObj*			m_pObj;
+	COMPONENT_TYPE		m_eType;
 
 public:
 	class CObj* GetObj()	const;

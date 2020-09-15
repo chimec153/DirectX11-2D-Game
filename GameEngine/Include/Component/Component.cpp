@@ -3,7 +3,9 @@
 
 CComponent::CComponent()	:
 	m_pScene(nullptr),
-	m_pObj(nullptr)
+	m_pObj(nullptr),
+	m_eType(COMPONENT_TYPE::CT_SCENE),
+	m_bStart(false)
 {
 
 }

@@ -6,18 +6,26 @@ class CShader :
 	friend class CShaderManager;
 	friend class CSceneResource;
 
-private:
+protected:
 	CShader();
-	virtual ~CShader();
+	virtual ~CShader() = 0;
 
-private:
-	ID3D11VertexShader* m_pVS;
-	ID3DBlob*			m_pVBBlob;
-	ID3D11PixelShader*	m_pPS;
-	ID3DBlob*			m_pIBBlob;
+protected:
+	SHADER_TYPE									m_eType;
+	std::vector<D3D11_INPUT_ELEMENT_DESC>		m_vecInputDesc;
+	int											m_iInputSize;
+	ID3D11InputLayout*							m_pInputLayout;
+
+public:
+	SHADER_TYPE GetShaderType()	const;
 
 public:
 	bool Init();
+	bool AddInputLayoutDesc(const char* pSemanticName, UINT iSemanticIndex,
+		DXGI_FORMAT eFormat, UINT iInputSlot, UINT iSize,
+		D3D11_INPUT_CLASSIFICATION eInputSlotClass, UINT iInstanceDataStepRate);
+	virtual bool CreateInputLayout();
+	virtual void SetShader();
 
 };
 

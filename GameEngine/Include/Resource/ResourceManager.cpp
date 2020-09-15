@@ -1,5 +1,6 @@
 #include "ResourceManager.h"
 #include "Mesh2D.h"
+#include "ShaderManager.h"
 
 DEFINITION_SINGLE(CResourceManager)
 
@@ -13,6 +14,7 @@ CResourceManager::~CResourceManager()
 {
 	SAFE_RELEASE_MAP(m_mapMesh);
 	SAFE_RELEASE(m_pDefaultMesh);
+	DESTROY_SINGLE(CShaderManager);
 }
 
 CMesh2D* CResourceManager::GetDefaultMesh() const
@@ -25,6 +27,10 @@ CMesh2D* CResourceManager::GetDefaultMesh() const
 
 bool CResourceManager::Init()
 {
+	// Shader Manager ÃÊ±âÈ­
+	if (!GET_SINGLE(CShaderManager)->Init())
+		return false;
+
 	m_pDefaultMesh = new CMesh2D;
 
 	m_pDefaultMesh->CreateMesh();

@@ -7,6 +7,8 @@
 
 using namespace DirectX;
 
+#include "Flag.h"
+
 #define PI	3.14159f
 
 static float DegToRad(float fDeg)
@@ -18,11 +20,3 @@ static float RadToDeg(float fRad)
 {
 	return fRad * 180.f / PI;
 }
-
-enum AXIS
-{
-	AXIS_X,
-	AXIS_Y,
-	AXIS_Z,
-	AXIS_END
-};

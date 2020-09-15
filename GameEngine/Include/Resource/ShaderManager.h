@@ -12,8 +12,8 @@ private:
 
 public:
 	bool Init();
-	bool CreateLayout(const std::string strName, const std::string strShaderName);
-	bool CreateInputDesc(const char* pSemanticName, UINT iSemanticIndex,
+	bool CreateLayout(const std::string& strName);
+	bool CreateInputDesc(const std::string& strName, const char* pSemanticName, UINT iSemanticIndex,
 	DXGI_FORMAT eFormat, UINT iInputSlot, UINT iSize,
 		D3D11_INPUT_CLASSIFICATION eInputSlotClass, UINT iInstanceDataStepRate);
 
@@ -22,6 +22,39 @@ public:
 
 	ID3D11InputLayout* FindLayout(const std::string& strName);
 	void ReleaseLayout(const std::string& strName);
+
+public:
+	template <typename T>
+	T* CreateShader(const std::string& strName)
+	{
+		T* pShader = (T*)FindShader(strName);
+
+		if (pShader)
+		{
+			SAFE_RELEASE(pShader);
+			return nullptr;
+		}
+
+		pShader = new T;
+
+		pShader->AddRef();
+
+		m_mapShader.insert(std::make_pair(strName, pShader));
+
+		return pShader;
+	}
+
+public:
+	bool LoadVertexShader(const std::string& strName, const char* pEntryName,
+		const TCHAR* pFileName, const std::string& strRootPath = SHADER_PATH);
+	bool LoadPixelShader(const std::string& strName, const char* pEntryName,
+		const TCHAR* pFileName, const std::string& strRootPath = SHADER_PATH);
+	bool LoadHullShader(const std::string& strName, const char* pEntryName,
+		const TCHAR* pFileName, const std::string& strRootPath = SHADER_PATH);
+	bool LoadGeometryShader(const std::string& strName, const char* pEntryName,
+		const TCHAR* pFileName, const std::string& strRootPath = SHADER_PATH);
+	bool LoadDomainShader(const std::string& strName, const char* pEntryName,
+		const TCHAR* pFileName, const std::string& strRootPath = SHADER_PATH);
 
 	DECLARE_SINGLE(CShaderManager)
 };

@@ -11,20 +11,7 @@ protected:
 	virtual ~CSceneComponent() = 0;
 
 protected:
-	class CScene* m_pScene;
-	class CObj* m_pObj;
-
-public:
-	class CObj* GetObj()	const;
-
-protected:
-	bool		m_bStart;
-
-public:
-	bool IsStart()	const
-	{
-		m_bStart;
-	}
+	class CTransform*		m_pTransform;
 
 public:
 	bool Init();

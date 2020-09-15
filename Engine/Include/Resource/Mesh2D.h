@@ -13,7 +13,7 @@ private:
 	~CMesh2D();
 
 private:
-	D3D_PRIMITIVE_TOPOLOGY	m_eTopology;
+	D3D_PRIMITIVE_TOPOLOGY	m_ePrimitive;
 	VertexBuffer		m_tVB;
 	IndexBuffer			m_tIB;
 

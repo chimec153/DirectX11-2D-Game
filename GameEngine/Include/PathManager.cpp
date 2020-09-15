@@ -40,9 +40,11 @@ bool CPathManager::Init()
 
 	m_mapPath.insert(std::make_pair(ROOT_PATH, pPath));
 
-	AddPath(TEXTURE_PATH, TEXT("Texture//"));
+	AddPath(RESOURCE_PATH, TEXT("Resource//"));
+	AddPath(TEXTURE_PATH, TEXT("Resource//Texture//"));
 	AddPath(DATA_PATH, TEXT("Data//"));
-	AddPath(SOUND_PATH, TEXT("Sound//"));
+	AddPath(SOUND_PATH, TEXT("Resource//Sound//"));
+	AddPath(SHADER_PATH, TEXT("Resource//Shader//"));
 
 	return true;
 }

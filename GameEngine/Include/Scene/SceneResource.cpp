@@ -33,14 +33,25 @@ CMesh* CSceneResource::FindMesh(const std::string& strName)
 	std::unordered_map<std::string, CMesh*>::iterator iter = m_mapMesh.find(strName);
 
 	if (iter == m_mapMesh.end())
-		return nullptr;
+	{
+		CMesh* pMesh = GET_SINGLE(CResourceManager)->FindMesh(strName);
+
+		if (!pMesh)
+			return nullptr;
+
+		pMesh->AddRef();
+
+		m_mapMesh.insert(std::make_pair(strName, pMesh));
+
+		return pMesh;
+	}
 
 	iter->second->AddRef();
 
 	return iter->second;
 }
 
-CShader* CSceneResource::FidnShader(const std::string& strName)
+CShader* CSceneResource::FindShader(const std::string& strName)
 {
 	std::unordered_map<std::string, CShader*>::iterator iter = m_mapShader.find(strName);
 

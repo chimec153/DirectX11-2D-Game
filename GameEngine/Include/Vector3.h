@@ -75,11 +75,11 @@ typedef struct __declspec(align(16)) _tagVector3
 	float Distance(const _tagVector3& v)	const;
 	_tagVector3 Cross(const _tagVector3& v)	const;
 
-	void TransformNormal(const DirectX::XMMATRIX& m);
-	void TransformCoord(const DirectX::XMMATRIX& m);
+	_tagVector3 TransformNormal(const Matrix& m);
+	_tagVector3 TransformCoord(const Matrix& m);
 
 	static _tagVector3 One;
 	static _tagVector3 Zero;
-	static _tagVector3 Axis[3];
+	static _tagVector3 Axis[AXIS_END];
 }Vector3, *PVector3;
 

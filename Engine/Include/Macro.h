@@ -63,10 +63,12 @@
 		p.clear();\
 	}
 
-#define TEXTURE_PATH	"Texture Path"
-#define DATA_PATH		"Data Path"
-#define ROOT_PATH		"Root Path"
-#define SOUND_PATH		"Sound Path"
+#define RESOURCE_PATH	"Resource_Path"
+#define TEXTURE_PATH	"Texture_Path"
+#define DATA_PATH		"Data_Path"
+#define ROOT_PATH		"Root_Path"
+#define SOUND_PATH		"Sound_Path"
+#define SHADER_PATH		"Shader_Path"
 
 #define _CRTDBG_MAP_ALLOC
 

@@ -10,22 +10,6 @@ protected:
 	CStaticMeshComponent(const CStaticMeshComponent& com);
 	virtual ~CStaticMeshComponent();
 
-protected:
-	class CScene* m_pScene;
-	class CObj* m_pObj;
-
-public:
-	class CObj* GetObj()	const;
-
-protected:
-	bool		m_bStart;
-
-public:
-	bool IsStart()	const
-	{
-		m_bStart;
-	}
-
 public:
 	bool Init();
 	void Start();

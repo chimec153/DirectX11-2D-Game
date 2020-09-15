@@ -4,7 +4,7 @@
 CMesh2D::CMesh2D() :
 	m_tVB(),
 	m_tIB(),
-	m_eTopology(D3D_PRIMITIVE_TOPOLOGY_UNDEFINED)
+	m_ePrimitive(D3D_PRIMITIVE_TOPOLOGY_UNDEFINED)
 {
 }
 
@@ -21,7 +21,7 @@ bool CMesh2D::Init()
 
 bool CMesh2D::CreateMesh()
 {
-	m_eTopology = D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
+	m_ePrimitive = D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 
 	VertexColor v[4] = {};
 
@@ -58,8 +58,8 @@ bool CMesh2D::CreateMesh()
 	m_tMin = Vector3(0.f, 0.f, 0.f);
 
 	unsigned short iIdx[6] = {
-		0, 1, 2,
-		0, 2, 3
+		0, 1, 3,
+		0, 3, 2
 	};
 
 	m_tIB.iSize = sizeof(unsigned short);
@@ -85,5 +85,21 @@ bool CMesh2D::CreateMesh()
 
 void CMesh2D::Render(float fTime)
 {
-	//CONTEXT->IASetInputLayout();
+	UINT	iStride = m_tVB.iSize;
+	UINT	iOffset = 0;
+
+	CONTEXT->IASetPrimitiveTopology(m_ePrimitive);
+	CONTEXT->IASetVertexBuffers(0, 1, &m_tVB.pBuffer, &iStride, &iOffset);
+
+	if (m_tIB.pBuffer)
+	{
+		CONTEXT->IASetIndexBuffer(m_tIB.pBuffer, m_tIB.eFmt, 0);
+		CONTEXT->DrawIndexed(m_tIB.iCount, 0, 0);
+	}
+
+	else
+	{
+		CONTEXT->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
+		CONTEXT->Draw(m_tVB.iCount, 0);
+	}
 }

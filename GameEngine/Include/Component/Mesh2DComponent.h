@@ -1,17 +1,14 @@
 #pragma once
-#include "Component.h"
-class CSceneComponent :
-	public CComponent
+#include "MeshComponent.h"
+class CMesh2DComponent :
+	public CMeshComponent
 {
 	friend class CObj;
 
 protected:
-	CSceneComponent();
-	CSceneComponent(const CSceneComponent& com);
-	virtual ~CSceneComponent() = 0;
-
-protected:
-	class CTransform*		m_pTransform;
+	CMesh2DComponent();
+	CMesh2DComponent(const CMesh2DComponent& com);
+	virtual ~CMesh2DComponent();
 
 public:
 	bool Init();

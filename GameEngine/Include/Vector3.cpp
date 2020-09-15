@@ -352,16 +352,16 @@ _tagVector3 _tagVector3::Cross(const _tagVector3& v) const
 	return _tagVector3(DirectX::XMVector3Cross(v1, v2));
 }
 
-void _tagVector3::TransformNormal(const DirectX::XMMATRIX& m)
+_tagVector3 _tagVector3::TransformNormal(const Matrix& m)
 {
 	DirectX::XMVECTOR v = Convert();
 
-	Convert(DirectX::XMVector3TransformNormal(v, m));
+	return _tagVector3(DirectX::XMVector3TransformNormal(v, m.m));
 }
 
-void _tagVector3::TransformCoord(const DirectX::XMMATRIX& m)
+_tagVector3 _tagVector3::TransformCoord(const Matrix& m)
 {
 	DirectX::XMVECTOR v = Convert();
 
-	Convert(DirectX::XMVector3TransformCoord(v, m));
+	return _tagVector3(DirectX::XMVector3TransformCoord(v, m.m));
 }

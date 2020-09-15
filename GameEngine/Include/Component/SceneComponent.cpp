@@ -1,25 +1,32 @@
 #include "SceneComponent.h"
+#include "Transform.h"
 
 CSceneComponent::CSceneComponent()
 {
+	m_eType = COMPONENT_TYPE::CT_SCENE;
+
+	m_pTransform = new CTransform;
+
+	m_pTransform->m_pOwner = this;
 }
 
-CSceneComponent::CSceneComponent(const CSceneComponent& com)
+CSceneComponent::CSceneComponent(const CSceneComponent& com)	:
+	CComponent(com)
 {
+	m_pTransform = com.m_pTransform->Clone();
 }
 
 CSceneComponent::~CSceneComponent()
 {
+	SAFE_DELETE(m_pTransform);
 }
 
-CObj* CSceneComponent::GetObj() const
-{
-	return nullptr;
-}
 
 bool CSceneComponent::Init()
 {
-	return false;
+	m_pTransform->m_pScene = m_pScene;
+
+	return true;
 }
 
 void CSceneComponent::Start()

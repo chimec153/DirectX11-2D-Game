@@ -5,6 +5,8 @@
 #include "Timer.h"
 #include "Resource/ResourceManager.h"
 #include "Resource/Mesh2D.h"
+#include "Resource/ShaderManager.h"
+#include "Resource/Shader.h"
 
 DEFINITION_SINGLE(CEngine)
 
@@ -133,12 +135,18 @@ int CEngine::Render(float fTime)
 	GET_SINGLE(CDevice)->ClearState();
 
 	GET_SINGLE(CSceneManager)->Render(fTime);
+/*
+	CShader* pShader = GET_SINGLE(CShaderManager)->FindShader("Standard2D");
+
+	pShader->SetShader();
+
+	SAFE_RELEASE(pShader);
 
 	CMesh2D* pMesh = GET_SINGLE(CResourceManager)->GetDefaultMesh();
 
 	pMesh->Render(fTime);
 
-	SAFE_RELEASE(pMesh);
+	SAFE_RELEASE(pMesh);*/
 
 	GET_SINGLE(CDevice)->Render();
 
@@ -147,7 +155,7 @@ int CEngine::Render(float fTime)
 
 int CEngine::Create(const TCHAR* pClass, const TCHAR* pTitle, int iWidth, int iHeight)
 {
-	m_hWnd = CreateWindowW(pClass, pTitle, WS_OVERLAPPEDWINDOW,
+	m_hWnd = CreateWindowW(pClass, pTitle, WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, m_hInst, nullptr);
 
 	if (!m_hWnd)
@@ -157,7 +165,7 @@ int CEngine::Create(const TCHAR* pClass, const TCHAR* pTitle, int iWidth, int iH
 
 	RECT tRect = { 0, 0, iWidth, iHeight };
 
-	AdjustWindowRect(&tRect, WS_OVERLAPPEDWINDOW, false);
+	AdjustWindowRect(&tRect, WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION, false);
 	SetWindowPos(m_hWnd, 0, 100, 100, 
 		tRect.right - tRect.left, tRect.bottom - tRect.top, SWP_NOZORDER);
 
