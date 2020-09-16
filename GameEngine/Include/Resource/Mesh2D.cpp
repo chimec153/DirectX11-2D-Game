@@ -2,10 +2,10 @@
 #include "../Device.h"
 
 CMesh2D::CMesh2D() :
-	m_tVB(),
-	m_tIB(),
 	m_ePrimitive(D3D_PRIMITIVE_TOPOLOGY_UNDEFINED)
 {
+	memset(&m_tVB, 0, sizeof(VertexBuffer));
+	memset(&m_tIB, 0, sizeof(IndexBuffer));
 }
 
 CMesh2D::~CMesh2D()

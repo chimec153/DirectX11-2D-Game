@@ -1,4 +1,5 @@
 #include "Mesh2DComponent.h"
+#include "../Resource/ResourceManager.h"
 
 CMesh2DComponent::CMesh2DComponent()
 {
@@ -17,6 +18,8 @@ bool CMesh2DComponent::Init()
 {
 	if (!CMeshComponent::Init())
 		return false;
+
+	m_pMesh = (CMesh*)GET_SINGLE(CResourceManager)->GetDefaultMesh();
 
 	return true;
 }

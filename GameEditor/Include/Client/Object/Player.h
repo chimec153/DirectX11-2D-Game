@@ -1,29 +1,28 @@
 #pragma once
-class CGameMode
+
+#include "Object/Obj.h"
+
+class CPlayer :
+	public CObj
 {
-	friend class CScene;
+public:
+	CPlayer();
+	CPlayer(const CPlayer& player);
+	virtual ~CPlayer();
 
-protected:
-	CGameMode();
-	~CGameMode();
-
-protected:
-	class CScene*		m_pScene;
-	class CObj*			m_pPlayer;
+private:
+	class CMesh2DComponent*			m_pMesh;
 
 public:
-	void SetPlayer(class CObj* pPlayer);
-	class CObj* GetPlayer()	const;
+	void SetMeshComponent(class CMesh2DComponent* pMesh);
 
 public:
 	virtual bool Init();
-	virtual void Start();
 	virtual void Update(float fTime);
 	virtual void PostUpdate(float fTime);
 	virtual void Collision(float fTime);
 	virtual void PreRender(float fTime);
 	virtual void Render(float fTime);
 	virtual void PostRender(float fTime);
-
 };
 

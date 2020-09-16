@@ -27,6 +27,11 @@ CObj* CComponent::GetObj() const
 	return m_pObj;
 }
 
+COMPONENT_TYPE CComponent::GetType() const
+{
+	return m_eType;
+}
+
 bool CComponent::Init()
 {
 	return true;

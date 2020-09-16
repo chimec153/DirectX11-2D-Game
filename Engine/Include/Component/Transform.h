@@ -96,6 +96,7 @@ public:
 	Vector3 GetWorldRot()			const;
 	Vector3 GetWorldPos()			const;
 	Vector3 GetWorldAxis(AXIS axis)	const;
+	Vector3 GetPivot()				const;
 
 public:
 	void SetWorldScale(const Vector3& v);
@@ -116,12 +117,21 @@ public:
 	void AddWorldRotX(float x);
 	void AddWorldRotY(float y);
 	void AddWorldRotZ(float z);
+	void SetPivot(const Vector3& v);
+	void SetPivot(float x, float y, float z);
+	void SetMeshSize(const Vector3& v);
 
 private:
 	Matrix						m_matScale;
 	Matrix						m_matRot;
 	Matrix						m_matPos;
 	Matrix						m_matWorld;
+
+public:
+	Matrix GetMatScale()	const;
+	Matrix GetMatRot()		const;
+	Matrix GetMatPos()		const;
+	Matrix GetMatWorld()	const;
 
 public:
 	void Update(float fTime);

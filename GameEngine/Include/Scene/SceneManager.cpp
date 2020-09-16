@@ -4,7 +4,8 @@
 DEFINITION_SINGLE(CSceneManager)
 
 CSceneManager::CSceneManager()	:
-	m_pScene(nullptr)
+	m_pScene(nullptr),
+	m_pSceneNext(nullptr)
 {
 
 }
@@ -12,6 +13,7 @@ CSceneManager::CSceneManager()	:
 CSceneManager::~CSceneManager()
 {
 	SAFE_DELETE(m_pScene);
+	SAFE_DELETE(m_pSceneNext);
 }
 
 bool CSceneManager::Init()

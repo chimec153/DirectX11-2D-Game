@@ -19,6 +19,7 @@ protected:
 
 public:
 	class CObj* GetObj()	const;
+	COMPONENT_TYPE GetType()	const;
 
 protected:
 	bool		m_bStart;

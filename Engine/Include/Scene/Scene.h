@@ -31,19 +31,21 @@ protected:
 	std::list<class CObj*>		m_ObjList;
 
 public:
-	CGameMode* SetGameMode()
+	template <typename T>
+	bool SetGameMode()
 	{
 		SAFE_DELETE(m_pGameMode);
 
-		m_pGameMode = new CGameMode;
+		m_pGameMode = new T;
+		m_pGameMode->m_pScene = this;
 
 		if (!m_pGameMode->Init())
 		{
 			SAFE_DELETE(m_pGameMode);
-			return nullptr;
+			return false;
 		}
 		
-		return m_pGameMode;
+		return true;
 	}
 
 public:
