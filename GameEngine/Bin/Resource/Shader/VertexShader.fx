@@ -16,7 +16,9 @@ VS_OUTPUT StandardVS(VS_INPUT input)
 {
 	VS_OUTPUT output = (VS_OUTPUT)0;
 
-	output.vPos = float4(input.vPos, 1.f);
+	float3 vPos = input.vPos - g_vPivot * g_vMeshSize;
+
+	output.vPos = mul(float4(vPos, 1.f), g_matWVP);
 	output.vColor = input.vColor;
 
 	return output;
@@ -26,7 +28,7 @@ PS_OUTPUT_COLOR StandardPS(VS_OUTPUT input)
 {
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0;
 
-	output.vColor = input.vColor;
+	output.vColor = input.vColor * g_vDif;
 
 	return output;
 }

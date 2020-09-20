@@ -11,19 +11,33 @@ protected:
 	virtual ~CSceneComponent() = 0;
 
 protected:
-	class CTransform*		m_pTransform;
+	class CTransform*				m_pTransform;
+	CSceneComponent*				m_pParent;
+	std::vector<CSceneComponent*>	m_vecChild;
+	SCENE_COMPONENT_TYPE			m_eSceneComponentType;
 
 public:
-	bool Init();
-	void Start();
-	void Update(float fTime);
-	void PostUpdate(float fTime);
-	void Collision(float fTime);
-	void PreRender(float fTime);
-	void Render(float fTime);
-	void PostRender(float fTime);
+	bool AddChild(CSceneComponent* pChild);
+	bool DeleteChild(CSceneComponent* pChild);
+	bool Detach(CSceneComponent* pChild);
+	SCENE_COMPONENT_TYPE GetSceneComponentType()	const;
 
 public:
+	virtual bool Init();
+	virtual void Start();
+	virtual void Update(float fTime);
+	virtual void PostUpdate(float fTime);
+	virtual void Collision(float fTime);
+	virtual void PreRender(float fTime);
+	virtual void Render(float fTime);
+	virtual void PostRender(float fTime);
+	virtual CSceneComponent* Clone() = 0;
+
+public:
+	void SetInheritScale(bool bInherit);
+	void SetInheritRotX(bool bInherit);
+	void SetInheritRotY(bool bInherit);
+	void SetInheritRotZ(bool bInherit);
 	void InheritScale();
 	void InheritRot();
 	void InheritPos();

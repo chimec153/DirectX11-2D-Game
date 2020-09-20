@@ -43,9 +43,6 @@
     <Filter Include="06. Component">
       <UniqueIdentifier>{3bdfc3eb-07a6-498f-a67f-74d202c02436}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Render\01. Mesh">
-      <UniqueIdentifier>{7c273ec1-cdeb-46d2-ab7f-da290f6b484d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Engine\03. Timer">
       <UniqueIdentifier>{b22147fd-2d41-48e7-b2fb-eb030bcb3b40}</UniqueIdentifier>
     </Filter>
@@ -55,15 +52,6 @@
     <Filter Include="01. Engine\05. Math">
       <UniqueIdentifier>{7012a1b8-4dcd-41a4-b645-2456fbc232da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04. Render\02. Shader">
-      <UniqueIdentifier>{29ba803f-0709-4689-8963-fd5eb7f6e17c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Render\01. Mesh\02. Mesh2D">
-      <UniqueIdentifier>{3cd71483-3a9c-47bf-a0ae-769bc3f78986}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04. Render\01. Mesh\03. StaticMesh">
-      <UniqueIdentifier>{11f6a8b1-bb6a-49ef-b80f-ca24fd7c74da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06. Component\01. Scene">
       <UniqueIdentifier>{fa58f40d-c556-4ac3-8f45-3b89fe320d5b}</UniqueIdentifier>
     </Filter>
@@ -71,10 +59,25 @@
       <UniqueIdentifier>{4ed32b0a-76dc-47c0-8676-d7ade41fccab}</UniqueIdentifier>
     </Filter>
     <Filter Include="06. Component\01. Scene\01. Mesh">
-      <UniqueIdentifier>{ca24cad7-b870-4d72-9b3e-f002620f3d46}</UniqueIdentifier>
+      <UniqueIdentifier>{812ec01c-6780-4224-ae34-dbc8778aef0a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="06. Component\01. Scene\02. StaticMesh">
-      <UniqueIdentifier>{48cab2ac-b8ec-4a7d-b296-e52517bd3600}</UniqueIdentifier>
+    <Filter Include="05. Resource\01. Mesh">
+      <UniqueIdentifier>{7c273ec1-cdeb-46d2-ab7f-da290f6b484d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Resource\01. Mesh\02. Mesh2D">
+      <UniqueIdentifier>{3cd71483-3a9c-47bf-a0ae-769bc3f78986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Resource\01. Mesh\03. StaticMesh">
+      <UniqueIdentifier>{11f6a8b1-bb6a-49ef-b80f-ca24fd7c74da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Resource\02. Shader">
+      <UniqueIdentifier>{29ba803f-0709-4689-8963-fd5eb7f6e17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Resource\02. Shader\01. HLSL">
+      <UniqueIdentifier>{ef86a85e-8462-4b65-8eec-668789d20fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Resource\03. Material">
+      <UniqueIdentifier>{16439b42-21ea-4cb7-92b6-d8b6082e57b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +121,7 @@
       <Filter>02. Scene\02. Resource</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Mesh.h">
-      <Filter>04. Render\01. Mesh</Filter>
+      <Filter>05. Resource\01. Mesh</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>01. Engine\03. Timer</Filter>
@@ -142,16 +145,16 @@
       <Filter>01. Engine\05. Math</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Mesh2D.h">
-      <Filter>04. Render\01. Mesh\02. Mesh2D</Filter>
+      <Filter>05. Resource\01. Mesh\02. Mesh2D</Filter>
     </ClInclude>
     <ClInclude Include="Resource\StaticMesh.h">
-      <Filter>04. Render\01. Mesh\03. StaticMesh</Filter>
+      <Filter>05. Resource\01. Mesh\03. StaticMesh</Filter>
     </ClInclude>
     <ClInclude Include="Resource\Shader.h">
-      <Filter>04. Render\02. Shader</Filter>
+      <Filter>05. Resource\02. Shader</Filter>
     </ClInclude>
     <ClInclude Include="Resource\ShaderManager.h">
-      <Filter>04. Render\02. Shader</Filter>
+      <Filter>05. Resource\02. Shader</Filter>
     </ClInclude>
     <ClInclude Include="Component\ObjComponent.h">
       <Filter>06. Component\02. Object</Filter>
@@ -159,11 +162,35 @@
     <ClInclude Include="Component\SceneComponent.h">
       <Filter>06. Component\01. Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Flag.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ComputeShader.h">
+      <Filter>05. Resource\02. Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\GraphicShader.h">
+      <Filter>05. Resource\02. Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Mesh2DComponent.h">
+      <Filter>06. Component\01. Scene\01. Mesh</Filter>
+    </ClInclude>
     <ClInclude Include="Component\MeshComponent.h">
       <Filter>06. Component\01. Scene\01. Mesh</Filter>
     </ClInclude>
     <ClInclude Include="Component\StaticMeshComponent.h">
-      <Filter>06. Component\01. Scene\02. StaticMesh</Filter>
+      <Filter>06. Component\01. Scene\01. Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Transform.h">
+      <Filter>06. Component\01. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Material.h">
+      <Filter>05. Resource\03. Material</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>04. Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +225,7 @@
       <Filter>02. Scene\02. Resource</Filter>
     </ClCompile>
     <ClCompile Include="Resource\Mesh.cpp">
-      <Filter>04. Render\01. Mesh</Filter>
+      <Filter>05. Resource\01. Mesh</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>01. Engine\03. Timer</Filter>
@@ -219,16 +246,16 @@
       <Filter>01. Engine\05. Math</Filter>
     </ClCompile>
     <ClCompile Include="Resource\Mesh2D.cpp">
-      <Filter>04. Render\01. Mesh\02. Mesh2D</Filter>
+      <Filter>05. Resource\01. Mesh\02. Mesh2D</Filter>
     </ClCompile>
     <ClCompile Include="Resource\StaticMesh.cpp">
-      <Filter>04. Render\01. Mesh\03. StaticMesh</Filter>
+      <Filter>05. Resource\01. Mesh\03. StaticMesh</Filter>
     </ClCompile>
     <ClCompile Include="Resource\Shader.cpp">
-      <Filter>04. Render\02. Shader</Filter>
+      <Filter>05. Resource\02. Shader</Filter>
     </ClCompile>
     <ClCompile Include="Resource\ShaderManager.cpp">
-      <Filter>04. Render\02. Shader</Filter>
+      <Filter>05. Resource\02. Shader</Filter>
     </ClCompile>
     <ClCompile Include="Component\ObjComponent.cpp">
       <Filter>06. Component\02. Object</Filter>
@@ -236,11 +263,29 @@
     <ClCompile Include="Component\SceneComponent.cpp">
       <Filter>06. Component\01. Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Resource\ComputeShader.cpp">
+      <Filter>05. Resource\02. Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\GraphicShader.cpp">
+      <Filter>05. Resource\02. Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Mesh2DComponent.cpp">
+      <Filter>06. Component\01. Scene\01. Mesh</Filter>
+    </ClCompile>
     <ClCompile Include="Component\MeshComponent.cpp">
       <Filter>06. Component\01. Scene\01. Mesh</Filter>
     </ClCompile>
     <ClCompile Include="Component\StaticMeshComponent.cpp">
-      <Filter>06. Component\01. Scene\02. StaticMesh</Filter>
+      <Filter>06. Component\01. Scene\01. Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Transform.cpp">
+      <Filter>06. Component\01. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\Material.cpp">
+      <Filter>05. Resource\03. Material</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>04. Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,11 +304,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Share.fx">
-      <Filter>04. Render\02. Shader</Filter>
+    <FxCompile Include="..\Bin\Resource\Shader\Share.fx">
+      <Filter>05. Resource\02. Shader\01. HLSL</Filter>
     </FxCompile>
-    <FxCompile Include="VertexShader.fx">
-      <Filter>04. Render\02. Shader</Filter>
+    <FxCompile Include="..\Bin\Resource\Shader\VertexShader.fx">
+      <Filter>05. Resource\02. Shader\01. HLSL</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

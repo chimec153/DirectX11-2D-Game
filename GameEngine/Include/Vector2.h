@@ -2,9 +2,12 @@
 
 #include "Vector3.h"
 
-typedef __declspec(align(16)) struct _tagVector2
+typedef __declspec(align(16)) union _tagVector2
 {
-	float x, y;
+	struct
+	{
+		float x, y;
+	};
 
 	_tagVector2();
 	_tagVector2(const _tagVector2& v);

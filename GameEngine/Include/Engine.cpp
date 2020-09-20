@@ -7,6 +7,7 @@
 #include "Resource/Mesh2D.h"
 #include "Resource/ShaderManager.h"
 #include "Resource/Shader.h"
+#include "RenderManager.h"
 
 DEFINITION_SINGLE(CEngine)
 
@@ -27,6 +28,7 @@ CEngine::~CEngine()
 	DESTROY_SINGLE(CDevice);
 	DESTROY_SINGLE(CSceneManager);
 	DESTROY_SINGLE(CResourceManager);
+	DESTROY_SINGLE(CRenderManager);
 	DESTROY_SINGLE(CPathManager);
 	DESTROY_SINGLE(CTimer);
 }
@@ -71,6 +73,10 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd, const TCHAR* pClass, int iWidth, 
 
 	// 장면 관리자 초기화
 	if (!GET_SINGLE(CSceneManager)->Init())
+		return false;
+
+	// 랜더 관리자 초기화
+	if (!GET_SINGLE(CRenderManager)->Init())
 		return false;
 
 	return true;
@@ -120,6 +126,8 @@ int CEngine::Update(float fTime)
 {
 	GET_SINGLE(CSceneManager)->Update(fTime);
 
+	GET_SINGLE(CSceneManager)->PostUpdate(fTime);
+
 	return 0;
 }
 
@@ -132,24 +140,18 @@ int CEngine::Collision(float fTime)
 
 int CEngine::Render(float fTime)
 {
+	GET_SINGLE(CSceneManager)->PreRender(fTime);
+
 	GET_SINGLE(CDevice)->ClearState();
 
-	GET_SINGLE(CSceneManager)->Render(fTime);
-/*
-	CShader* pShader = GET_SINGLE(CShaderManager)->FindShader("Standard2D");
+	//GET_SINGLE(CSceneManager)->Render(fTime);
+	GET_SINGLE(CRenderManager)->Render(fTime);
 
-	pShader->SetShader();
-
-	SAFE_RELEASE(pShader);
-
-	CMesh2D* pMesh = GET_SINGLE(CResourceManager)->GetDefaultMesh();
-
-	pMesh->Render(fTime);
-
-	SAFE_RELEASE(pMesh);*/
+	GET_SINGLE(CRenderManager)->ClearComponent();
 
 	GET_SINGLE(CDevice)->Render();
 
+	GET_SINGLE(CSceneManager)->PostRender(fTime);
 	return 0;
 }
 

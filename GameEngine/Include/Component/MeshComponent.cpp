@@ -1,50 +1,39 @@
 #include "MeshComponent.h"
-#include "../Resource/Mesh.h"
-#include "../Scene/Scene.h"
-#include "../Scene/SceneResource.h"
+#include "../Resource/Material.h"
 
-CMeshComponent::CMeshComponent() :
-	m_pMesh(nullptr)
+CMeshComponent::CMeshComponent()	:
+	m_pMaterial(nullptr)
 {
 }
 
 CMeshComponent::CMeshComponent(const CMeshComponent& com)	:
 	CSceneComponent(com)
 {
-	m_pMesh = com.m_pMesh;
-
-	if (m_pMesh)
-		m_pMesh->AddRef();
+	m_pMaterial = com.m_pMaterial->Clone();
 }
 
 CMeshComponent::~CMeshComponent()
 {
-	SAFE_RELEASE(m_pMesh);
+	SAFE_RELEASE(m_pMaterial);
 }
 
-CMesh* CMeshComponent::GetMesh() const
-{
-	if (m_pMesh)
-		m_pMesh->AddRef();
 
-	return m_pMesh;
+CMaterial* CMeshComponent::GetMaterial() const
+{
+	if (m_pMaterial)
+		m_pMaterial->AddRef();
+
+	return m_pMaterial;
 }
 
-void CMeshComponent::SetMesh(const std::string& strName)
+void CMeshComponent::SetMaterial(CMaterial* pMaterial)
 {
-	SAFE_RELEASE(m_pMesh);
+	SAFE_RELEASE(m_pMaterial);
 
-	m_pMesh = m_pScene->GetResource()->FindMesh(strName);
-}
+	m_pMaterial = pMaterial;
 
-void CMeshComponent::SetMesh(CMesh* pMesh)
-{
-	SAFE_RELEASE(m_pMesh);
-
-	m_pMesh = pMesh;
-
-	if (m_pMesh)
-		m_pMesh->AddRef();
+	if (m_pMaterial)
+		m_pMaterial->AddRef();
 }
 
 bool CMeshComponent::Init()
@@ -83,9 +72,17 @@ void CMeshComponent::PreRender(float fTime)
 void CMeshComponent::Render(float fTime)
 {
 	CSceneComponent::Render(fTime);
+
+	if (m_pMaterial)
+		m_pMaterial->SetMaterial();
 }
 
 void CMeshComponent::PostRender(float fTime)
 {
 	CSceneComponent::PostRender(fTime);
+}
+
+CMeshComponent* CMeshComponent::Clone()
+{
+	return new CMeshComponent(*this);
 }

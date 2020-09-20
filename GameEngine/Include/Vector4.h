@@ -2,9 +2,12 @@
 
 #include "EngineMath.h"
 
-typedef __declspec(align(16)) struct _tagVector4
+typedef __declspec(align(16)) union _tagVector4
 {
-	float x, y, z, w;
+	struct
+	{
+		float x, y, z, w;
+	};
 
 	_tagVector4();
 	_tagVector4(const _tagVector4& v);

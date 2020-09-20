@@ -6,6 +6,7 @@ class CRef
 {
 protected:
 	CRef();
+	CRef(const CRef& ref);
 	virtual ~CRef() = 0;
 
 protected:

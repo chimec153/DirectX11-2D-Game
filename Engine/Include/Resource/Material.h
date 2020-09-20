@@ -9,6 +9,7 @@ class CMaterial :
 
 private:
 	CMaterial();
+	CMaterial(const CMaterial& material);
 	~CMaterial();
 
 private:
@@ -17,6 +18,14 @@ private:
 
 public:
 	void SetShader(const std::string& strName);
+	void SetDiffuseColor(const Vector4& v);
+	void SetDiffuseColor(float x, float y, float z, float w);
+	void SetAmbientColor(const Vector4& v);
+	void SetAmbientColor(float x, float y, float z, float w);
+	void SetSpecularColor(const Vector4& v);
+	void SetSpecularColor(float x, float y, float z, float w);
+	void SetMaterial();
+	CMaterial* Clone();
 
 };
 

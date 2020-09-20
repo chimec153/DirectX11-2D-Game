@@ -10,14 +10,23 @@ protected:
 	CMesh2DComponent(const CMesh2DComponent& com);
 	virtual ~CMesh2DComponent();
 
+protected:
+	class CMesh* m_pMesh;
+
 public:
-	bool Init();
-	void Start();
-	void Update(float fTime);
-	void PostUpdate(float fTime);
-	void Collision(float fTime);
-	void PreRender(float fTime);
-	void Render(float fTime);
-	void PostRender(float fTime);
+	class CMesh* GetMesh()	const;
+	void SetMesh(const std::string& strName);
+	void SetMesh(class CMesh* pMesh);
+
+public:
+	virtual bool Init();
+	virtual void Start();
+	virtual void Update(float fTime);
+	virtual void PostUpdate(float fTime);
+	virtual void Collision(float fTime);
+	virtual void PreRender(float fTime);
+	virtual void Render(float fTime);
+	virtual void PostRender(float fTime);
+	virtual CMesh2DComponent* Clone();
 };
 

@@ -116,8 +116,8 @@ void _tagMatrix::Translation(float x, float y, float z)
 void _tagMatrix::Rotate(const _tagVector3& v)
 {
 	DirectX::XMMATRIX mX = DirectX::XMMatrixRotationX(DegToRad(v.x));
-	DirectX::XMMATRIX mY = DirectX::XMMatrixRotationX(DegToRad(v.y));
-	DirectX::XMMATRIX mZ = DirectX::XMMatrixRotationX(DegToRad(v.z));
+	DirectX::XMMATRIX mY = DirectX::XMMatrixRotationY(DegToRad(v.y));
+	DirectX::XMMATRIX mZ = DirectX::XMMatrixRotationZ(DegToRad(v.z));
 
 	m = mX * mY * mZ;
 }
@@ -125,8 +125,8 @@ void _tagMatrix::Rotate(const _tagVector3& v)
 void _tagMatrix::Rotate(float x, float y, float z)
 {
 	DirectX::XMMATRIX mX = DirectX::XMMatrixRotationX(DegToRad(x));
-	DirectX::XMMATRIX mY = DirectX::XMMatrixRotationX(DegToRad(y));
-	DirectX::XMMATRIX mZ = DirectX::XMMatrixRotationX(DegToRad(z));
+	DirectX::XMMATRIX mY = DirectX::XMMatrixRotationY(DegToRad(y));
+	DirectX::XMMATRIX mZ = DirectX::XMMatrixRotationZ(DegToRad(z));
 
 	m = mX * mY * mZ;
 }

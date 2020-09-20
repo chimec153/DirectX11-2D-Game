@@ -10,8 +10,13 @@ CComponent::CComponent()	:
 
 }
 
-CComponent::CComponent(const CComponent& com)
+CComponent::CComponent(const CComponent& com)	:
+	CRef(com)
 {
+	m_pScene = nullptr;
+	m_pObj = nullptr;
+	m_eType = com.m_eType;
+	m_bStart = false;
 }
 
 CComponent::~CComponent()

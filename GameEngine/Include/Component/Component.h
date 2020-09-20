@@ -31,13 +31,13 @@ public:
 	}
 
 public:
-	bool Init();
-	void Start();
-	void Update(float fTime);
-	void PostUpdate(float fTime);
-	void Collision(float fTime);
-	void PreRender(float fTime);
-	void Render(float fTime);
-	void PostRender(float fTime);
+	virtual bool Init();
+	virtual void Start();
+	virtual void Update(float fTime);
+	virtual void PostUpdate(float fTime);
+	virtual void Collision(float fTime);
+	virtual void PreRender(float fTime);
+	virtual void Render(float fTime);
+	virtual void PostRender(float fTime);
 };
 

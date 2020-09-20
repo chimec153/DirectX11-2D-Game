@@ -1,7 +1,10 @@
 #include "SceneComponent.h"
 #include "Transform.h"
+#include "../RenderManager.h"
 
-CSceneComponent::CSceneComponent()
+CSceneComponent::CSceneComponent()	:
+	m_pParent(nullptr),
+	m_eSceneComponentType(SCENE_COMPONENT_TYPE::SCT_2D)
 {
 	m_eType = COMPONENT_TYPE::CT_SCENE;
 
@@ -14,13 +17,97 @@ CSceneComponent::CSceneComponent(const CSceneComponent& com)	:
 	CComponent(com)
 {
 	m_pTransform = com.m_pTransform->Clone();
+
+	m_pParent = nullptr;
+	
+	m_vecChild.clear();
+
+	size_t iSize = com.m_vecChild.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+	{
+		CSceneComponent* pComponent = com.m_vecChild[i]->Clone();
+
+		pComponent->m_pParent = this;
+
+		pComponent->AddRef();
+
+		m_vecChild.push_back(pComponent);
+
+		pComponent->InheritPos();
+		pComponent->InheritRot();
+		pComponent->InheritScale();
+	}
 }
 
 CSceneComponent::~CSceneComponent()
 {
 	SAFE_DELETE(m_pTransform);
+	SAFE_RELEASE_VECLIST(m_vecChild);
 }
 
+
+bool CSceneComponent::AddChild(CSceneComponent* pChild)
+{
+	pChild->m_pParent = this;
+	pChild->m_pTransform->m_pParent = m_pTransform;
+
+	pChild->AddRef();
+
+	m_vecChild.push_back(pChild);
+	m_pTransform->m_vecChild.push_back(pChild->m_pTransform);
+
+	pChild->InheritPos();
+	pChild->InheritRot();
+	pChild->InheritScale();
+
+	return true;
+}
+
+bool CSceneComponent::DeleteChild(CSceneComponent* pChild)
+{
+	size_t iSize = m_vecChild.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+	{
+		if (m_vecChild[i] == pChild)
+		{
+			Detach(pChild);
+
+			std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin() + i;
+
+			m_vecChild.erase(iter);
+
+			std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin() + i;
+
+			m_pTransform->m_vecChild.erase(iterTr);
+
+			break;
+		}
+	}
+
+	return true;
+}
+
+bool CSceneComponent::Detach(CSceneComponent* pChild)
+{
+	pChild->m_pParent = nullptr;
+
+	pChild->m_pTransform->m_pParent = nullptr;
+
+	pChild->Release();
+
+	pChild->SetRelativePos(pChild->GetRelativePos());
+	pChild->SetRelativeRot(pChild->GetRelativeRot());
+	pChild->SetRelativeScale(pChild->GetRelativeScale());
+
+	return true;
+}
+
+SCENE_COMPONENT_TYPE CSceneComponent::GetSceneComponentType() const
+{
+	return m_eSceneComponentType;
+}
 
 bool CSceneComponent::Init()
 {
@@ -31,30 +118,177 @@ bool CSceneComponent::Init()
 
 void CSceneComponent::Start()
 {
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+
+	for (; iter != iterEnd; ++iter)
+		(*iter)->Start();
 }
 
 void CSceneComponent::Update(float fTime)
 {
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+	std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin();
+
+	for (; iter != iterEnd;)
+	{
+		if (!(*iter)->IsActive())
+		{
+			Detach((*iter));
+			iter = m_vecChild.erase(iter);
+			iterEnd = m_vecChild.end();
+			m_pTransform->m_vecChild.erase(iterTr);
+			continue;
+		}
+
+		else if ((*iter)->IsEnable())
+		{
+			(*iter)->Update(fTime);
+		}
+
+		++iter;
+		++iterTr;
+	}
+
+	m_pTransform->Update(fTime);
 }
 
 void CSceneComponent::PostUpdate(float fTime)
 {
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+	std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin();
+
+	for (; iter != iterEnd;)
+	{
+		if (!(*iter)->IsActive())
+		{
+			Detach((*iter));
+			iter = m_vecChild.erase(iter);
+			iterEnd = m_vecChild.end();
+			m_pTransform->m_vecChild.erase(iterTr);
+			continue;
+		}
+
+		else if ((*iter)->IsEnable())
+		{
+			(*iter)->PostUpdate(fTime);
+		}
+
+		++iter;
+		++iterTr;
+	}
+
+	m_pTransform->PostUpdate(fTime);
 }
 
 void CSceneComponent::Collision(float fTime)
 {
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+	std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin();
+
+	for (; iter != iterEnd;)
+	{
+		if (!(*iter)->IsActive())
+		{
+			Detach((*iter));
+			iter = m_vecChild.erase(iter);
+			iterEnd = m_vecChild.end();
+			m_pTransform->m_vecChild.erase(iterTr);
+			continue;
+		}
+
+		else if ((*iter)->IsEnable())
+		{
+			(*iter)->PostUpdate(fTime);
+		}
+
+		++iter;
+		++iterTr;
+	}
 }
 
 void CSceneComponent::PreRender(float fTime)
 {
+	GET_SINGLE(CRenderManager)->AddComponent(this);
+
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+	std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin();
+
+	for (; iter != iterEnd;)
+	{
+		if (!(*iter)->IsActive())
+		{
+			Detach((*iter));
+			iter = m_vecChild.erase(iter);
+			iterEnd = m_vecChild.end();
+			m_pTransform->m_vecChild.erase(iterTr);
+			continue;
+		}
+
+		else if ((*iter)->IsEnable())
+		{
+			(*iter)->PreRender(fTime);
+		}
+
+		++iter;
+		++iterTr;
+	}
 }
 
 void CSceneComponent::Render(float fTime)
 {
+	m_pTransform->SetTransform();
 }
 
 void CSceneComponent::PostRender(float fTime)
 {
+	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
+	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
+	std::vector<CTransform*>::iterator iterTr = m_pTransform->m_vecChild.begin();
+
+	for (; iter != iterEnd;)
+	{
+		if (!(*iter)->IsActive())
+		{
+			Detach((*iter));
+			iter = m_vecChild.erase(iter);
+			iterEnd = m_vecChild.end();
+			m_pTransform->m_vecChild.erase(iterTr);
+			continue;
+		}
+
+		else if ((*iter)->IsEnable())
+		{
+			(*iter)->PostRender(fTime);
+		}
+
+		++iter;
+		++iterTr;
+	}
+}
+
+void CSceneComponent::SetInheritScale(bool bInherit)
+{
+	m_pTransform->SetInheritScale(bInherit);
+}
+
+void CSceneComponent::SetInheritRotX(bool bInherit)
+{
+	m_pTransform->SetInheritRotX(bInherit);
+}
+
+void CSceneComponent::SetInheritRotY(bool bInherit)
+{
+	m_pTransform->SetInheritRotY(bInherit);
+}
+
+void CSceneComponent::SetInheritRotZ(bool bInherit)
+{
+	m_pTransform->SetInheritRotZ(bInherit);
 }
 
 void CSceneComponent::InheritScale()

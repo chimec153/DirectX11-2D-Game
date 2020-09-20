@@ -107,6 +107,26 @@ void CObj::PostRender(float fTime)
 		m_vecObjComponent[i]->PostRender(fTime);
 }
 
+void CObj::SetInheritScale(bool bInherit)
+{
+	m_pRootComponent->SetInheritScale(bInherit);
+}
+
+void CObj::SetInheritRotX(bool bInherit)
+{
+	m_pRootComponent->SetInheritRotX(bInherit);
+}
+
+void CObj::SetInheritRotY(bool bInherit)
+{
+	m_pRootComponent->SetInheritRotY(bInherit);
+}
+
+void CObj::SetInheritRotZ(bool bInherit)
+{
+	m_pRootComponent->SetInheritRotZ(bInherit);
+}
+
 void CObj::InheritScale()
 {
 		m_pRootComponent->InheritScale();

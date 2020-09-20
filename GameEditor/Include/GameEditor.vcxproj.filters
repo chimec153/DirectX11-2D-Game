@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="01. MainGameMode">
+      <UniqueIdentifier>{fd1916bd-082d-4f02-84de-1fafe194b9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Player">
+      <UniqueIdentifier>{6c18cb4e-7ed3-4954-8e3d-d3f33784c2de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Bullet">
+      <UniqueIdentifier>{9aa31bf0-3d65-4e54-b480-4f222130e30d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEditor.h">
@@ -42,6 +51,15 @@
     <ClInclude Include="Editor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Client\GameMode\MainGameMode.h">
+      <Filter>01. MainGameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Player.h">
+      <Filter>02. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Bullet.h">
+      <Filter>03. Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEditor.cpp">
@@ -59,10 +77,22 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Client\GameMode\MainGameMode.cpp">
+      <Filter>01. MainGameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Player.cpp">
+      <Filter>02. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Bullet.cpp">
+      <Filter>03. Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\GameEditor.rc2">
       <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="..\..\EditorCopy.bat">
+      <Filter>소스 파일</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

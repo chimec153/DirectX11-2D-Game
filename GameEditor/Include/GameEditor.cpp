@@ -167,10 +167,9 @@ void CGameEditorApp::OnAppAbout()
 
 BOOL CGameEditorApp::OnIdle(LONG lCount)
 {
-	if (!CWinApp::OnIdle(lCount))
-		return false;
-
 	GET_SINGLE(CEngine)->Logic();
+
+	CWinApp::OnIdle(lCount);
 
 	return true;
 }

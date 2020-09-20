@@ -19,5 +19,6 @@ public:
 	void PreRender(float fTime);
 	void Render(float fTime);
 	void PostRender(float fTime);
+	virtual CStaticMeshComponent* Clone();
 };
 

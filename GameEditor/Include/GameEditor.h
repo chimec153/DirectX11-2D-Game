@@ -23,12 +23,12 @@ public:
 // 재정의입니다.
 public:
 	virtual BOOL InitInstance();
+	virtual BOOL OnIdle(LONG lCount);
+	virtual int ExitInstance();
 
 // 구현입니다.
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
-	virtual BOOL OnIdle(LONG lCount);
-	virtual int ExitInstance();
 };
 
 extern CGameEditorApp theApp;

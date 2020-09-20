@@ -55,3 +55,8 @@ void CStaticMeshComponent::PostRender(float fTime)
 {
 	CMeshComponent::PostRender(fTime);
 }
+
+CStaticMeshComponent* CStaticMeshComponent::Clone()
+{
+	return new CStaticMeshComponent(*this);
+}

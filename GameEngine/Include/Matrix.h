@@ -41,30 +41,30 @@ typedef __declspec(align(16)) union _tagMatrix
 	void Transpose();
 	void Inverse();
 
-	void Scale(const struct _tagVector3& _v);
+	void Scale(const union _tagVector3& _v);
 	void Scale(float x, float y, float z);
-	void Translation(const struct _tagVector3& _v);
+	void Translation(const union _tagVector3& _v);
 	void Translation(float x, float y, float z);
-	void Rotate(const struct _tagVector3& v);
+	void Rotate(const union _tagVector3& v);
 	void Rotate(float x, float y, float z);
 	void RotateX(float x);
 	void RotateY(float y);
 	void RotateZ(float z);
-	void RotateAxis(const struct _tagVector3& _v, float fAngle);
+	void RotateAxis(const union _tagVector3& _v, float fAngle);
 
 	static _tagMatrix StaticIdentity();
 	static _tagMatrix StaticTranspose(const _tagMatrix& m);
 	static _tagMatrix StaticInverse(const _tagMatrix& m);
-	static _tagMatrix StaticScale(const struct _tagVector3& _v);
+	static _tagMatrix StaticScale(const union _tagVector3& _v);
 	static _tagMatrix StaticScale(float x, float y, float z);
-	static _tagMatrix StaticTranslation(const struct _tagVector3& _v);
+	static _tagMatrix StaticTranslation(const union _tagVector3& _v);
 	static _tagMatrix StaticTranslation(float x, float y, float z);
-	static _tagMatrix StaticRotate(const struct _tagVector3& v);
+	static _tagMatrix StaticRotate(const union _tagVector3& v);
 	static _tagMatrix StaticRotate(float x, float y, float z);
 	static _tagMatrix StaticRotateX(float x);
 	static _tagMatrix StaticRotateY(float y);
 	static _tagMatrix StaticRotateZ(float z);
-	static _tagMatrix StaticRotateAxis(const struct _tagVector3& _v, float fAngle);	
+	static _tagMatrix StaticRotateAxis(const union _tagVector3& _v, float fAngle);
 	
 }Matrix, *PMatrix;
 

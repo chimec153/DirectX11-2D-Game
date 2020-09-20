@@ -7,6 +7,13 @@ CRef::CRef()	:
 {
 }
 
+CRef::CRef(const CRef& ref)
+{
+	*this = ref;
+
+	m_iRef = 1;
+}
+
 CRef::~CRef()
 {
 }

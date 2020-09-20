@@ -2,9 +2,12 @@
 
 #include "Matrix.h"
 
-typedef struct __declspec(align(16)) _tagVector3
+typedef __declspec(align(16)) union _tagVector3
 {
-	float x, y, z;
+	struct
+	{
+		float x, y, z;
+	};
 
 	_tagVector3();
 	_tagVector3(const _tagVector3& v);

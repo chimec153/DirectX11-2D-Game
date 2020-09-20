@@ -11,12 +11,11 @@ protected:
 	virtual ~CMeshComponent();
 
 protected:
-	class CMesh* m_pMesh;
+	class CMaterial*		m_pMaterial;
 
 public:
-	class CMesh* GetMesh()	const;
-	void SetMesh(const std::string& strName);
-	void SetMesh(class CMesh* pMesh);
+	class CMaterial* GetMaterial()	const;
+	void SetMaterial(class CMaterial* pMaterial);
 
 public:
 	bool Init();
@@ -27,5 +26,6 @@ public:
 	void PreRender(float fTime);
 	void Render(float fTime);
 	void PostRender(float fTime);
+	virtual CMeshComponent* Clone();
 };
 

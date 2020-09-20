@@ -16,6 +16,7 @@ private:
 	class CSceneComponent*		m_pOwner;
 	std::vector<CTransform*>	m_vecChild;
 	CTransform*					m_pParent;
+	TransformCBuffer			m_tCBuffer;
 
 private:
 	Vector3						m_vVelocityScale;
@@ -33,25 +34,10 @@ private:
 	bool						m_bUpdateRot;
 
 public:
-	void SetInheritScale(bool bInherit)
-	{
-		m_bInheritScale = bInherit;
-	}
-
-	void SetInheritRotX(bool bInherit)
-	{
-		m_bInheritRotX = bInherit;
-	}
-
-	void SetInheritRotY(bool bInherit)
-	{
-		m_bInheritRotY = bInherit;
-	}
-
-	void SetInheritRotZ(bool bInherit)
-	{
-		m_bInheritRotZ = bInherit;
-	}
+	void SetInheritScale(bool bInherit);
+	void SetInheritRotX(bool bInherit);
+	void SetInheritRotY(bool bInherit);
+	void SetInheritRotZ(bool bInherit);
 
 	Vector3 GetRelativeScale()			const;
 	Vector3 GetRelativeRot()			const;

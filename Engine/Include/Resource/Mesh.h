@@ -46,6 +46,7 @@ public:
 	}
 
 	void SetMaterial(class CMaterial* pMaterial);
+	class CMaterial* GetMaterial()	const;
 
 public:
 	bool Init();

@@ -22,6 +22,14 @@ void CMesh::SetMaterial(CMaterial* pMaterial)
 		m_pMaterial->AddRef();
 }
 
+CMaterial* CMesh::GetMaterial() const
+{
+	if (m_pMaterial)
+		m_pMaterial->AddRef();
+
+	return m_pMaterial;
+}
+
 bool CMesh::Init()
 {
 	return true;
