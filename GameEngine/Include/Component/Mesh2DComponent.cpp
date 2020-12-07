@@ -5,73 +5,24 @@
 #include "../Scene/SceneResource.h"
 #include "../Resource/Material.h"
 
-CMesh2DComponent::CMesh2DComponent() :
-	m_pMesh(nullptr)
+CMesh2DComponent::CMesh2DComponent()
 {
 	m_eSceneComponentType = SCENE_COMPONENT_TYPE::SCT_2D;
+	m_eSceneComponentClassType = SCENECOMPONENT_CLASS_TYPE::SCT_MESH2D;
 }
 
 CMesh2DComponent::CMesh2DComponent(const CMesh2DComponent& com)	:
-	CMeshComponent(com)
+	CSceneComponent(com)
 {
-	m_pMesh = com.m_pMesh;
-
-	if (m_pMesh)
-		m_pMesh->AddRef();
 }
 
 CMesh2DComponent::~CMesh2DComponent()
 {
-	SAFE_RELEASE(m_pMesh);
-}
-
-CMesh* CMesh2DComponent::GetMesh() const
-{
-	if (m_pMesh)
-		m_pMesh->AddRef();
-
-	return m_pMesh;
-}
-
-void CMesh2DComponent::SetMesh(const std::string& strName)
-{
-	SAFE_RELEASE(m_pMesh);
-
-	m_pMesh = m_pScene->GetResource()->FindMesh(strName);
-
-	if (m_pMesh)
-	{
-		CMaterial* pMaterial = m_pMesh->GetMaterial();
-		CMaterial* pClone = pMaterial->Clone();
-
-		SAFE_RELEASE(pMaterial);
-
-		m_pMaterial = pClone;
-	}
-}
-
-void CMesh2DComponent::SetMesh(CMesh* pMesh)
-{
-	SAFE_RELEASE(m_pMesh);
-
-	m_pMesh = pMesh;
-
-	if (m_pMesh)
-	{
-		m_pMesh->AddRef();
-
-		CMaterial* pMaterial = m_pMesh->GetMaterial();
-		CMaterial* pClone = pMaterial->Clone();
-
-		SAFE_RELEASE(pMaterial);
-
-		m_pMaterial = pClone;
-	}
 }
 
 bool CMesh2DComponent::Init()
 {
-	if (!CMeshComponent::Init())
+	if (!CSceneComponent::Init())
 		return false;
 
 	CMesh* pMesh = (CMesh*)GET_SINGLE(CResourceManager)->GetDefaultMesh();
@@ -85,43 +36,50 @@ bool CMesh2DComponent::Init()
 
 void CMesh2DComponent::Start()
 {
-	CMeshComponent::Start();
+	CSceneComponent::Start();
 }
 
 void CMesh2DComponent::Update(float fTime)
 {
-	CMeshComponent::Update(fTime);
+	CSceneComponent::Update(fTime);
 }
 
 void CMesh2DComponent::PostUpdate(float fTime)
 {
-	CMeshComponent::PostUpdate(fTime);
+	CSceneComponent::PostUpdate(fTime);
 }
 
 void CMesh2DComponent::Collision(float fTime)
 {
-	CMeshComponent::Collision(fTime);
+	CSceneComponent::Collision(fTime);
 }
 
 void CMesh2DComponent::PreRender(float fTime)
 {
-	CMeshComponent::PreRender(fTime);
+	CSceneComponent::PreRender(fTime);
 }
 
 void CMesh2DComponent::Render(float fTime)
 {
-	CMeshComponent::Render(fTime);
-
-	if (m_pMesh)
-		m_pMesh->Render(fTime);
+	CSceneComponent::Render(fTime);
 }
 
 void CMesh2DComponent::PostRender(float fTime)
 {
-	CMeshComponent::PostRender(fTime);
+	CSceneComponent::PostRender(fTime);
 }
 
 CMesh2DComponent* CMesh2DComponent::Clone()
 {
 	return new CMesh2DComponent(*this);
+}
+
+void CMesh2DComponent::Save(FILE* pFile)
+{
+	CSceneComponent::Save(pFile);
+}
+
+void CMesh2DComponent::Load(FILE* pFile)
+{
+	CSceneComponent::Load(pFile);
 }

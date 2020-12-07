@@ -1,10 +1,18 @@
 #include "SceneComponent.h"
 #include "Transform.h"
+#include "../Resource/Material.h"
+#include "../Resource/Mesh.h"
+#include "../Resource/ResourceManager.h"
 #include "../RenderManager.h"
+#include "../Render/RenderState.h"
 
 CSceneComponent::CSceneComponent()	:
 	m_pParent(nullptr),
-	m_eSceneComponentType(SCENE_COMPONENT_TYPE::SCT_2D)
+	m_eSceneComponentType(SCENE_COMPONENT_TYPE::SCT_2D),
+	m_eSceneComponentClassType(SCENECOMPONENT_CLASS_TYPE::SCT_MESH2D),
+	m_pMaterial(nullptr),
+	m_pMesh(nullptr),
+	m_bInst(false)
 {
 	m_eType = COMPONENT_TYPE::CT_SCENE;
 
@@ -16,9 +24,21 @@ CSceneComponent::CSceneComponent()	:
 CSceneComponent::CSceneComponent(const CSceneComponent& com)	:
 	CComponent(com)
 {
-	m_pTransform = com.m_pTransform->Clone();
+	if (com.m_pTransform)
+	{
+		m_pTransform = com.m_pTransform->Clone();
+		m_pTransform->m_pScene = m_pScene;
+		m_pTransform->m_pOwner = this;
+	}
+
+	else
+		m_pTransform = nullptr;
+
 
 	m_pParent = nullptr;
+
+	m_eSceneComponentClassType = com.m_eSceneComponentClassType;
+	m_eSceneComponentType = com.m_eSceneComponentType;
 	
 	m_vecChild.clear();
 
@@ -28,24 +48,41 @@ CSceneComponent::CSceneComponent(const CSceneComponent& com)	:
 	{
 		CSceneComponent* pComponent = com.m_vecChild[i]->Clone();
 
+		pComponent->m_pScene = m_pScene;
+		pComponent->m_pObj = m_pObj;
 		pComponent->m_pParent = this;
-
-		pComponent->AddRef();
+		pComponent->m_pTransform->m_pParent = m_pTransform;
+		pComponent->m_pTransform->m_pOwner = pComponent;
 
 		m_vecChild.push_back(pComponent);
+		m_pTransform->m_vecChild.push_back(pComponent->m_pTransform);
 
 		pComponent->InheritPos();
 		pComponent->InheritRot();
 		pComponent->InheritScale();
 	}
+
+	m_pMesh = com.m_pMesh;
+
+	if (m_pMesh)
+		m_pMesh->AddRef();
+
+	if (com.m_pMaterial)
+		m_pMaterial = com.m_pMaterial->Clone();
+
+	else
+		m_pMaterial = nullptr;
+
+	m_bInst = com.m_bInst;
 }
 
 CSceneComponent::~CSceneComponent()
 {
 	SAFE_DELETE(m_pTransform);
 	SAFE_RELEASE_VECLIST(m_vecChild);
+	SAFE_RELEASE(m_pMesh);
+	SAFE_RELEASE(m_pMaterial);
 }
-
 
 bool CSceneComponent::AddChild(CSceneComponent* pChild)
 {
@@ -109,6 +146,233 @@ SCENE_COMPONENT_TYPE CSceneComponent::GetSceneComponentType() const
 	return m_eSceneComponentType;
 }
 
+CSceneComponent* CSceneComponent::FindComponent(const std::string& strTag)
+{
+	if (GetName() == strTag)
+	{
+		AddRef();
+
+		return this;
+	}
+
+	size_t iSize = m_vecChild.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+	{
+		CSceneComponent* pCom = m_vecChild[i]->FindComponent(strTag);
+
+		if (pCom)
+			return pCom;
+	}
+
+	return nullptr;
+}
+
+
+SCENECOMPONENT_CLASS_TYPE CSceneComponent::GetSceneComponentClassType() const
+{
+	return m_eSceneComponentClassType;
+}
+
+void CSceneComponent::SetScene(CScene* pScene)
+{
+	m_pScene = pScene;
+
+	m_pTransform->SetScene(pScene);
+
+	size_t iSz = m_vecChild.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+		m_vecChild[i]->SetScene(pScene);
+}
+
+void CSceneComponent::SetSceneComType(SCENE_COMPONENT_TYPE eType)
+{
+	m_eSceneComponentType = eType;
+}
+
+CSceneComponent* CSceneComponent::GetParent() const
+{
+	return m_pParent;
+}
+
+void CSceneComponent::SetObj(CObj* pObj)
+{
+	m_pObj = pObj;
+
+	size_t iSz = m_vecChild.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+		m_vecChild[i]->SetObj(pObj);
+}
+
+void CSceneComponent::AddRenderState(const std::string& strKey)
+{
+	CRenderState* pState = GET_SINGLE(CRenderManager)->FindState(strKey);
+
+	m_vecRenderState.push_back(pState);
+}
+
+CRenderState* CSceneComponent::FindRenderState(const std::string& strKey)
+{
+	size_t iSz = m_vecRenderState.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		if (m_vecRenderState[i]->GetTag() == strKey)
+		{
+			return m_vecRenderState[i];
+		}
+	}
+
+	return nullptr;
+}
+
+void CSceneComponent::DeleteRenderState(const std::string& strKey)
+{
+	size_t iSz = m_vecRenderState.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		if (m_vecRenderState[i]->GetTag() == strKey)
+		{
+			std::vector<CRenderState*>::iterator iter = m_vecRenderState.begin() + i;
+
+			m_vecRenderState.erase(iter);
+
+			return;
+		}
+	}
+}
+
+void CSceneComponent::SetState()
+{
+	size_t iSz = m_vecRenderState.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		m_vecRenderState[i]->SetState();
+	}
+}
+
+void CSceneComponent::ResetState()
+{
+	size_t iSz = m_vecRenderState.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		m_vecRenderState[i]->ResetState();
+	}
+}
+
+CMesh* CSceneComponent::GetMesh() const
+{
+	if (m_pMesh)
+		m_pMesh->AddRef();
+
+	return m_pMesh;
+}
+
+void CSceneComponent::SetMesh(const std::string& strName)
+{
+	SAFE_RELEASE(m_pMesh);
+
+	m_pMesh = GET_SINGLE(CResourceManager)->FindMesh(strName);
+
+	if (m_pMesh)
+	{
+		CMaterial* pMaterial = m_pMesh->GetMaterial();
+		CMaterial* pClone = pMaterial->Clone();
+
+		SAFE_RELEASE(pMaterial);
+
+		m_pMaterial = pClone;
+
+		SAFE_RELEASE(pClone);
+	}
+}
+
+void CSceneComponent::SetMesh(CMesh* pMesh)
+{
+	SAFE_RELEASE(m_pMesh);
+
+	m_pMesh = pMesh;
+
+	if (m_pMesh)
+	{
+		m_pMesh->AddRef();
+
+		CMaterial* pMaterial = m_pMesh->GetMaterial();
+		CMaterial* pClone = pMaterial->Clone();
+
+		SAFE_RELEASE(pMaterial);
+
+		SetMaterial(pClone);
+
+		SAFE_RELEASE(pClone);
+	}
+}
+
+CMaterial* CSceneComponent::GetMaterial() const
+{
+	if (m_pMaterial)
+		m_pMaterial->AddRef();
+
+	return m_pMaterial;
+}
+
+void CSceneComponent::SetMaterial(CMaterial* pMaterial)
+{
+	SAFE_RELEASE(m_pMaterial);
+
+	m_pMaterial = pMaterial;
+
+	if (m_pMaterial)
+		m_pMaterial->AddRef();
+}
+
+bool CSceneComponent::IsInstanced() const
+{
+	return m_bInst;
+}
+
+void CSceneComponent::SetInstance(bool bInst)
+{
+	m_bInst = bInst;
+}
+
+void CSceneComponent::SetLayer(CLayer* pLayer)
+{
+	m_pLayer = pLayer;
+
+	size_t iSz = m_vecChild.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		m_vecChild[i]->SetLayer(pLayer);
+	}
+}
+
+void CSceneComponent::SetTexture(REGISTER_TYPE eType, const std::string& strTag, int iRegister, int iCount, unsigned int iType)
+{
+	m_pMaterial->SetTexture(eType, strTag, iRegister, iCount, iType);
+}
+
+void CSceneComponent::SetTexture(REGISTER_TYPE eType, CTexture* pTex, int iRegister, int iCount, unsigned int iType)
+{
+	m_pMaterial->SetTexture(eType, pTex, iRegister, iCount, iType);
+}
+
+void CSceneComponent::SetTexture(REGISTER_TYPE eType, const std::string& strTag, const TCHAR* pFileName, const std::string& strPathName, int iRegister, int iCount, unsigned int iType)
+{
+	m_pMaterial->SetTexture(eType, strTag, pFileName, strPathName, iRegister, iCount, iType);
+}
+
+void CSceneComponent::SetTextureFromFullPath(REGISTER_TYPE eType, const std::string& strTag, const TCHAR* pFullPath, int iRegister, int iCount, unsigned int iType)
+{
+	m_pMaterial->SetTextureFromFullPath(eType, strTag, pFullPath, iRegister, iCount, iType);
+}
+
 bool CSceneComponent::Init()
 {
 	m_pTransform->m_pScene = m_pScene;
@@ -118,6 +382,8 @@ bool CSceneComponent::Init()
 
 void CSceneComponent::Start()
 {
+	m_bStart = true;
+
 	std::vector<CSceneComponent*>::iterator iter = m_vecChild.begin();
 	std::vector<CSceneComponent*>::iterator iterEnd = m_vecChild.end();
 
@@ -202,7 +468,7 @@ void CSceneComponent::Collision(float fTime)
 
 		else if ((*iter)->IsEnable())
 		{
-			(*iter)->PostUpdate(fTime);
+			(*iter)->Collision(fTime);
 		}
 
 		++iter;
@@ -242,6 +508,9 @@ void CSceneComponent::PreRender(float fTime)
 void CSceneComponent::Render(float fTime)
 {
 	m_pTransform->SetTransform();
+
+	if(m_pMaterial)
+		m_pMaterial->SetMaterial();
 }
 
 void CSceneComponent::PostRender(float fTime)
@@ -269,6 +538,40 @@ void CSceneComponent::PostRender(float fTime)
 		++iter;
 		++iterTr;
 	}
+}
+
+void CSceneComponent::Save(FILE* pFile)
+{
+	CComponent::Save(pFile);
+
+	m_pTransform->Save(pFile);
+
+	fwrite(&m_eSceneComponentType, 4, 1, pFile);
+	fwrite(&m_eSceneComponentClassType, 4, 1, pFile);
+
+
+}
+
+void CSceneComponent::Load(FILE* pFile)
+{
+	CComponent::Load(pFile);
+
+	if (m_pParent)
+		m_pTransform->m_pParent = m_pParent->m_pTransform;
+
+	m_pTransform->m_pOwner = this;
+	m_pTransform->m_pScene = m_pScene;
+
+	m_pTransform->Load(pFile);
+
+	fread(&m_eSceneComponentType, 4, 1, pFile);
+	fread(&m_eSceneComponentClassType, 4, 1, pFile);
+
+	CMesh* pMesh = (CMesh*)GET_SINGLE(CResourceManager)->GetDefaultMesh();
+
+	SetMesh(pMesh);
+
+	SAFE_RELEASE(pMesh);
 }
 
 void CSceneComponent::SetInheritScale(bool bInherit)
@@ -396,6 +699,26 @@ void CSceneComponent::AddRelativeRotZ(float z)
 	m_pTransform->AddRelativeRotZ(z);
 }
 
+Vector3 CSceneComponent::GetVelocityScale() const
+{
+	return m_pTransform->GetVelocityScale();
+}
+
+Vector3 CSceneComponent::GetVelocityRot() const
+{
+	return m_pTransform->GetVelocityRot();
+}
+
+Vector3 CSceneComponent::GetVelocity() const
+{
+	return m_pTransform->GetVelocity();
+}
+
+float CSceneComponent::GetVelocityAmt() const
+{
+	return m_pTransform->GetVelocityAmt();
+}
+
 Vector3 CSceneComponent::GetRelativeScale() const
 {
 	return m_pTransform->GetRelativeScale();
@@ -411,7 +734,7 @@ Vector3 CSceneComponent::GetRelativePos() const
 	return m_pTransform->GetRelativePos();
 }
 
-Vector3 CSceneComponent::GetRelativeAxis(AXIS axis) const
+Vector3 CSceneComponent::GetRelativeAxis(WORLD_AXIS axis) const
 {
 	return m_pTransform->GetRelativeAxis(axis);
 }
@@ -431,7 +754,7 @@ Vector3 CSceneComponent::GetWorldPos() const
 	return m_pTransform->GetWorldPos();
 }
 
-Vector3 CSceneComponent::GetWorldAxis(AXIS axis) const
+Vector3 CSceneComponent::GetWorldAxis(WORLD_AXIS axis) const
 {
 	return m_pTransform->GetWorldAxis(axis);
 }
@@ -439,6 +762,11 @@ Vector3 CSceneComponent::GetWorldAxis(AXIS axis) const
 Vector3 CSceneComponent::GetPivot() const
 {
 	return m_pTransform->GetPivot();
+}
+
+Vector3 CSceneComponent::GetMeshSize() const
+{
+	return m_pTransform->GetMeshSize();
 }
 
 Matrix CSceneComponent::GetMatScale() const
@@ -564,4 +892,31 @@ void CSceneComponent::SetPivot(float x, float y, float z)
 void CSceneComponent::SetMeshSize(const Vector3 & v)
 {
 	m_pTransform->SetMeshSize(v);
+}
+
+void CSceneComponent::GetAllComponentName(std::vector<Hierarchy>& vecHierarchy)
+{
+	Hierarchy tHier;
+
+	tHier.strName = GetName();
+
+	if (m_pParent)
+		tHier.strParent = m_pParent->GetName();
+
+	vecHierarchy.push_back(tHier);
+
+	size_t iSize = m_vecChild.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+		m_vecChild[i]->GetAllComponentName(vecHierarchy);
+}
+
+void CSceneComponent::GetAllComponent(std::vector<CSceneComponent*>& vecCom)
+{
+	vecCom.push_back(this);
+
+	size_t iSize = m_vecChild.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+		m_vecChild[i]->GetAllComponent(vecCom);
 }

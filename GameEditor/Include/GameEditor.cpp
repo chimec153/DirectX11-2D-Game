@@ -12,8 +12,12 @@
 #include "GameEditorDoc.h"
 #include "GameEditorView.h"
 #include "Engine.h"
+#include "ViewManager.h"
+#include "ClientCreateSystem.h"
+#include "Client/Client.h"
 
 #ifdef _DEBUG
+#undef new
 #define new DEBUG_NEW
 #endif
 
@@ -177,7 +181,10 @@ BOOL CGameEditorApp::OnIdle(LONG lCount)
 
 int CGameEditorApp::ExitInstance()
 {
+	DESTROY_SINGLE(CViewManager);
 	DESTROY_SINGLE(CEngine);
+	DESTROY_SINGLE(CClientCreateSystem);
+	DESTROY_SINGLE(CClient);
 
 	return CWinApp::ExitInstance();
 }

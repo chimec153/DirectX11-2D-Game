@@ -3,6 +3,7 @@
 CShader::CShader()	:
 	m_eType(SHADER_TYPE::ST_COMPUTE),
 	m_iInputSize(0),
+	m_iInstSize(0),
 	m_pInputLayout(nullptr)
 {
 }
@@ -32,13 +33,23 @@ bool CShader::AddInputLayoutDesc(const char* pSemanticName, UINT iSemanticIndex,
 	tDesc.SemanticIndex = iSemanticIndex;
 	tDesc.Format = eFormat;
 	tDesc.InputSlot = iInputSlot;
-	tDesc.AlignedByteOffset = m_iInputSize;
+
+	if (eInputSlotClass == D3D11_INPUT_PER_VERTEX_DATA)
+	{
+		tDesc.AlignedByteOffset = m_iInputSize;
+		m_iInputSize += iSize;
+	}
+
+	else
+	{
+		tDesc.AlignedByteOffset = m_iInstSize;
+		m_iInstSize += iSize;
+	}
+		
 	tDesc.InputSlotClass = eInputSlotClass;
 	tDesc.InstanceDataStepRate = iInstanceDataStepRate;
 
 	m_vecInputDesc.push_back(tDesc);
-
-	m_iInputSize += iSize;
 
 	return true;
 }

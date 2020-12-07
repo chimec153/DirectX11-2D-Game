@@ -2,7 +2,7 @@
 
 #include "EngineMath.h"
 
-typedef __declspec(align(16)) union _tagVector4
+typedef __declspec(dllexport) union _tagVector4
 {
 	struct
 	{

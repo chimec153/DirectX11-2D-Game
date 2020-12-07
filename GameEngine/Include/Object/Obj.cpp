@@ -2,26 +2,111 @@
 #include "../Component/SceneComponent.h"
 #include "../Component/ObjComponent.h"
 #include "../Component/Mesh2DComponent.h"
+#include "../Component/StaticMeshComponent.h"
+#include "../Component/Transform.h"
+#include "../InputObj.h"
+#include "../Component/Camera.h"
 
 CObj::CObj()	:
 	m_bStart(false),
-	m_pScene(nullptr)
+	m_pScene(nullptr),
+	m_pInput(nullptr),
+	m_pLayer(nullptr),
+	m_iObjClassType(0)
 {
 	m_pRootComponent = new CMesh2DComponent;
+	m_pInput = new CInputObj;
 }
 
-CObj::CObj(const CObj& obj)
+CObj::CObj(const CObj& obj)	:
+	CRef(obj)
 {
-	*this = obj;
+	m_pScene = obj.m_pScene;
 
-	m_iRef = 1;
+	if (obj.m_pRootComponent)
+	{
+		m_pRootComponent = obj.m_pRootComponent->Clone();
+
+		m_pRootComponent->SetObj(this);
+		m_pRootComponent->m_pScene = m_pScene;
+	}
+
+	m_vecObjComponent.clear();
+
+	size_t iSize = obj.m_vecObjComponent.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+	{
+		CObjComponent* pCom = new CObjComponent;
+
+		*pCom = *obj.m_vecObjComponent[i];
+
+		pCom->m_pObj = this;
+		pCom->m_pScene = m_pScene;
+
+		m_vecObjComponent.push_back(pCom);
+	}
+
+	m_iObjClassType = obj.m_iObjClassType;
+
+	m_pInput = new CInputObj;
+	m_bStart = false;
 }
 
 CObj::~CObj()
 {
 	SAFE_RELEASE(m_pRootComponent);
 	SAFE_RELEASE_VECLIST(m_vecObjComponent);
+	SAFE_DELETE(m_pInput);
+
+	if (m_EditorDelete)
+		m_EditorDelete(GetName());
 }
+
+bool CObj::IsStart() const
+{
+	return m_bStart;
+}
+
+void CObj::SetScene(CScene* pScene)
+{
+	m_pRootComponent->SetScene(pScene);
+
+	size_t iSz = m_vecObjComponent.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+		m_vecObjComponent[i]->SetScene(pScene);
+}
+
+CScene* CObj::GetScene() const
+{
+	return m_pScene;
+}
+
+CLayer* CObj::GetLayer() const
+{
+	return m_pLayer;
+}
+
+void CObj::SetLayer(CLayer* pLayer)
+{
+	m_pLayer = pLayer;
+
+	m_pRootComponent->SetLayer(pLayer);
+
+	size_t iSz = m_vecObjComponent.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		m_vecObjComponent[i]->m_pLayer = pLayer;
+	}
+}
+
+int CObj::GetClassType() const
+{
+	return m_iObjClassType;
+}
+
 
 void CObj::SetRootComponent(CSceneComponent* pComponent)
 {
@@ -33,14 +118,35 @@ void CObj::SetRootComponent(CSceneComponent* pComponent)
 		m_pRootComponent->AddRef();
 }
 
+CSceneComponent* CObj::FindSceneComponent(const std::string& strTag)
+{
+	return m_pRootComponent->FindComponent(strTag);
+}
+
+void CObj::Notify(const std::string& strTag)
+{
+}
+
 bool CObj::Init()
 {
+	m_pRootComponent->m_pScene = m_pScene;
+
+	if (!m_pRootComponent->Init())
+		return false;
+
 	return true;
 }
 
 void CObj::Start()
 {
 	m_bStart = true;
+
+	m_pRootComponent->Start();
+
+	size_t iSize = m_vecObjComponent.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+		m_vecObjComponent[i]->Start();
 }
 
 void CObj::Input(float fTime)
@@ -79,6 +185,7 @@ void CObj::Collision(float fTime)
 
 void CObj::PreRender(float fTime)
 {
+	if(m_pRootComponent->IsEnable())
 		m_pRootComponent->PreRender(fTime);
 
 	size_t iSize = m_vecObjComponent.size();
@@ -105,6 +212,167 @@ void CObj::PostRender(float fTime)
 
 	for (size_t i = 0; i < iSize; ++i)
 		m_vecObjComponent[i]->PostRender(fTime);
+}
+
+CObj* CObj::Clone()
+{
+	return new CObj(*this);
+}
+
+void CObj::Save(FILE* pFile)
+{
+	CRef::Save(pFile);
+
+	int iSize = (int)m_vecObjComponent.size();
+
+	fwrite(&iSize, 4, 1, pFile);
+
+	for (int i = 0; i < iSize; ++i)
+		m_vecObjComponent[i]->Save(pFile);
+
+	std::vector<CSceneComponent*> vecCom;
+
+	m_pRootComponent->GetAllComponent(vecCom);
+
+	iSize = (int)vecCom.size();
+
+	fwrite(&iSize, 4, 1, pFile);
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		SCENECOMPONENT_CLASS_TYPE eType = vecCom[i]->GetSceneComponentClassType();
+
+		fwrite(&eType, 4, 1, pFile);
+	}
+
+	std::vector<Hierarchy> vecHier;
+
+	m_pRootComponent->GetAllComponentName(vecHier);
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		int iLength = (int)vecHier[i].strName.length();
+
+		fwrite(&iLength, 4, 1, pFile);
+		fwrite(vecHier[i].strName.c_str(), 1, iLength, pFile);
+
+		iLength = (int)vecHier[i].strParent.length();
+
+		fwrite(&iLength, 4, 1, pFile);
+		fwrite(vecHier[i].strParent.c_str(), 1, iLength, pFile);
+	}		
+
+	for (int i = 0; i < iSize; ++i)
+		vecCom[i]->Save(pFile);
+}
+
+void CObj::Load(FILE* pFile)
+{
+	CRef::Load(pFile);
+
+	int iSize = 0;
+
+	fread(&iSize, 4, 1, pFile);
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		CObjComponent* pCom = new CObjComponent;
+
+		pCom->m_pScene = m_pScene;
+		pCom->m_pObj = this;
+
+		pCom->Load(pFile);
+
+		m_vecObjComponent.push_back(pCom);
+	}
+
+	std::vector<CSceneComponent*> vecCom;
+
+	iSize = 0;
+
+	fread(&iSize, 4, 1, pFile);
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		CSceneComponent* pCom = nullptr;
+
+		SCENECOMPONENT_CLASS_TYPE eType = SCENECOMPONENT_CLASS_TYPE();
+
+		fread(&eType, 4, 1, pFile);
+
+		switch (eType)
+		{
+		case SCENECOMPONENT_CLASS_TYPE::SCT_MESH2D:
+			pCom = new CMesh2DComponent;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_STATICMESH:
+			pCom = new CStaticMeshComponent;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_CAMERA:
+			pCom = new CCamera;
+			break;
+		}
+
+		pCom->m_pScene = m_pScene;
+		pCom->m_pObj = this;
+
+		vecCom.push_back(pCom);
+	}
+
+	std::vector<Hierarchy> vecHier;
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		Hierarchy tHier;
+
+		int iLength = 0;
+		char strTag[256] = {};
+
+		fread(&iLength, 4, 1, pFile);
+		fread(strTag, 1, iLength, pFile);
+
+		tHier.strName = strTag;
+
+		iLength = 0;
+
+		memset(strTag, 0, 256);
+
+		fread(&iLength, 4, 1, pFile);
+		fread(strTag, 1, iLength, pFile);
+
+		tHier.strParent = strTag;
+
+		vecHier.push_back(tHier);
+	}
+
+	for (int i = 0; i < iSize; ++i)
+	{
+		if (vecHier[i].strParent.empty())
+		{
+			SAFE_RELEASE(m_pRootComponent);
+
+			m_pRootComponent = vecCom[i];
+
+			vecCom[i]->Load(pFile);
+
+			continue;
+		}
+
+		for (int j = 0; j < iSize; ++j)
+		{
+			if (vecHier[j].strName == vecHier[i].strParent)
+			{
+				vecCom[i]->m_pParent = vecCom[j];
+				vecCom[j]->AddChild(vecCom[i]);
+
+				vecCom[i]->Load(pFile);
+
+				break;
+			}
+		}
+	}
+
+	m_bStart = false;
 }
 
 void CObj::SetInheritScale(bool bInherit)
@@ -232,6 +500,26 @@ void CObj::AddRelativeRotZ(float z)
 		m_pRootComponent->AddRelativeRotZ(z);
 }
 
+Vector3 CObj::GetVelocityScale() const
+{
+	return m_pRootComponent->GetVelocityScale();
+}
+
+Vector3 CObj::GetVelocityRot() const
+{
+	return m_pRootComponent->GetVelocityRot();
+}
+
+Vector3 CObj::GetVelocity() const
+{
+	return m_pRootComponent->GetVelocity();
+}
+
+float CObj::GetVelocityAmt() const
+{
+	return m_pRootComponent->GetVelocityAmt();
+}
+
 Vector3 CObj::GetRelativeScale() const
 {
 	return m_pRootComponent->GetRelativeScale();
@@ -247,7 +535,7 @@ Vector3 CObj::GetRelativePos() const
 	return m_pRootComponent->GetRelativePos();
 }
 
-Vector3 CObj::GetRelativeAxis(AXIS axis) const
+Vector3 CObj::GetRelativeAxis(WORLD_AXIS axis) const
 {
 	return m_pRootComponent->GetRelativeAxis(axis);
 }
@@ -270,7 +558,7 @@ Vector3 CObj::GetWorldPos() const
 
 }
 
-Vector3 CObj::GetWorldAxis(AXIS axis) const
+Vector3 CObj::GetWorldAxis(WORLD_AXIS axis) const
 {
 		return m_pRootComponent->GetWorldAxis(axis);
 
@@ -314,7 +602,7 @@ void CObj::SetWorldScale(float x, float y, float z)
 
 void CObj::SetWorldPos(const Vector3 & v)
 {
-		m_pRootComponent->SetWorldPos(v);
+ 		m_pRootComponent->SetWorldPos(v);
 }
 
 void CObj::SetWorldPos(float x, float y, float z)
@@ -405,4 +693,16 @@ void CObj::SetPivot(float x, float y, float z)
 void CObj::SetMeshSize(const Vector3 & v)
 {
 		m_pRootComponent->SetMeshSize(v);
+}
+
+void CObj::GetAllComponentName(std::vector<Hierarchy>& vecHierarchy)
+{
+	if(m_pRootComponent)
+		m_pRootComponent->GetAllComponentName(vecHierarchy);
+}
+
+void CObj::GetAllComponent(std::vector<CSceneComponent*>& vecCom)
+{
+	if (m_pRootComponent)
+	m_pRootComponent->GetAllComponent(vecCom);
 }

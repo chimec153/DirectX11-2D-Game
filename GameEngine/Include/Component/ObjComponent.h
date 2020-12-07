@@ -8,6 +8,16 @@ class CObjComponent :
 protected:
 	CObjComponent();
 	CObjComponent(const CObjComponent& com);
-	virtual ~CObjComponent() = 0;
+	virtual ~CObjComponent();
+
+public:
+	void SetScene(class CScene* pScene);
+
+public:
+	virtual CObjComponent* Clone();
+
+public:
+	virtual void Save(FILE* pFile);
+	virtual void Load(FILE* pFile);
 };
 

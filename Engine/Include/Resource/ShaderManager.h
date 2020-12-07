@@ -46,6 +46,8 @@ public:
 
 		pShader = new T;
 
+		pShader->SetName(strName);
+
 		pShader->AddRef();
 
 		m_mapShader.insert(std::make_pair(strName, pShader));

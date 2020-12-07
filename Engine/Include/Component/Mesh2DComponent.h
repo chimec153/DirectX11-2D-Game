@@ -1,7 +1,7 @@
 #pragma once
-#include "MeshComponent.h"
+#include "SceneComponent.h"
 class CMesh2DComponent :
-	public CMeshComponent
+	public CSceneComponent
 {
 	friend class CObj;
 
@@ -9,14 +9,6 @@ protected:
 	CMesh2DComponent();
 	CMesh2DComponent(const CMesh2DComponent& com);
 	virtual ~CMesh2DComponent();
-
-protected:
-	class CMesh* m_pMesh;
-
-public:
-	class CMesh* GetMesh()	const;
-	void SetMesh(const std::string& strName);
-	void SetMesh(class CMesh* pMesh);
 
 public:
 	virtual bool Init();
@@ -28,5 +20,9 @@ public:
 	virtual void Render(float fTime);
 	virtual void PostRender(float fTime);
 	virtual CMesh2DComponent* Clone();
+
+public:
+	virtual void Save(FILE* pFile);
+	virtual void Load(FILE* pFile);
 };
 

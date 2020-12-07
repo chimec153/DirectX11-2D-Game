@@ -1,5 +1,8 @@
 #include "Engine.h"
 #include "Client.h"
+#include "Client/Client.h"
+#include "Client/GameMode/MainGameMode.h"
+#include "Scene/SceneManager.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -12,8 +15,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		return 0;
 	}
 
+	if (!GET_SINGLE(CClient)->GlobalSettings())
+	{
+		DESTROY_SINGLE(CEngine);
+		return 0;
+	}
+
+	GET_SINGLE(CSceneManager)->SetGameMode<CMainGameMode>();
+
 	int iRetVal = GET_SINGLE(CEngine)->Run();
 	DESTROY_SINGLE(CEngine);
+
+	DESTROY_SINGLE(CClient);
 
 	return iRetVal;
 }

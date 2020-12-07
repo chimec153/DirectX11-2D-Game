@@ -57,7 +57,7 @@ bool CGraphicShader::LoadVertexShader(const char* pEntryName, const TCHAR* pFile
 		D3D_COMPILE_STANDARD_FILE_INCLUDE, pEntryName, "vs_5_0",
 		iFlag, 0, &m_pVSBlob, &pError)))
 	{
-		
+		OutputDebugString((TCHAR*)pError->GetBufferPointer());
 		return false;
 	}
 
@@ -93,7 +93,7 @@ bool CGraphicShader::LoadPixelShader(const char* pEntryName, const TCHAR* pFileN
 		D3D_COMPILE_STANDARD_FILE_INCLUDE, pEntryName, "ps_5_0",
 		iFlag, 0, &m_pPSBlob, &pError)))
 	{
-
+		OutputDebugString((TCHAR*)pError->GetBufferPointer());
 		return false;
 	}
 
@@ -129,7 +129,7 @@ bool CGraphicShader::LoadHullShader(const char* pEntryName, const TCHAR* pFileNa
 		D3D_COMPILE_STANDARD_FILE_INCLUDE, pEntryName, "hs_5_0",
 		iFlag, 0, &m_pHSBlob, &pError)))
 	{
-
+		OutputDebugString((TCHAR*)pError->GetBufferPointer());
 		return false;
 	}
 
@@ -165,7 +165,7 @@ bool CGraphicShader::LoadGeometryShader(const char* pEntryName, const TCHAR* pFi
 		D3D_COMPILE_STANDARD_FILE_INCLUDE, pEntryName, "gs_5_0",
 		iFlag, 0, &m_pGSBlob, &pError)))
 	{
-
+		OutputDebugString((TCHAR*)pError->GetBufferPointer());
 		return false;
 	}
 
@@ -201,12 +201,51 @@ bool CGraphicShader::LoadDomainShader(const char* pEntryName, const TCHAR* pFile
 		D3D_COMPILE_STANDARD_FILE_INCLUDE, pEntryName, "ds_5_0",
 		iFlag, 0, &m_pDSBlob, &pError)))
 	{
-
+		OutputDebugString((TCHAR*)pError->GetBufferPointer());
 		return false;
 	}
 
 	if (FAILED(DEVICE->CreateDomainShader(m_pDSBlob->GetBufferPointer(), m_pDSBlob->GetBufferSize(), nullptr, &m_pDS)))
 		return false;
+
+	return true;
+}
+
+bool CGraphicShader::LoadGeometryShaderwithStream(const char* pEntryName, const TCHAR* pFileName, D3D11_SO_DECLARATION_ENTRY* pDecl, const std::string& strRootName)
+{/*
+	D3D11_SO_DECLARATION_ENTRY pDecl[] = {
+		{0, "SV_POSITION", 0, 0, 4, 0},
+		{0, "TEXCOORD0", 0, 0, 3, 0},
+		{0, "TEXCOORD1", 0, 0, 2, 0}
+	};*/
+
+	DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+
+	ID3DBlob* pErrorBlob = NULL;
+
+	if (FAILED(D3DCompileFromFile(L"particle.fx", NULL, NULL, "GS", "gs_5_0", dwShaderFlags, 0, &m_pGSBlob, &pErrorBlob)))
+		return false;
+
+	ID3D11Buffer* pd3dBuffer;
+	int nBufferSize = 1000000;
+
+	D3D11_BUFFER_DESC bufferDesc =
+	{
+		(UINT)nBufferSize,
+		D3D11_USAGE_DEFAULT,
+		D3D11_BIND_STREAM_OUTPUT,
+		0,
+		0
+	};
+
+	if (FAILED(DEVICE->CreateBuffer(&bufferDesc, NULL, &pd3dBuffer)))
+		return false;
+
+	UINT pOffset[1] = {};
+
+	CONTEXT->SOSetTargets(1, &pd3dBuffer, pOffset);
+
+	DEVICE->CreateGeometryShaderWithStreamOutput(m_pGSBlob->GetBufferPointer(), m_pGSBlob->GetBufferSize(), pDecl, 3, 0,0,0,0, &m_pGS);
 
 	return true;
 }

@@ -14,6 +14,7 @@ protected:
 	SHADER_TYPE									m_eType;
 	std::vector<D3D11_INPUT_ELEMENT_DESC>		m_vecInputDesc;
 	int											m_iInputSize;
+	int										m_iInstSize;
 	ID3D11InputLayout*							m_pInputLayout;
 
 public:
@@ -26,6 +27,8 @@ public:
 		D3D11_INPUT_CLASSIFICATION eInputSlotClass, UINT iInstanceDataStepRate);
 	virtual bool CreateInputLayout();
 	virtual void SetShader();
+
+	void CreateGeometryShader();
 
 };
 

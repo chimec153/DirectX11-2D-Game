@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Vector3.h"
+#include "EngineMath.h"
 
-typedef __declspec(align(16)) union _tagVector2
+typedef union __declspec(dllexport) _tagVector2
 {
 	struct
 	{

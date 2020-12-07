@@ -18,6 +18,9 @@ private:
 	CTransform*					m_pParent;
 	TransformCBuffer			m_tCBuffer;
 
+public:
+	void SetScene(class CScene* pScene);
+
 private:
 	Vector3						m_vVelocityScale;
 	Vector3						m_vVelocityRot;
@@ -25,7 +28,7 @@ private:
 	Vector3						m_vRelativeScale;
 	Vector3						m_vRelativeRot;
 	Vector3						m_vRelativePos;
-	Vector3						m_vRelativeAxis[AXIS_END];
+	Vector3						m_vRelativeAxis[(int)WORLD_AXIS::AXIS_END];
 	bool						m_bInheritScale;
 	bool						m_bInheritRotX;
 	bool						m_bInheritRotY;
@@ -38,11 +41,14 @@ public:
 	void SetInheritRotX(bool bInherit);
 	void SetInheritRotY(bool bInherit);
 	void SetInheritRotZ(bool bInherit);
-
+	Vector3 GetVelocityScale()			const;
+	Vector3 GetVelocityRot()			const;
+	Vector3 GetVelocity()				const;
+	float GetVelocityAmt()				const;
 	Vector3 GetRelativeScale()			const;
 	Vector3 GetRelativeRot()			const;
 	Vector3 GetRelativePos()			const;
-	Vector3 GetRelativeAxis(AXIS axis)	const;
+	Vector3 GetRelativeAxis(WORLD_AXIS axis)	const;
 
 public:
 	void InheritScale();
@@ -73,7 +79,7 @@ private:
 	Vector3						m_vWorldScale;
 	Vector3						m_vWorldRot;
 	Vector3						m_vWorldPos;
-	Vector3						m_vWorldAxis[AXIS_END];	
+	Vector3						m_vWorldAxis[(int)WORLD_AXIS::AXIS_END];
 	Vector3						m_vPivot;
 	Vector3						m_vMeshSize;
 
@@ -81,8 +87,9 @@ public:
 	Vector3 GetWorldScale()			const;
 	Vector3 GetWorldRot()			const;
 	Vector3 GetWorldPos()			const;
-	Vector3 GetWorldAxis(AXIS axis)	const;
+	Vector3 GetWorldAxis(WORLD_AXIS axis)	const;
 	Vector3 GetPivot()				const;
+	Vector3 GetMeshSize()			const;
 
 public:
 	void SetWorldScale(const Vector3& v);
@@ -112,6 +119,7 @@ private:
 	Matrix						m_matRot;
 	Matrix						m_matPos;
 	Matrix						m_matWorld;
+	float						m_fFlipTex;
 
 public:
 	Matrix GetMatScale()	const;
@@ -120,9 +128,14 @@ public:
 	Matrix GetMatWorld()	const;
 
 public:
+	void Start();
 	void Update(float fTime);
 	void PostUpdate(float fTime);
 	void SetTransform();
 	CTransform* Clone();
+
+public:
+	void Save(FILE* pFile);
+	void Load(FILE* pFile);
 };
 

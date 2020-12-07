@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\GameClient",
+    "\\GameEditor",
+    "\\GameEngine",
+    "\\GameEngine\\Include"
+  ],
+  "PreviewInSolutionExplorer": false
+}

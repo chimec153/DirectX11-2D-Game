@@ -2,7 +2,7 @@
 
 _tagVector3 _tagVector3::One(1.f, 1.f, 1.f);
 _tagVector3 _tagVector3::Zero(0.f, 0.f, 0.f);
-_tagVector3 _tagVector3::Axis[AXIS_END] =
+_tagVector3 _tagVector3::Axis[(int)WORLD_AXIS::AXIS_END] =
 {
 	_tagVector3(1.f, 0.f, 0.f),
 	_tagVector3(0.f, 1.f, 0.f),
@@ -135,6 +135,26 @@ _tagVector3 _tagVector3::operator+(float f) const
 	return _tagVector3(x + f, y + f, z + f);
 }
 
+_tagVector3& _tagVector3::operator++()
+{
+	++x;
+	++y;
+	++z;
+
+	return *this;
+}
+
+_tagVector3 _tagVector3::operator++(int i)
+{
+	_tagVector3 v = *this;
+
+	++x;
+	++y;
+	++z;
+
+	return v;
+}
+
 _tagVector3 _tagVector3::operator+=(const _tagVector3& v)
 {
 	x += v.x;
@@ -179,6 +199,31 @@ _tagVector3 _tagVector3::operator-(const DirectX::XMVECTOR& v) const
 _tagVector3 _tagVector3::operator-(float f) const
 {
 	return _tagVector3(x - f, y - f, z - f);
+}
+
+_tagVector3 _tagVector3::operator-()
+{
+	return _tagVector3(-x, -y, -z);
+}
+
+_tagVector3& _tagVector3::operator--()
+{
+	--x;
+	--y;
+	--z;
+
+	return *this;
+}
+
+_tagVector3 _tagVector3::operator--(int i)
+{
+	_tagVector3 v = *this;
+
+	--x;
+	--y;
+	--z;
+
+	return v;
 }
 
 _tagVector3 _tagVector3::operator-=(const _tagVector3& v)
@@ -364,4 +409,33 @@ _tagVector3 _tagVector3::TransformCoord(const Matrix& m)
 	DirectX::XMVECTOR v = Convert();
 
 	return _tagVector3(DirectX::XMVector3TransformCoord(v, m.m));
+}
+
+_tagVector3& operator++(_tagVector3& v)
+{
+	++v.x;
+	++v.y;
+	++v.z;
+
+	return v;
+}
+
+_tagVector3 operator*(float f, const _tagVector3& v)
+{
+	return _tagVector3(f * v.x, f * v.y, f * v.z);
+}
+
+_tagVector3 operator*(const DirectX::XMFLOAT3& v1, const _tagVector3& v2)
+{
+	return _tagVector3(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
+}
+
+_tagVector3 operator/(float f, const _tagVector3& v)
+{
+	return _tagVector3(f / v.x, f / v.y, f / v.z);
+}
+
+_tagVector3 operator/(const DirectX::XMFLOAT3& v1, const _tagVector3& v2)
+{
+	return _tagVector3(v1.x / v2.x, v1.y / v2.y, v1.z / v2.z);
 }

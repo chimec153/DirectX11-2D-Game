@@ -2,7 +2,7 @@
 
 #include "Matrix.h"
 
-typedef __declspec(align(16)) union _tagVector3
+typedef __declspec(dllexport) union _tagVector3
 {
 	struct
 	{
@@ -34,6 +34,9 @@ typedef __declspec(align(16)) union _tagVector3
 	_tagVector3 operator+ (const DirectX::XMVECTOR& v)	const;
 	_tagVector3 operator+ (float f)	const;
 
+	_tagVector3& operator++();
+	_tagVector3 operator++(int i);
+
 	//operator +=
 	_tagVector3 operator+= (const _tagVector3& v);
 	_tagVector3 operator+= (const DirectX::XMVECTOR& v);
@@ -43,6 +46,11 @@ typedef __declspec(align(16)) union _tagVector3
 	_tagVector3 operator- (const _tagVector3& v)	const;
 	_tagVector3 operator- (const DirectX::XMVECTOR& v)	const;
 	_tagVector3 operator- (float f)	const;
+
+	_tagVector3 operator- ();
+
+	_tagVector3& operator--();
+	_tagVector3 operator--(int i);
 
 	//operator -=
 	_tagVector3 operator-= (const _tagVector3& v);
@@ -83,6 +91,11 @@ typedef __declspec(align(16)) union _tagVector3
 
 	static _tagVector3 One;
 	static _tagVector3 Zero;
-	static _tagVector3 Axis[AXIS_END];
+	static _tagVector3 Axis[(int)WORLD_AXIS::AXIS_END];
 }Vector3, *PVector3;
 
+_tagVector3 operator * (float f, const _tagVector3& v);
+_tagVector3 operator * (const DirectX::XMFLOAT3& v1, const _tagVector3& v2);
+
+_tagVector3 operator / (float f, const _tagVector3& v);
+_tagVector3 operator / (const DirectX::XMFLOAT3& v1, const _tagVector3& v2);

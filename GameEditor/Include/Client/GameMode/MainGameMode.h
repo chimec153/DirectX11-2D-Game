@@ -1,9 +1,9 @@
 #pragma once
 
-#include "GameMode.h"
+#include "TileMode.h"
 
 class CMainGameMode :
-	public CGameMode
+	public CTileMode
 {
 public:
 	CMainGameMode();
@@ -12,6 +12,11 @@ public:
 public:
 	bool Init();
 
+public:
+	void LoadResource();
+	void StartScene(float);
+	void CreateUI();
+	bool LoadXml(const char* pFileName, const std::string& strPathKey = DATA_PATH);
+	void searchXMLData(class TiXmlElement* pElem);
 
 };
-

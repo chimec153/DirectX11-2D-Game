@@ -1,7 +1,7 @@
 #pragma once
-#include "MeshComponent.h"
+#include "SceneComponent.h"
 class CStaticMeshComponent :
-	public CMeshComponent
+	public CSceneComponent
 {
 	friend class CObj;
 
@@ -20,5 +20,9 @@ public:
 	void Render(float fTime);
 	void PostRender(float fTime);
 	virtual CStaticMeshComponent* Clone();
+
+public:
+	virtual void Save(FILE* pFile);
+	virtual void Load(FILE* pFile);
 };
 

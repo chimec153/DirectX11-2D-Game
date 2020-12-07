@@ -33,6 +33,7 @@ protected:
 	Vector3					m_tMax;
 	Vector3					m_tMin;
 	class CMaterial*		m_pMaterial;
+	PINSTANCINGBUFFER		m_pInstancingBuffer;
 
 public:
 	Vector3 GetMax()	const
@@ -50,6 +51,15 @@ public:
 
 public:
 	bool Init();
-	virtual void Render(float fTime) = 0;
+	virtual bool CreateInstancingBuffer(int iCount, int iSize);
+	virtual bool CreateMesh(D3D_PRIMITIVE_TOPOLOGY eTop, void* pVtxData, int iVtxSz, int iVtxCnt, D3D11_USAGE eVtxUsg,
+		void* pIdxData = nullptr, int iIdxSz = 0, int iIdxCnt = 0, D3D11_USAGE eIdxUsg = D3D11_USAGE_DEFAULT,
+		DXGI_FORMAT eFmt = DXGI_FORMAT_UNKNOWN);
+	virtual void Render(float fTime);
+	virtual void RenderInstancing(void* pData, int iCount ,int iSize);
+
+public:
+	virtual void Save(FILE* pFile);
+	virtual void Load(FILE* pFile);
 };
 

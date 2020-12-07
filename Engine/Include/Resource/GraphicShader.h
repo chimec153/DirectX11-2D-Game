@@ -34,6 +34,9 @@ public:
 	bool LoadDomainShader(const char* pEntryName,
 		const TCHAR* pFileName, const std::string& strRootName = SHADER_PATH);
 
+	bool LoadGeometryShaderwithStream(const char* pEntryName,
+		const TCHAR* pFileName,D3D11_SO_DECLARATION_ENTRY* pDecl, const std::string& strRootName = SHADER_PATH);
+
 public:
 	virtual bool CreateInputLayout();
 	virtual void SetShader();

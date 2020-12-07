@@ -14,9 +14,13 @@
 #include "GameEditorView.h"
 #include "Engine.h"
 #include "Scene/SceneManager.h"
-#include "Client/GameMode/MainGameMode.h"
+#include "Client/GameMode/StartGameMode.h"
+#include "ClientCreateSystem.h"
+#include "Client/Client.h"
+#include "ClientInstance.h"
 
 #ifdef _DEBUG
+#undef new
 #define new DEBUG_NEW
 #endif
 
@@ -89,7 +93,14 @@ void CGameEditorView::OnInitialUpdate()
 {
 	CView::OnInitialUpdate();
 
-	GET_SINGLE(CEngine)->Init(AfxGetInstanceHandle(), m_hWnd, TEXT("ASSORT30"), 1280, 720, true);
+	GET_SINGLE(CEngine)->Init(AfxGetInstanceHandle(), 
+		m_hWnd, TEXT("ASSORT30"), 1280, 720, true);
 
-	GET_SINGLE(CSceneManager)->SetGameMode<CMainGameMode>();
+	GET_SINGLE(CClientCreateSystem)->Init();
+
+	GET_SINGLE(CEngine)->SetInstance<CClientInstance>();
+
+	GET_SINGLE(CClient)->GlobalSettings();
+
+	GET_SINGLE(CSceneManager)->SetGameMode<CStartGameMode>();
 }

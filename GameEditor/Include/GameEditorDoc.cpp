@@ -15,6 +15,7 @@
 #include <propkey.h>
 
 #ifdef _DEBUG
+#undef new
 #define new DEBUG_NEW
 #endif
 

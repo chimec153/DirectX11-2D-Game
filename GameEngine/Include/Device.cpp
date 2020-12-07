@@ -11,12 +11,14 @@ CDevice::CDevice()	:
 {
 	memset(m_pColor, 0, sizeof(float) * 4);
 
-	m_pColor[1] = 0.1f;
-	m_pColor[2] = 0.1f;
+	m_pColor[1] = 0.f;
+	m_pColor[2] = 0.f;
 }
 
 CDevice::~CDevice()
 {
+	SAFE_RELEASE(m_p2DFactory);
+	SAFE_RELEASE(m_p2DTarget);
 	SAFE_RELEASE(m_pSwapChain);
 	SAFE_RELEASE(m_pTargetView);
 	SAFE_RELEASE(m_pDepthView);
@@ -28,8 +30,49 @@ CDevice::~CDevice()
 	SAFE_RELEASE(m_pContext);
 }
 
+ID3D11Device* CDevice::GetDevice() const
+{
+	return m_pDevice;
+}
+
+ID3D11DeviceContext* CDevice::GetContext() const
+{
+	return m_pContext;
+}
+
+IDXGISwapChain* CDevice::GetSwapChain() const
+{
+	return m_pSwapChain;
+}
+
+Resolution CDevice::GetResolution() const
+{
+	return m_tRS;
+}
+
+Vector2 CDevice::GetRatio() const
+{
+	RECT tRC = {};
+
+	GetClientRect(m_hWnd, &tRC);
+
+	return Vector2(m_tRS.iWidth/(float)(tRC.right - tRC.left), m_tRS.iHeight / (float)(tRC.bottom - tRC.top));
+}
+
+ID2D1Factory* CDevice::GetFactory2D() const
+{
+	return m_p2DFactory;
+}
+
+ID2D1RenderTarget* CDevice::GetRenderTarget2D() const
+{
+	return m_p2DTarget;
+}
+
 bool CDevice::Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed)
 {
+	m_hWnd = hWnd;
+
 	m_tRS.iWidth = iWidth;
 	m_tRS.iHeight = iHeight;
 
@@ -106,6 +149,30 @@ bool CDevice::Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed)
 	tView.MaxDepth = 1.f;
 
 	m_pContext->RSSetViewports(1, &tView);
+
+	if (FAILED(D2D1CreateFactory(D2D1_FACTORY_TYPE_MULTI_THREADED, &m_p2DFactory)))
+		return false;
+
+	IDXGISurface* pSurface = nullptr;
+
+	if (FAILED(m_pSwapChain->GetBuffer(0, __uuidof(IDXGISurface), (void**)& pSurface)))
+		return false;
+
+	D2D1_RENDER_TARGET_PROPERTIES props = {};
+
+	D2D1_PIXEL_FORMAT tFormat = {};
+
+	tFormat.format = DXGI_FORMAT_UNKNOWN;
+	tFormat.alphaMode = D2D1_ALPHA_MODE_PREMULTIPLIED;
+
+	props.pixelFormat = tFormat;
+	props.minLevel = D2D1_FEATURE_LEVEL_DEFAULT;
+	props.type = D2D1_RENDER_TARGET_TYPE_HARDWARE;
+
+	if (FAILED(m_p2DFactory->CreateDxgiSurfaceRenderTarget(pSurface, &props, &m_p2DTarget)))
+		return false;
+
+	SAFE_RELEASE(pSurface);
 
 	return true;
 }

@@ -1,33 +1,60 @@
 #pragma once
 
 #include "../Ref.h"
+#include "../Component/SceneComponent.h"
 
 class CObj :
 	public CRef
 {
 	friend class CScene;
+	friend class CEngine;
+	friend class CLayer;
 
 protected:
 	CObj();
 	CObj(const CObj& obj);
-	virtual ~CObj() = 0;
+	virtual ~CObj();
 
 protected:
-	bool									m_bStart;
-	class CScene*							m_pScene;
+	bool								m_bStart;
+	class CScene*						m_pScene;
+	class CInputObj*					m_pInput;
+	class CLayer*						m_pLayer;
 
 public:
-	bool IsStart()	const
-	{
-		return m_bStart;
-	}
+	bool IsStart()	const;
+	void SetScene(class CScene* pScene);
+	class CScene* GetScene()	const;
+	class CLayer* GetLayer()	const;
+	void SetLayer(class CLayer* pLayer);
 
 protected:
-	class CSceneComponent*					m_pRootComponent;
-	std::vector<class CObjComponent*>		m_vecObjComponent;
+	class CSceneComponent*				m_pRootComponent;
+	std::vector<class CObjComponent*>	m_vecObjComponent;
+	int									m_iObjClassType;
+
+public:
+	int GetClassType()	const;
+
+protected:
+	std::function<void(const std::string&)>		m_EditorDelete;
+
+public:
+	template <typename T>
+	void SetEditorDelete(T* pObj, void(T::*pFunc)(const std::string&))
+	{
+		m_EditorDelete = bind(pFunc, pObj, std::placeholders::_1);
+	}
 
 public:
 	void SetRootComponent(class CSceneComponent*);
+	class CSceneComponent* FindSceneComponent(const std::string& strTag);
+	template <typename T>
+	T* FindComByType()
+	{
+		return m_pRootComponent->FindComByType<T>();
+	}
+	virtual void Notify(const std::string& strTag);
 
 public:
 	virtual bool Init();
@@ -39,6 +66,9 @@ public:
 	virtual void PreRender(float fTime);
 	virtual void Render(float fTime);
 	virtual void PostRender(float fTime);
+	virtual CObj* Clone();
+	virtual void Save(FILE* pFile);
+	virtual void Load(FILE* pFile);
 
 public:
 	void SetInheritScale(bool bInherit);
@@ -70,16 +100,20 @@ public:
 	void AddRelativeRotZ(float z);
 
 public:
+	Vector3 GetVelocityScale()			const;
+	Vector3 GetVelocityRot()			const;
+	Vector3 GetVelocity()				const;
+	float GetVelocityAmt()				const;
 	Vector3 GetRelativeScale()			const;
 	Vector3 GetRelativeRot()			const;
 	Vector3 GetRelativePos()			const;
-	Vector3 GetRelativeAxis(AXIS axis)	const;
+	Vector3 GetRelativeAxis(WORLD_AXIS axis)	const;
 
 public:
 	Vector3 GetWorldScale()				const;
 	Vector3 GetWorldRot()				const;
 	Vector3 GetWorldPos()				const;
-	Vector3 GetWorldAxis(AXIS axis)		const;
+	Vector3 GetWorldAxis(WORLD_AXIS axis)		const;
 	Vector3 GetPivot()					const;
 
 public:
@@ -120,6 +154,7 @@ public:
 		pComponent->SetName(strName);
 		pComponent->m_pScene = m_pScene;
 		pComponent->m_pObj = this;
+		pComponent->m_pLayer = m_pLayer;
 
 		if (!pComponent->Init())
 		{
@@ -133,7 +168,14 @@ public:
 			m_vecObjComponent.push_back((CObjComponent*)pComponent);
 		}
 
+		if (m_bStart)
+			pComponent->Start();
+
 		return pComponent;		
 	}
+
+public:
+	void GetAllComponentName(std::vector<Hierarchy>& vecHierarchy);
+	void GetAllComponent(std::vector<CSceneComponent*>& vecCom);
 };
 

@@ -65,6 +65,6 @@ typedef __declspec(align(16)) union _tagMatrix
 	static _tagMatrix StaticRotateY(float y);
 	static _tagMatrix StaticRotateZ(float z);
 	static _tagMatrix StaticRotateAxis(const union _tagVector3& _v, float fAngle);
-	
+
 }Matrix, *PMatrix;
 

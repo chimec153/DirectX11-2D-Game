@@ -47,6 +47,12 @@ void CTimer::Update()
 
 		m_fFrameTime -= 1.f;
 
-		m_iFrame = 0;
+		m_iFrame = 0;/*
+
+		char strFPS[64] = {};
+
+		sprintf_s(strFPS, "FPS: %.5f, DT: %.5f\n", m_fFPS, m_fDeltaTime);
+
+		OutputDebugStringA(strFPS);*/
 	}
 }
