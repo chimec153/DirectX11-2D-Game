@@ -42,7 +42,7 @@ bool CSlider::Init()
 	if (!CUIControl::Init())
 		return false;
 
-	m_pTopBtn = m_pObj->CreateComponent<CUIButton>("TopButton");
+	m_pTopBtn = m_pObj->CreateComponent<CUIButton>("TopButton", m_pLayer);
 
 	m_pTopBtn->SetTexture(BUTTON_STATE::OFF, "TopButton");
 	m_pTopBtn->SetTexture(BUTTON_STATE::ON, "TopButton");
@@ -56,7 +56,7 @@ bool CSlider::Init()
 	m_pTopBtn->SetPivot(0.5f, 0.5f, 0.f);
 	m_pTopBtn->SetInheritScale(false);
 
-	m_pBotBtn = m_pObj->CreateComponent<CUIButton>("BotButton");
+	m_pBotBtn = m_pObj->CreateComponent<CUIButton>("BotButton", m_pLayer);
 
 	m_pBotBtn->SetTexture(BUTTON_STATE::OFF, "BotButton");
 	m_pBotBtn->SetTexture(BUTTON_STATE::ON, "BotButton");
@@ -70,7 +70,7 @@ bool CSlider::Init()
 	m_pBotBtn->SetPivot(0.5f, 0.5f, 0.f);
 	m_pBotBtn->SetInheritScale(false);
 
-	m_pBackBtn = m_pObj->CreateComponent<CUIButton>("BackButton");
+	m_pBackBtn = m_pObj->CreateComponent<CUIButton>("BackButton", m_pLayer);
 
 	m_pBackBtn->SetTexture(BUTTON_STATE::OFF, "SliderBack");
 	m_pBackBtn->SetTexture(BUTTON_STATE::ON, "SliderBack");
@@ -85,7 +85,7 @@ bool CSlider::Init()
 	m_pBackBtn->SetPivot(0.5f, 0.5f, 0.f);
 	m_pBackBtn->SetInheritScale(false);
 
-	m_pSlider = m_pObj->CreateComponent<CUIButton>("Slider");
+	m_pSlider = m_pObj->CreateComponent<CUIButton>("Slider", m_pLayer);
 
 	m_pSlider->SetTexture(BUTTON_STATE::OFF, "Slider");
 	m_pSlider->SetTexture(BUTTON_STATE::ON, "Slider");

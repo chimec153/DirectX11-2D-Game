@@ -1,0 +1,83 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[31] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+            bEnableShadowCasting[11] = true
+            bEnableShadowCasting[12] = true
+            bEnableShadowCasting[13] = true
+            bEnableShadowCasting[14] = true
+            bEnableShadowCasting[15] = true
+            bEnableShadowCasting[16] = true
+            bEnableShadowCasting[17] = true
+            bEnableShadowCasting[18] = true
+            bEnableShadowCasting[19] = true
+            bEnableShadowCasting[20] = true
+            bEnableShadowCasting[21] = true
+            bEnableShadowCasting[22] = true
+            bEnableShadowCasting[23] = true
+            bEnableShadowCasting[24] = true
+            bEnableShadowCasting[25] = true
+            bEnableShadowCasting[26] = true
+            bEnableShadowCasting[27] = true
+            bEnableShadowCasting[28] = true
+            bEnableShadowCasting[29] = true
+            bEnableShadowCasting[30] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[31] =
+{
+    Materials[0] = Material3'DefaultMaterial'
+    Materials[1] = Material3'DefaultMaterial'
+    Materials[2] = Material3'DefaultMaterial'
+    Materials[3] = Material3'DefaultMaterial'
+    Materials[4] = Material3'DefaultMaterial'
+    Materials[5] = Material3'DefaultMaterial'
+    Materials[6] = Material3'DefaultMaterial'
+    Materials[7] = Material3'DefaultMaterial'
+    Materials[8] = Material3'DefaultMaterial'
+    Materials[9] = Material3'DefaultMaterial'
+    Materials[10] = Material3'DefaultMaterial'
+    Materials[11] = Material3'DefaultMaterial'
+    Materials[12] = Material3'DefaultMaterial'
+    Materials[13] = Material3'DefaultMaterial'
+    Materials[14] = Material3'DefaultMaterial'
+    Materials[15] = Material3'DefaultMaterial'
+    Materials[16] = Material3'DefaultMaterial'
+    Materials[17] = Material3'DefaultMaterial'
+    Materials[18] = Material3'DefaultMaterial'
+    Materials[19] = Material3'DefaultMaterial'
+    Materials[20] = Material3'DefaultMaterial'
+    Materials[21] = Material3'DefaultMaterial'
+    Materials[22] = Material3'DefaultMaterial'
+    Materials[23] = Material3'DefaultMaterial'
+    Materials[24] = Material3'DefaultMaterial'
+    Materials[25] = Material3'DefaultMaterial'
+    Materials[26] = Material3'DefaultMaterial'
+    Materials[27] = Material3'DefaultMaterial'
+    Materials[28] = Material3'DefaultMaterial'
+}

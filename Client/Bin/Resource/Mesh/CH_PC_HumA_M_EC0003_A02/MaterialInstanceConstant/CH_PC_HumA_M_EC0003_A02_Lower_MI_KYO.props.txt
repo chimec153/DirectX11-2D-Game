@@ -1,0 +1,128 @@
+Parent = MaterialInstanceConstant'CH_NPC_Abelardo_Upper_MI_YSC'
+ScalarParameterValues[4] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 11
+        ParameterName = Metal_SpecularPower
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = NonMetal_Fresnel_Exponent
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = NonMetal_SpecularPower
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Reflection_Weight
+    }
+}
+TextureParameterValues[6] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Abelardo_Lower_C1_YSC'
+        ParameterName = Channel_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Abelardo_Lower_C2_YSC'
+        ParameterName = Channel_02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumA_M_EC0003_A01_Lower_D_YSC'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumA_M_EC0003_A01_Lower_N_YSC'
+        ParameterName = Normal
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumA_M_EC0003_A01_Lower_SP_YSC'
+        ParameterName = Specular
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumA_M_EC0003_A01_Lower_V_KYO'
+        ParameterName = Variation_Mask
+    }
+}
+VectorParameterValues[8] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.1, G=0.1, B=0.05, A=1 }
+        ParameterName = Metal_ReflectionColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=3, B=2, A=1 }
+        ParameterName = Metal_SpecularColor
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.679775, G=0.785898, B=1, A=1 }
+        ParameterName = NonMetal_FresnelColor
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.1, G=0.1, B=0.05, A=1 }
+        ParameterName = Nonmetal_ReflectionColor
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=3, B=3, A=1 }
+        ParameterName = NonMetal_SpecularColor
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.3, G=1.3, B=1.19008, A=1 }
+        ParameterName = Variation_Color01
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.736552, B=0.159458, A=1 }
+        ParameterName = Variation_Color02
+    }
+    VectorParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.185393, G=0.185393, B=0.106237, A=1 }
+        ParameterName = Variation_Color03
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

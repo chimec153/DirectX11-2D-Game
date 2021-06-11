@@ -6,6 +6,28 @@
 #include "../Component/Transform.h"
 #include "../InputObj.h"
 #include "../Component/Camera.h"
+#include "../PathManager.h"
+#include "../Component/ColliderCircle.h"
+#include "../Component/ColliderLine.h"
+#include "../Component/ColliderOBB2D.h"
+#include "../Component/ColliderPixel.h"
+#include "../Component/ColliderPoint.h"
+#include "../Component/Line.h"
+#include "../Component/Renderer.h"
+#include "../Component/Particle.h"
+#include "../Component/Sound.h"
+#include "../Component/SpriteComponent.h"
+#include "../Component/ColliderRect.h"
+#include "../UI/UIControl.h"
+#include "../UI/UIImage.h"
+#include "../UI/UIFont.h"
+#include "../UI/UISprite.h"
+#include "../UI/TitleBar.h"
+#include "../UI/Panel.h"
+#include "../UI/UIButton.h"
+#include "../UI/Bar.h"
+#include "../Component/ColliderRay.h"
+#include "../Component/ColliderOBB.h"
 
 CObj::CObj()	:
 	m_bStart(false),
@@ -21,6 +43,7 @@ CObj::CObj()	:
 CObj::CObj(const CObj& obj)	:
 	CRef(obj)
 {
+	m_pLayer = obj.m_pLayer;
 	m_pScene = obj.m_pScene;
 
 	if (obj.m_pRootComponent)
@@ -29,6 +52,7 @@ CObj::CObj(const CObj& obj)	:
 
 		m_pRootComponent->SetObj(this);
 		m_pRootComponent->m_pScene = m_pScene;
+		m_pRootComponent->m_pLayer = obj.m_pRootComponent->m_pLayer;
 	}
 
 	m_vecObjComponent.clear();
@@ -37,7 +61,7 @@ CObj::CObj(const CObj& obj)	:
 
 	for (size_t i = 0; i < iSize; ++i)
 	{
-		CObjComponent* pCom = new CObjComponent;
+		CComponent* pCom = new CObjComponent;
 
 		*pCom = *obj.m_vecObjComponent[i];
 
@@ -70,6 +94,8 @@ bool CObj::IsStart() const
 
 void CObj::SetScene(CScene* pScene)
 {
+	m_pScene = pScene;
+
 	m_pRootComponent->SetScene(pScene);
 
 	size_t iSz = m_vecObjComponent.size();
@@ -107,6 +133,14 @@ int CObj::GetClassType() const
 	return m_iObjClassType;
 }
 
+CSceneComponent* CObj::GetRootComponent() const
+{
+	if (m_pRootComponent)
+		m_pRootComponent->AddRef();
+
+	return m_pRootComponent;
+}
+
 
 void CObj::SetRootComponent(CSceneComponent* pComponent)
 {
@@ -135,6 +169,12 @@ bool CObj::Init()
 		return false;
 
 	return true;
+}
+
+bool CObj::Init(const char* pFileName, const char* pPathKey)
+{
+
+	return false;
 }
 
 void CObj::Start()
@@ -311,12 +351,80 @@ void CObj::Load(FILE* pFile)
 		case SCENECOMPONENT_CLASS_TYPE::SCT_CAMERA:
 			pCom = new CCamera;
 			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_SPRITE:
+			pCom = new CSpriteComponent;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_COLLIDERRECT:
+			pCom = new CColliderRect;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_COLLIDERLINE:
+			pCom = new CColliderLine;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SCT_COLLIDERCIRCLE:
+			pCom = new CColliderCircle;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::COLLIDEROBB2D:
+			pCom = new CColliderOBB2D;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::COLLIDERPIXEL:
+			pCom = new CColliderPixel;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::COLLIDER_POINT:
+			pCom = new CColliderPoint;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::COLLIDER_RAY:
+			pCom = new CColliderRay;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::COLLIDER_OBB:
+			pCom = new CColliderOBB;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_IMAGE:
+			pCom = new CUIImage;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_SPRITE:
+			pCom = new CUISprite;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_BUTTON:
+			pCom = new CUIButton;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_BAR:
+			pCom = new CBar;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_TITLEBAR:
+			pCom = new CTitleBar;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_PANEL:
+			pCom = new CPanel;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::UI_FONT:
+			pCom = new CUIFont;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::SOUND:
+			pCom = new CSound;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::RENDERER:
+			//pCom = new CRenderer;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::PARTICLE:
+			pCom = new CParticle;
+			break;
+		case SCENECOMPONENT_CLASS_TYPE::LINE:
+			pCom = new CLine;
+			break;
 		}
 
-		pCom->m_pScene = m_pScene;
-		pCom->m_pObj = this;
+		if (pCom)
+		{
+			pCom->m_pScene = m_pScene;
+			pCom->m_pObj = this;
 
-		vecCom.push_back(pCom);
+			vecCom.push_back(pCom);
+		}
+
+		else
+		{
+			assert(false);
+		}
 	}
 
 	std::vector<Hierarchy> vecHier;
@@ -329,7 +437,10 @@ void CObj::Load(FILE* pFile)
 		char strTag[256] = {};
 
 		fread(&iLength, 4, 1, pFile);
-		fread(strTag, 1, iLength, pFile);
+		if (iLength > 0)
+		{
+			fread(strTag, 1, iLength, pFile);
+		}
 
 		tHier.strName = strTag;
 
@@ -338,7 +449,10 @@ void CObj::Load(FILE* pFile)
 		memset(strTag, 0, 256);
 
 		fread(&iLength, 4, 1, pFile);
-		fread(strTag, 1, iLength, pFile);
+		if (iLength > 0)
+		{
+			fread(strTag, 1, iLength, pFile);
+		}
 
 		tHier.strParent = strTag;
 
@@ -375,6 +489,11 @@ void CObj::Load(FILE* pFile)
 	m_bStart = false;
 }
 
+void CObj::CheckFrustum()
+{
+	m_pRootComponent->CheckFrustum();
+}
+
 void CObj::SetInheritScale(bool bInherit)
 {
 	m_pRootComponent->SetInheritScale(bInherit);
@@ -393,6 +512,16 @@ void CObj::SetInheritRotY(bool bInherit)
 void CObj::SetInheritRotZ(bool bInherit)
 {
 	m_pRootComponent->SetInheritRotZ(bInherit);
+}
+
+void CObj::SetUpdateScale(bool bScale)
+{
+	m_pRootComponent->SetUpdateScale(bScale);
+}
+
+void CObj::SetUpdateRot(bool bRot)
+{
+	m_pRootComponent->SetUpdateRot(bRot);
 }
 
 void CObj::InheritScale()
@@ -500,17 +629,17 @@ void CObj::AddRelativeRotZ(float z)
 		m_pRootComponent->AddRelativeRotZ(z);
 }
 
-Vector3 CObj::GetVelocityScale() const
+const Vector3& CObj::GetVelocityScale() const
 {
 	return m_pRootComponent->GetVelocityScale();
 }
 
-Vector3 CObj::GetVelocityRot() const
+const Vector3& CObj::GetVelocityRot() const
 {
 	return m_pRootComponent->GetVelocityRot();
 }
 
-Vector3 CObj::GetVelocity() const
+const Vector3& CObj::GetVelocity() const
 {
 	return m_pRootComponent->GetVelocity();
 }
@@ -520,72 +649,72 @@ float CObj::GetVelocityAmt() const
 	return m_pRootComponent->GetVelocityAmt();
 }
 
-Vector3 CObj::GetRelativeScale() const
+const Vector3& CObj::GetRelativeScale() const
 {
 	return m_pRootComponent->GetRelativeScale();
 }
 
-Vector3 CObj::GetRelativeRot() const
+const Vector3& CObj::GetRelativeRot() const
 {
 	return m_pRootComponent->GetRelativeRot();
 }
 
-Vector3 CObj::GetRelativePos() const
+const Vector3& CObj::GetRelativePos() const
 {
 	return m_pRootComponent->GetRelativePos();
 }
 
-Vector3 CObj::GetRelativeAxis(WORLD_AXIS axis) const
+const Vector3& CObj::GetRelativeAxis(WORLD_AXIS axis) const
 {
 	return m_pRootComponent->GetRelativeAxis(axis);
 }
 
-Vector3 CObj::GetWorldScale() const
+const Vector3& CObj::GetWorldScale() const
 {
 		return m_pRootComponent->GetWorldScale();
 
 }
 
-Vector3 CObj::GetWorldRot() const
+const Vector3& CObj::GetWorldRot() const
 {
 		return m_pRootComponent->GetWorldRot();
 
 }
 
-Vector3 CObj::GetWorldPos() const
+const Vector3& CObj::GetWorldPos() const
 {
 		return m_pRootComponent->GetWorldPos();
 
 }
 
-Vector3 CObj::GetWorldAxis(WORLD_AXIS axis) const
+const Vector3& CObj::GetWorldAxis(WORLD_AXIS axis) const
 {
 		return m_pRootComponent->GetWorldAxis(axis);
 
 }
 
-Vector3 CObj::GetPivot() const
+const Vector3& CObj::GetPivot() const
 {
 		return m_pRootComponent->GetPivot();
 
 }
 
-Matrix CObj::GetMatScale() const
+const Matrix& CObj::GetMatScale() const
 {
 	return m_pRootComponent->GetMatScale();
 }
 
-Matrix CObj::GetMatRot() const
+const Matrix& CObj::GetMatRot() const
 {
 	return m_pRootComponent->GetMatRot();
 }
 
-Matrix CObj::GetMatPos() const
+const Matrix& CObj::GetMatPos() const
 {
 	return m_pRootComponent->GetMatPos();
 }
 
-Matrix CObj::GetMatWorld() const
+const Matrix& CObj::GetMatWorld() const
 {
 	return m_pRootComponent->GetMatWorld();
 }
@@ -695,6 +824,36 @@ void CObj::SetMeshSize(const Vector3 & v)
 		m_pRootComponent->SetMeshSize(v);
 }
 
+void CObj::Slerp(const Vector4& p, const Vector4& q, float s)
+{
+	m_pRootComponent->Slerp(p, q, s);
+}
+
+void CObj::Slerp(const Vector4& q, float s)
+{
+	m_pRootComponent->Slerp(q, s);
+}
+
+void CObj::SetQuaternionRot(const Vector4& vAxis, float fAngle)
+{
+	m_pRootComponent->SetQuaternionRot(vAxis, fAngle);
+}
+
+void CObj::AddQuaternionRot(const Vector4& vAxis, float fAngle)
+{
+	m_pRootComponent->AddQuaternionRot(vAxis, fAngle);
+}
+
+void CObj::SetQuaternionRotNorm(const Vector4& vAxis, float fAngle)
+{
+	m_pRootComponent->SetQuaternionRotNorm(vAxis, fAngle);
+}
+
+void CObj::AddQuaternionRotNorm(const Vector4& vAxis, float fAngle)
+{
+	m_pRootComponent->AddQuaternionRotNorm(vAxis, fAngle);
+}
+
 void CObj::GetAllComponentName(std::vector<Hierarchy>& vecHierarchy)
 {
 	if(m_pRootComponent)
@@ -705,4 +864,80 @@ void CObj::GetAllComponent(std::vector<CSceneComponent*>& vecCom)
 {
 	if (m_pRootComponent)
 	m_pRootComponent->GetAllComponent(vecCom);
+}
+
+void CObj::SpawnWindow()
+{
+	CRef::SpawnWindow();
+
+	std::vector<CParticle*> vecParticle;
+	std::vector<CSpriteComponent*> vecSprite;
+	if (ImGui::Begin("Components"))
+	{
+		ImGui::Text(GetName().c_str());
+		bool bEnable = IsEnable();
+		ImGui::Checkbox("Enable", &bEnable);
+		Enable(bEnable);
+
+		if (m_pRootComponent)
+		{
+			//m_pRootComponent->GetTransform()->SpawnWindow();
+
+			m_pRootComponent->ShowNode();
+		}		
+/*
+		std::vector<CSceneComponent*> vecCom;
+
+		GetAllComponent(vecCom);
+
+		int iSz = static_cast<int>(vecCom.size());
+		const char** strLayers = new const char* [iSz];
+
+		static int item = -1;
+		for (int i = 0; i < iSz; ++i)
+		{
+			strLayers[i] = vecCom[i]->GetName().c_str();
+		}
+
+		ImGui::ListBox("Components", &item, strLayers, (int)iSz);
+
+		if (item != -1 && item < iSz)
+		{
+			vecCom[item]->SpawnWindow();
+		}
+
+		delete[] strLayers;*/
+
+	}
+
+	ImGui::End();
+}
+
+void CObj::AddComponent(CComponent* pCom)
+{
+	switch (pCom->GetType())
+	{
+	case COMPONENT_TYPE::CT_SCENE:
+	{
+		if (m_pRootComponent)
+		{
+			m_pRootComponent->AddChild(static_cast<CSceneComponent*>(pCom));
+		}
+		else
+		{
+			SetRootComponent(static_cast<CSceneComponent*>(pCom));
+		}
+	}
+		break;
+	case COMPONENT_TYPE::CT_OBJECT:
+	{
+		m_vecObjComponent.push_back(pCom);
+		pCom->AddRef();
+	}
+		break;
+	}
+
+	pCom->m_pObj = this;
+	pCom->SetScene(m_pScene);
+	pCom->SetLayer(m_pLayer);
 }

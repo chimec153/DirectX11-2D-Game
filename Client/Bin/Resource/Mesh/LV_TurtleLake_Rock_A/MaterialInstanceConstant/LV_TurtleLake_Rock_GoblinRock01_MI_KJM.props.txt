@@ -1,0 +1,146 @@
+Parent = Material3'LV_MM_Rock_PHO_OPA_1SD'
+ScalarParameterValues[12] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Diffuse02_Desaturation
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Specular01_Desaturation
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 30
+        ParameterName = Specular01_Power
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Specular02_ContrastHigh
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Specular02_ContrastLow
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Specular02_Desaturation
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = Specular02_Power
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = UV_01_U
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = UV_01_V
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = UV_02_U
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = UV_02_V
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = UV_NormalDetail
+    }
+}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Rock_GoblinRock01_D_EYE'
+        ParameterName = Diffuse01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Rock_SmallRock_D_EYE'
+        ParameterName = Diffuse02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Rock_GoblinRock01_N_EYE'
+        ParameterName = Normal01
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Rock_TurtleRock_N_EYE'
+        ParameterName = Normal_Detail
+    }
+}
+VectorParameterValues[5] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.751895, G=0.701169, B=0.632043, A=1 }
+        ParameterName = Diffuse01_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.389467, G=0.398876, B=0.319101, A=1 }
+        ParameterName = Diffuse02_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.6, A=1 }
+        ParameterName = Normal01_Power
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0, A=1 }
+        ParameterName = Normal_DetailPower
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=4, G=4, B=4, A=1 }
+        ParameterName = Specular02_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

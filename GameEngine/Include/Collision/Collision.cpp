@@ -5,6 +5,9 @@
 #include "../Component/ColliderPixel.h"
 #include "../Component/ColliderLine.h"
 #include "../Component/ColliderPoint.h"
+#include "../Component/ColliderRay.h"
+#include "../Component/ColliderOBB.h"
+#include "../Component/ColliderTerrain.h"
 
 bool CCollision::CollisionRectToRect(CColliderRect* pSrc, CColliderRect* pDest)
 {
@@ -237,7 +240,7 @@ bool CCollision::CollisionOBB2DToCircle(CColliderOBB2D* pSrc, CColliderCircle* p
 
 bool CCollision::CollisionOBB2DToCircle(Vector3& vCross, const OBBInfo& tSrc, const CircleInfo& tDest)
 {
-	Vector3 vDst = tSrc.vPos - tDest.vCenter;
+	Vector3 vDst = tSrc.vPos - Vector3(tDest.vCenter.x, tDest.vCenter.y, 0.f);
 
 	for (int i = 0; i < (int)WORLD_AXIS::AXIS_Z; ++i)
 	{
@@ -1314,4 +1317,902 @@ bool CCollision::CollisionPointToPoint(Vector3& vCrs, const Vector3& vSrc, const
 	vCrs = vSrc;
 
 	return vSrc == tDst;
+}
+
+bool CCollision::CollisionRayToRay(CColliderRay* pSrc, CColliderRay* pDst)
+{
+	Vector3 vCross = {};
+
+	RAYINFO tSrcInfo = pSrc->GetInfo();
+
+	if (pSrc->IsUI())
+	{
+		tSrcInfo = pSrc->GetUIInfo();
+	}
+
+	RAYINFO tDestInfo = pDst->GetInfo();
+
+	if (pDst->IsUI())
+	{
+		tDestInfo = pDst->GetUIInfo();
+	}
+
+	if (CollisionRayToRay(vCross, tSrcInfo, tDestInfo))
+	{
+		pSrc->SetCross(vCross);
+		pDst->SetCross(vCross);
+
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionRayToRay(Vector3& vCrs, const RAYINFO& tSrc, const RAYINFO& tDst)
+{
+	Vector3 vLine = tSrc.vOrigin - tDst.vOrigin;
+
+	Vector3 vNormal = tSrc.vDir.Cross(tDst.vDir);
+
+	float fAngle = vNormal.Dot(vLine);
+
+	if (fAngle == 0.f)
+	{
+		float t = (tSrc.vDir.x * vLine.y - tSrc.vDir.y * vLine.x) / (tSrc.vDir.x * tDst.vDir.y - tSrc.vDir.y * tDst.vDir.x);
+
+		vCrs = tSrc.vOrigin + tSrc.vDir * t;
+
+		return true;
+	}	
+
+	return false;
+}
+
+bool CCollision::CollisionRayToSphere(CColliderRay* pSrc, CColliderCircle* pDst)
+{
+	Vector3 vCross = {};
+
+	RAYINFO tInfo = pSrc->GetInfo();
+
+	if (CollisionRayToSphere(vCross, tInfo, pDst->GetInfo()))
+	{
+		pSrc->SetCross(vCross);
+		pDst->SetCross(vCross);
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionRayToSphere(Vector3& vCrs, const RAYINFO& vSrc, const CircleInfo& tDst)
+{
+	Vector3 m = tDst.vCenter - vSrc.vOrigin;
+
+	float fDot = m.Dot(vSrc.vDir);
+
+	float D = fDot * fDot + tDst.fRadius * tDst.fRadius - (m.x * m.x + m.y * m.y + m.z * m.z);
+
+	if (D >= 0.f)
+	{
+		float fSqrD = sqrtf(D);
+		float t1 = fDot + fSqrD;
+		
+		if (t1 < 0.f)
+		{
+			t1 = fDot - fSqrD;
+
+			vCrs = vSrc.vOrigin + vSrc.vDir * t1;
+		}
+		else
+		{
+			float t2 = fDot - fSqrD;
+			if (t2 < 0.f)
+			{
+				vCrs = vSrc.vOrigin + vSrc.vDir * t1;
+			}
+			else
+			{
+				if (t1 > t2)
+				{
+					vCrs = vSrc.vOrigin + vSrc.vDir * t2;
+				}
+				else
+				{
+					vCrs = vSrc.vOrigin + vSrc.vDir * t1;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionRayToOBB(CColliderRay* pSrc, CColliderOBB* pDest)
+{
+	Vector3 vCross = {};
+
+	if (CollisionRayToOBB(vCross, pSrc->GetInfo(), pDest->GetInfo()))
+	{
+		pSrc->SetCross(vCross);
+		pDest->SetCross(vCross);
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionRayToOBB(Vector3& vCross, const RAYINFO& tSrc, const OBBInfo& tDest)
+{
+	Vector3 v0 = tDest.vPos
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v1 = tDest.vPos
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v2 = tDest.vPos
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v3 = tDest.vPos
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v4 = tDest.vPos
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v5 = tDest.vPos
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v6 = tDest.vPos
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+	Vector3 v7 = tDest.vPos
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		- tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)] * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)];
+
+	if (CollisionRayToTraingle(vCross, tSrc, v0, v1, v3))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v0, v3, v2))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v1, v5, v3))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v0, v1, v5))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v0, v4, v5))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v3, v7, v5))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v3, v2, v6))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v3, v7, v6))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v4, v5, v6))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v7, v5, v6))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v0, v4, v6))
+	{
+		return true;
+	}
+
+	else if (CollisionRayToTraingle(vCross, tSrc, v0, v2, v6))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionRayToTraingle(Vector3& vCross, const RAYINFO& tSrc, const Vector3& v0, const Vector3& v1, const Vector3& v2)
+{
+	float u = 0.f, v = 0.f, t = 0.f;
+
+	Vector3 m = v0 - tSrc.vOrigin;
+	Vector3 e1 = v1 - v0;
+	Vector3 e2 = v2 - v0;
+
+	Vector3 vE2xM = e2.Cross(m);
+	Vector3 vE1xE2 = e1.Cross(e2);
+	float fDdotE1xE2 = tSrc.vDir.Dot(vE1xE2);
+
+	t = e1.Dot(vE2xM) / fDdotE1xE2;
+
+	if (t < 0.f)
+		return false;
+
+	u = tSrc.vDir.Dot(vE2xM)/fDdotE1xE2;
+
+	if (u < 0.f || u > 1.f)
+		return false;
+
+	v = tSrc.vDir.Dot(m.Cross(e1)) / fDdotE1xE2;
+
+	if (v < 0.f || v > 1.f)
+		return false;
+
+	if (u + v > 1.f)
+		return false;
+
+	vCross = tSrc.vOrigin + tSrc.vDir * t;
+
+	return true;
+}
+
+bool CCollision::CollisionOBBToOBB(CColliderOBB* pSrc, CColliderOBB* pDest)
+{
+	Vector3 vCross = {};
+
+	if (CollisionOBBToOBB(vCross, pSrc->GetInfo(), pDest->GetInfo()))
+	{
+		pSrc->SetCross(vCross);
+		pDest->SetCross(vCross);
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionOBBToOBB(Vector3 vCross, const OBBInfo& tSrc, const OBBInfo& tDest)
+{
+	Vector3 vDist = tDest.vPos - tSrc.vPos;
+
+	float fProjDist = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vDist);
+
+	if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		< fProjDist)
+	{
+		return false;
+	}
+
+	fProjDist = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vDist);
+
+	if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		< fProjDist)
+	{
+		return false;
+	}
+
+	fProjDist = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vDist);
+
+	if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		< fProjDist)
+	{
+		return false;
+	}
+
+	fProjDist = tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vDist);
+
+	if (tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		> fProjDist)
+	{
+		return false;
+	}
+
+	fProjDist = tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vDist);
+
+	if (tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		> fProjDist)
+	{
+		return false;
+	}
+
+	fProjDist = tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vDist);
+
+	if (tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)])) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]
+		> fProjDist)
+	{
+		return false;
+	}
+
+	Vector3 vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	if (fProjDist >
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vAxis = tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Cross(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)]);
+
+	fProjDist = vAxis.Dot(vDist);
+
+	float fDist = abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]);
+
+	if (fProjDist >	fDist +
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)])
+		+ abs(tDest.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis) * tDest.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)]))
+	{
+		return false;
+	}
+
+	vCross = tSrc.vPos + vAxis * fDist;
+
+	return true;
+}
+
+bool CCollision::CollisionOBBToSphere(CColliderOBB* pSrc, CColliderCircle* pDest)
+{
+	Vector3 vCross = {};
+
+	if (CollisionOBBToSphere(vCross, pSrc->GetInfo(), pDest->GetInfo()))
+	{
+		pSrc->SetCross(vCross);
+		pDest->SetCross(vCross);
+
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionOBBToSphere(Vector3& vCross, const OBBInfo& tSrc, const CircleInfo& tDest)
+{
+	Vector3 vDist = tDest.vCenter - tSrc.vPos;
+
+	if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)] + tDest.fRadius <
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vDist)))
+	{
+		return false;
+	}
+
+	else if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)] + tDest.fRadius <
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vDist)))
+	{
+		return false;
+	}
+
+	else if (tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)] + tDest.fRadius <
+		abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vDist)))
+	{
+		return false;
+	}
+
+	Vector3 vAxis = vDist;
+
+	float fDist = vDist.Length();
+
+	vAxis /= fDist;
+	
+	if (abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_X)].Dot(vAxis)) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_X)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Y)].Dot(vAxis)) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Y)]
+		+ abs(tSrc.vAxis[static_cast<int>(WORLD_AXIS::AXIS_Z)].Dot(vAxis)) * tSrc.fLength[static_cast<int>(WORLD_AXIS::AXIS_Z)] + tDest.fRadius < fDist)
+	{
+		return false;
+	}
+
+	vCross = tDest.vCenter - vAxis * tDest.fRadius;
+
+	return true;
+}
+
+bool CCollision::CollisionTerrainToRay(CColliderTerrain* pSrc, CColliderRay* pDest)
+{
+	Vector3 vCross = {};
+
+	if (CollisionTerrainToRay(vCross, pSrc->GetInfo(), pDest->GetInfo()))
+	{
+		pSrc->SetCross(vCross);
+		pDest->SetCross(vCross);
+
+		return true;
+	}
+
+	return false;
+}
+
+bool CCollision::CollisionTerrainToRay(Vector3& vCross, const TERRAININFO& tSrc, const RAYINFO& tDest)
+{
+	Vector3 vPos = (tDest.vOrigin - tSrc.vCenter) / tSrc.vScale;
+
+	Vector2 vDir = {};
+
+	vDir.x = tDest.vDir.x;
+	vDir.y = tDest.vDir.z;
+
+	//vDir.Normalize();
+
+	int iX = static_cast<int>(vPos.x);
+	if (vPos.x < 0.f)
+	{
+		iX--;
+	}
+	int iY = static_cast<int>(vPos.z);
+	if (vPos.z < 0.f)
+	{
+		iY--;
+	}
+
+	if (abs(vDir.x) > abs(vDir.y))
+	{
+		float fY = vPos.z;
+		float m = vDir.y / vDir.x;
+
+		while (true)
+		{
+			if (iX < 0)
+			{
+				fY += m * -iX;
+
+				iY = static_cast<int>(fY);
+
+				iX -= iX;
+			}
+			if (iY < 0)
+			{
+				if (vDir.y < 0.f)
+					break;
+
+				float fX = vPos.x - vPos.z / m;
+
+				iX = static_cast<int>(fX);
+				iY = 0;
+				fY = 0.f;
+
+				if (iX < 0)
+					break;
+			}
+			if (iX >= tSrc.iWidth - 1)
+			{
+				if (vDir.x > 0.f)
+					break;
+
+				iX = 127;
+
+				fY = 127.99f * m + vPos.z - vPos.x * m;
+				iY = static_cast<int>(fY);
+
+				if (iY < 0)
+					break;
+
+				else if (iY >= tSrc.iHeight - 1)
+				{
+					if (vDir.y > 0.f)
+						break;
+
+					iX = 127;
+
+					fY = 127.f * m + vPos.z - vPos.x * m;
+					iY = static_cast<int>(fY);
+				}
+			}
+			if (iY >= tSrc.iHeight - 1)
+			{
+				if (vDir.y > 0.f)
+					break;
+
+				iY = 127;
+				fY = 127.99f;
+				float fX = (127.99f - vPos.z + vPos.x * m) / m;
+				iX = static_cast<int>(fX);
+
+				if (iX >= tSrc.iWidth - 1 || iX < 0)
+					break;
+			}
+
+			int i0 = iY * tSrc.iWidth + iX;
+			int i1 = iY * tSrc.iWidth + iX + 1;
+			int i2 = (iY + 1) * tSrc.iWidth + iX;
+			int i3 = (iY + 1) * tSrc.iWidth + iX + 1;
+
+			Vector3 v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+			if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+			{
+				return true;
+			}
+
+			else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+			{
+				return true;
+			}
+
+			int iNextX = 0;
+
+			if (vDir.x > 0.f)
+			{
+				iNextX = iX + 1;
+				fY += m;
+			}
+			else
+			{
+				iNextX = iX - 1;
+				fY -= m;
+			}
+
+
+			if (iNextX >= tSrc.iWidth - 1 || iNextX < 0)
+				break;
+
+			i0 = iY * tSrc.iWidth + iNextX;
+			i1 = iY * tSrc.iWidth + iNextX + 1;
+			i2 = (iY + 1) * tSrc.iWidth + iNextX;
+			i3 = (iY + 1) * tSrc.iWidth + iNextX + 1;
+
+			v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+			v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+			v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+			v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+			if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+			{
+				return true;
+			}
+
+			else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+			{
+				return true;
+			}
+
+
+
+			int iNextY = static_cast<int>(fY);
+
+			if (iNextY >= tSrc.iHeight - 1 || iNextY < 0)
+				break;
+
+			if (iNextY != iY)
+			{
+				iY = iNextY;
+
+				i0 = iY * tSrc.iWidth + iX;
+				i1 = iY * tSrc.iWidth + iX + 1;
+				i2 = (iY + 1) * tSrc.iWidth + iX;
+				i3 = (iY + 1) * tSrc.iWidth + iX + 1;
+
+				v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+				v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+				v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+				v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+				if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+				{
+					return true;
+				}
+
+				else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+				{
+					return true;
+				}
+			}
+
+			iX = iNextX;
+		}
+	}
+	else
+	{
+		float fX = vPos.x;
+		float m = vDir.x / vDir.y;
+
+		while (true)
+		{
+			if(iY < 0)
+			{
+				fX += m * -iY;
+
+				iX = static_cast<int>(fX);
+
+				iY -= iY;
+			}
+
+			if (iX < 0)
+			{
+				if (vDir.x < 0.f)
+					break;
+
+				float fY = vPos.z - vPos.x / m;
+				
+				fX = 0.f;
+
+				iY = static_cast<int>(fY);
+				iX = static_cast<int>(fX);
+
+				if (iY < 0)
+					break;
+			}
+			if (iX >= tSrc.iWidth - 1)
+			{
+				if (vDir.x > 0.f)
+					break;
+
+				iX = 127;
+				fX = 127.99f;
+
+				iY = static_cast<int>(127.99f / m + vPos.z - vPos.x / m);
+
+				if (iY < 0)
+					break;
+
+				else if (iY >= tSrc.iHeight - 1)
+				{
+					if (vDir.y > 0.f)
+						break;
+
+					iX = 127;
+					fX = 127.f;
+
+					iY = static_cast<int>(127.f / m + vPos.z - vPos.x / m);
+				}
+			}
+			if (iY >= tSrc.iHeight-1)
+			{
+				if (vDir.y > 0.f)
+					break;
+
+				iY = 127;
+				fX = (127.99f - vPos.z + vPos.x / m) * m;
+				iX = static_cast<int>(fX);
+
+				if (iX >= tSrc.iWidth - 1 || iX < 0)
+					break;
+			}
+
+			int i0 = iY * tSrc.iWidth + iX;
+			int i1 = iY * tSrc.iWidth + iX + 1;
+			int i2 = (iY + 1) * tSrc.iWidth + iX;
+			int i3 = (iY + 1) * tSrc.iWidth + iX + 1;
+
+			Vector3 v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+			Vector3 v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+			if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+			{
+				return true;
+			}
+
+			else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+			{
+				return true;
+			}
+
+			int iNextY = 0;
+
+			if (vDir.y > 0.f)
+			{
+				iNextY = iY + 1;
+				fX += m;
+			}
+			else
+			{
+				iNextY = iY - 1;
+				fX -= m;
+			}
+
+			if (iNextY >= tSrc.iHeight - 1 || iNextY < 0)
+				break;
+
+			i0 = iNextY * tSrc.iWidth + iX;
+			i1 = iNextY * tSrc.iWidth + iX + 1;
+			i2 = (iNextY + 1) * tSrc.iWidth + iX;
+			i3 = (iNextY + 1) * tSrc.iWidth + iX + 1;
+
+			v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+			v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+			v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+			v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+			if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+			{
+				return true;
+			}
+
+			else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+			{
+				return true;
+			}
+
+
+			int iNextX = static_cast<int>(fX);
+
+			if (iNextX >= tSrc.iWidth - 1 || iNextX < 0)
+				break;
+
+			if (iX != iNextX)
+			{
+				int i0 = iY * tSrc.iWidth + iNextX;
+				int i1 = iY * tSrc.iWidth + iNextX + 1;
+				int i2 = (iY + 1) * tSrc.iWidth + iNextX;
+				int i3 = (iY + 1) * tSrc.iWidth + iNextX + 1;
+
+				Vector3 v0 = tSrc.vecPos[i0] * tSrc.vScale + tSrc.vCenter;
+				Vector3 v1 = tSrc.vecPos[i1] * tSrc.vScale + tSrc.vCenter;
+				Vector3 v2 = tSrc.vecPos[i2] * tSrc.vScale + tSrc.vCenter;
+				Vector3 v3 = tSrc.vecPos[i3] * tSrc.vScale + tSrc.vCenter;
+
+				if (CollisionRayToTraingle(vCross, tDest, v0, v1, v2))
+				{
+					return true;
+				}
+
+				else if (CollisionRayToTraingle(vCross, tDest, v1, v2, v3))
+				{
+					return true;
+				}
+
+
+				iX = iNextX;
+			}
+
+			iY = iNextY;
+		}
+	}
+
+	return false;
 }

@@ -35,9 +35,9 @@ typedef __declspec(dllexport) union _tagVector4
 	_tagVector4 operator+ (float f)	const;
 
 	//operator +=
-	_tagVector4 operator+= (const _tagVector4& v);
-	_tagVector4 operator+= (const DirectX::XMVECTOR& v);
-	_tagVector4 operator+= (float f);
+	_tagVector4& operator+= (const _tagVector4& v);
+	_tagVector4& operator+= (const DirectX::XMVECTOR& v);
+	_tagVector4& operator+= (float f);
 
 	//operator -
 	_tagVector4 operator- (const _tagVector4& v)	const;
@@ -45,9 +45,9 @@ typedef __declspec(dllexport) union _tagVector4
 	_tagVector4 operator- (float f)	const;
 
 	//operator -=
-	_tagVector4 operator-= (const _tagVector4& v);
-	_tagVector4 operator-= (const DirectX::XMVECTOR& v);
-	_tagVector4 operator-= (float f);
+	_tagVector4& operator-= (const _tagVector4& v);
+	_tagVector4& operator-= (const DirectX::XMVECTOR& v);
+	_tagVector4& operator-= (float f);
 
 	//operator *
 	_tagVector4 operator* (const _tagVector4& v)	const;
@@ -55,9 +55,9 @@ typedef __declspec(dllexport) union _tagVector4
 	_tagVector4 operator* (float f)	const;
 
 	//operator *=
-	_tagVector4 operator*= (const _tagVector4& v);
-	_tagVector4 operator*= (const DirectX::XMVECTOR& v);
-	_tagVector4 operator*= (float f);
+	_tagVector4& operator*= (const _tagVector4& v);
+	_tagVector4& operator*= (const DirectX::XMVECTOR& v);
+	_tagVector4& operator*= (float f);
 
 	//operator /
 	_tagVector4 operator/ (const _tagVector4& v)	const;
@@ -65,12 +65,19 @@ typedef __declspec(dllexport) union _tagVector4
 	_tagVector4 operator/ (float f)	const;
 
 	//operator /=
-	_tagVector4 operator/= (const _tagVector4& v);
-	_tagVector4 operator/= (const DirectX::XMVECTOR& v);
-	_tagVector4 operator/= (float f);
+	_tagVector4& operator/= (const _tagVector4& v);
+	_tagVector4& operator/= (const DirectX::XMVECTOR& v);
+	_tagVector4& operator/= (float f);
 
 	void Convert(const DirectX::XMVECTOR& v);
 	DirectX::XMVECTOR Convert()	const;
+
+	static _tagVector4 LerpAndNormalize(_tagVector4 p, _tagVector4 q, float s);
+	static _tagVector4 Slerp(_tagVector4 p, _tagVector4 q, float s);
+	void Normalize();
+	float Length()	const;
+	float Dot(const _tagVector4& v) const;
+	void QuaternionRotation(const union _tagMatrix& rot);
 
 	static _tagVector4 White;
 	static _tagVector4 Black;
@@ -80,3 +87,5 @@ typedef __declspec(dllexport) union _tagVector4
 
 }Vector4, *PVector4;
 
+_tagVector4 operator * (float f, _tagVector4 v);
+_tagVector4 operator - (_tagVector4 v);

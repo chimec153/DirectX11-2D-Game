@@ -59,7 +59,7 @@ bool CTitleBar::Init()
 	if (!CUIControl::Init())
 		return false;
 
-	m_pRC = m_pObj->CreateComponent<CColliderRect>("TitleBody");
+	m_pRC = m_pObj->CreateComponent<CColliderRect>("TitleBody", m_pLayer);
 
 	m_pRC->SetCallBack<CTitleBar>(COLLISION_STATE::INIT, this, &CTitleBar::ColEnter);
 	m_pRC->SetCallBack<CTitleBar>(COLLISION_STATE::STAY, this, &CTitleBar::ColStay);
@@ -70,7 +70,7 @@ bool CTitleBar::Init()
 
 	AddChild(m_pRC);
 
-	m_pTitle = m_pObj->CreateComponent<CUIFont>("Title");
+	m_pTitle = m_pObj->CreateComponent<CUIFont>("Title", m_pLayer);
 
 	m_pTitle->SetInheritScale(false);
 	m_pTitle->SetAlignH(TEXT_ALIGN_HORISONTAL::CENTER);

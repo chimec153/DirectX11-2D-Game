@@ -6,6 +6,8 @@
 #include "ColliderPixel.h"
 #include "ColliderLine.h"
 #include "ColliderPoint.h"
+#include "ColliderRay.h"
+#include "ColliderOBB.h"
 
 CColliderCircle::CColliderCircle()	:
 	m_tInfo()
@@ -45,7 +47,7 @@ bool CColliderCircle::Init()
 		return false;
 
 #ifdef _DEBUG
-	m_pMesh = GET_SINGLE(CResourceManager)->FindMesh("Circle2D");
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Circle2D");
 #endif
 
 	return true;
@@ -101,11 +103,19 @@ CColliderCircle* CColliderCircle::Clone()
 void CColliderCircle::Save(FILE* pFile)
 {
 	CCollider::Save(pFile);
+
+	fwrite(&m_tInfo, sizeof(m_tInfo), 1, pFile);
 }
 
 void CColliderCircle::Load(FILE* pFile)
 {
 	CCollider::Load(pFile);
+
+	fread(&m_tInfo, sizeof(m_tInfo), 1, pFile);
+
+#ifdef _DEBUG
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Circle2D");
+#endif
 }
 
 bool CColliderCircle::Collision(CCollider* pDest)
@@ -124,6 +134,10 @@ bool CColliderCircle::Collision(CCollider* pDest)
 		return CCollision::CollisionCircleToPoint(this, (CColliderPoint*)pDest);
 	case COLLIDER_TYPE::CT_LINE:
 		return CCollision::CollisionLineToCircle((CColliderLine*)pDest, (CColliderCircle*)this);
+	case COLLIDER_TYPE::RAY:
+		return CCollision::CollisionRayToSphere(static_cast<CColliderRay*>(pDest), this);
+	case COLLIDER_TYPE::OBB3D:
+		return CCollision::CollisionOBBToSphere(static_cast<CColliderOBB*>(pDest), this);
 	}
 
 	return false;

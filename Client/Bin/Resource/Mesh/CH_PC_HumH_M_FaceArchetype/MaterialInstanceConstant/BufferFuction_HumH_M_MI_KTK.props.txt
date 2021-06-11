@@ -1,0 +1,260 @@
+Parent = Material3'BufferRender_MAT'
+ScalarParameterValues[28] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeLiner_ON
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeShadow_ON
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Mole_ON
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Stamp_ON
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.23
+        ParameterName = CustomStartPoint
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.66
+        ParameterName = DirectionEndPoint
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Eyeliner_CurveAmount
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Eyeliner_Direction
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeLiner_opacity
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Eyeliner_StartPoint
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Eyeliner_UpOnly
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeLinerColorShade
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = AreaSize_EyeshadowBase
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = AreaSize_EyeshadowLid
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = AreaSize_EyeshadowUnder
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Eyeshadow_opacity
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.84
+        ParameterName = EyeShadowBase_Opacity
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeShadowLid_Opacity
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = EyeShadowUnder_Opacity
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Mole_01_Opacity
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Mole_01_Position_X
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Mole_01_Position_Y
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Mole_01_Size
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.385
+        ParameterName = Stamp_Position_X
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Stamp_Position_Y
+    }
+    ScalarParameterValues[25] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Stamp_Power
+    }
+    ScalarParameterValues[26] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Stamp_Rotate
+    }
+    ScalarParameterValues[27] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Stamp_Size
+    }
+}
+TextureParameterValues[5] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Black_CM_D_KTK'
+        ParameterName = Eyeliner_Mask
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Black_CM_D_KTK'
+        ParameterName = eyeshadow_Mask
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Mole_CM_M_KTK'
+        ParameterName = MoleTexture
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Black_CM_D_KTK'
+        ParameterName = Buffer_Stamp
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Face001_D_LJG'
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[7] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.016574, G=0.0165634, B=0.0139186, A=1 }
+        ParameterName = Eyeliner_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.253, B=0, A=1 }
+        ParameterName = Eyeliner_UpperLeft
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.477278, G=0.463017, B=0.861847, A=1 }
+        ParameterName = Base_1st_Color
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.226, B=0, A=1 }
+        ParameterName = Eyeshadow_UpperLeft
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.902565, G=0.648908, B=0.999963, A=1 }
+        ParameterName = Lid_1st_Color
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.681474, G=0.598973, B=0.999963, A=1 }
+        ParameterName = Under_1st_Color
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0.0428059, B=0.104969, A=1 }
+        ParameterName = Stamp_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

@@ -16,6 +16,7 @@ protected:
 #ifdef _DEBUG
 	class CMesh2D*			m_pDebugMesh;
 	class CMaterial*		m_pDebugMtrl;
+	class CShader*			m_pDebugShader;
 #endif
 	Vector3					m_vMin;
 	Vector3					m_vMax;

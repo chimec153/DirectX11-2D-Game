@@ -9,7 +9,7 @@ typedef struct _tagInputAxis
 
 typedef struct _tagInputAction
 {
-	std::function<void(float, float)>	pFunc[KT_END];
+	std::function<void(float, float)>	pFunc[(int)KEY_TYPE::KT_END];
 }InputAction, *PInputAction;
 
 class CInputObj
@@ -52,7 +52,7 @@ public:
 			m_mapInputAction.insert(std::make_pair(strTag, pAction));
 		}
 
-		pAction->pFunc[eType] = std::bind(pFunc, pObj, std::placeholders::_1, std::placeholders::_2);
+		pAction->pFunc[(int)eType] = std::bind(pFunc, pObj, std::placeholders::_1, std::placeholders::_2);
 
 		GET_SINGLE(CInput)->AddActionBind(strTag,eType, this, &CInputObj::ActionFunc);
 	}

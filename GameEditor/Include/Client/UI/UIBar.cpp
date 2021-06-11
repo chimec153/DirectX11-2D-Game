@@ -29,7 +29,7 @@ bool CUIBar::Init()
 	if (!CObj::Init())
 		return false;
 
-	m_pBar = CreateComponent<CBar>("Bar");
+	m_pBar = CreateComponent<CBar>("Bar", m_pLayer);
 	m_pBar->SetTexture("Bar");
 	m_pBar->SetPercent(0.7f);
 	m_pBar->SetPivot(0.5f, 0.5f, 0.f);
@@ -37,7 +37,7 @@ bool CUIBar::Init()
 
 	SetRootComponent(m_pBar);
 
-	m_pImg = CreateComponent<CUIImage>("Back");
+	m_pImg = CreateComponent<CUIImage>("Back", m_pLayer);
 	m_pImg->SetTexture("Back");
 	m_pImg->SetPivot(0.5f, 0.5f, 0.f);
 	m_pImg->SetWorldScale(200.f, 40.f, 0.f);

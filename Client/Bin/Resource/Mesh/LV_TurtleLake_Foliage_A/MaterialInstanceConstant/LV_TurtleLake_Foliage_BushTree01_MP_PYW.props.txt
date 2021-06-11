@@ -1,0 +1,104 @@
+Parent = Material3'LV_MM_PivotPaintTree_PHO_MSK_2SD'
+ScalarParameterValues[11] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 500
+        ParameterName = Average Leaf Model Diameter (WS)
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.25
+        ParameterName = Leaf Animation Phase Offset
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Leaf Animation Strength
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Leaf Directional Masking Multiplier
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Leaf Length Animation Rate
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Leaf Wind Bias Amount
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.25
+        ParameterName = Percentage of Leaf Angle Strength
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.03
+        ParameterName = Object Sway Amount
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Object Sway Wind Speed Multiplier
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 128
+        ParameterName = Object Sway World Sine Divider
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Transmission_Amount
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Foliage_BushTree01_C_CMJ'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Foliage_BushTree01_D_CMJ'
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.872896, G=0.773455, B=0.766802, A=1 }
+        ParameterName = Transmission_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

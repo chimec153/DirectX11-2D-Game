@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<animations>
+	
+	<anim speed="0.2" name="sewerdrain1"> 	<data encoding="csv">1930,1931</data></anim>
+
+	<anim speed="0.2" name="sewerdrain2"> 	<data encoding="csv">1994,1995</data></anim>
+
+	<anim speed="0.2" name="sewerdrain3"> 	<data encoding="csv">2058,2059</data></anim>
+
+	<anim speed="0.2" name="sewerdrain4"> 	<data encoding="csv">1996,2060</data></anim>
+
+	<anim speed="0.1" name="lava"> 	<data encoding="csv">457,458,459,460</data></anim>
+	<anim speed="0.1" name="lava"> 	<data encoding="csv">448,449,450,451</data></anim>
+	<anim speed="0.1" name="lava"> 	<data encoding="csv">512,513,514,515</data></anim>
+	<anim speed="0.1" name="lava"> 	<data encoding="csv">576,577,578,579</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">388,452,516,580 </data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">389,453,517,581 </data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">390,454,518,582 </data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">391,455,519,583 </data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">903,907,911,915</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">904,908,912,916</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">905,909,913,917</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">967,971,975,979</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">968,972,976,980</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">969,973,977,981</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">970,974,978,982</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1031,1035,1039,1043</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1032,1036,1040,1044</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1033,1037,1041,1045</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1034,1038,1042,1046</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">983,987,991,995</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">984,988,992,996</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">985,989,993,997</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">986,990,994,998</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1047,1051,1055,1059</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1048,1052,1056,1060</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1049,1053,1057,1061</data></anim>
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1050,1054,1058,1062</data></anim>
+
+	<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1096,1097,1098,1099</data></anim>
+
+<anim speed="0.2" name="lavafall"> 	<data encoding="csv">1100,1101,1102,1103</data></anim>
+
+
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2564,2565,2566,2567</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2628,2629,2630,2631</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2692,2693,2694,2695</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2756,2757,2758,2759</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2820,2821,2822,2823</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2884,2885,2886,2887</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2948,2949,2950,2951</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3012,3013,3014,3015</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3076,3077,3078,3079</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3140,3141,3142,3143</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3204,3205,3206,3207</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3268,3269,3270,3271</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2752,2753,2754,2755</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2816,2817,2818,2819</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">2880,2881,2882,2883</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3008,3009,3010,3011</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3072,3073,3074,3075</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3136,3137,3138,3139</data></anim>
+<anim speed="0.05" name="lavafall"> 	<data encoding="csv">3200,3201,3202,3203</data></anim>
+
+
+
+</animations>

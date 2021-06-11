@@ -1,0 +1,14 @@
+BodySetup = None
+UseSimpleLineCollision = false
+UseSimpleBoxCollision = false
+UseSimpleRigidBodyCollision = false
+UseFullPrecisionUVs = false
+Bounds =
+{
+    Origin = { X=-0.0276117, Y=0.439486, Z=6.66161 }
+    BoxExtent = { X=14.4843, Y=12.8276, Z=8.24872 }
+    SphereRadius = 15.8028
+}
+CanCompressPositions = false
+CanStripNormalsAndTangents = false
+InternalVersion = 18

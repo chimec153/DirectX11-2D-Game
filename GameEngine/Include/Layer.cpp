@@ -1,9 +1,12 @@
 #include "Layer.h"
 #include "Object/Obj.h"
 #include "Instancing.h"
-#include "RenderManager.h"
+#include "Render/RenderManager.h"
 #include "UI/UIControl.h"
 #include "Tile/TileMap.h"
+#include "Component/Renderer.h"
+#include "Camera/CameraManager.h"
+#include "Component/Camera.h"
 
 CLayer::CLayer() :
 	m_iZOrder(0),
@@ -71,11 +74,14 @@ CObj* CLayer::FindObj(const std::string& strTag) const
 
 	for (; iter != iterEnd; ++iter)
 	{
-		if ((*iter)->GetName() == strTag)
+		if ((*iter))
 		{
-			(*iter)->AddRef();
+			if ((*iter)->GetName() == strTag)
+			{
+				(*iter)->AddRef();
 
-			return (*iter);
+				return (*iter);
+			}
 		}
 	}
 
@@ -90,8 +96,8 @@ bool CLayer::IsStart() const
 void CLayer::AddObj(CObj* pObj)
 {
 	pObj->AddRef();
-	pObj->SetLayer(this);
 	pObj->SetScene(m_pScene);
+	pObj->SetLayer(this);
 
 	m_ObjList.push_back(pObj);
 }
@@ -163,6 +169,27 @@ void CLayer::AddTileInstState(const std::string& strKey)
 {
 	if (m_pTileInst)
 		m_pTileInst->AddState(strKey);
+}
+
+CScene* CLayer::GetScene() const
+{
+	return m_pScene;
+}
+
+void CLayer::DeleteObject(const std::string& strTag)
+{
+	std::list<CObj*>::iterator iter = m_ObjList.begin();
+	std::list<CObj*>::iterator iterEnd = m_ObjList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		if ((*iter)->GetName() == strTag)
+		{
+			(*iter)->Release();
+			m_ObjList.erase(iter);
+			return;
+		}
+	}
 }
 
 bool CLayer::Init()
@@ -322,29 +349,6 @@ void CLayer::PreRender(float fTime)
 
 void CLayer::Render(float fTime)
 {
-	/*
-	std::list<CObj*>::iterator iter = m_ObjList.begin();
-	std::list<CObj*>::iterator iterEnd = m_ObjList.end();
-
-	for (; iter != iterEnd;)
-	{
-		if (!(*iter)->IsActive())
-		{
-			SAFE_RELEASE((*iter));
-			iter = m_ObjList.erase(iter);
-			iterEnd = m_ObjList.end();
-		}
-
-		else if (!(*iter)->IsEnable())
-		{
-			++iter;
-			continue;
-		}
-
-		(*iter)->Input(fTime);
-		++iter;
-	}*/
-
 	if (m_pTileInst)
 	{
 		m_pTileInst->Update(fTime);
@@ -375,12 +379,7 @@ void CLayer::Render(float fTime)
 		m_vecInst[i]->Clear();
 	}
 
-	if (m_b2D)
-	{
-		//std::sort(m_vecCom.begin(), m_vecCom.end(), &CLayer::SortYCom);
-	}
-
-	else if (m_bUI)
+	if (m_bUI)
 	{
 		std::sort(m_vecCom.begin(), m_vecCom.end(), &CLayer::SortZ);
 	}
@@ -389,9 +388,15 @@ void CLayer::Render(float fTime)
 
 	for (size_t i = 0; i < iComSz; ++i)
 	{
-		m_vecCom[i]->SetState();
+		CRenderer* pRenderer = m_vecCom[i]->GetRenderer();
+
+		pRenderer->SetState();
+
 		m_vecCom[i]->Render(fTime);
-		m_vecCom[i]->ResetState();
+
+		pRenderer->ResetState();
+
+		SAFE_RELEASE(pRenderer);
 	}
 }
 
@@ -420,6 +425,15 @@ void CLayer::PostRender(float fTime)
 	}
 }
 
+void CLayer::RenderShadow(float fTime)
+{
+	size_t iSize = m_vecCom.size();
+
+	for (size_t i = 0; i < iSize; ++i)
+	{
+		m_vecCom[i]->RenderShadow(fTime);
+	}
+}
 
 void CLayer::Save(FILE* pFile)
 {
@@ -469,6 +483,17 @@ void CLayer::Load(FILE* pFile)
 	}
 }
 
+void CLayer::CheckFrustum()
+{
+	std::list<CObj*>::iterator iter = m_ObjList.begin();
+	std::list<CObj*>::iterator iterEnd = m_ObjList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		(*iter)->CheckFrustum();
+	}
+}
+
 bool CLayer::SortY(CObj* pSrc, CObj* pDst)
 {
 	return pSrc->GetWorldPos().y < pDst->GetWorldPos().y;
@@ -482,4 +507,119 @@ bool CLayer::SortYCom(CSceneComponent* pSrc, CSceneComponent* pDst)
 bool CLayer::SortZ(CSceneComponent* pSrc, CSceneComponent* pDst)
 {
 	return ((CUIControl*)pSrc)->GetZOrder() > ((CUIControl*)pDst)->GetZOrder();
+}
+
+bool CLayer::SortZOrder(CSceneComponent* pSrc, CSceneComponent* pDest)
+{
+	float fSrcZ = 0.f;
+	float fDestZ = 0.f;
+
+	Vector3 vSrcPos = pSrc->GetWorldPos();
+	Vector3 vDestPos = pDest->GetWorldPos();
+
+	CCamera* pCam = GET_SINGLE(CCameraManager)->GetMainCam();
+
+	Matrix matVP = pCam->GetVP();
+
+	SAFE_RELEASE(pCam);
+
+	float fSrcW = vSrcPos.x * matVP[0][3] + vSrcPos.x * matVP[1][3]
+		+vSrcPos.z * matVP[2][3] + matVP[3][3];
+
+	Vector3 vSrcProjPos = vSrcPos.TransformCoord(matVP);
+
+	fSrcZ = vSrcProjPos.z;// / fSrcW;
+
+	float fDestW = vDestPos.x * matVP[0][3] + vDestPos.x * matVP[1][3]
+		+ vDestPos.z * matVP[2][3] + matVP[3][3];
+
+	Vector3 vDestProjPos = vDestPos.TransformCoord(matVP);
+
+	fDestZ = vDestProjPos.z / fDestW;
+
+	return fSrcZ < fDestZ;
+}
+
+bool CLayer::SortInvZOrder(CSceneComponent* pSrc, CSceneComponent* pDest)
+{
+	float fSrcZ = 0.f;
+	float fDestZ = 0.f;
+
+	Vector3 vSrcPos = pSrc->GetWorldPos();
+	Vector3 vDestPos = pDest->GetWorldPos();
+
+	CCamera* pCam = GET_SINGLE(CCameraManager)->GetMainCam();
+
+	Matrix matVP = pCam->GetVP();
+
+	SAFE_RELEASE(pCam);
+
+	float fSrcW = vSrcPos.x * matVP[0][3] + vSrcPos.x * matVP[1][3]
+		+ vSrcPos.z * matVP[2][3] + matVP[3][3];
+
+	Vector3 vSrcProjPos = vSrcPos.TransformCoord(matVP);
+
+	fSrcZ = vSrcProjPos.z;// / fSrcW;
+
+	float fDestW = vDestPos.x * matVP[0][3] + vDestPos.x * matVP[1][3]
+		+ vDestPos.z * matVP[2][3] + matVP[3][3];
+
+	Vector3 vDestProjPos = vDestPos.TransformCoord(matVP);
+
+	fDestZ = vDestProjPos.z / fDestW;
+
+	return fSrcZ > fDestZ;
+}
+
+void CLayer::SpawnWindow()
+{
+	std::list<CObj*>::iterator iter = m_ObjList.begin();
+	std::list<CObj*>::iterator iterEnd = m_ObjList.end();
+
+	size_t iSz = m_ObjList.size();
+	char** strLayers = new char* [iSz];
+	int i = 0;
+
+	static int item = 0;
+	for (; iter != iterEnd;++iter)
+	{
+		strLayers[i] = new char[256];
+
+		strcpy_s(strLayers[i++], (*iter)->GetName().length() + 1, (*iter)->GetName().c_str());
+
+		if (item == i - 1)
+		{
+			(*iter)->SpawnWindow();
+		}
+
+	}
+
+	if (ImGui::Begin("Objects"))
+	{
+		ImGui::ListBox("Objects", &item, strLayers, (int)iSz);
+	}
+	ImGui::End();
+
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		delete[] strLayers[i];
+	}
+
+	delete[] strLayers;
+}
+
+void CLayer::CameraZSort(bool bInverse)
+{
+	if (m_vecCom.empty())
+		return;
+
+	if (!bInverse)
+	{
+		SortZOrder(*m_vecCom.begin(), *(--m_vecCom.end()));
+	}
+	else
+	{
+		SortInvZOrder(*m_vecCom.begin(), *(--m_vecCom.end()));
+	}
 }

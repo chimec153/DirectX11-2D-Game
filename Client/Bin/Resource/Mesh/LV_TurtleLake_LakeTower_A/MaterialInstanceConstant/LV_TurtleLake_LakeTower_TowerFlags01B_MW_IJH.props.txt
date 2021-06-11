@@ -1,0 +1,104 @@
+Parent = Material3'LV_MM_WPOHang_PHO_MSK_2SD'
+ScalarParameterValues[10] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Hang_Addon_Amount
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 70
+        ParameterName = Hang_Addon_Scale
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Hang_Addon_Speed
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Hang_Addon_WaveDirection
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Hang_Rotation_Amount
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Hang_Rotation_Offset
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.05
+        ParameterName = Hang_Rotation_Speed
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.45
+        ParameterName = Hang_Twist_Amount
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Hang_Twist_Speed
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = PerPositionRandom_Weight
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_C_CNH'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_D_CNH'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_N_CNH'
+        ParameterName = Normal
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=10, B=0.7, A=1 }
+        ParameterName = Hang_Addon_Direction
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

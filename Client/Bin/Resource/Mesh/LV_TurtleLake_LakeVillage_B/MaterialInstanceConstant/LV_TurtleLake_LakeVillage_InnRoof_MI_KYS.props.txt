@@ -1,0 +1,28 @@
+Parent = MaterialInstanceConstant'LV_TurtleLake_LakeVillage_Inn01_MI_KYS'
+ScalarParameterValues[0] = {}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeVillage_InnRoof_N_KYS'
+        ParameterName = Normal
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeVillage_InnRoof_D_KYS'
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[0] = {}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

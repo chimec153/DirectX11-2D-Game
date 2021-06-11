@@ -1,0 +1,62 @@
+Parent = Material3'LV_MM_Structure_PHO_MSK_1SD'
+ScalarParameterValues[3] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 30
+        ParameterName = Specular_Power
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Specular_Desaturation
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.7
+        ParameterName = Specular_ContrastHigh
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeVillage_Inn03_N_KYS'
+        ParameterName = Normal_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeVillage_Inn03_D_KYS'
+        ParameterName = Diffuse_01
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeVillage_Inn03_C_KYS'
+        ParameterName = Channel_01
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.5, B=0.5, A=0.5 }
+        ParameterName = Specular_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

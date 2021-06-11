@@ -139,12 +139,14 @@ void Safe_Delete_Array_List(T& p)
 }
 
 #define RESOURCE_PATH	"Resource_Path"
-#define TEXTURE_PATH	"Texture_Path"
+#define DATA_TEXTURE_PATH	"Data_Texture_Path"
 #define DATA_PATH		"Data_Path"
 #define ROOT_PATH		"Root_Path"
 #define SOUND_PATH		"Sound_Path"
 #define SHADER_PATH		"Shader_Path"
 #define MAP_PATH		"Map_Path"
+#define	MESH_PATH		"Mesh_Path"
+#define TEXTURE_PATH	"Texture_Path"
 
 #define DEVICE			GET_SINGLE(CDevice)->GetDevice()
 #define CONTEXT			GET_SINGLE(CDevice)->GetContext()
@@ -153,3 +155,22 @@ void Safe_Delete_Array_List(T& p)
 #define RATIO			GET_SINGLE(CDevice)->GetRatio()
 #define FACTORY2D		GET_SINGLE(CDevice)->GetFactory2D()
 #define RENDERTARGET2D	GET_SINGLE(CDevice)->GetRenderTarget2D()
+
+#define WINDOWHANDLE			GET_SINGLE(CEngine)->GetHandle()
+
+#define	ALPHA_BLEND	"AlphaBlend"
+#define LIGHT_BLEND	"LightAccBlend"
+#define NO_DEPTH	"DepthNoWrite"
+#define DEPTH_READ	"DepthReadNoWrite"
+#define WIRE_FRAME	"WireFrame"
+#define CULL_NONE	"NoCullBack"
+#define CULL_FRONT	"CullFront"
+
+#define TERRAIN_LAYER	"Terrain_Layer"
+#define CUBEMAP_LAYER	"Cubemap_Layer"
+#define ALBEDO_LAYER	"Albedo_Layer"
+#define DECAL_LAYER		"Decal_Layer"	
+#define PARTICLE_LAYER	"Particle_Layer"
+#define COLLIDER_LAYER	"Collider_Layer"
+#define ALPHA_LAYER		"Alpha_Layer"	
+#define UI_LAYER		"UI_Layer"

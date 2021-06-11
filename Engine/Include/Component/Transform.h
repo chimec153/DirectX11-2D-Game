@@ -14,7 +14,7 @@ private:
 private:
 	class CScene*				m_pScene;
 	class CSceneComponent*		m_pOwner;
-	std::vector<CTransform*>	m_vecChild;
+	std::list<CTransform*>		m_ChildList;
 	CTransform*					m_pParent;
 	TransformCBuffer			m_tCBuffer;
 
@@ -33,6 +33,7 @@ private:
 	bool						m_bInheritRotX;
 	bool						m_bInheritRotY;
 	bool						m_bInheritRotZ;
+	bool						m_bInheritPos;
 	bool						m_bUpdateScale;
 	bool						m_bUpdateRot;
 
@@ -41,14 +42,17 @@ public:
 	void SetInheritRotX(bool bInherit);
 	void SetInheritRotY(bool bInherit);
 	void SetInheritRotZ(bool bInherit);
-	Vector3 GetVelocityScale()			const;
-	Vector3 GetVelocityRot()			const;
-	Vector3 GetVelocity()				const;
+	void SetInheritPos(bool bIn);
+	void SetUpdateScale(bool bScale);
+	void SetUpdateRot(bool bRot);
+	const Vector3& GetVelocityScale()			const;
+	const Vector3& GetVelocityRot()			const;
+	const Vector3& GetVelocity()				const;
 	float GetVelocityAmt()				const;
-	Vector3 GetRelativeScale()			const;
-	Vector3 GetRelativeRot()			const;
-	Vector3 GetRelativePos()			const;
-	Vector3 GetRelativeAxis(WORLD_AXIS axis)	const;
+	const Vector3& GetRelativeScale()			const;
+	const Vector3& GetRelativeRot()			const;
+	const Vector3& GetRelativePos()			const;
+	const Vector3& GetRelativeAxis(WORLD_AXIS axis)	const;
 
 public:
 	void InheritScale();
@@ -82,14 +86,17 @@ private:
 	Vector3						m_vWorldAxis[(int)WORLD_AXIS::AXIS_END];
 	Vector3						m_vPivot;
 	Vector3						m_vMeshSize;
+	Vector4						m_vQuaternion;
+	Vector4						m_vRelativeQuat;
 
 public:
-	Vector3 GetWorldScale()			const;
-	Vector3 GetWorldRot()			const;
-	Vector3 GetWorldPos()			const;
-	Vector3 GetWorldAxis(WORLD_AXIS axis)	const;
-	Vector3 GetPivot()				const;
-	Vector3 GetMeshSize()			const;
+	const Vector3& GetWorldScale()			const;
+	const Vector3& GetWorldRot()			const;
+	const Vector3& GetWorldPos()			const;
+	const Vector3& GetWorldAxis(WORLD_AXIS axis)	const;
+	const Vector3& GetPivot()				const;
+	const Vector3& GetMeshSize()			const;
+	const Vector4& GetQuarternion()	const;
 
 public:
 	void SetWorldScale(const Vector3& v);
@@ -113,29 +120,42 @@ public:
 	void SetPivot(const Vector3& v);
 	void SetPivot(float x, float y, float z);
 	void SetMeshSize(const Vector3& v);
+	void Slerp(const Vector4& p, const Vector4& q, float s);
+	void Slerp(const Vector4& q, float s);
+	void SetQuaternionRot(const Vector4& vAxis, float fAngle);
+	void AddQuaternionRot(const Vector4& vAxis, float fAngle);
+	void SetQuaternionRotNorm(const Vector4& vAxis, float fAngle);
+	void AddQuaternionRotNorm(const Vector4& vAxis, float fAngle);
 
 private:
 	Matrix						m_matScale;
 	Matrix						m_matRot;
 	Matrix						m_matPos;
 	Matrix						m_matWorld;
+	Matrix						m_matBone;
 	float						m_fFlipTex;
 
 public:
-	Matrix GetMatScale()	const;
-	Matrix GetMatRot()		const;
-	Matrix GetMatPos()		const;
-	Matrix GetMatWorld()	const;
+	const Matrix& GetMatScale()	const;
+	const Matrix& GetMatRot()		const;
+	const Matrix& GetMatPos()		const;
+	const Matrix& GetMatWorld()	const;
+	void SetBoneMatrix(const Matrix& mat);
 
 public:
 	void Start();
 	void Update(float fTime);
 	void PostUpdate(float fTime);
 	void SetTransform();
+	void SetShadow();
+	void SetWorld();
 	CTransform* Clone();
 
 public:
 	void Save(FILE* pFile);
 	void Load(FILE* pFile);
+
+public:
+	void SpawnWindow();
 };
 

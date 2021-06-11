@@ -1,0 +1,54 @@
+Parent = Material3'LV_MM_Structure_PHO_OPA_1SD'
+ScalarParameterValues[0] = {}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerWall02_D_CNH'
+        ParameterName = Diffuse_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerWall01_D_CNH'
+        ParameterName = Diffuse_02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerWall02_N_CNH'
+        ParameterName = Normal_01
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerWall01_N_CNH'
+        ParameterName = Normal_02
+    }
+}
+VectorParameterValues[2] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.7, A=1 }
+        ParameterName = Normal01_Power
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.6, A=1 }
+        ParameterName = Normal02_Power
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

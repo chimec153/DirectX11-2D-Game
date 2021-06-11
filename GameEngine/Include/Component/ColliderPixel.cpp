@@ -132,11 +132,7 @@ void CColliderPixel::SetPixelFromFullPath(const TCHAR* pFullPath)
 	}
 
 #ifdef _DEBUG
-	CMaterial* pMat = m_pPixel->GetMaterial();
-
-	pMat->SetTextureFromFullPath(REGISTER_TYPE::RT_DIF, "Pixel", pFullPath);
-
-	SAFE_RELEASE(pMat);
+	
 #endif
 
 	delete pImage;
@@ -173,7 +169,7 @@ bool CColliderPixel::Init()
 		return false;
 
 #ifdef _DEBUG
-	m_pMesh = GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
 	m_pPixel = GET_SINGLE(CResourceManager)->GetDefaultMesh();
 #endif
 
@@ -228,11 +224,6 @@ void CColliderPixel::Render(float fTime)
 	CCollider::Render(fTime);
 
 #ifdef _DEBUG
-	CMaterial* pMat = m_pPixel->GetMaterial();
-
-	pMat->SetMaterial();
-
-	SAFE_RELEASE(pMat);
 
 	m_pPixel->Render(fTime);
 #endif
@@ -251,11 +242,21 @@ CColliderPixel* CColliderPixel::Clone()
 void CColliderPixel::Save(FILE* pFile)
 {
 	CCollider::Save(pFile);
+
+	fwrite(&m_tInfo, sizeof(m_tInfo), 1, pFile);
 }
 
 void CColliderPixel::Load(FILE* pFile)
 {
 	CCollider::Load(pFile);
+
+	fread(&m_tInfo, sizeof(m_tInfo), 1, pFile);
+
+#ifdef _DEBUG
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+	m_pPixel = GET_SINGLE(CResourceManager)->GetDefaultMesh();
+#endif
+
 }
 
 bool CColliderPixel::Collision(CCollider* pDest)

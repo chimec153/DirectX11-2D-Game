@@ -10,34 +10,71 @@ public:
 
 private:
 	float						m_fDist;
-	float						m_fLimitDist;
+	float						m_fLimitSpeed;
 	float						m_fSpeed;
 	class CSpriteComponent* m_pMesh;
-	class CCamera* m_pCam;
+	class CTileMap* m_pMap;
+	class CSound* m_pSnd;
+	int		m_iCol;
+	bool	m_bFire;
+	class CSpriteComponent* m_pFire;
+	bool	m_bFixed;
+	class CObj* m_pFixingObj;
+	class CTileMap* m_pMtrlMap;
+	float		m_fAddSpeed;
+	bool		m_bInit;
 
 public:
-	void SetLimitDist(float fDist)
-	{
-		m_fLimitDist = fDist;
-
-		if (m_fLimitDist >= 700.f)
-			m_fLimitDist = 700.f;
-	}
 
 	void SetSpeed(float fSpeed)
 	{
 		m_fSpeed = fSpeed;
-	}
 
-	class CCamera* GetCam()	const
-	{
-		return m_pCam;
+		if (m_fSpeed >= m_fLimitSpeed)
+			m_fSpeed = m_fLimitSpeed;
 	}
 
 	float GetSpeed()	const
 	{
 		return m_fSpeed;
 	}
+
+	void AddSpeed(float fSpeed)
+	{
+		m_fSpeed += fSpeed;
+
+		if (m_fSpeed >= m_fLimitSpeed)
+			m_fSpeed = m_fLimitSpeed;
+	}
+
+	void SetDist(float fDist)
+	{
+		m_fDist = fDist;
+	}
+
+	int GetCol()	const
+	{
+		return m_iCol;
+	}
+
+	void ChangeSprite(const std::string& strTag);
+
+	void SetFire(bool bFire);
+
+	bool IsFire()	const
+	{
+		return m_bFire;
+	}
+
+	void SetFix(bool bFix);
+
+	bool IsFixed()	const
+	{
+		return m_bFixed;
+	}
+
+	void SetFixObj(class CObj* pObj);
+	class CObj* GetFixObj()	const;
 
 public:
 	virtual bool Init();
@@ -54,5 +91,8 @@ public:
 	void ColInit(class CCollider* pSrc, class CCollider* pDest, float fTime);
 	void ColStay(class CCollider* pSrc, class CCollider* pDest, float fTime);
 	void ColEnd(class CCollider* pSrc, class CCollider* pDest, float fTime);
+
+public:
+	void SpawnWindow();
 };
 

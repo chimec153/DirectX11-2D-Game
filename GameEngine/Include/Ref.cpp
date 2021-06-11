@@ -54,9 +54,29 @@ void CRef::Load(FILE* pFile)
 	char strTag[256] = {};
 
 	fread(&iLength, 4, 1, pFile);
-	fread(strTag, 1, iLength, pFile);
+	if (iLength > 0)
+	{
+		fread(strTag, 1, iLength, pFile);
+	}
 
 	m_strName = strTag;
 
 	fread(&m_bEnable, 1, 1, pFile);
+}
+
+void CRef::SpawnWindow()
+{
+	const char* pText = GetName().c_str();
+
+	if (!strcmp(pText, ""))
+	{
+		pText = "None";
+	}
+
+	if (ImGui::Begin(pText))
+	{
+		ImGui::Checkbox("Enable", &m_bEnable);
+	}
+
+	ImGui::End();
 }

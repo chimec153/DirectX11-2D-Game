@@ -1,0 +1,140 @@
+Parent = Material3'LV_MM_WPOFlag_PHO_MSK_2SD'
+ScalarParameterValues[14] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = PerPositionRandom_Weight
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.005
+        ParameterName = Wind_Rotation_Amount
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Wind_Rotation_Offset
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.01
+        ParameterName = Wind_Rotation_Speed
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Wind_Twist_Amount
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Wind_Twist_Speed
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Wind_WaveLarge_Amount
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Wind_WaveLarge_Direction
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 60
+        ParameterName = Wind_WaveLarge_Scale
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Wind_WaveLarge_Speed
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Wind_WaveSmall_Amount
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.3
+        ParameterName = Wind_WaveSmall_Direction
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 24
+        ParameterName = Wind_WaveSmall_Scale
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Wind_WaveSmall_Speed
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_C_CNH'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_D_CNH'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_LakeTower_TowerFlags_N_CNH'
+        ParameterName = Normal
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0, B=100, A=1 }
+        ParameterName = Wind_PivotPosition_Modify
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.1, B=0.5, A=1 }
+        ParameterName = Wind_Rotation_Axis
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=0.5, B=10, A=1 }
+        ParameterName = Wind_Twist_Axis
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

@@ -1,0 +1,326 @@
+Parent = Material3'LV_MM_Landscape_PHO_OPA_1SD'
+ScalarParameterValues[25] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Layer01_Desaturation
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 6
+        ParameterName = Layer01_Diffuse_UVScale
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 20
+        ParameterName = Layer02_Cliff_XYBlendSharpness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 24
+        ParameterName = Layer02_Diffuse_UVScale
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 24
+        ParameterName = Layer02_Normal_UVScale
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 16
+        ParameterName = Layer03_Diffuse_UVScale
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Layer04_Desaturation
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer04_Diffuse_UVScale
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer04_Normal_UVScale
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = Layer05_Diffuse_UVScale
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = Layer05_Normal_UVScale
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer06_Diffuse_UVScale
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer06_Normal_UVScale
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer06_Specular_ContrastHigh
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Layer06_Specular_ContrastLow
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 50
+        ParameterName = Layer06_Specular_Power
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = Layer07_Diffuse_UVScale
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = Layer07_Normal_UVScale
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 16
+        ParameterName = Layer07_Specular_Power
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer08_Diffuse_UVScale
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = 
+        ParameterValue = 10
+        ParameterName = Layer08_Normal_UVScale
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Layer08_Specular_ContrastHigh
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Layer08_Specular_ContrastLow
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Layer08_Specular_Desaturation
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = 
+        ParameterValue = 50
+        ParameterName = Layer08_Specular_Power
+    }
+}
+TextureParameterValues[14] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Tile_Grass01_D_HMJ'
+        ParameterName = Layer01_Diffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Tile_Cliff02_D_HMJ'
+        ParameterName = Layer02_Diffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Tile_Cliff02_N_HMJ'
+        ParameterName = Layer02_Normal
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Tile_Forest_D_KJM'
+        ParameterName = Layer03_Diffuse
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Ostium_Tile_Ground01_D_AHH'
+        ParameterName = Layer04_Diffuse
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_BlackForest_Tile_Soil01_N_HMJ'
+        ParameterName = Layer04_Normal
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Tile_Rock01_D_HMJ'
+        ParameterName = Layer05_Diffuse
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Tile_Rock01_N_HMJ'
+        ParameterName = Layer05_Normal
+    }
+    TextureParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Ostium_Tile_Ground01_D_AHH'
+        ParameterName = Layer06_Diffuse
+    }
+    TextureParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_BlackForest_Tile_Soil01_N_HMJ'
+        ParameterName = Layer06_Normal
+    }
+    TextureParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Ostium_Tile_Volc02_D_AHH'
+        ParameterName = Layer07_Diffuse
+    }
+    TextureParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_BlackForest_Tile_Soil01_N_HMJ'
+        ParameterName = Layer07_Normal
+    }
+    TextureParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Ostium_Tile_Ground01_D_AHH'
+        ParameterName = Layer08_Diffuse
+    }
+    TextureParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_BlackForest_Tile_Soil01_N_HMJ'
+        ParameterName = Layer08_Normal
+    }
+}
+VectorParameterValues[12] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.679533, G=0.581367, B=0.343354, A=1 }
+        ParameterName = Layer01_Diffuse_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.52, G=1.389, B=1.293, A=1 }
+        ParameterName = Layer04_Diffuse_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.3, A=1 }
+        ParameterName = Layer04_Normal_Power
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.606591, G=0.61876, B=0.553811, A=1 }
+        ParameterName = Layer05_Diffuse_Color
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.5, G=1, B=0.2, A=1 }
+        ParameterName = Layer05_Normal_Power
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.370152, G=0.354459, B=0.345613, A=1 }
+        ParameterName = Layer06_Diffuse_Color
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.3, A=1 }
+        ParameterName = Layer06_Normal_Power
+    }
+    VectorParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.895703, B=0.77709, A=1 }
+        ParameterName = Layer06_Specular_Color
+    }
+    VectorParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.7, G=0.7, B=0.7, A=1 }
+        ParameterName = Layer07_Diffuse_Color
+    }
+    VectorParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.3, A=1 }
+        ParameterName = Layer07_Normal_Power
+    }
+    VectorParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.370152, G=0.354459, B=0.34561, A=1 }
+        ParameterName = Layer08_Diffuse_Color
+    }
+    VectorParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.895703, B=0.77709, A=1 }
+        ParameterName = Layer08_Specular_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

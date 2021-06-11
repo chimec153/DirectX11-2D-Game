@@ -29,7 +29,7 @@ public:
 	bool Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed);
 	void ClearState();
 	void Render();
-
+	void SetTarget();
 
 	DECLARE_SINGLE(CDevice)
 };

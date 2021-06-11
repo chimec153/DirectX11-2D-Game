@@ -28,7 +28,7 @@ bool CClientButton::Init()
 	if (!CObj::Init())
 		return false;
 
-	m_pPanel = CreateComponent<CPanel>("Panel");
+	m_pPanel = CreateComponent<CPanel>("Panel", m_pLayer);
 
 	m_pPanel->SetWorldScale(500.f, 400.f, 1.f);
 
@@ -38,7 +38,7 @@ bool CClientButton::Init()
 
 	SetRootComponent(m_pPanel);
 
-	m_pBtn = CreateComponent<CUIButton>("Button");
+	m_pBtn = CreateComponent<CUIButton>("Button", m_pLayer);
 
 	m_pBtn->SetColor(BUTTON_STATE::OFF, 0.3f, 0.3f, 0.3f, 1.f);
 	m_pBtn->SetColor(BUTTON_STATE::ON, 1.f, 1.f, 1.f, 1.f);
@@ -60,7 +60,7 @@ bool CClientButton::Init()
 
 	m_pPanel->AddChild(m_pBtn);
 
-	CTitleBar* pBar = CreateComponent<CTitleBar>("TitleBar");
+	CTitleBar* pBar = CreateComponent<CTitleBar>("TitleBar", m_pLayer);
 
 	pBar->SetWorldScale(470.f, 30.f, 1.f);
 	pBar->SetRelativePos(-30.f, 185.f, 0.f);
@@ -79,7 +79,7 @@ bool CClientButton::Init()
 
 	SAFE_RELEASE(pBar);
 
-	CUIButton* pExit = CreateComponent<CUIButton>("ExitButton");
+	CUIButton* pExit = CreateComponent<CUIButton>("ExitButton", m_pLayer);
 
 	pExit->SetCallBack<CClientButton>(BUTTON_STATE::PUSH, this, &CClientButton::Close);
 

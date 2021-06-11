@@ -6,7 +6,7 @@ DEFINITION_SINGLE(CSoundManager)
 CSoundManager::CSoundManager()	:
 	m_pSystem(nullptr)
 {
-
+	m_vecChannel.resize((int)SOUND_TYPE::END);
 }
 
 CSoundManager::~CSoundManager()
@@ -27,6 +27,11 @@ bool CSoundManager::Init()
 	m_pSystem->init(10, FMOD_INIT_NORMAL, nullptr);
 
 	return true;
+}
+
+void CSoundManager::Update(float fTime)
+{
+	m_pSystem->update();
 }
 
 FMOD::System* CSoundManager::GetSystem() const
@@ -94,6 +99,14 @@ void CSoundManager::Stop(const std::string& strKey)
 		return;
 
 	m_vecChannel[(int)pInfo->eType]->stop();
+}
+
+void CSoundManager::Stop(SOUND_TYPE eType)
+{
+	if (m_vecChannel[(int)eType])
+	{
+		m_vecChannel[(int)eType]->stop();
+	}
 }
 
 PSOUNDINFO CSoundManager::FindSound(const std::string& strKey)

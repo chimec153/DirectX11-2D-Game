@@ -1,0 +1,74 @@
+Parent = Material3'LV_MM_FoliagePP_PHO_MSK_2SD'
+ScalarParameterValues[4] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.02
+        ParameterName = Animation_Speed_Multiplier
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.05
+        ParameterName = Animation_Strength
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 20
+        ParameterName = AverageObjectSizeWS/RootStiffness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Wind_Wave_Width
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Shakara_Foliage_DesertWeed05_C_NWCNIK'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Shakara_Foliage_DesertWeed05_D_NWCNIK'
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.7, G=0.85, B=0.8, A=1 }
+        ParameterName = Diffuse_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.02, G=0.02, B=0.01, A=1 }
+        ParameterName = Emissive_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.79, G=0.79, B=0.79, A=1 }
+        ParameterName = Transmission_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

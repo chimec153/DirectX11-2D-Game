@@ -1,8 +1,13 @@
 #include "MouseObj.h"
 #include "UISprite.h"
 #include "../Component/ColliderPoint.h"
+#include "../Component/ColliderRay.h"
+#include "../Camera/CameraManager.h"
+#include "../Component/Camera.h"
+#include "../Device.h"
 CMouseObj::CMouseObj()	:
 	m_pImage(nullptr)
+	, m_pCollider(nullptr)
 {
 }
 
@@ -11,13 +16,13 @@ CMouseObj::CMouseObj(const CMouseObj& obj)	:
 {
 	m_pImage = (CUISprite*)FindSceneComponent("Mouse");
 
-	m_pPC = (CColliderPoint*)FindSceneComponent("MouseBody");
+	m_pCollider = (CColliderRay*)FindSceneComponent("MouseBody");
 }
 
 CMouseObj::~CMouseObj()
 {
 	SAFE_RELEASE(m_pImage);
-	SAFE_RELEASE(m_pPC);
+	SAFE_RELEASE(m_pCollider);
 }
 
 bool CMouseObj::Init()
@@ -36,12 +41,12 @@ bool CMouseObj::Init()
 	//m_pImage->SetFrm(13);
 	//m_pImage->SetTime(0.05f);
 
-	m_pPC = CreateComponent<CColliderPoint>("MouseBody");
-	m_pPC->SetUI();
-	m_pPC->SetSceneComType(SCENE_COMPONENT_TYPE::SCT_UI);
-	m_pPC->SetMouse();
+	m_pCollider = CreateComponent<CColliderRay>("MouseBody", m_pLayer);
+	m_pCollider->SetUI();
+	m_pCollider->SetSceneComType(SCENE_COMPONENT_TYPE::SCT_UI);
+	m_pCollider->SetMouse();
 
-	SetRootComponent(m_pPC);
+	SetRootComponent(m_pCollider);
 
 	//m_pImage->AddChild(m_pPC);
 
@@ -56,6 +61,44 @@ void CMouseObj::Start()
 void CMouseObj::Update(float fTime)
 {
 	CUIObject::Update(fTime);
+
+	Vector3 vPos = GetWorldPos();
+
+	CCamera* pCam = GET_SINGLE(CCameraManager)->GetMainCam();
+
+	Matrix matInvProj = pCam->GetProjMat();
+
+	matInvProj.Inverse();
+
+	Matrix matInvVP = pCam->GetVP();
+
+	Vector3 vPivot = pCam->GetPivot();
+
+	matInvVP.Inverse();
+
+	Resolution tRS = RESOLUTION;
+
+	vPos.x = (vPos.x - tRS.iWidth * vPivot.x) / tRS.iWidth * 2.f;
+	vPos.y = (vPos.y - tRS.iHeight * vPivot.y) / tRS.iHeight * 2.f;
+
+	//Vector3 vViewPos = 
+
+	Vector3 vWorldPos = vPos.TransformCoord(matInvVP);
+
+	//vWorldPos.x = vPos.x * matInvVP[0][0] + vPos.y * matInvVP[1][0] + 0.3f * matInvVP[3][0];
+	//vWorldPos.y = vPos.x * matInvVP[0][1] + vPos.y * matInvVP[1][1] + 0.3f * matInvVP[3][1];
+	//vWorldPos.z = vPos.x * matInvVP[0][2] + vPos.y * matInvVP[1][2] + 0.3f * matInvVP[3][2];
+
+	Vector3 vCamPos = pCam->GetWorldPos();
+
+	Vector3 vDir = vWorldPos - vCamPos;
+
+	vDir.Normalize();
+
+	m_pCollider->SetDir(vDir);
+	m_pCollider->SetOrigin(vCamPos);
+
+	SAFE_RELEASE(pCam);
 }
 
 void CMouseObj::PostUpdate(float fTime)

@@ -1,0 +1,80 @@
+Parent = Material3'LV_MM_FoliagePP_NON_MSK_2SD'
+ScalarParameterValues[5] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.03
+        ParameterName = Animation_Speed_Multiplier
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Animation_Strength
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 50
+        ParameterName = AverageObjectSizeWS/RootStiffness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.03
+        ParameterName = Wind_Wave_Width
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = -0.2
+        ParameterName = Diffuse_Desaturation
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Shakara_Foliage_DesertWeed02_C_HMJ'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Foliage_DesertWeed04_D_KSR'
+        ParameterName = Diffuse
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.8, G=0.9, B=0.7, A=1 }
+        ParameterName = Diffuse_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.02, G=0.02, B=0.01, A=1 }
+        ParameterName = Emissive_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.5, B=0.5, A=1 }
+        ParameterName = Transmission_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

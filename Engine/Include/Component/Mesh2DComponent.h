@@ -12,6 +12,7 @@ protected:
 
 public:
 	virtual bool Init();
+	virtual bool Init(const char* pFileName, const std::string& strPathKey = DATA_PATH);
 	virtual void Start();
 	virtual void Update(float fTime);
 	virtual void PostUpdate(float fTime);

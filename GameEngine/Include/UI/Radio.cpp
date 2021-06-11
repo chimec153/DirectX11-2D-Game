@@ -103,7 +103,7 @@ void CRadio::Render(float fTime)
 
 		m_pSelTex->SetTexture(0, (int)SHADER_CBUFFER_TYPE::CBUFFER_PIXEL);
 
-		m_pMaterial->SetMaterial();
+		//m_pMaterial->SetMaterial();
 
 		m_pImage->Render(fTime);
 	}

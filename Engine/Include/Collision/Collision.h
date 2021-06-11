@@ -93,5 +93,39 @@ public:
 		class CColliderPoint* pDst);
 	static bool CollisionPointToPoint(Vector3& vCrs,
 		const Vector3& vSrc, const Vector3& tDst);
+
+public:
+	static bool CollisionRayToRay(class CColliderRay* pSrc,
+		class CColliderRay* pDst);
+	static bool CollisionRayToRay(Vector3& vCrs,
+		const RAYINFO& vSrc, const RAYINFO& tDst);
+	static bool CollisionRayToSphere(class CColliderRay* pSrc,
+		class CColliderCircle* pDst);
+	static bool CollisionRayToSphere(Vector3& vCrs,
+		const RAYINFO& vSrc, const CircleInfo& tDst);
+	static bool CollisionRayToOBB(class CColliderRay* pSrc,
+		class CColliderOBB* pDest);
+	static bool CollisionRayToOBB(Vector3& vCross, const RAYINFO& tSrc,
+		const OBBInfo& tDest);
+
+private:
+	static bool CollisionRayToTraingle(Vector3& vCross, const RAYINFO& tSrc, 
+		const Vector3& v0, const Vector3& v1, const Vector3& v2);
+
+public:
+	static bool CollisionOBBToOBB(class CColliderOBB* pSrc,
+		class CColliderOBB* pDest);
+	static bool CollisionOBBToOBB(Vector3 vCross, const OBBInfo& tSrc,
+		const OBBInfo& tDest);
+	static bool CollisionOBBToSphere(class CColliderOBB* pSrc,
+		class CColliderCircle* pDest);
+	static bool CollisionOBBToSphere(Vector3& vCross, const OBBInfo& tSrc,
+		const CircleInfo& tDest);
+	
+public:
+	static bool CollisionTerrainToRay(class CColliderTerrain* pSrc,
+		class CColliderRay* pDest);
+	static bool CollisionTerrainToRay(Vector3& vCross, const TERRAININFO& tSrc,
+		const RAYINFO& tDest);
 };
 

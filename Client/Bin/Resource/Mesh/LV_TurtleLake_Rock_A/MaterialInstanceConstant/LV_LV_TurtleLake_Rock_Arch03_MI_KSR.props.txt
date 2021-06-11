@@ -1,0 +1,134 @@
+Parent = MaterialInstanceConstant'LV_DesertValley_Goblin_ChiefHouse04_MI_JJY'
+ScalarParameterValues[9] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 10
+        ParameterName = Diffuse_FresnelExponent
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = UV_01_U
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = UV_01_V
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = UV_02_U
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = UV_02_V
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = UV_Normal01_U
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = UV_Normal01_V
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = UV_NormalDetail
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = UV_NormalDetail_Rotate
+    }
+}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Rock_SmallRock_D_EYE'
+        ParameterName = Diffuse01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_DesertValley_Rock_Pattern01_D_JJY'
+        ParameterName = Diffuse02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_DesertValley_Goblin_Arch03_N_JJY'
+        ParameterName = Normal01
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_DesertValley_Rock_Pattern02_N_JJY'
+        ParameterName = Normal_Detail
+    }
+}
+VectorParameterValues[6] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0, B=0.6, A=1 }
+        ParameterName = Blend_WorldVector
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.7, G=0.7, B=0.7, A=1 }
+        ParameterName = Diffuse01_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.8, G=1, B=0.9, A=1 }
+        ParameterName = Diffuse02_Color
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.1, G=0.0795424, B=0.0599023, A=1 }
+        ParameterName = Diffuse_FresnelColor
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.2, A=1 }
+        ParameterName = Normal01_Power
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0.5, A=1 }
+        ParameterName = Normal_DetailPower
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

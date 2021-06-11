@@ -1,13 +1,13 @@
 #include "Share.fx"
 
-struct VS_IN
+struct VS_IN_UI
 {
 	float3 vPos	:	POSITION;
 	float2 vUV	:	TEXCOORD;
 	float4 vColor	:	COLOR;
 };
 
-struct VS_OUT
+struct VS_OUT_UI
 {
 	float4 vPos	:	SV_POSITION;
 	float2 vUV	:	TEXCOORD;
@@ -26,9 +26,9 @@ cbuffer Bar	:	register(b10)
 #define	RIGHT	2
 #define	BOT		3
 
-VS_OUT VS(VS_IN input)
+VS_OUT_UI VS(VS_IN_UI input)
 {
-	VS_OUT output = (VS_OUT)0;
+	VS_OUT_UI output = (VS_OUT_UI)0;
 
 	float3 vPos = input.vPos - g_vPivot * g_vMeshSize;
 
@@ -39,7 +39,7 @@ VS_OUT VS(VS_IN input)
 	return output;
 }
 
-PS_OUTPUT_COLOR PS(VS_OUT input)
+PS_OUTPUT_COLOR PS(VS_OUT_UI input)
 {
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0;
 
@@ -54,9 +54,9 @@ PS_OUTPUT_COLOR PS(VS_OUT input)
 	return output;
 }
 
-VS_OUT BarVS(VS_IN input)
+VS_OUT_UI BarVS(VS_IN_UI input)
 {
-	VS_OUT output = (VS_OUT)0.f;
+	VS_OUT_UI output = (VS_OUT_UI)0.f;
 
 	float3 vPos = input.vPos - g_vPivot * g_vMeshSize;
 
@@ -67,7 +67,7 @@ VS_OUT BarVS(VS_IN input)
 	return output;	
 }
 
-PS_OUTPUT_COLOR BarPS(VS_OUT input)
+PS_OUTPUT_COLOR BarPS(VS_OUT_UI input)
 {
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0.f;
 

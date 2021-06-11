@@ -1,0 +1,128 @@
+Parent = Material3'LV_MM_Rock_PHO_OPA_1SD'
+ScalarParameterValues[9] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 6
+        ParameterName = UV_01_U
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 6
+        ParameterName = UV_01_V
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = UV_02_U
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = UV_02_V
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = UV_Normal01_U
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = UV_Normal01_V
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = UV_Normal02_U
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 12
+        ParameterName = UV_Normal02_V
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 6
+        ParameterName = UV_NormalDetail
+    }
+}
+TextureParameterValues[6] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Rock_NForestArea_C_LHJ'
+        ParameterName = Channel
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Rock_BasicsRock01_D_KMS'
+        ParameterName = Diffuse01
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Tile_Grass01_D_IJH'
+        ParameterName = Diffuse02
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Rock_NForestArea01_N_LHJ'
+        ParameterName = Normal01
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Rock_NForestAreaGrass_N_LHJ'
+        ParameterName = Normal02
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_GrassLand_Rock_NForestAreaDetail_N_LHJ'
+        ParameterName = Normal_Detail
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.693, G=0.693, B=0.715, A=1 }
+        ParameterName = Diffuse01_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0, B=0, A=1 }
+        ParameterName = Diffuse02_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=0.747191, B=0.747191, A=1 }
+        ParameterName = Normal02_Power
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

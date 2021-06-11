@@ -1,0 +1,68 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[11] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.25
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[11] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[11] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[4] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[5] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[6] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[7] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[8] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[9] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+    Materials[10] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_012_MI_KYO'
+}

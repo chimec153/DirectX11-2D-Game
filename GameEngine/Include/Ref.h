@@ -36,7 +36,7 @@ public:
 		m_bActive = false;
 	}
 
-	std::string GetName()	const
+	const std::string& GetName()	const
 	{
 		return m_strName;
 	}
@@ -53,6 +53,7 @@ public:
 public:
 	virtual void Save(FILE* pFile);
 	virtual void Load(FILE* pFile);
-
+public:
+	virtual void SpawnWindow();
 };
 

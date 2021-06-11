@@ -54,17 +54,16 @@ private:
 private:
 	std::vector<PTextureInfo>	m_vecTextureInfo;
 	IMAGE_TYPE					m_eImageType;
+	ID3D11ShaderResourceView*	m_pArraySRV;
 
 public:
 	unsigned int GetWidth(int idx = 0)	const;
 	unsigned int GetHeigth(int idx = 0)	const;
 	void SetImageType(IMAGE_TYPE eType);
 	const Vector2 GetSize(int idx = 0)	const;
-
-	IMAGE_TYPE GetImageType()	const
-	{
-		return m_eImageType;
-	}
+	IMAGE_TYPE GetImageType()	const;
+	ID3D11ShaderResourceView* GetArraySRV()	const;
+	class ScratchImage* GetImage(int idx = 0)	const;
 
 public:
 	bool Init();
@@ -75,8 +74,11 @@ public:
 	bool LoadTextureFromFullPath(const std::string& strTag, const TCHAR* pFullPath);
 	bool LoadTexture(const std::string& strTag, const std::vector<const TCHAR*>& vecFileName, const std::string& strPathName = TEXTURE_PATH);
 	bool LoadTextureFromFullPath(const std::string& strTag, const std::vector<const TCHAR*>& vecFullPath);
+	bool LoadTextureArray(const std::string& strTag, const std::vector<const TCHAR*>& vecFileName, const std::string& strPathName = TEXTURE_PATH);
+	bool LoadTextureArrayFromFullPath(const std::string& strTag, const std::vector<const TCHAR*>& vecFullPath);
 	void SetTexture(int iRegister, int iType, int idx = 0);
-	ID3D11ShaderResourceView* CreateRandomTexture1DSRV();
+	void SetPathKey(const std::string& strPathKey);
+	void ChangePath(const char* pFilePath);
 
 private:
 	bool CreateResource(int idx = 0);

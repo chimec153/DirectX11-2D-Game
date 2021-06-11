@@ -30,11 +30,12 @@ public:
 
 protected:
 	class CSceneComponent*				m_pRootComponent;
-	std::vector<class CObjComponent*>	m_vecObjComponent;
+	std::vector<class CComponent*>		m_vecObjComponent;
 	int									m_iObjClassType;
 
 public:
 	int GetClassType()	const;
+	class CSceneComponent* GetRootComponent()	const;
 
 protected:
 	std::function<void(const std::string&)>		m_EditorDelete;
@@ -50,14 +51,15 @@ public:
 	void SetRootComponent(class CSceneComponent*);
 	class CSceneComponent* FindSceneComponent(const std::string& strTag);
 	template <typename T>
-	T* FindComByType()
+	T* FindComByType(const std::string& strKey = "")
 	{
-		return m_pRootComponent->FindComByType<T>();
+		return m_pRootComponent->FindComByType<T>(strKey);
 	}
 	virtual void Notify(const std::string& strTag);
 
 public:
 	virtual bool Init();
+	virtual bool Init(const char* pFile, const char* pPathKey = DATA_PATH);
 	virtual void Start();
 	virtual void Input(float fTime);
 	virtual void Update(float fTime);
@@ -71,10 +73,15 @@ public:
 	virtual void Load(FILE* pFile);
 
 public:
+	void CheckFrustum();
+
+public:
 	void SetInheritScale(bool bInherit);
 	void SetInheritRotX(bool bInherit);
 	void SetInheritRotY(bool bInherit);
 	void SetInheritRotZ(bool bInherit);
+	void SetUpdateScale(bool bScale);
+	void SetUpdateRot(bool bRot);
 	void InheritScale();
 	void InheritRot();
 	void InheritPos();
@@ -100,27 +107,27 @@ public:
 	void AddRelativeRotZ(float z);
 
 public:
-	Vector3 GetVelocityScale()			const;
-	Vector3 GetVelocityRot()			const;
-	Vector3 GetVelocity()				const;
+	const Vector3& GetVelocityScale()			const;
+	const Vector3& GetVelocityRot()			const;
+	const Vector3& GetVelocity()				const;
 	float GetVelocityAmt()				const;
-	Vector3 GetRelativeScale()			const;
-	Vector3 GetRelativeRot()			const;
-	Vector3 GetRelativePos()			const;
-	Vector3 GetRelativeAxis(WORLD_AXIS axis)	const;
+	const Vector3& GetRelativeScale()			const;
+	const Vector3& GetRelativeRot()			const;
+	const Vector3& GetRelativePos()			const;
+	const Vector3& GetRelativeAxis(WORLD_AXIS axis)	const;
 
 public:
-	Vector3 GetWorldScale()				const;
-	Vector3 GetWorldRot()				const;
-	Vector3 GetWorldPos()				const;
-	Vector3 GetWorldAxis(WORLD_AXIS axis)		const;
-	Vector3 GetPivot()					const;
+	const Vector3& GetWorldScale()				const;
+	const Vector3& GetWorldRot()				const;
+	const Vector3& GetWorldPos()				const;
+	const Vector3& GetWorldAxis(WORLD_AXIS axis)		const;
+	const Vector3& GetPivot()					const;
 
 public:
-	Matrix GetMatScale()				const;
-	Matrix GetMatRot()					const;
-	Matrix GetMatPos()					const;
-	Matrix GetMatWorld()				const;
+	const Matrix& GetMatScale()				const;
+	const Matrix& GetMatRot()					const;
+	const Matrix& GetMatPos()					const;
+	const Matrix& GetMatWorld()				const;
 
 public:
 	void SetWorldScale(const Vector3& v);
@@ -144,17 +151,28 @@ public:
 	void SetPivot(const Vector3& v);
 	void SetPivot(float x, float y, float z);
 	void SetMeshSize(const Vector3& v);
+	void Slerp(const Vector4& p, const Vector4& q, float s);
+	void Slerp(const Vector4& q, float s);
+	void SetQuaternionRot(const Vector4& vAxis, float fAngle);
+	void AddQuaternionRot(const Vector4& vAxis, float fAngle);
+	void SetQuaternionRotNorm(const Vector4& vAxis, float fAngle);
+	void AddQuaternionRotNorm(const Vector4& vAxis, float fAngle);
 
 public:
 	template <typename T>
-	T* CreateComponent(const std::string& strName)
+	T* CreateComponent(const std::string& strName, class CLayer* pLayer = nullptr)
 	{
 		T* pComponent = new T;
 
 		pComponent->SetName(strName);
 		pComponent->m_pScene = m_pScene;
 		pComponent->m_pObj = this;
-		pComponent->m_pLayer = m_pLayer;
+
+		if (pLayer == nullptr)
+			pComponent->m_pLayer = m_pLayer;
+
+		else
+			pComponent->m_pLayer = pLayer;
 
 		if (!pComponent->Init())
 		{
@@ -165,17 +183,91 @@ public:
 		if (pComponent->GetType() == COMPONENT_TYPE::CT_OBJECT)
 		{
 			pComponent->AddRef();
-			m_vecObjComponent.push_back((CObjComponent*)pComponent);
+			m_vecObjComponent.push_back(pComponent);
 		}
 
 		if (m_bStart)
 			pComponent->Start();
 
-		return pComponent;		
+		return pComponent;
+	}
+
+	template <typename T>
+	T* CreateComponent(const std::string& strName, const char* pFileName, 
+		const std::string& strPathKey = DATA_PATH, class CLayer* pLayer = nullptr)
+	{
+		T* pComponent = new T;
+
+		pComponent->SetName(strName);
+		pComponent->m_pScene = m_pScene;
+		pComponent->m_pObj = this;
+
+		if (pLayer == nullptr)
+			pComponent->m_pLayer = m_pLayer;
+
+		else
+			pComponent->m_pLayer = pLayer;
+
+		if (!pComponent->Init(pFileName, strPathKey))
+		{
+			SAFE_RELEASE(pComponent);
+			return nullptr;
+		}
+
+		if (pComponent->GetType() == COMPONENT_TYPE::CT_OBJECT)
+		{
+			pComponent->AddRef();
+			m_vecObjComponent.push_back(pComponent);
+		}
+
+		if (m_bStart)
+			pComponent->Start();
+
+		return pComponent;
+	}
+
+	template <typename T>
+	T* CreateComponent(const std::string& strName, FILE* pFile, 
+		class CLayer* pLayer = nullptr)
+	{
+		T* pComponent = new T;
+
+		pComponent->SetName(strName);
+		pComponent->m_pScene = m_pScene;
+		pComponent->m_pObj = this;
+
+		if (pLayer == nullptr)
+			pComponent->m_pLayer = m_pLayer;
+
+		else
+			pComponent->m_pLayer = pLayer;
+
+		if (!pComponent->Init(pFile))
+		{
+			SAFE_RELEASE(pComponent);
+			return nullptr;
+		}
+
+		if (pComponent->GetType() == COMPONENT_TYPE::CT_OBJECT)
+		{
+			pComponent->AddRef();
+			m_vecObjComponent.push_back(pComponent);
+		}
+
+		if (m_bStart)
+			pComponent->Start();
+
+		return pComponent;
 	}
 
 public:
 	void GetAllComponentName(std::vector<Hierarchy>& vecHierarchy);
 	void GetAllComponent(std::vector<CSceneComponent*>& vecCom);
+
+public:
+	void SpawnWindow();
+
+public:
+	void AddComponent(class CComponent* pCom);
 };
 

@@ -29,11 +29,11 @@ bool CCollisionManager::Init()
 	m_vecSec.resize((int)SECTION_TYPE::END);
 
 	m_vecSec[(int)SECTION_TYPE::_2D] = CreateSection(1, 1, 1,
-		Vector3(10000.f, 10000.f, 1.f), Vector3(10000.f, 10000.f, 1.f) / 2.f);
+		Vector3(10000.f, 10000.f, 10000.f), Vector3(10000.f, 10000.f, 10000.f) / 2.f);
 	m_vecSec[(int)SECTION_TYPE::_2D]->eType = SECTION_TYPE::END;
 
 	m_vecSec[(int)SECTION_TYPE::_3D] = CreateSection(1, 1, 1,
-		Vector3(10000.f, 10000.f, 1.f), Vector3(10000.f, 10000.f, 1.f) / 2.f);
+		Vector3(10000.f, 10000.f, 10000.f), Vector3(10000.f, 10000.f, 10000.f) / 2.f);
 	m_vecSec[(int)SECTION_TYPE::_3D]->eType = SECTION_TYPE::END;
 
 	m_vecSec[(int)SECTION_TYPE::UI] = CreateSection(1, 1, 1,
@@ -97,17 +97,16 @@ void CCollisionManager::AddCollider(CCollider* pCol)
 	if (pCol->IsMouse())
 	{
 		AddCollider(pCol, SECTION_TYPE::UI);
-		AddCollider(pCol, SECTION_TYPE::_2D);
+		AddCollider(pCol, SECTION_TYPE::_3D);
 	}
 
 	else if (pCol->IsUI())
 	{
 		AddCollider(pCol, SECTION_TYPE::UI);
 	}
-
-	else if (pCol->Is2D())
+	else
 	{
-		AddCollider(pCol, SECTION_TYPE::_2D);
+		AddCollider(pCol, SECTION_TYPE::_3D);
 	}
 }
 
@@ -129,11 +128,12 @@ void CCollisionManager::AddCollider(CCollider* pCol, SECTION_TYPE eType)
 
 	iStartX = (int)(vMin.x / pInfo->vSize.x / pInfo->ixCnt);
 	iStartY = (int)(vMin.y / pInfo->vSize.y / pInfo->iyCnt);
-	iStartZ = (int)(vMin.z / pInfo->vSize.z / pInfo->izCnt);
 
+	iStartZ = (int)(vMin.z / pInfo->vSize.z / pInfo->izCnt);
+	iEndZ = (int)(vMax.z / pInfo->vSize.z / pInfo->izCnt);
+	
 	iEndX = (int)(vMax.x / pInfo->vSize.x / pInfo->ixCnt);
 	iEndY = (int)(vMax.y / pInfo->vSize.y / pInfo->iyCnt);
-	iEndZ = (int)(vMax.z / pInfo->vSize.z / pInfo->izCnt);
 
 	iStartX = iStartX < 0 ? 0 : iStartX;
 	iStartY = iStartY < 0 ? 0 : iStartY;
@@ -213,18 +213,7 @@ void CCollisionManager::SetCenter(const Vector3& v)
 
 void CCollisionManager::ClearCollider(CCollider* pCol)
 {
-	if (pCol->Is2D())
-	{
-		size_t iSz = m_vecSec[(int)SECTION_TYPE::_2D]->vecSec.size();
-
-		for (size_t i = 0; i < iSz; ++i)
-		{
-			if (m_vecSec[(int)SECTION_TYPE::_2D]->vecSec[i]->EraseCollider(pCol))
-				return;
-		}
-	}
-
-	else if (pCol->IsUI())
+	if (pCol->IsUI())
 	{
 		size_t iSz = m_vecSec[(int)SECTION_TYPE::UI]->vecSec.size();
 

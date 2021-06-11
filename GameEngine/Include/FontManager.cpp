@@ -22,6 +22,8 @@ bool CFontManager::Init()
 		return false;
 
 	CreateFormat("Normal", TEXT("±Ã¼­"), 700, 0, 5, 20, TEXT("ko"));
+	CreateFormat("Normal1", TEXT("±Ã¼­"), 600, 0, 5, 20, TEXT("ko"));
+	CreateFormat("Normal2", TEXT("±Ã¼­"), 500, 0, 5, 12, TEXT("ko"));
 
 	return true;
 }
@@ -48,7 +50,7 @@ IDWriteTextLayout* CFontManager::CreateLayout(const TCHAR* pText,
 	IDWriteTextLayout* pLayout = nullptr;
 
 	if (FAILED(m_pFactory->CreateTextLayout(pText, iLength, pFmt, fWidth, fHeight, &pLayout)))
-		return false;
+		return nullptr;
 
 	return pLayout;
 }

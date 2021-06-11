@@ -4,13 +4,13 @@ struct VS_INPUT_INST
 {
 	float3	vPos	:	POSITION;
 	float2	vUV	:	TEXCOORD;
-	float4	vColor	:	COLOR;
 	matrix	matWVP	:	WORLD;
 	float3	vPivot	:	PIVOT;
 	float3	vSize	:	SIZE;
 	float2	vTexSize	:	TEXSIZE;
 	float2	vStart	:	START;
 	float2	vEnd	:	END;
+	float4	vColor	:	COLOR;
 };
 
 struct VS_OUTPUT_INST
@@ -63,10 +63,19 @@ PS_OUTPUT_COLOR PS_INST(VS_OUTPUT_INST input)
 {
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0.f;
 
-	output.vColor = gDiffuseMap.Sample(g_sPoint, input.vUV) * g_vDif;
+	output.vColor = gDiffuseMap.Sample(g_sPoint, input.vUV) * g_vDif * input.vColor;
 
 	if (output.vColor.a == 0.f)
 		clip(-1);
+
+	float3 gray = dot(float3(output.vColor.r, output.vColor.g, output.vColor.b),
+		float3(0.3333f, 0.3333f, 0.3333f));
+
+	float4 vGrayColor = float4(gray, output.vColor.a);
+
+	float4 vColor = lerp(output.vColor, vGrayColor, g_fGray);
+
+	output.vColor = vColor;
 
 	return output;
 }

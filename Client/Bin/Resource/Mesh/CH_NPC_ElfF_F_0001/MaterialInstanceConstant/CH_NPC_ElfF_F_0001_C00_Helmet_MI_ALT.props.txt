@@ -1,0 +1,56 @@
+Parent = Material3'CH_MM_PCArmor_CST_MSK_1SD'
+ScalarParameterValues[1] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 10
+        ParameterName = Metal_SpecularPower
+    }
+}
+TextureParameterValues[4] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_C00_Helmet_C1_ALT'
+        ParameterName = Channel_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_C00_Helmet_D_ALT'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_C00_Helmet_N_ALT'
+        ParameterName = Normal
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_C00_Helmet_SP_ALT'
+        ParameterName = Specular
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=8.54528, G=7.6397, B=12.9229, A=1 }
+        ParameterName = Metal_SpecularColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

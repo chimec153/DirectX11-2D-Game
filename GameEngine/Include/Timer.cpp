@@ -1,7 +1,5 @@
 #include "Timer.h"
 
-DEFINITION_SINGLE(CTimer)
-
 CTimer::CTimer()	:
 	m_fDeltaTime(0.f),
 	m_fFPS(0.f),
@@ -17,6 +15,26 @@ CTimer::CTimer()	:
 CTimer::~CTimer()
 {
 
+}
+
+float CTimer::GetDeltaTime() const
+{
+	return m_fDeltaTime * m_fTimeScale;
+}
+
+float CTimer::GetFPS() const
+{
+	return m_fFPS;
+}
+
+void CTimer::SetTimeScale(float fScale)
+{
+	m_fTimeScale = fScale;
+}
+
+float CTimer::GetTimeScale() const
+{
+	return m_fTimeScale;
 }
 
 bool CTimer::Init()

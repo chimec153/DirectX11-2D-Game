@@ -6,7 +6,7 @@
 #define MOUSE_RIGHT	0xfe
 #define MOUSE_WHEEL	0xff
 
-enum KEY_TYPE
+enum class KEY_TYPE
 {
 	KT_DOWN,
 	KT_PRESS,
@@ -14,7 +14,7 @@ enum KEY_TYPE
 	KT_END
 };
 
-enum KEY_UNION
+enum class KEY_UNION
 {
 	KU_CTRL,
 	KU_ALT,
@@ -46,7 +46,7 @@ enum class MOUSE_DIR
 
 typedef struct _tagKeyInfo
 {
-	char	cKey;
+	unsigned char	cKey;
 	bool	bPush;
 	float	fPushTime;
 	int		iRef;
@@ -63,14 +63,14 @@ typedef struct _tagKeyInfo
 typedef struct _tagActionKey
 {
 	PKeyInfo	pInfo;
-	bool		bUnion[KU_END];
+	bool		bUnion[(int)KEY_UNION::KU_END];
 	bool		bPush;
 	float		fPushTime;
 
 	_tagActionKey()
 	{
 		pInfo = nullptr;
-		memset(bUnion, 0, sizeof(bool) * KU_END);
+		memset(bUnion, 0, sizeof(bool) *(int)KEY_UNION::KU_END);
 		bPush = false;
 	}
 }ActionKey, *PActionKey;
@@ -79,19 +79,34 @@ typedef struct _tagAxisFunc
 {
 	std::function<void(const std::string&, float, float)>	pFunc;
 	class CInputObj*										pObj;
+
+	_tagAxisFunc() :
+		pFunc(nullptr)
+		, pObj(nullptr)
+	{
+
+	}
 }AxisFunc, *PAxisFunc;
 
 typedef struct _tagActionFunc
 {
 	std::function<void(const std::string&,KEY_TYPE, float, float)>	pFunc;
 	class CInputObj*								pObj;
+
+	_tagActionFunc()	:
+		pFunc(nullptr)
+		, pObj(nullptr)
+	{
+
+	}
 }ActionFunc, *PActionFunc;
 
 typedef struct _tagBindAction
 {
 	std::string								strTag;
 	std::vector<ActionKey>					vecKey;
-	std::vector<ActionFunc>					vecFunc[KT_END];
+	std::vector<ActionFunc>					vecFunc[(int)KEY_TYPE::KT_END];
+	std::vector<std::function<void(float)>>	vecDFunc[(int)KEY_TYPE::KT_END];
 }BindAction, *PBindAction;
 
 typedef struct _tagAxisKey
@@ -136,14 +151,14 @@ private:
 	unsigned char									m_cState[256];
 	class CMouseObj*								m_pMouseObj;
 	bool											m_bShowCS;
-	Vector2											m_vWorldMousePos;
+	Vector3											m_vWorldMousePos;
 	bool											m_pMouseDown[(int)MOUSE_BUTTON_TYPE::END];
 	bool											m_pMouseUp[(int)MOUSE_BUTTON_TYPE::END];
 	bool											m_pMousePress[(int)MOUSE_BUTTON_TYPE::END];
 	DIMOUSESTATE									m_tState;
 
 public:
-	const Vector2& GetWorldMousePos()	const;
+	const Vector3& GetWorldMousePos()	const;
 	bool IsMouseDown(MOUSE_BUTTON_TYPE eType)	const;
 	bool IsMouseUp(MOUSE_BUTTON_TYPE eType)	const;
 	bool IsMousePress(MOUSE_BUTTON_TYPE eType)	const;
@@ -151,6 +166,9 @@ public:
 	const Vector2& GetMousePos()	const;
 	const Vector2& GetMouseMove()	const;
 	class CMouseObj* GetMouse()	const;
+	void DeleteActionCallBack(const std::string& strTag);
+	void DeleteAxisCallBack(const std::string& strTag);
+	bool IsKeyPressed(unsigned char cKey);
 
 public:
 	bool Init(HWND hWnd, HINSTANCE hInst);
@@ -170,8 +188,8 @@ public:
 	void Render();
 
 public:
-	void AddActionKey(const std::string& strTag, char cKey);
-	void AddActionKeyUnion(const std::string& strTag, char cKey, KEY_UNION eUnion);
+	void AddActionKey(const std::string& strTag, unsigned char cKey);
+	void AddActionKeyUnion(const std::string& strTag, unsigned char cKey, KEY_UNION eUnion);
 	void AddActionBind(const std::string& strTag, KEY_TYPE eType, void(*pFunc)(const std::string&, KEY_TYPE,float));
 	template <typename T>
 	void AddActionBind(const std::string& strTag, KEY_TYPE eType, T* pObj, void(T::*pFunc)(const std::string&, KEY_TYPE, float, float))
@@ -190,13 +208,30 @@ public:
 		tFunc.pFunc = std::bind(pFunc, pObj, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 		tFunc.pObj = pObj;
 
-		pAction->vecFunc[eType].push_back(tFunc);
+		pAction->vecFunc[(int)eType].push_back(tFunc);
 	}
+
+	void AddActionBind(const std::string& strTag, KEY_TYPE eType, void(*pFunc)(float));
+	template <typename T>
+	void AddActionBind(const std::string& strTag, KEY_TYPE eType, T* pObj, void(T::* pFunc)(float))
+	{
+		PBindAction pAction = FindAction(strTag);
+
+		if (!pAction)
+		{
+			pAction = new BindAction;
+			m_mapBindAction.insert(std::make_pair(strTag, pAction));
+			pAction->strTag = strTag;
+		}
+
+		pAction->vecDFunc[(int)eType].push_back(std::bind(pFunc, pObj, std::placeholders::_1));
+	}
+
 	void DeleteActionKey(const std::string& strTag);
 	void DeleteActionKey(const std::string& strTag, class CInputObj* pInput);
 
 public:
-	void AddAxisKey(const std::string& strTag, char cKey, float fScale);
+	void AddAxisKey(const std::string& strTag, unsigned char cKey, float fScale);
 	void AddAxisBind(const std::string& strTag, void(*pFunc)(const std::string&, float, float));
 	template <typename T>
 	void AddAxisBind(const std::string& strTag, T* pObj, void(T::* pFunc)(const std::string&, float, float))

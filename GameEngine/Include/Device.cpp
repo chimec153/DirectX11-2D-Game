@@ -8,6 +8,8 @@ CDevice::CDevice()	:
 	m_pSwapChain(nullptr),
 	m_pTargetView(nullptr),
 	m_pDepthView(nullptr)
+	,m_p2DFactory(nullptr)
+	, m_p2DTarget(nullptr)
 {
 	memset(m_pColor, 0, sizeof(float) * 4);
 
@@ -71,6 +73,18 @@ ID2D1RenderTarget* CDevice::GetRenderTarget2D() const
 
 bool CDevice::Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed)
 {
+	SAFE_RELEASE(m_p2DFactory);
+	SAFE_RELEASE(m_p2DTarget);
+	SAFE_RELEASE(m_pSwapChain);
+	SAFE_RELEASE(m_pTargetView);
+	SAFE_RELEASE(m_pDepthView);
+
+	if (m_pContext)
+		m_pContext->ClearState();
+
+	SAFE_RELEASE(m_pDevice);
+	SAFE_RELEASE(m_pContext);
+
 	m_hWnd = hWnd;
 
 	m_tRS.iWidth = iWidth;
@@ -115,8 +129,10 @@ bool CDevice::Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed)
 	ID3D11Texture2D* pBackBuffer = nullptr;
 
 	m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&pBackBuffer);
-
-	m_pDevice->CreateRenderTargetView(pBackBuffer, nullptr, &m_pTargetView);
+	if (pBackBuffer)
+	{
+		m_pDevice->CreateRenderTargetView(pBackBuffer, nullptr, &m_pTargetView);
+	}
 
 	SAFE_RELEASE(pBackBuffer);
 
@@ -136,7 +152,10 @@ bool CDevice::Init(HWND hWnd, int iWidth, int iHeight, bool bWindowed)
 
 	m_pDevice->CreateTexture2D(&tDepth, nullptr, &pDepthBuffer);
 
-	m_pDevice->CreateDepthStencilView(pDepthBuffer, nullptr, &m_pDepthView);
+	if (pDepthBuffer)
+	{
+		m_pDevice->CreateDepthStencilView(pDepthBuffer, nullptr, &m_pDepthView);
+	}
 
 	SAFE_RELEASE(pDepthBuffer);
 
@@ -187,4 +206,9 @@ void CDevice::ClearState()
 void CDevice::Render()
 {
 	m_pSwapChain->Present(0, 0);
+}
+
+void CDevice::SetTarget()
+{
+	CONTEXT->OMSetRenderTargets(1, &m_pTargetView, m_pDepthView);
 }

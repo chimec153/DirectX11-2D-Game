@@ -38,9 +38,9 @@ typedef __declspec(dllexport) union _tagVector3
 	_tagVector3 operator++(int i);
 
 	//operator +=
-	_tagVector3 operator+= (const _tagVector3& v);
-	_tagVector3 operator+= (const DirectX::XMVECTOR& v);
-	_tagVector3 operator+= (float f);
+	_tagVector3& operator+= (const _tagVector3& v);
+	_tagVector3& operator+= (const DirectX::XMVECTOR& v);
+	_tagVector3& operator+= (float f);
 
 	//operator -
 	_tagVector3 operator- (const _tagVector3& v)	const;
@@ -53,9 +53,9 @@ typedef __declspec(dllexport) union _tagVector3
 	_tagVector3 operator--(int i);
 
 	//operator -=
-	_tagVector3 operator-= (const _tagVector3& v);
-	_tagVector3 operator-= (const DirectX::XMVECTOR& v);
-	_tagVector3 operator-= (float f);
+	_tagVector3& operator-= (const _tagVector3& v);
+	_tagVector3& operator-= (const DirectX::XMVECTOR& v);
+	_tagVector3& operator-= (float f);
 
 	//operator *
 	_tagVector3 operator* (const _tagVector3& v)	const;
@@ -63,9 +63,9 @@ typedef __declspec(dllexport) union _tagVector3
 	_tagVector3 operator* (float f)	const;
 
 	//operator *=
-	_tagVector3 operator*= (const _tagVector3& v);
-	_tagVector3 operator*= (const DirectX::XMVECTOR& v);
-	_tagVector3 operator*= (float f);
+	_tagVector3& operator*= (const _tagVector3& v);
+	_tagVector3& operator*= (const DirectX::XMVECTOR& v);
+	_tagVector3& operator*= (float f);
 
 	//operator /
 	_tagVector3 operator/ (const _tagVector3& v)	const;
@@ -73,9 +73,9 @@ typedef __declspec(dllexport) union _tagVector3
 	_tagVector3 operator/ (float f)	const;
 
 	//operator /=
-	_tagVector3 operator/= (const _tagVector3& v);
-	_tagVector3 operator/= (const DirectX::XMVECTOR& v);
-	_tagVector3 operator/= (float f);
+	_tagVector3& operator/= (const _tagVector3& v);
+	_tagVector3& operator/= (const DirectX::XMVECTOR& v);
+	_tagVector3& operator/= (float f);
 
 	void Convert(const DirectX::XMVECTOR& v);
 	DirectX::XMVECTOR Convert()	const;

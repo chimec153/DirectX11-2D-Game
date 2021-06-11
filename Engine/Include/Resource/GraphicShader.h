@@ -31,15 +31,16 @@ public:
 		const TCHAR* pFileName, const std::string& strRootName = SHADER_PATH);
 	bool LoadGeometryShader(const char* pEntryName,
 		const TCHAR* pFileName, const std::string& strRootName = SHADER_PATH);
+	bool LoadGeometryShaderWithSO(const char* pEntryName, 
+		D3D11_SO_DECLARATION_ENTRY* pEntry,	UINT iNumEntries, UINT iStride, UINT iNumStrides,
+		const TCHAR* pFileName, const std::string& strRootName = SHADER_PATH);
 	bool LoadDomainShader(const char* pEntryName,
 		const TCHAR* pFileName, const std::string& strRootName = SHADER_PATH);
-
-	bool LoadGeometryShaderwithStream(const char* pEntryName,
-		const TCHAR* pFileName,D3D11_SO_DECLARATION_ENTRY* pDecl, const std::string& strRootName = SHADER_PATH);
 
 public:
 	virtual bool CreateInputLayout();
 	virtual void SetShader();
+	virtual void ResetShader(SHADER_CBUFFER_TYPE eType);
 
 };
 

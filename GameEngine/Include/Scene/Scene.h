@@ -22,6 +22,7 @@ public:
 	SCENE_TYPE GetSceneType()	const;
 	void CreateLayer(const std::string& strKey, int iZ);
 	class CLayer* FindLayer(const std::string& strKey);
+	const std::list<class CLayer*>& GetLayerList()	const;
 
 protected:
 	std::function<void(const std::string&)>		m_EditorCreate;
@@ -65,10 +66,38 @@ public:
 
 		pObj->SetName(strName);
 
-		if (eType == SCENE_TYPE::SC_CURRENT)
+		//if (eType == SCENE_TYPE::SC_CURRENT)
 			pObj->m_pScene = this;
 
 		if (!pObj->Init())
+		{
+			SAFE_RELEASE(pObj);
+			return nullptr;
+		}
+
+		if (m_EditorCreate)
+			m_EditorCreate(strName);
+
+		pObj->m_EditorDelete = m_EditorDelete;
+
+		pLayer->AddObj(pObj);
+
+		return pObj;
+	}
+
+	template <typename T>
+	T* CreateObject(const std::string& strName, class CLayer* pLayer, 
+		const char* pFileName, const std::string& strPathKey = DATA_PATH,
+		SCENE_TYPE eType = SCENE_TYPE::SC_CURRENT)
+	{
+		T* pObj = new T;
+
+		pObj->SetName(strName);
+
+		//if (eType == SCENE_TYPE::SC_CURRENT)
+			pObj->m_pScene = this;
+
+		if (!pObj->Init(pFileName, strPathKey))
 		{
 			SAFE_RELEASE(pObj);
 			return nullptr;
@@ -100,6 +129,35 @@ public:
 		pProto->m_pScene = pScene;
 
 		if (!pProto->Init())
+		{
+			SAFE_RELEASE(pProto);
+			return nullptr;
+		}
+
+		pProto->AddRef();
+		m_mapProtoType[(int)eType].insert(std::make_pair(strKey, pProto));
+
+		return pProto;
+	}
+
+	template <typename T>
+	static T* CreateProtoObj(const std::string& strKey, CScene* pScene, 
+		const char* pFileName, const std::string& strPathKey = DATA_PATH,
+		SCENE_TYPE eType = SCENE_TYPE::SC_CURRENT)
+	{
+		T* pProto = (T*)FindProtoType(strKey, eType);
+
+		if (pProto)
+		{
+			SAFE_RELEASE(pProto);
+			return nullptr;
+		}
+
+		pProto = new T;
+
+		pProto->m_pScene = pScene;
+
+		if (!pProto->Init(pFileName, strPathKey))
 		{
 			SAFE_RELEASE(pProto);
 			return nullptr;
@@ -162,7 +220,13 @@ public:
 	virtual void Load(const char* pFileName, const std::string& strRootPath = DATA_PATH);
 
 public:
+	void CheckFrustum();
+
+public:
 	static bool SortZ(class CLayer* pSrc, class CLayer* pDst);
 	void SortInstText();
+
+public:
+	void SpawnWindow();
 };
 

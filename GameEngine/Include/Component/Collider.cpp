@@ -7,6 +7,11 @@
 #include "../Scene/Scene.h"
 #include "../Collision/CollisionManager.h"
 #include "../Scene/SceneManager.h"
+#include "../Resource/ShaderManager.h"
+#include "../Resource/GraphicShader.h"
+#ifdef _DEBUG
+#include "../Render/RenderManager.h"
+#endif
 
 CCollider::CCollider() :
 	m_vMin(),
@@ -19,11 +24,12 @@ CCollider::CCollider() :
 	m_bCheck(false),
 	m_bMouse(false),
 	m_iZOrder(0)
-{
 #ifdef _DEBUG
-	m_pDebugMesh = nullptr;
-	m_pDebugMtrl = nullptr;
+	, m_pDebugMesh(nullptr)
+	, m_pDebugMtrl( nullptr)
+	, m_pDebugShader ( nullptr)
 #endif
+{
 }
 
 CCollider::CCollider(const CCollider& col)	:
@@ -48,6 +54,11 @@ CCollider::CCollider(const CCollider& col)	:
 
 	else
 		m_pDebugMtrl = nullptr;
+
+	m_pDebugShader = col.m_pDebugShader;
+
+	if (m_pDebugShader)
+		m_pDebugShader->AddRef();
 #endif
 }
 
@@ -56,6 +67,7 @@ CCollider::~CCollider()
 #ifdef _DEBUG
 	SAFE_RELEASE(m_pDebugMesh);
 	SAFE_RELEASE(m_pDebugMtrl);
+	SAFE_RELEASE(m_pDebugShader);
 #endif
 
 	std::list<CCollider*>::iterator iter = m_PrevColList.begin();
@@ -290,9 +302,11 @@ bool CCollider::Init()
 #ifdef _DEBUG
 	CMaterial* pMtrl = GET_SINGLE(CResourceManager)->FindMaterial("Collider");
 
-	m_pMaterial = pMtrl->Clone();
+	m_pDebugMtrl = pMtrl->Clone();
 
 	SAFE_RELEASE(pMtrl);
+
+	m_pDebugShader = GET_SINGLE(CShaderManager)->FindShader("Collider");
 #endif
 	m_pProfile = GET_SINGLE(CCollisionManager)->FindProfile("Base");
 
@@ -326,10 +340,10 @@ void CCollider::PreRender(float fTime)
 #ifdef _DEBUG
 
 	if (m_PrevColList.empty())
-		m_pMaterial->SetDiffuseColor(0.f, 1.f, 0.f, 1.f);
+		m_pDebugMtrl->SetDiffuseColor(0.f, 1.f, 0.f, 1.f);
 
 	else
-		m_pMaterial->SetDiffuseColor(1.f, 0.f, 0.f, 1.f);
+		m_pDebugMtrl->SetDiffuseColor(1.f, 0.f, 0.f, 1.f);
 #endif
 
 	CSceneComponent::PreRender(fTime);
@@ -337,14 +351,18 @@ void CCollider::PreRender(float fTime)
 
 void CCollider::Render(float fTime)
 {
-	CSceneComponent::Render(fTime);
 
 #ifdef _DEBUG
+	GET_SINGLE(CRenderManager)->SetState("WireFrame");
+	CSceneComponent::Render(fTime);
 
-	m_pMaterial->SetMaterial();
+	m_pDebugShader->SetShader();
 
-	if (m_pMesh)
-		m_pMesh->Render(fTime);
+	m_pDebugMtrl->SetMaterial();
+
+	if (m_pDebugMesh)
+		m_pDebugMesh->Render(fTime);
+	GET_SINGLE(CRenderManager)->ResetState("WireFrame");
 #endif
 }
 
@@ -361,11 +379,58 @@ CCollider* CCollider::Clone()
 void CCollider::Save(FILE* pFile)
 {
 	CSceneComponent::Save(pFile);
+
+	fwrite(&m_vMin, sizeof(Vector3), 1, pFile);
+	fwrite(&m_vMax, sizeof(Vector3), 1, pFile);
+	fwrite(&m_bUI, 1, 1, pFile);
+	fwrite(&m_b2D, 1, 1, pFile);
+	fwrite(&m_eColType, 4, 1, pFile);
+	fwrite(&m_vCross, sizeof(Vector3), 1, pFile);
+
+	int iLength = (int)m_pProfile->strTag.length();
+	fwrite(&iLength, sizeof(iLength), 1, pFile);
+	if (iLength > 0)
+	{
+		fwrite(m_pProfile->strTag.c_str(), 1, iLength, pFile);
+	}
+
+	fwrite(&m_bMouse, 1, 1, pFile);
+	fwrite(&m_iZOrder, 4, 1, pFile);
 }
 
 void CCollider::Load(FILE* pFile)
 {
 	CSceneComponent::Load(pFile);
+
+	fread(&m_vMin, sizeof(Vector3), 1, pFile);
+	fread(&m_vMax, sizeof(Vector3), 1, pFile);
+	fread(&m_bUI, 1, 1, pFile);
+	fread(&m_b2D, 1, 1, pFile);
+	fread(&m_eColType, 4, 1, pFile);
+	fread(&m_vCross, sizeof(Vector3), 1, pFile);
+
+	int iLength = 0;
+	fread(&iLength, sizeof(iLength), 1, pFile);
+	if (iLength > 0)
+	{
+		char strTag[256] = {};
+		fread(strTag, 1, iLength, pFile);
+
+		m_pProfile = GET_SINGLE(CCollisionManager)->FindProfile(strTag);
+	}
+
+	fread(&m_bMouse, 1, 1, pFile);
+	fread(&m_iZOrder, 4, 1, pFile);
+
+#ifdef _DEBUG
+	CMaterial* pMtrl = GET_SINGLE(CResourceManager)->FindMaterial("Collider");
+
+	m_pDebugMtrl = pMtrl->Clone();
+
+	SAFE_RELEASE(pMtrl);
+
+	SetShader("Collider");
+#endif
 }
 
 bool CCollider::Collision(CCollider* pDest)

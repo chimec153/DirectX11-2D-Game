@@ -49,7 +49,7 @@ void CInputObj::ActionFunc(const std::string& strTag, KEY_TYPE eType, float fPus
 	if (!pAction)
 		return;
 
-	pAction->pFunc[eType](fPushTime, fTime);
+	pAction->pFunc[(int)eType](fPushTime, fTime);
 }
 
 PInputAxis CInputObj::FindInputAxis(const std::string& strTag)

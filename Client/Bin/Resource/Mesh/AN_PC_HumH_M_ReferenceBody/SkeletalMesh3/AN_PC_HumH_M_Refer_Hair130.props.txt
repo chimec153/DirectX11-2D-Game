@@ -1,0 +1,82 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[28] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+            bEnableShadowCasting[11] = true
+            bEnableShadowCasting[12] = true
+            bEnableShadowCasting[13] = true
+            bEnableShadowCasting[14] = true
+            bEnableShadowCasting[15] = true
+            bEnableShadowCasting[16] = true
+            bEnableShadowCasting[17] = true
+            bEnableShadowCasting[18] = true
+            bEnableShadowCasting[19] = true
+            bEnableShadowCasting[20] = true
+            bEnableShadowCasting[21] = true
+            bEnableShadowCasting[22] = true
+            bEnableShadowCasting[23] = true
+            bEnableShadowCasting[24] = true
+            bEnableShadowCasting[25] = true
+            bEnableShadowCasting[26] = true
+            bEnableShadowCasting[27] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[31] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[4] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[5] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[6] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[7] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[8] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[9] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[10] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[11] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[12] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[13] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[14] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[15] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[16] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[17] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[18] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[19] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[20] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[21] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[22] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[23] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[24] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[25] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[26] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[27] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[28] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[29] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+    Materials[30] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_130_MI_LJA'
+}

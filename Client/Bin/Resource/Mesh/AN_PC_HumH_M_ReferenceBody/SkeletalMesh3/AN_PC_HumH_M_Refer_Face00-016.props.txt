@@ -1,0 +1,24 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[3] = { true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[3] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_Face01_016_MI_UNG'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_Eyelash01_001_MI_BJH'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_Eye01_016_MI_UNG'
+}

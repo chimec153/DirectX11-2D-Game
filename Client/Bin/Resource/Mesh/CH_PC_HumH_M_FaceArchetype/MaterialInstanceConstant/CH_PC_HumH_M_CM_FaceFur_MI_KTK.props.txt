@@ -1,0 +1,128 @@
+Parent = Material3'CH_MM_Hair_AIS_TRS_1SD_CM'
+ScalarParameterValues[9] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Alpha_DepthBias
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Diffuse_Desaturation
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Fur_Brightness
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = FX_OutlineFalloff
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = FX_OutlineWeight
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = RollOverOpacity
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Shine_Power
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 60
+        ParameterName = Specular_PhongPower
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 25
+        ParameterName = Specular_Power
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Beard001_D_LJG'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Beard001_C1_LJG'
+        ParameterName = hair_Channel01
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Beard001_N_LJG'
+        ParameterName = Normal
+    }
+}
+VectorParameterValues[6] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.9, G=0.1, B=0, A=1 }
+        ParameterName = Anisotropic_Roughness_X/Y
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.0600316, G=0.0356144, B=0.0209511, A=1 }
+        ParameterName = Diffuse_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0, B=0, A=1 }
+        ParameterName = FX_OutlineColor
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Normal_Power
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.00795, G=0.921, B=0.449262, A=2 }
+        ParameterName = Specular_Color
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Specular_PhongColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

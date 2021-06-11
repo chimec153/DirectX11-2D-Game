@@ -34,20 +34,20 @@ bool CIceBall::Init()
 	if (!CObj::Init())
 		return false;
 
-	m_pMesh = CreateComponent<CSpriteComponent>("BallSprite");
+	m_pMesh = CreateComponent<CSpriteComponent>("BallSprite", m_pLayer);
 
 	m_pMesh->SetWorldScale(32.f, 32.f, 0.f);
 	m_pMesh->SetPivot(0.5f, 0.5f, 0.f);
-	m_pMesh->CreateSprite("ball", "IceBall", true);
+	m_pMesh->CreateSprite("ball", "IceBall", LOOP_OPTION::LOOP);
 
 	SetRootComponent(m_pMesh);
 
 	m_pMesh->SetEndFunc<CIceBall>("ball", this, &CIceBall::Destroy);
 
-	CSpriteComponent* pShadow = CreateComponent<CSpriteComponent>("BallShadow");
+	CSpriteComponent* pShadow = CreateComponent<CSpriteComponent>("BallShadow", m_pLayer);
 
 	pShadow->SetWorldScale(32.f, 32.f, 0.f);
-	pShadow->CreateSprite("Shadow", "IceBallShadow", true);
+	pShadow->CreateSprite("Shadow", "IceBallShadow", LOOP_OPTION::LOOP);
 
 	pShadow->SetInheritScale(false);
 	pShadow->SetInheritRotX(false);
@@ -61,7 +61,7 @@ bool CIceBall::Init()
 
 	SAFE_RELEASE(pShadow);
 
-	CColliderCircle* pCC = CreateComponent<CColliderCircle>("BallBody");
+	CColliderCircle* pCC = CreateComponent<CColliderCircle>("BallBody", m_pLayer);
 
 	pCC->SetRadius(16.f);
 

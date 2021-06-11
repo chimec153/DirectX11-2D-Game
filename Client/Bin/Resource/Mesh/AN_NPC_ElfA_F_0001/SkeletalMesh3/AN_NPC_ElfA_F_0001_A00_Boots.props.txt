@@ -1,0 +1,33 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[2] = { true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.25
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[2] = { true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = false
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[2] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_ElfF_F_ReferBody.CH_PC_ElfF_F_CM_Body_MI_KTK'
+    Materials[1] = MaterialInstanceConstant'CH_NPC_ElfA_F_0001_A00_Boots_MI_CRS'
+}

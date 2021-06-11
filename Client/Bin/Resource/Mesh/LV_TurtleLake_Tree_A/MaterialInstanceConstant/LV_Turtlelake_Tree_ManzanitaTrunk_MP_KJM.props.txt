@@ -1,0 +1,68 @@
+Parent = MaterialInstanceConstant'LV_TurtleLake_Tree_ManzanitaLeaf_MP_OS'
+ScalarParameterValues[2] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Diffuse_Desaturation
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 30
+        ParameterName = UV_NormalDetail
+    }
+}
+TextureParameterValues[3] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Common_Tree_A_CedarBark_D_KJM'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Common_Tree_A_CedarBark_N_KJM'
+        ParameterName = Normal
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_Common_DetailNormal_A_CedarTreeBark_N_KJM'
+        ParameterName = Normal_Detail
+    }
+}
+VectorParameterValues[3] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.2, G=1.2, B=1.2, A=1 }
+        ParameterName = Diffuse_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.4, G=1.4, B=0, A=1 }
+        ParameterName = Normal_DetailPower
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.8, G=1.8, B=1, A=1 }
+        ParameterName = Normal_Power
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

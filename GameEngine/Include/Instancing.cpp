@@ -5,8 +5,10 @@
 #include "UI/UIFont.h"
 #include "Scene/Scene.h"
 #include "Scene/SceneManager.h"
-#include "RenderManager.h"
+#include "Render/RenderManager.h"
 #include "Render/RenderState.h"
+#include "Resource/Shader.h"
+#include "Engine.h"
 
 CInstancing::CInstancing()	:
 	m_pBuffer(nullptr),
@@ -14,6 +16,7 @@ CInstancing::CInstancing()	:
 	m_bAnimation(false),
 	m_pMesh(nullptr),
 	m_pMaterial(nullptr),
+	m_pShader(nullptr),
 	m_pLayer(nullptr),
 	m_pFont(nullptr)
 {
@@ -30,7 +33,9 @@ CInstancing::~CInstancing()
 
 	SAFE_RELEASE(m_pMesh);
 	SAFE_RELEASE(m_pMaterial);
+	SAFE_RELEASE(m_pShader);
 	SAFE_RELEASE(m_pFont);
+	SAFE_RELEASE_VECLIST(m_vecState);
 }
 
 void CInstancing::SetLayer(CLayer* pLayer)
@@ -63,7 +68,25 @@ void CInstancing::AddState(const std::string& strKey)
 	m_vecState.push_back(pState);
 }
 
-bool CInstancing::Init(CMesh* pMesh, CMaterial* pMtrl, int iCount , int iSize)
+void CInstancing::AddState(CRenderState* pState)
+{
+	std::vector<CRenderState*>::iterator iter = m_vecState.begin();
+	std::vector<CRenderState*>::iterator iterEnd = m_vecState.begin();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		if ((*iter) == pState)
+		{
+			return;
+		}
+	}
+
+	pState->AddRef();
+
+	m_vecState.push_back(pState);
+}
+
+bool CInstancing::Init(CMesh* pMesh, CMaterial* pMtrl, CShader* pShader, int iCount , int iSize)
 {
 	m_pMesh = pMesh;
 
@@ -73,13 +96,18 @@ bool CInstancing::Init(CMesh* pMesh, CMaterial* pMtrl, int iCount , int iSize)
 	if (pMtrl)
 		m_pMaterial = pMtrl->Clone();
 
+	m_pShader = pShader;
+
+	if (m_pShader)
+		m_pShader->AddRef();
+
 	CScene* pScene = GET_SINGLE(CSceneManager)->GetScene();
 
-	CLayer* pUI = pScene->FindLayer("UI");
+	CLayer* pUI = pScene->FindLayer(UI_LAYER);
 
 	CObj* pObj = pScene->CreateObject<CObj>("InstCount", pUI);
 
-	m_pFont = pObj->CreateComponent<CUIFont>("InstCount");
+	m_pFont = pObj->CreateComponent<CUIFont>("InstCount", m_pLayer);
 
 	pObj->SetRootComponent(m_pFont);
 
@@ -204,6 +232,7 @@ void CInstancing::Update(float fTime)
 
 	wcscat_s(strName, strCount);
 
+	m_pFont->Enable(GET_SINGLE(CEngine)->IsImgui());
 	m_pFont->SetText(strName);
 }
 
@@ -215,6 +244,8 @@ void CInstancing::Render(float fTime)
 	{
 		m_vecState[i]->SetState();
 	}
+
+	m_pShader->SetShader();
 
 	m_pMaterial->SetMaterial();
 

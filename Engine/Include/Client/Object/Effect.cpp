@@ -1,33 +1,35 @@
 #include "Effect.h"
 #include "Component/SpriteComponent.h"
+#include "Resource/Material.h"
 
-CEffect::CEffect()
+CEffect::CEffect()	:
+	m_fSpeed(100.f),
+	m_vScaleSpeed(),
+	m_fAlphaSpeed(0.f)
 {
 }
 
 CEffect::CEffect(const CEffect& eft)	:
 	CObj(eft)
 {
+	m_fSpeed = eft.m_fSpeed;
+	m_vScaleSpeed = eft.m_vScaleSpeed;
+	m_fAlphaSpeed = eft.m_fAlphaSpeed;
 }
 
 CEffect::~CEffect()
 {
 }
 
+void CEffect::SetScaleCallBack(float)
+{
+	SetScaleSpeed(Vector3(-32.f, -32.f, 0.f));
+}
+
 bool CEffect::Init()
 {
 	if (!CObj::Init())
 		return false;
-
-	CSpriteComponent* pCom = CreateComponent<CSpriteComponent>("Effect");
-
-	pCom->CreateSprite("Fire", "Fire", true);
-	pCom->SetPivot(0.5f, 0.5f, 0.f);
-	pCom->SetWorldScale(16.f, 16.f, 1.f);
-
-	SetRootComponent(pCom);
-
-	SAFE_RELEASE(pCom);
 
 	return true;
 }
@@ -41,7 +43,26 @@ void CEffect::Update(float fTime)
 {
 	CObj::Update(fTime);
 
-	AddWorldPos(0.f, 100.f * fTime, 0.f);
+	AddWorldPos(0.f, m_fSpeed * fTime, 0.f);
+
+	AddWorldScale(m_vScaleSpeed * fTime);
+
+	if (m_fAlphaSpeed != 0.f)
+	{
+		CSpriteComponent* pCom = FindComByType<CSpriteComponent>();
+
+		CMaterial* pMtrl = pCom->GetMaterial();
+
+		Vector4 vDif = pMtrl->GetDif();
+
+		vDif.w -= fTime * m_fAlphaSpeed;
+
+		pMtrl->SetDiffuseColor(vDif);
+
+		SAFE_RELEASE(pMtrl);
+
+		SAFE_RELEASE(pCom);
+	}
 }
 
 void CEffect::PostUpdate(float fTime)
@@ -77,7 +98,12 @@ CEffect* CEffect::Clone()
 void CEffect::Notify(const std::string& strTag)
 {
 	if (strTag == "FireEnd")
-		Destroy();
+		CRef::Destroy();
+}
+
+void CEffect::Destroy(float fTime)
+{
+	CRef::Destroy();
 }
 
 void CEffect::Save(FILE* pFile)

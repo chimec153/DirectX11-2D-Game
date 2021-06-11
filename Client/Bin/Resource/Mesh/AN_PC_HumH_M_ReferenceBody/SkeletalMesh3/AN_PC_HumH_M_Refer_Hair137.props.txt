@@ -1,0 +1,35 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[4] = { true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.25
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[4] = { true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[4] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_137_MI_KSU'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_137_MI_KSU'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_137_MI_KSU'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_137_MI_KSU'
+}

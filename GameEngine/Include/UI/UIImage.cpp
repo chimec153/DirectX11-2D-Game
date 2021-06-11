@@ -6,6 +6,7 @@
 
 CUIImage::CUIImage()
 {
+	m_eSceneComponentClassType = SCENECOMPONENT_CLASS_TYPE::UI_IMAGE;
 }
 
 CUIImage::CUIImage(const CUIImage& ui)	:
@@ -24,7 +25,7 @@ bool CUIImage::Init()
 
 	m_pImage = GET_SINGLE(CResourceManager)->GetUIMesh();
 
-	m_pMaterial = m_pImage->GetMaterial();
+	//m_pMaterial = m_pImage->GetMaterial();
 
 	return true;
 }
@@ -58,7 +59,7 @@ void CUIImage::Render(float fTime)
 {
 	CUIControl::Render(fTime);
 
-	m_pMaterial->SetMaterial();
+	//m_pMaterial->SetMaterial();
 
 	m_pTexture->SetTexture(0, (int)SHADER_CBUFFER_TYPE::CBUFFER_PIXEL);
 

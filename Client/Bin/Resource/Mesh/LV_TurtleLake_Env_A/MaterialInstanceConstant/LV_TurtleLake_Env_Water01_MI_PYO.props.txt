@@ -1,0 +1,152 @@
+Parent = Material3'LV_TurtleLake_Water01_MAT_HMJ'
+ScalarParameterValues[13] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.65
+        ParameterName = Normal_PanningSpeed
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.05
+        ParameterName = Normal_Tiling
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Diffuse
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.7
+        ParameterName = Wave_Power
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 250
+        ParameterName = Specular_Power
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Distortion_Power
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Reflection_Contrast
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.4
+        ParameterName = Reflection_Desaturation
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2.2
+        ParameterName = RefWave_Brightness
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = RefWave_Contrast
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = Opacity
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Multiply
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Add
+    }
+}
+TextureParameterValues[1] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LV_TurtleLake_Env_Water01_R_HMJ'
+        ParameterName = Reflection_Cubemap2D
+    }
+}
+VectorParameterValues[8] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.667182, G=1, B=0.725511, A=1 }
+        ParameterName = Reflection_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Normal_Power
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3.98174, G=2.95094, B=2.65415, A=1 }
+        ParameterName = Specular_Color
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.6, G=1, B=0.5, A=1 }
+        ParameterName = Specular_Direction
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=4, G=4, B=1, A=1 }
+        ParameterName = SpecularNormal_Power
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.05, G=0.12, B=0.12, A=1 }
+        ParameterName = Diffuse_Color
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.3, G=0.3, B=1, A=1 }
+        ParameterName = FresnalNormal_Power
+    }
+    VectorParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.0814607, G=0.122191, B=0.162921, A=1 }
+        ParameterName = Reflection02_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

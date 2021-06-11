@@ -47,7 +47,7 @@ bool CColliderLine::Init()
 		return false;
 
 #ifdef _DEBUG
-	m_pMesh = GET_SINGLE(CResourceManager)->FindMesh("Collider2DLine");
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2DLine");
 #endif
 	SetInheritScale(false);
 
@@ -106,11 +106,19 @@ CColliderLine* CColliderLine::Clone()
 void CColliderLine::Save(FILE* pFile)
 {
 	CCollider::Save(pFile);
+
+	fwrite(&m_tInfo, sizeof(m_tInfo), 1, pFile);
 }
 
 void CColliderLine::Load(FILE* pFile)
 {
 	CCollider::Load(pFile);
+
+	fread(&m_tInfo, sizeof(m_tInfo), 1, pFile);
+
+#ifdef _DEBUG
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2DLine");
+#endif
 }
 
 bool CColliderLine::Collision(CCollider* pDest)

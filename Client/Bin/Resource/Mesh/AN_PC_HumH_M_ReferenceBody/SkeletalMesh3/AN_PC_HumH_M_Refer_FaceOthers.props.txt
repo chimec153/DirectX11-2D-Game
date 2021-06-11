@@ -1,0 +1,52 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[4] = { true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[31] =
+{
+    Materials[0] = Material3'DefaultMaterial'
+    Materials[1] = Material3'DefaultMaterial'
+    Materials[2] = Material3'DefaultMaterial'
+    Materials[3] = Material3'DefaultMaterial'
+    Materials[4] = Material3'DefaultMaterial'
+    Materials[5] = Material3'DefaultMaterial'
+    Materials[6] = Material3'DefaultMaterial'
+    Materials[7] = Material3'DefaultMaterial'
+    Materials[8] = Material3'DefaultMaterial'
+    Materials[9] = Material3'DefaultMaterial'
+    Materials[10] = Material3'DefaultMaterial'
+    Materials[11] = Material3'DefaultMaterial'
+    Materials[12] = Material3'DefaultMaterial'
+    Materials[13] = Material3'DefaultMaterial'
+    Materials[14] = Material3'DefaultMaterial'
+    Materials[15] = Material3'DefaultMaterial'
+    Materials[16] = Material3'DefaultMaterial'
+    Materials[17] = Material3'DefaultMaterial'
+    Materials[18] = Material3'DefaultMaterial'
+    Materials[19] = Material3'DefaultMaterial'
+    Materials[20] = Material3'DefaultMaterial'
+    Materials[21] = Material3'DefaultMaterial'
+    Materials[22] = Material3'DefaultMaterial'
+    Materials[23] = Material3'DefaultMaterial'
+    Materials[24] = Material3'DefaultMaterial'
+    Materials[25] = Material3'DefaultMaterial'
+    Materials[26] = Material3'DefaultMaterial'
+    Materials[27] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_20'
+    Materials[28] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeBall_INST_00'
+    Materials[29] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeBall_INST_01'
+    Materials[30] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeShadow_INST_00'
+}

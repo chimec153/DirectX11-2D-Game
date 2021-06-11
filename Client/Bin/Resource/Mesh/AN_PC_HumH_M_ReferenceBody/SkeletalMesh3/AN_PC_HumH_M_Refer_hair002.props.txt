@@ -1,0 +1,92 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[19] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+            bEnableShadowCasting[11] = true
+            bEnableShadowCasting[12] = true
+            bEnableShadowCasting[13] = true
+            bEnableShadowCasting[14] = true
+            bEnableShadowCasting[15] = true
+            bEnableShadowCasting[16] = true
+            bEnableShadowCasting[17] = true
+            bEnableShadowCasting[18] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.25
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[19] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+            bEnableShadowCasting[11] = true
+            bEnableShadowCasting[12] = true
+            bEnableShadowCasting[13] = true
+            bEnableShadowCasting[14] = true
+            bEnableShadowCasting[15] = true
+            bEnableShadowCasting[16] = true
+            bEnableShadowCasting[17] = true
+            bEnableShadowCasting[18] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[19] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[4] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[5] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[6] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[7] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[8] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[9] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[10] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[11] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[12] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[13] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[14] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[15] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[16] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[17] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+    Materials[18] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_002_MI_RBN'
+}

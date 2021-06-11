@@ -1,0 +1,84 @@
+Parent = MaterialInstanceConstant'CH_NPC_Mathias_Upper_MI_KDE'
+ScalarParameterValues[0] = {}
+TextureParameterValues[6] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Mathias_Shoulder_C1_KDE'
+        ParameterName = Channel_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Mathias_Shoulder_C2_KDE'
+        ParameterName = Channel_02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_EC0002_A01_Shoulder_D_KSU'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Mathias_Shoulder_N_KDE'
+        ParameterName = Normal
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_Mathias_Shoulder_SP_KDE'
+        ParameterName = Specular
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_EC0002_A01_Shoulder_V_KSU'
+        ParameterName = Variation_Mask
+    }
+}
+VectorParameterValues[5] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=3, G=3, B=3, A=1 }
+        ParameterName = NonMetal_FresnelColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = NonMetal_SpecularColor
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.414349, G=0.027485, B=0.028966, A=1 }
+        ParameterName = Variation_Color01
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.093919, G=0.060711, B=0.060711, A=1 }
+        ParameterName = Variation_Color02
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.906044, G=0.561989, B=0.200257, A=1 }
+        ParameterName = Variation_Color03
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

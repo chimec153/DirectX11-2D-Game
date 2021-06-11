@@ -5,7 +5,7 @@
 #include "../Input.h"
 #include "../UI/MouseObj.h"
 #include "../Camera/CameraManager.h"
-#include "../RenderManager.h"
+#include "../Render/RenderManager.h"
 
 DEFINITION_SINGLE(CSceneManager)
 
@@ -87,6 +87,8 @@ int CSceneManager::Collision(float fTime)
 int CSceneManager::PreRender(float fTime)
 {
 	m_pScene->PreRender(fTime);
+
+	m_pScene->CheckFrustum();
 
 	return ChangeScene();
 }
@@ -180,6 +182,8 @@ void CSceneManager::ChangeProto()
 
 void CSceneManager::CreateNextScene()
 {
+	SAFE_DELETE(m_pSceneNext);
+
 	m_pSceneNext = new CScene;
 
 	m_pSceneNext->Init();

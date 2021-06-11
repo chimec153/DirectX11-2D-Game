@@ -1,0 +1,170 @@
+Parent = Material3'LV_MM_VolumetricFogSheet_UNL_TRS_2SD'
+ScalarParameterValues[19] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = TOD_Dawn
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = TOD_Day
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = TOD_Dusk
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = TOD_Night
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 50
+        ParameterName = DBAlpha_Density
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = FadeOut_Far_Distance
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = FadeOut_Near_Distance
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Opacity
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Opacity_DistortionTex_PanningSpeed
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = Opacity_DistortionTex_Tiling
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Tex01_Brightness
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Tex01_PanningSpeed
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Tex01_U
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Tex01_V
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Tex02_Brightness
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Tex02_PanningSpeed
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex02_U
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex02_V
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = TextureBlend_Contrast
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.FX_Smoke_034_TEX_HKB'
+        ParameterName = MultiplyTexture1
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LightBeam.LV_Common_Volumetric_Lightbeam_DustPanner_C_PYO'
+        ParameterName = MultiplyTexture2
+    }
+}
+VectorParameterValues[4] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.317307, G=0.444089, B=0.591138, A=1 }
+        ParameterName = TOD_Dawn_Color
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.371778, G=0.456909, B=0.458547, A=1 }
+        ParameterName = TOD_Day_Color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.458547, G=0.399449, B=0.345623, A=1 }
+        ParameterName = TOD_Dusk_Color
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.146151, G=0.200871, B=0.348053, A=1 }
+        ParameterName = TOD_Night_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

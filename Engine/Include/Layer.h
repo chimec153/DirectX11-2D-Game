@@ -40,6 +40,8 @@ public:
 	class CTileMap* GetTileMap()	const;
 	void SetFontPos(const Vector3& vPos);
 	void AddTileInstState(const std::string& strKey);
+	class CScene* GetScene()	const;
+	void DeleteObject(const std::string& strTag);
 
 public:
 	virtual bool Init();
@@ -51,14 +53,26 @@ public:
 	virtual void PreRender(float fTime);
 	virtual void Render(float fTime);
 	virtual void PostRender(float fTime);
+	virtual void RenderShadow(float fTime);
 
 public:
 	virtual void Save(FILE* pFile);
 	virtual void Load(FILE* pFile);
 
+public:
+	void CheckFrustum();
+
 private:
 	static bool SortY(class CObj* pSrc, class CObj* pDst);
 	static bool SortYCom(class CSceneComponent* pSrc, class CSceneComponent* pDst);
 	static bool SortZ(class CSceneComponent* pSrc, class CSceneComponent* pDst);
+	static bool SortZOrder(class CSceneComponent* pSrc, class CSceneComponent* pDest);
+	static bool SortInvZOrder(class CSceneComponent* pSrc, class CSceneComponent* pDest);
+
+public:
+	void SpawnWindow();
+
+public:
+	void CameraZSort(bool bInverse = false);
 };
 

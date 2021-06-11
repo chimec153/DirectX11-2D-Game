@@ -31,6 +31,20 @@ bool CMesh2DComponent::Init()
 
 	SAFE_RELEASE(pMesh);
 
+	SetMaterial("Color");
+
+	SetShader("Standard2D");
+
+	return true;
+}
+
+bool CMesh2DComponent::Init(const char* pFileName, const std::string& strPathKey)
+{
+	Init();
+
+	if (!CSceneComponent::Init(pFileName, strPathKey))
+		return false;
+
 	return true;
 }
 

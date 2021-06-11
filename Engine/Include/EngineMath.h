@@ -7,7 +7,9 @@ using namespace DirectX;
 
 #include "Flag.h"
 
-#define PI	3.14159f
+#define PI		3.14159f
+#define PI_DIV2	1.57080f
+#define PI_DIV4	0.785398f
 
 static float DegToRad(float fDeg)
 {

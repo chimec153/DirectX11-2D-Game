@@ -1,9 +1,16 @@
 #pragma once
 
-#include "GameEngine.h"
+#include "Ref.h"
 
-class CTimer
+class CTimer	:
+	public CRef
 {
+	friend class CTimerManager;
+
+private:
+	CTimer();
+	virtual ~CTimer();
+
 private:
 	float			m_fDeltaTime;
 	float			m_fFPS;
@@ -14,20 +21,13 @@ private:
 	float			m_fTimeScale;
 
 public:
-	float GetDeltaTime()	const
-	{
-		return m_fDeltaTime * m_fTimeScale;
-	}
-
-	float GetFPS()	const
-	{
-		return m_fFPS;
-	}
+	float GetDeltaTime()	const;
+	float GetFPS()	const;
+	void SetTimeScale(float fScale);
+	float GetTimeScale()	const;
 
 public:
 	bool Init();
 	void Update();
-
-	DECLARE_SINGLE(CTimer)
 };
 

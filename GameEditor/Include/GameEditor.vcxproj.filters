@@ -13,14 +13,83 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="01. MainGameMode">
-      <UniqueIdentifier>{fd1916bd-082d-4f02-84de-1fafe194b9cd}</UniqueIdentifier>
+    <Filter Include="02. Object">
+      <UniqueIdentifier>{65789e3e-1a1d-4a21-8bbd-07d3d21cc9b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Player">
+    <Filter Include="03. ViewManager">
+      <UniqueIdentifier>{8700917b-473e-41ff-93a8-5517e3af6b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\01. Player">
       <UniqueIdentifier>{6c18cb4e-7ed3-4954-8e3d-d3f33784c2de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Bullet">
+    <Filter Include="02. Object\02. Bullet">
       <UniqueIdentifier>{9aa31bf0-3d65-4e54-b480-4f222130e30d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\03. Bow">
+      <UniqueIdentifier>{961d68d6-4d62-494f-9314-5801783d02a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\04. Arrow">
+      <UniqueIdentifier>{63499847-83a0-4f00-b417-148b22cad7ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\02. Yeti">
+      <UniqueIdentifier>{7720afc5-12aa-445b-ad4c-a3c5187323cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\02. Yeti\01. Minion">
+      <UniqueIdentifier>{176cd438-210f-4228-b9e0-8d657803cee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\02. Yeti\02. IceBall">
+      <UniqueIdentifier>{fb67a782-83db-4707-a53c-4b005f897210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Instance">
+      <UniqueIdentifier>{b1c7d2cf-d714-4d81-a3d9-a6a135926334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. UI">
+      <UniqueIdentifier>{20af8fe3-53a2-46be-bf74-bb829bf0c686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\05. Effect">
+      <UniqueIdentifier>{31d8fa21-ee92-47aa-9976-85c1c7a9769a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\06. TileObj">
+      <UniqueIdentifier>{0acf1fa1-f982-474d-98fc-682764422384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode">
+      <UniqueIdentifier>{fd1916bd-082d-4f02-84de-1fafe194b9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode\01. CClientCreateSystem">
+      <UniqueIdentifier>{3ad75ba9-e49a-4427-8a27-da01dbb9dedb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode\02. Parser">
+      <UniqueIdentifier>{a5f942c1-598b-4d9c-8fcf-009cbfb08376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode\03. ColossusMode">
+      <UniqueIdentifier>{b25f87b8-0475-4059-8a2a-cd506c005616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode\04. EyecubeMode">
+      <UniqueIdentifier>{99c5e41b-3d89-4dbc-a777-272f0d11df3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameMode\05. BrainMode">
+      <UniqueIdentifier>{9440a433-2303-4f3f-a291-134e11dc57f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\07. Soul">
+      <UniqueIdentifier>{ad23d471-983d-4b6d-82fb-044ae3e5a380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\07. Soul\01. Colossus">
+      <UniqueIdentifier>{bbedcae5-53ed-42ed-b8db-8538307d6d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\07. Soul\02. Eyecube">
+      <UniqueIdentifier>{eabe5258-bae2-45d3-9c4c-16200ed535c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\07. Soul\03. BrainFreeze">
+      <UniqueIdentifier>{dedc47b9-462e-4259-a7a3-b227e0804ad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Object\05. Effect\01. Soul">
+      <UniqueIdentifier>{da7b307a-882d-437d-9ce5-684000b43149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. State">
+      <UniqueIdentifier>{45cd590a-5edd-40e4-b799-9077205d6a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. UI\01. TitanFont">
+      <UniqueIdentifier>{543e5572-addd-4cc5-8478-56b1b9e954bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -52,13 +121,136 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Client\GameMode\MainGameMode.h">
-      <Filter>01. MainGameMode</Filter>
+      <Filter>01. GameMode</Filter>
     </ClInclude>
     <ClInclude Include="Client\Object\Player.h">
-      <Filter>02. Player</Filter>
+      <Filter>02. Object\01. Player</Filter>
     </ClInclude>
     <ClInclude Include="Client\Object\Bullet.h">
-      <Filter>03. Bullet</Filter>
+      <Filter>02. Object\02. Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DetailDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewManager.h">
+      <Filter>03. ViewManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientCreateSystem.h">
+      <Filter>01. GameMode\01. CClientCreateSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Client.h">
+      <Filter>01. GameMode\01. CClientCreateSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Minion.h">
+      <Filter>02. Object\02. Yeti\01. Minion</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\IceBall.h">
+      <Filter>02. Object\02. Yeti\02. IceBall</Filter>
+    </ClInclude>
+    <ClInclude Include="AniEdit.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Bow.h">
+      <Filter>02. Object\03. Bow</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Arrow.h">
+      <Filter>02. Object\04. Arrow</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Icicle.h">
+      <Filter>02. Object\02. Yeti</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInstance.h">
+      <Filter>04. Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\UI\Button.h">
+      <Filter>05. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Effect.h">
+      <Filter>02. Object\05. Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\UI\UIBar.h">
+      <Filter>05. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\UI\CheckObj.h">
+      <Filter>05. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\UI\RadioObj.h">
+      <Filter>05. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\StartGameMode.h">
+      <Filter>01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\UI\Missile.h">
+      <Filter>02. Object\02. Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\ColossusMode.h">
+      <Filter>01. GameMode\03. ColossusMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Colossus.h">
+      <Filter>02. Object\07. Soul\01. Colossus</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\TileMode.h">
+      <Filter>01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Light.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\BossManager.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Eyecube.h">
+      <Filter>02. Object\07. Soul\02. Eyecube</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\BrainFreeze.h">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\EyeCubeMode.h">
+      <Filter>01. GameMode\04. EyecubeMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\BrainMode.h">
+      <Filter>01. GameMode\05. BrainMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\FireButton.h">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Fire.h">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\Soul.h">
+      <Filter>02. Object\05. Effect\01. Soul</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\SoulMonster.h">
+      <Filter>02. Object\07. Soul</Filter>
+    </ClInclude>
+    <ClInclude Include="DieState.h">
+      <Filter>06. State</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleState.h">
+      <Filter>06. State</Filter>
+    </ClInclude>
+    <ClInclude Include="StopState.h">
+      <Filter>06. State</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>06. State</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackState.h">
+      <Filter>06. State</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\GameMode\EndGameMode.h">
+      <Filter>01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\Object\TitanFont.h">
+      <Filter>05. UI\01. TitanFont</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,21 +270,150 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Client\GameMode\MainGameMode.cpp">
-      <Filter>01. MainGameMode</Filter>
+      <Filter>01. GameMode</Filter>
     </ClCompile>
     <ClCompile Include="Client\Object\Player.cpp">
-      <Filter>02. Player</Filter>
+      <Filter>02. Object\01. Player</Filter>
     </ClCompile>
     <ClCompile Include="Client\Object\Bullet.cpp">
-      <Filter>03. Bullet</Filter>
+      <Filter>02. Object\02. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DetailDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewManager.cpp">
+      <Filter>03. ViewManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientCreateSystem.cpp">
+      <Filter>01. GameMode\01. CClientCreateSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Client.cpp">
+      <Filter>01. GameMode\01. CClientCreateSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Minion.cpp">
+      <Filter>02. Object\02. Yeti\01. Minion</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\IceBall.cpp">
+      <Filter>02. Object\02. Yeti\02. IceBall</Filter>
+    </ClCompile>
+    <ClCompile Include="AniEdit.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Bow.cpp">
+      <Filter>02. Object\03. Bow</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Arrow.cpp">
+      <Filter>02. Object\04. Arrow</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Icicle.cpp">
+      <Filter>02. Object\02. Yeti</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientInstance.cpp">
+      <Filter>04. Instance</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\UI\Button.cpp">
+      <Filter>05. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Effect.cpp">
+      <Filter>02. Object\05. Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\UI\UIBar.cpp">
+      <Filter>05. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\UI\CheckObj.cpp">
+      <Filter>05. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\UI\RadioObj.cpp">
+      <Filter>05. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\StartGameMode.cpp">
+      <Filter>01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\UI\Missile.cpp">
+      <Filter>02. Object\02. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>01. GameMode\02. Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\ColossusMode.cpp">
+      <Filter>01. GameMode\03. ColossusMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Colossus.cpp">
+      <Filter>02. Object\07. Soul\01. Colossus</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\TileMode.cpp">
+      <Filter>01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Light.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\BossManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Eyecube.cpp">
+      <Filter>02. Object\07. Soul\02. Eyecube</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\BrainFreeze.cpp">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\EyeCubeMode.cpp">
+      <Filter>01. GameMode\04. EyecubeMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\BrainMode.cpp">
+      <Filter>01. GameMode\05. BrainMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Fire.cpp">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\FireButton.cpp">
+      <Filter>02. Object\07. Soul\03. BrainFreeze</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\Soul.cpp">
+      <Filter>02. Object\05. Effect\01. Soul</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\SoulMonster.cpp">
+      <Filter>02. Object\07. Soul</Filter>
+    </ClCompile>
+    <ClCompile Include="DieState.cpp">
+      <Filter>06. State</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>06. State</Filter>
+    </ClCompile>
+    <ClCompile Include="StopState.cpp">
+      <Filter>06. State</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleState.cpp">
+      <Filter>06. State</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackState.cpp">
+      <Filter>06. State</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\GameMode\EndGameMode.cpp">
+      <Filter>01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\Object\TitanFont.cpp">
+      <Filter>05. UI\01. TitanFont</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\GameEditor.rc2">
-      <Filter>리소스 파일</Filter>
-    </None>
     <None Include="..\..\EditorCopy.bat">
       <Filter>소스 파일</Filter>
+    </None>
+    <None Include="res\GameEditor.rc2">
+      <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,2055 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <GameText id="title_start">
+        <TextString language="english">START</TextString>
+        <TextString language="french">COMMENCER</TextString>
+        <TextString language="german">START</TextString>
+        <TextString language="italian">INIZIA</TextString>
+        <TextString language="portuguese">INICIAR</TextString>
+        <TextString language="spanish">INICIO</TextString>
+        <TextString language="titan">START</TextString>
+    </GameText>
+    <GameText id="title_options">
+        <TextString language="english">OPTIONS</TextString>
+        <TextString language="french">OPTIONS</TextString>
+        <TextString language="german">OPTIONEN</TextString>
+        <TextString language="italian">OPZIONI</TextString>
+        <TextString language="portuguese">OPÇÕES</TextString>
+        <TextString language="spanish">OPCIONES</TextString>
+        <TextString language="titan">OPTIONS</TextString>
+    </GameText>
+    <GameText id="m_quit">
+        <TextString language="english">QUIT</TextString>
+        <TextString language="french">QUITTER</TextString>
+        <TextString language="german">BEENDEN</TextString>
+        <TextString language="italian">ESCI</TextString>
+        <TextString language="portuguese">SAIR</TextString>
+        <TextString language="spanish">SALIR</TextString>
+        <TextString language="titan">QUIT</TextString>
+    </GameText>
+    <GameText id="brainfreeze_desc">
+        <TextString language="english">BRAIN OF THE GUARDIAN</TextString>
+        <TextString language="french">CERVEAU DU GARDIEN</TextString>
+        <TextString language="german">HIRN DES WÄCHTERS</TextString>
+        <TextString language="italian">CERVELLO DEL GUARDIANO</TextString>
+        <TextString language="portuguese">CÉREBRO DO GUARDIÃO</TextString>
+        <TextString language="spanish">CEREBRO DEL GUARDIÁN</TextString>
+        <TextString language="titan">BRAIN OF THE GUARDIAN</TextString>
+    </GameText>
+    <GameText id="brainfreeze_name">
+        <TextString language="english">BRAINFREEZE</TextString>
+        <TextString language="french">CERVEAUGELÉ</TextString>
+        <TextString language="german">EISHIRN</TextString>
+        <TextString language="italian">BRAINFREEZE</TextString>
+        <TextString language="portuguese">MIOLO GELADO</TextString>
+        <TextString language="spanish">CEREBRO CONGELADO</TextString>
+        <TextString language="titan">BRAINFREEZE</TextString>
+    </GameText>
+    <GameText id="eyecube_desc">
+        <TextString language="english">EYE OF THE GUARDIAN</TextString>
+        <TextString language="french">ŒIL DU GARDIEN</TextString>
+        <TextString language="german">AUGE DES WÄCHTERS</TextString>
+        <TextString language="italian">OCCHIO DEL GUARDIANO</TextString>
+        <TextString language="portuguese">OLHO DO GUARDIÃO</TextString>
+        <TextString language="spanish">OJO DEL GUARDIÁN</TextString>
+        <TextString language="titan">EYE OF THE GUARDIAN</TextString>
+    </GameText>
+    <GameText id="eyecube_name">
+        <TextString language="english">EYECUBE</TextString>
+        <TextString language="french">ŒILCUBE</TextString>
+        <TextString language="german">AUGENWÜRFEL</TextString>
+        <TextString language="italian">EYECUBE</TextString>
+        <TextString language="portuguese">CUBO ÓPTICO</TextString>
+        <TextString language="spanish">OJO CUBO</TextString>
+        <TextString language="titan">EYECUBE</TextString>
+    </GameText>
+    <GameText id="colossus_desc">
+        <TextString language="english">GUARDIAN OF THE FIRST GATE</TextString>
+        <TextString language="french">GARDIEN DE LA PREMIÈRE PORTE</TextString>
+        <TextString language="german">WÄCHTER DES ERSTEN TORS</TextString>
+        <TextString language="italian">GUARDIANO DEL PRIMO CANCELLO</TextString>
+        <TextString language="portuguese">GUARDIÃO DO PRIMEIRO PORTÃO</TextString>
+        <TextString language="spanish">GUARDIÁN DE LA PRIMERA PUERTA</TextString>
+        <TextString language="titan">GUARDIAN OF THE FIRST GATE</TextString>
+    </GameText>
+    <GameText id="colossus_name">
+        <TextString language="english">GOL-IATH</TextString>
+        <TextString language="french">GOL-IATH</TextString>
+        <TextString language="german">GOL-IATH</TextString>
+        <TextString language="italian">GOL-IATH</TextString>
+        <TextString language="portuguese">GOL-IATH</TextString>
+        <TextString language="spanish">GOL-IATH</TextString>
+        <TextString language="titan">GOL-IATH</TextString>
+    </GameText>
+    <GameText id="spec_thanks">
+        <TextString language="english">Special Thanks</TextString>
+        <TextString language="french">Remerciements</TextString>
+        <TextString language="german">Besonderer Dank</TextString>
+        <TextString language="italian">Un ringraziamento speciale a</TextString>
+        <TextString language="portuguese">Agradecimentos especiais</TextString>
+        <TextString language="spanish">Agradecimientos especiales</TextString>
+        <TextString language="titan">Special Thanks</TextString>
+    </GameText>
+    <GameText id="prompt_shoot">
+        <TextString language="english">PRESS #shoot# TO FIRE</TextString>
+        <TextString language="french">APPUYEZ SUR #shoot# POUR TIRER</TextString>
+        <TextString language="german">DRÜCKE #shoot# ZUM SCHIESSEN</TextString>
+        <TextString language="italian">PREMI #shoot# PER SPARARE</TextString>
+        <TextString language="portuguese">PRESSIONE #shoot# PARA ATIRAR</TextString>
+        <TextString language="spanish">PULSA #shoot# PARA DISPARAR</TextString>
+        <TextString language="titan">PRESS #shoot# TO FIRE</TextString>
+    </GameText>
+    <GameText id="prompt_roll">
+        <TextString language="english">TAP #roll# TO ROLL</TextString>
+        <TextString language="french">APPUYEZ SUR #roll# POUR FAIRE UNE ROULADE</TextString>
+        <TextString language="german">DRÜCKE #roll# ZUM ABROLLEN</TextString>
+        <TextString language="italian">TOCCA #roll# PER ROTOLARE</TextString>
+        <TextString language="portuguese">PRESSIONE #roll# PARA ROLAR</TextString>
+        <TextString language="spanish">PULSA #roll# PARA RODAR</TextString>
+        <TextString language="titan">TAP #roll# TO ROLL</TextString>
+    </GameText>
+    <GameText id="prompt_run">
+        <TextString language="english">HOLD #run# TO RUN</TextString>
+        <TextString language="french">APPUYEZ SUR #run# POUR COURIR</TextString>
+        <TextString language="german">HALTE #run# ZUM LAUFEN</TextString>
+        <TextString language="italian">TIENI PREMUTO #run# PER CORRERE</TextString>
+        <TextString language="portuguese">SEGURE #run# PARA CORRER</TextString>
+        <TextString language="spanish">MANTÉN PULSADO #run# PARA CORRER</TextString>
+        <TextString language="titan">HOLD #run# TO RUN</TextString>
+    </GameText>
+    <GameText id="m_start">
+        <TextString language="english">START</TextString>
+        <TextString language="french">COMMENCER</TextString>
+        <TextString language="german">START</TextString>
+        <TextString language="italian">INIZIA</TextString>
+        <TextString language="portuguese">INICIAR</TextString>
+        <TextString language="spanish">INICIO</TextString>
+        <TextString language="titan">START</TextString>
+    </GameText>
+    <GameText id="m_options">
+        <TextString language="english">OPTIONS</TextString>
+        <TextString language="french">OPTIONS</TextString>
+        <TextString language="german">OPTIONEN</TextString>
+        <TextString language="italian">OPZIONI</TextString>
+        <TextString language="portuguese">OPÇÕES</TextString>
+        <TextString language="spanish">OPCIONES</TextString>
+        <TextString language="titan">OPTIONS</TextString>
+    </GameText>
+    <GameText id="m_quit">
+        <TextString language="english">QUIT</TextString>
+        <TextString language="french">QUITTER</TextString>
+        <TextString language="german">BEENDEN</TextString>
+        <TextString language="italian">ESCI</TextString>
+        <TextString language="portuguese">SAIR</TextString>
+        <TextString language="spanish">SALIR</TextString>
+        <TextString language="titan">QUIT</TextString>
+    </GameText>
+    <GameText id="m_killed">
+        <TextString language="english">KILLED</TextString>
+        <TextString language="french">VICTIMES</TextString>
+        <TextString language="german">GETÖTET</TextString>
+        <TextString language="italian">UCCISIONI</TextString>
+        <TextString language="portuguese">MORREU</TextString>
+        <TextString language="spanish">ELIMINADOS</TextString>
+        <TextString language="titan">KILLED</TextString>
+    </GameText>
+    <GameText id="m_deaths">
+        <TextString language="english">DEATHS</TextString>
+        <TextString language="french">MORTS</TextString>
+        <TextString language="german">TODE</TextString>
+        <TextString language="italian">MORTI</TextString>
+        <TextString language="portuguese">MATOU</TextString>
+        <TextString language="spanish">MUERTES</TextString>
+        <TextString language="titan">DEATHS</TextString>
+    </GameText>
+    <GameText id="m_selectsave">
+        <TextString language="english">Select a Save Slot</TextString>
+        <TextString language="french">Choisissez un emplacement de sauvegarde</TextString>
+        <TextString language="german">Speicherplatz wählen</TextString>
+        <TextString language="italian">Seleziona uno slot di salvataggio</TextString>
+        <TextString language="portuguese">Selecionar slot de salvamento</TextString>
+        <TextString language="spanish">Selecciona un espacio para guardar</TextString>
+        <TextString language="titan">Select a Save Slot</TextString>
+    </GameText>
+    <GameText id="m_select">
+        <TextString language="english">SELECT</TextString>
+        <TextString language="french">CHOISIR</TextString>
+        <TextString language="german">AUSWAHL</TextString>
+        <TextString language="italian">SELEZIONA</TextString>
+        <TextString language="portuguese">SELECIONAR</TextString>
+        <TextString language="spanish">SELECCIONAR</TextString>
+        <TextString language="titan">SELECT</TextString>
+    </GameText>
+    <GameText id="m_back">
+        <TextString language="english">BACK</TextString>
+        <TextString language="french">RETOUR</TextString>
+        <TextString language="german">ZURÜCK</TextString>
+        <TextString language="italian">INDIETRO</TextString>
+        <TextString language="portuguese">VOLTAR</TextString>
+        <TextString language="spanish">VOLVER</TextString>
+        <TextString language="titan">BACK</TextString>
+    </GameText>
+    <GameText id="m_erase">
+        <TextString language="english">ERASE</TextString>
+        <TextString language="french">EFFACER</TextString>
+        <TextString language="german">LÖSCHEN</TextString>
+        <TextString language="italian">ELIMINA</TextString>
+        <TextString language="portuguese">APAGAR</TextString>
+        <TextString language="spanish">BORRAR</TextString>
+        <TextString language="titan">ERASE</TextString>
+    </GameText>
+    <GameText id="m_sound">
+        <TextString language="english">SOUND</TextString>
+        <TextString language="french">SONS</TextString>
+        <TextString language="german">SOUND</TextString>
+        <TextString language="italian">AUDIO</TextString>
+        <TextString language="portuguese">SOM</TextString>
+        <TextString language="spanish">SONIDO</TextString>
+        <TextString language="titan">SOUND</TextString>
+    </GameText>
+    <GameText id="m_musicvol">
+        <TextString language="english">MUSIC VOL :</TextString>
+        <TextString language="french">VOL. MUSIQUE :</TextString>
+        <TextString language="german">MUSIK:</TextString>
+        <TextString language="italian">VOL. MUSICA:</TextString>
+        <TextString language="portuguese">VOL. MÚSICA:</TextString>
+        <TextString language="spanish">VOL. DE MÚSICA:</TextString>
+        <TextString language="titan">MUSIC VOL :</TextString>
+    </GameText>
+    <GameText id="m_sfxvol">
+        <TextString language="english">SFX VOL :</TextString>
+        <TextString language="french">VOL. EFFETS SONORES :</TextString>
+        <TextString language="german">EFFEKTE:</TextString>
+        <TextString language="italian">VOL. EFFETTI:</TextString>
+        <TextString language="portuguese">VOL. SONS:</TextString>
+        <TextString language="spanish">VOL. DE EFECTOS:</TextString>
+        <TextString language="titan">SFX VOL :</TextString>
+    </GameText>
+    <GameText id="m_graphics">
+        <TextString language="english">GRAPHICS</TextString>
+        <TextString language="french">GRAPHISMES</TextString>
+        <TextString language="german">GRAFIK</TextString>
+        <TextString language="italian">GRAFICA</TextString>
+        <TextString language="portuguese">GRÁFICOS:</TextString>
+        <TextString language="spanish">GRÁFICOS</TextString>
+        <TextString language="titan">GRAPHICS</TextString>
+    </GameText>
+    <GameText id="m_resolution">
+        <TextString language="english">RESOLUTION :</TextString>
+        <TextString language="french">RÉSOLUTION :</TextString>
+        <TextString language="german">AUFLÖSUNG:</TextString>
+        <TextString language="italian">RISOLUZIONE:</TextString>
+        <TextString language="portuguese">RESOLUÇÃO:</TextString>
+        <TextString language="spanish">RESOLUCIÓN:</TextString>
+        <TextString language="titan">RESOLUTION :</TextString>
+    </GameText>
+    <GameText id="m_fullscreen">
+        <TextString language="english">FULL SCREEN :</TextString>
+        <TextString language="french">PLEIN ÉCRAN :</TextString>
+        <TextString language="german">VOLLBILD:</TextString>
+        <TextString language="italian">SCHERMO INTERO:</TextString>
+        <TextString language="portuguese">TELA INTEIRA:</TextString>
+        <TextString language="spanish">PANTALLA COMPLETA:</TextString>
+        <TextString language="titan">FULL SCREEN :</TextString>
+    </GameText>
+    <GameText id="m_vsync">
+        <TextString language="english">VSYNC :</TextString>
+        <TextString language="french">SYNCHRO. VERTICALE :</TextString>
+        <TextString language="german">V-SYNC:</TextString>
+        <TextString language="italian">VSYNC:</TextString>
+        <TextString language="portuguese">SINC. VERTICAL:</TextString>
+        <TextString language="spanish">SINCRONIZACIÓN VERTICAL:</TextString>
+        <TextString language="titan">VSYNC :</TextString>
+    </GameText>
+    <GameText id="m_gamesettings">
+        <TextString language="english">GAME SETTINGS</TextString>
+        <TextString language="french">PARAMÈTRES DE JEU</TextString>
+        <TextString language="german">SPIELOPTIONEN</TextString>
+        <TextString language="italian">IMPOSTAZIONI DI GIOCO</TextString>
+        <TextString language="portuguese">CONFIG. DO JOGO:</TextString>
+        <TextString language="spanish">AJUSTES DEL JUEGO</TextString>
+        <TextString language="titan">GAME SETTINGS</TextString>
+    </GameText>
+    <GameText id="m_timer">
+        <TextString language="english">TIMER :</TextString>
+        <TextString language="french">CHRONOMÈTRE :</TextString>
+        <TextString language="german">ZEIT:</TextString>
+        <TextString language="italian">TIMER:</TextString>
+        <TextString language="portuguese">TEMPO:</TextString>
+        <TextString language="spanish">TIEMPO:</TextString>
+        <TextString language="titan">TIMER :</TextString>
+    </GameText>
+    <GameText id="m_lang">
+        <TextString language="english">LANGUAGE :</TextString>
+        <TextString language="french">LANGUE :</TextString>
+        <TextString language="german">SPRACHE:</TextString>
+        <TextString language="italian">LINGUA:</TextString>
+        <TextString language="portuguese">IDIOMA:</TextString>
+        <TextString language="spanish">IDIOMA:</TextString>
+        <TextString language="titan">LANGUAGE :</TextString>
+    </GameText>
+    <GameText id="m_control">
+        <TextString language="english">CONTROLS</TextString>
+        <TextString language="french">COMMANDES</TextString>
+        <TextString language="german">STEUERUNG</TextString>
+        <TextString language="italian">COMANDI</TextString>
+        <TextString language="portuguese">CONTROLES</TextString>
+        <TextString language="spanish">CONTROLES</TextString>
+        <TextString language="titan">CONTROLS</TextString>
+    </GameText>
+    <GameText id="m_on">
+        <TextString language="english">ON</TextString>
+        <TextString language="french">ON</TextString>
+        <TextString language="german">EIN</TextString>
+        <TextString language="italian">SÌ</TextString>
+        <TextString language="portuguese">SIM</TextString>
+        <TextString language="spanish">SÍ</TextString>
+        <TextString language="titan">ON</TextString>
+    </GameText>
+    <GameText id="m_off">
+        <TextString language="english">OFF</TextString>
+        <TextString language="french">OFF</TextString>
+        <TextString language="german">AUS</TextString>
+        <TextString language="italian">NO</TextString>
+        <TextString language="portuguese">NÃO</TextString>
+        <TextString language="spanish">NO</TextString>
+        <TextString language="titan">OFF</TextString>
+    </GameText>
+    <GameText id="m_exit">
+        <TextString language="english">Exit game?</TextString>
+        <TextString language="french">Quitter le jeu ?</TextString>
+        <TextString language="german">Spiel verlassen?</TextString>
+        <TextString language="italian">Uscire dal gioco?</TextString>
+        <TextString language="portuguese">Sair do jogo?</TextString>
+        <TextString language="spanish">¿Salir del juego?</TextString>
+        <TextString language="titan">Exit game?</TextString>
+    </GameText>
+    <GameText id="m_confirm">
+        <TextString language="english">Confirm Changes?</TextString>
+        <TextString language="french">Confirmer les changements ?</TextString>
+        <TextString language="german">Änderungen übernehmen?</TextString>
+        <TextString language="italian">Confermare le modifiche?</TextString>
+        <TextString language="portuguese">Confirmar alterações?</TextString>
+        <TextString language="spanish">¿Confirmar cambios?</TextString>
+        <TextString language="titan">Confirm Changes?</TextString>
+    </GameText>
+    <GameText id="m_ok">
+        <TextString language="english">OK</TextString>
+        <TextString language="french">OK</TextString>
+        <TextString language="german">OK</TextString>
+        <TextString language="italian">OK</TextString>
+        <TextString language="portuguese">OK</TextString>
+        <TextString language="spanish">OK</TextString>
+        <TextString language="titan">OK</TextString>
+    </GameText>
+    <GameText id="m_cancel">
+        <TextString language="english">CANCEL</TextString>
+        <TextString language="french">ANNULER</TextString>
+        <TextString language="german">ABBRUCH</TextString>
+        <TextString language="italian">ANNULLA</TextString>
+        <TextString language="portuguese">CANCELAR</TextString>
+        <TextString language="spanish">CANCELAR</TextString>
+        <TextString language="titan">CANCEL</TextString>
+    </GameText>
+    <GameText id="m_exittitle">
+        <TextString language="english">Exit to Title Screen?</TextString>
+        <TextString language="french">Quitter vers l'écran-titre </TextString>
+        <TextString language="german">Zurück zum Titel?</TextString>
+        <TextString language="italian">Tornare alla schermata del titolo?</TextString>
+        <TextString language="portuguese">Sair para a tela inicial?</TextString>
+        <TextString language="spanish">¿Salir a la pantalla de inicio?</TextString>
+        <TextString language="titan">Exit to Title Screen?</TextString>
+    </GameText>
+    <GameText id="m_erasedata">
+        <TextString language="english">ERASE DATA</TextString>
+        <TextString language="french">EFFACER DONNÉES</TextString>
+        <TextString language="german">DATEN LÖSCHEN</TextString>
+        <TextString language="italian">ELIMINA DATI</TextString>
+        <TextString language="portuguese">APAGAR DADOS</TextString>
+        <TextString language="spanish">BORRAR DATOS</TextString>
+        <TextString language="titan">ERASE DATA</TextString>
+    </GameText>
+    <GameText id="m_yes">
+        <TextString language="english">YES</TextString>
+        <TextString language="french">OUI</TextString>
+        <TextString language="german">JA</TextString>
+        <TextString language="italian">SÌ</TextString>
+        <TextString language="portuguese">SIM</TextString>
+        <TextString language="spanish">SÍ</TextString>
+        <TextString language="titan">YES</TextString>
+    </GameText>
+    <GameText id="m_no">
+        <TextString language="english">NO</TextString>
+        <TextString language="french">NON</TextString>
+        <TextString language="german">NEIN</TextString>
+        <TextString language="italian">NO</TextString>
+        <TextString language="portuguese">NÃO</TextString>
+        <TextString language="spanish">NO</TextString>
+        <TextString language="titan">NO</TextString>
+    </GameText>
+    <GameText id="m_newgame">
+        <TextString language="english">NEW GAME</TextString>
+        <TextString language="french">NOUVELLE PARTIE</TextString>
+        <TextString language="german">NEUES SPIEL</TextString>
+        <TextString language="italian">NUOVA PARTITA</TextString>
+        <TextString language="portuguese">NOVO JOGO</TextString>
+        <TextString language="spanish">PARTIDA NUEVA</TextString>
+        <TextString language="titan">NEW GAME</TextString>
+    </GameText>
+    <GameText id="m_hard">
+        <TextString language="english">HARD MODE - The Real Challenge</TextString>
+        <TextString language="french">MODE DIFFICILE : le vrai défi</TextString>
+        <TextString language="german">SCHWIERIG - Die wahre Herausforderung</TextString>
+        <TextString language="italian">MODALITÀ DIFFICILE: la vera sfida</TextString>
+        <TextString language="portuguese">MODO DIFÍCIL - O verdadeiro desafio</TextString>
+        <TextString language="spanish">MODO DIFÍCIL - El auténtico desafío</TextString>
+        <TextString language="titan">HARD MODE - The Real Challenge</TextString>
+    </GameText>
+    <GameText id="m_iron">
+        <TextString language="english">IRON MODE - You only get one life</TextString>
+        <TextString language="french">MODE INTRÉPIDE : une seule vie</TextString>
+        <TextString language="german">EISENHART - Du hast nur ein Leben</TextString>
+        <TextString language="italian">MODALITÀ ACCIAIO: hai solo una vita</TextString>
+        <TextString language="portuguese">MODO DE AÇO - Você tem apenas uma vida</TextString>
+        <TextString language="spanish">MODO HIERRO - Solo tienes una vida</TextString>
+        <TextString language="titan">IRON MODE - You only get one life</TextString>
+    </GameText>
+    <GameText id="m_truth">
+        <TextString language="english">TRUTH - Translated text</TextString>
+        <TextString language="french">VÉRITÉ : texte traduit</TextString>
+        <TextString language="german">WAHRHEIT - Übersetzter Text</TextString>
+        <TextString language="italian">VERITÀ: testo tradotto</TextString>
+        <TextString language="portuguese">VERDADE - Texto traduzido</TextString>
+        <TextString language="spanish">VERDAD - Texto traducido</TextString>
+        <TextString language="titan">TRUTH - Translated text</TextString>
+    </GameText>
+    <GameText id="m_noroll">
+        <TextString language="english">NO ROLLS - Cannot roll or run</TextString>
+        <TextString language="french">SANS ROULADES : ni roulades, ni sprint</TextString>
+        <TextString language="german">KEIN ROLLEN - Kein Rollen, kein Laufen</TextString>
+        <TextString language="italian">NON ROTOLARE: non puoi né rotolare né correre</TextString>
+        <TextString language="portuguese">SEM ROLAR - Você não pode rolar nem correr</TextString>
+        <TextString language="spanish">SIN RODAR - No puedes rodar ni correr</TextString>
+        <TextString language="titan">NO ROLLS - Cannot roll or run</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_1">
+        <TextString language="english">You found what you sought...</TextString>
+        <TextString language="french">Vous avez trouvé ce que vous cherchiez...</TextString>
+        <TextString language="german">Du hast gefunden, was du gesucht hast...</TextString>
+        <TextString language="italian">Hai trovato ciò che cercavi...</TextString>
+        <TextString language="portuguese">Você encontrou o que procurava...</TextString>
+        <TextString language="spanish">Has encontrado lo que buscabas...</TextString>
+        <TextString language="titan">You found what you sought...</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_2">
+        <TextString language="english">You killed the Second God.</TextString>
+        <TextString language="french">Vous avez tué le second Dieu.</TextString>
+        <TextString language="german">Du hast den Zweiten Gott getötet.</TextString>
+        <TextString language="italian">Hai ucciso la Seconda divinità.</TextString>
+        <TextString language="portuguese">Você matou o Segundo Deus.</TextString>
+        <TextString language="spanish">Has matado al Segundo Dios.</TextString>
+        <TextString language="titan">You killed the Second God.</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_3">
+        <TextString language="english">The one who took my place</TextString>
+        <TextString language="french">Celui qui avait pris ma place</TextString>
+        <TextString language="german">Den, der meinen Platz genommen</TextString>
+        <TextString language="italian">Quella che ha preso il mio posto</TextString>
+        <TextString language="portuguese">Aquele que assumiu meu lugar</TextString>
+        <TextString language="spanish">El que ocupó mi lugar</TextString>
+        <TextString language="titan">The one who took my place</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_4">
+        <TextString language="english">and created The Four Guardians.</TextString>
+        <TextString language="french">et créé les Quatre Gardiens.</TextString>
+        <TextString language="german">und die Vier Wächter geschaffen hat.</TextString>
+        <TextString language="italian">e ha creato i Quattro guardiani.</TextString>
+        <TextString language="portuguese">e criou os Quatro Guardiões.</TextString>
+        <TextString language="spanish">y creó a los Cuatro Guardianes.</TextString>
+        <TextString language="titan">and created The Four Guardians.</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_5">
+        <TextString language="english">The rest of the Titans here</TextString>
+        <TextString language="french">Ici, les autres Titans</TextString>
+        <TextString language="german">Die andere Titanen waren</TextString>
+        <TextString language="italian">Gli altri Titani</TextString>
+        <TextString language="portuguese">Os Titãs aqui restantes</TextString>
+        <TextString language="spanish">El resto de los titanes</TextString>
+        <TextString language="titan">The rest of the Titans here</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_6">
+        <TextString language="english">grew from Lost Souls</TextString>
+        <TextString language="french">sont nés d'Âmes perdues</TextString>
+        <TextString language="german">einst verlorene Seelen</TextString>
+        <TextString language="italian">sono nati dalle Anime perdute</TextString>
+        <TextString language="portuguese">cresceram de Almas Perdidas</TextString>
+        <TextString language="spanish">crecieron a partir de las almas perdidas</TextString>
+        <TextString language="titan">grew from Lost Souls</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_7">
+        <TextString language="english">Some were like you... human.</TextString>
+        <TextString language="french">Dont certaines comme vous... humaines,</TextString>
+        <TextString language="german">Auch Menschen... so wie du.</TextString>
+        <TextString language="italian">Alcuni erano come te... umani.</TextString>
+        <TextString language="portuguese">Alguns eram como você... humanos.</TextString>
+        <TextString language="spanish">Algunas eran como tú..., humanas.</TextString>
+        <TextString language="titan">Some were like you... human.</TextString>
+    </GameText>
+    <GameText id="soul_elder_txt_8">
+        <TextString language="english">They lacked your conviction for killing...</TextString>
+        <TextString language="french"> n'égalaient certes pas votre ardeur à tuer.</TextString>
+        <TextString language="german">Aber keine so überzeugten Mörder...</TextString>
+        <TextString language="italian">Gli mancava la convinzione di uccidere...</TextString>
+        <TextString language="portuguese">Não tinham sua convicção assassina...</TextString>
+        <TextString language="spanish">Carecían de tu convicción para matar...</TextString>
+        <TextString language="titan">They lacked your conviction for killing...</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_1">
+        <TextString language="english">I was the first Life</TextString>
+        <TextString language="french">J'ai été la première Vie</TextString>
+        <TextString language="german">Ich war das erste Leben</TextString>
+        <TextString language="italian">Io ero la prima Vita</TextString>
+        <TextString language="portuguese">Eu fui a primeira Vida</TextString>
+        <TextString language="spanish">Yo fui la primera vida</TextString>
+        <TextString language="titan">I was the first Life</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_2">
+        <TextString language="english">The first Soul born from Truth</TextString>
+        <TextString language="french">La première Âme née de la Vérité</TextString>
+        <TextString language="german">Die erste Seele, geboren aus Wahrheit</TextString>
+        <TextString language="italian">La prima anima nata dalla Verità</TextString>
+        <TextString language="portuguese">A primeira Alma nascida da Verdade</TextString>
+        <TextString language="spanish">El alma primogénita de la verdad</TextString>
+        <TextString language="titan">The first Soul born from Truth</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_3">
+        <TextString language="english">And from I, came the first of you</TextString>
+        <TextString language="french">Et de moi, émergea le premier d'entre vous</TextString>
+        <TextString language="german">Aus mir kamen die ersten von Euch</TextString>
+        <TextString language="italian">E da me sono venuti i primi di voi</TextString>
+        <TextString language="portuguese">E, de mim, surgiu o primeiro de vocês</TextString>
+        <TextString language="spanish">Y de mí salió el primero de vosotros</TextString>
+        <TextString language="titan">And from I, came the first of you</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_4">
+        <TextString language="english">And now we come full circle</TextString>
+        <TextString language="french">Et maintenant la boucle se referme</TextString>
+        <TextString language="german">Jetzt schließt sich der Kreis</TextString>
+        <TextString language="italian">E ora il cerchio si chiude</TextString>
+        <TextString language="portuguese">E agora o ciclo se completa</TextString>
+        <TextString language="spanish">Y ahora cerramos el círculo</TextString>
+        <TextString language="titan">And now we come full circle</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_5">
+        <TextString language="english">The maker is un-made</TextString>
+        <TextString language="french">Le Créateur est anéanti</TextString>
+        <TextString language="german">Der Anfang endet</TextString>
+        <TextString language="italian">Il creatore è distrutto</TextString>
+        <TextString language="portuguese">O feitor é desfeito</TextString>
+        <TextString language="spanish">El creador está inconcluso</TextString>
+        <TextString language="titan">The maker is un-made</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_6">
+        <TextString language="english">And one day, you will fall to the same fate</TextString>
+        <TextString language="french">Et un jour, vous connaîtrez le même destin funeste</TextString>
+        <TextString language="german">Eines Tages wird es auch dir so gehen</TextString>
+        <TextString language="italian">E un giorno subirete la stessa sorte</TextString>
+        <TextString language="portuguese">E um dia, você terá o mesmo destino</TextString>
+        <TextString language="spanish">Y un día, correrás la misma suerte</TextString>
+        <TextString language="titan">And one day, you will fall to the same fate</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_7">
+        <TextString language="english">Do what you must.</TextString>
+        <TextString language="french">Faites ce que vous avez à faire !</TextString>
+        <TextString language="german">Tue das, wofür du kamst.</TextString>
+        <TextString language="italian">Fate quello che dovete.</TextString>
+        <TextString language="portuguese">Faça o que for preciso.</TextString>
+        <TextString language="spanish">Haz lo que debas.</TextString>
+        <TextString language="titan">Do what you must.</TextString>
+    </GameText>
+    <GameText id="truth_elder_txt_8">
+        <TextString language="english"></TextString>
+        <TextString language="french"></TextString>
+        <TextString language="german"></TextString>
+        <TextString language="italian"></TextString>
+        <TextString language="portuguese"></TextString>
+        <TextString language="spanish"></TextString>
+        <TextString language="titan"></TextString>
+    </GameText>
+    <GameText id="m_newmodes">
+        <TextString language="english">NEW GAME MODES UNLOCKED</TextString>
+        <TextString language="french">NOUVEAUX MODES DE JEU DÉBLOQUÉS</TextString>
+        <TextString language="german">NEUE SPIELMODI VERFÜGBAR</TextString>
+        <TextString language="italian">NUOVE MODALITÀ DI GIOCO SBLOCCATE</TextString>
+        <TextString language="portuguese">NOVOS MODOS DE JOGO DESBLOQUEADOS</TextString>
+        <TextString language="spanish">NUEVOS MODOS DE JUEGO DESBLOQUEADOS</TextString>
+        <TextString language="titan">NEW GAME MODES UNLOCKED</TextString>
+    </GameText>
+    <GameText id="m_rumble">
+        <TextString language="english">PAD RUMBLE :</TextString>
+        <TextString language="french">VIBRATIONS DE MANETTE :</TextString>
+        <TextString language="german">PAD-VIBRATION:</TextString>
+        <TextString language="italian">VIBRAZIONE CONTROLLER:</TextString>
+        <TextString language="portuguese">VIBRAÇÃO:</TextString>
+        <TextString language="spanish">VIBRACIÓN DEL MANDO:</TextString>
+        <TextString language="titan">PAD RUMBLE :</TextString>
+    </GameText>
+    <GameText id="m_keyboard">
+        <TextString language="english">KEYBOARD</TextString>
+        <TextString language="french">CLAVIER</TextString>
+        <TextString language="german">TASTATUR</TextString>
+        <TextString language="italian">TASTIERA</TextString>
+        <TextString language="portuguese">TECLADO</TextString>
+        <TextString language="spanish">TECLADO</TextString>
+        <TextString language="titan">KEYBOARD</TextString>
+    </GameText>
+    <GameText id="m_joypad">
+        <TextString language="english">JOYPAD</TextString>
+        <TextString language="french">MANETTE</TextString>
+        <TextString language="german">JOYPAD</TextString>
+        <TextString language="italian">CONTROLLER</TextString>
+        <TextString language="portuguese">CONTROLE</TextString>
+        <TextString language="spanish">MANDO</TextString>
+        <TextString language="titan">JOYPAD</TextString>
+    </GameText>
+    <GameText id="m_movestick">
+        <TextString language="english">MOVEMENT :</TextString>
+        <TextString language="french">DÉPLACEMENTS :</TextString>
+        <TextString language="german">BEWEGEN:</TextString>
+        <TextString language="italian">MOVIMENTO:</TextString>
+        <TextString language="portuguese">MOVIMENTAÇÃO:</TextString>
+        <TextString language="spanish">MOVIMIENTO:</TextString>
+        <TextString language="titan">MOVEMENT :</TextString>
+    </GameText>
+    <GameText id="m_shoot">
+        <TextString language="english">SHOOT :</TextString>
+        <TextString language="french">TIR :</TextString>
+        <TextString language="german">SCHIESSEN:</TextString>
+        <TextString language="italian">SPARA:</TextString>
+        <TextString language="portuguese">ATIRAR:</TextString>
+        <TextString language="spanish">DISPARAR:</TextString>
+        <TextString language="titan">SHOOT :</TextString>
+    </GameText>
+    <GameText id="m_roll">
+        <TextString language="english">ROLL :</TextString>
+        <TextString language="french">ROULADE :</TextString>
+        <TextString language="german">ABROLLEN:</TextString>
+        <TextString language="italian">ROTOLA:</TextString>
+        <TextString language="portuguese">ROLAR:</TextString>
+        <TextString language="spanish">RODAR:</TextString>
+        <TextString language="titan">ROLL :</TextString>
+    </GameText>
+    <GameText id="m_lookstick">
+        <TextString language="english">LOOK :</TextString>
+        <TextString language="french">OBSERVATION :</TextString>
+        <TextString language="german">UMSEHEN:</TextString>
+        <TextString language="italian">GUARDA:</TextString>
+        <TextString language="portuguese">OLHAR:</TextString>
+        <TextString language="spanish">MIRAR:</TextString>
+        <TextString language="titan">LOOK :</TextString>
+    </GameText>
+    <GameText id="m_resetdefault">
+        <TextString language="english">RESET TO DEFAULT</TextString>
+        <TextString language="french">VALEURS D'ORIGINE</TextString>
+        <TextString language="german">ZURÜCK AUF VORGABE</TextString>
+        <TextString language="italian">RIPRISTINA IMPOSTAZIONI PREDEFINITE</TextString>
+        <TextString language="portuguese">REDEFINIR PADRÃO</TextString>
+        <TextString language="spanish">RESTAURAR AJUSTES POR DEFECTO</TextString>
+        <TextString language="titan">RESET TO DEFAULT</TextString>
+    </GameText>
+    <GameText id="m_up">
+        <TextString language="english">UP</TextString>
+        <TextString language="french">HAUT</TextString>
+        <TextString language="german">RAUF</TextString>
+        <TextString language="italian">SU</TextString>
+        <TextString language="portuguese">PARA CIMA</TextString>
+        <TextString language="spanish">ARRIBA</TextString>
+        <TextString language="titan">UP</TextString>
+    </GameText>
+    <GameText id="m_down">
+        <TextString language="english">DOWN</TextString>
+        <TextString language="french">BAS</TextString>
+        <TextString language="german">RUNTER</TextString>
+        <TextString language="italian">GIÙ</TextString>
+        <TextString language="portuguese">PARA BAIXO</TextString>
+        <TextString language="spanish">ABAJO</TextString>
+        <TextString language="titan">DOWN</TextString>
+    </GameText>
+    <GameText id="m_left">
+        <TextString language="english">LEFT</TextString>
+        <TextString language="french">GAUCHE</TextString>
+        <TextString language="german">LINKS</TextString>
+        <TextString language="italian">SINISTRA</TextString>
+        <TextString language="portuguese">ESQUERDA</TextString>
+        <TextString language="spanish">IZQUIERDA</TextString>
+        <TextString language="titan">LEFT</TextString>
+    </GameText>
+    <GameText id="m_right">
+        <TextString language="english">RIGHT</TextString>
+        <TextString language="french">DROIT</TextString>
+        <TextString language="german">RECHTS</TextString>
+        <TextString language="italian">DESTRA</TextString>
+        <TextString language="portuguese">DIREITA</TextString>
+        <TextString language="spanish">DERECHA</TextString>
+        <TextString language="titan">RIGHT</TextString>
+    </GameText>
+    <GameText id="FIRST_GATE_name">
+        <TextString language="english">Out of the Frying Pan...</TextString>
+        <TextString language="french">De Charybde...</TextString>
+        <TextString language="german">Aus dem Regen...</TextString>
+        <TextString language="italian">Dalla padella...</TextString>
+        <TextString language="portuguese">Fora da frigideira...</TextString>
+        <TextString language="spanish">Salir del fuego...</TextString>
+        <TextString language="titan">Out of the Frying Pan...</TextString>
+    </GameText>
+    <GameText id="FIRST_GATE_desc">
+        <TextString language="english">Open the first Sealed Gate</TextString>
+        <TextString language="french">Ouvrir la première Porte Scellée</TextString>
+        <TextString language="german">Öffne das erste versiegelte Tor</TextString>
+        <TextString language="italian">Apri il primo cancello chiuso</TextString>
+        <TextString language="portuguese">Abra o primeiro Portão Selado.</TextString>
+        <TextString language="spanish">Abre la primera puerta sellada.</TextString>
+        <TextString language="titan">Open the first Sealed Gate</TextString>
+    </GameText>
+    <GameText id="SECOND_GATE_name">
+        <TextString language="english">...Into the Fire</TextString>
+        <TextString language="french">... En Scylla</TextString>
+        <TextString language="german">... in die Traufe</TextString>
+        <TextString language="italian">... alla brace</TextString>
+        <TextString language="portuguese">...Para o fogo</TextString>
+        <TextString language="spanish">... Para caer en las brasas</TextString>
+        <TextString language="titan">...Into the Fire</TextString>
+    </GameText>
+    <GameText id="SECOND_GATE_desc">
+        <TextString language="english">Open the second Sealed Gate</TextString>
+        <TextString language="french">Ouvrir la seconde Porte Scellée</TextString>
+        <TextString language="german">Öffne das zweite versiegelte Tor</TextString>
+        <TextString language="italian">Apri il secondo cancello chiuso</TextString>
+        <TextString language="portuguese">Abra o segundo Portão Selado.</TextString>
+        <TextString language="spanish">Abre la segunda puerta sellada.</TextString>
+        <TextString language="titan">Open the second Sealed Gate</TextString>
+    </GameText>
+    <GameText id="SPEED_RUN_name">
+        <TextString language="english">Aerodynamics</TextString>
+        <TextString language="french">Aérodynamisme</TextString>
+        <TextString language="german">Aerodynamik</TextString>
+        <TextString language="italian">Aerodinamica</TextString>
+        <TextString language="portuguese">Aerodinâmica</TextString>
+        <TextString language="spanish">Aerodinámica</TextString>
+        <TextString language="titan">Aerodynamics</TextString>
+    </GameText>
+    <GameText id="SPEED_RUN_desc">
+        <TextString language="english">Beat the game in under 20 minutes</TextString>
+        <TextString language="french">Finir le jeu en moins de 20 minutes</TextString>
+        <TextString language="german">Schlag das Spiel in unter 20 Minuten</TextString>
+        <TextString language="italian">Completa il gioco in meno di 20 minuti</TextString>
+        <TextString language="portuguese">Vença o jogo em menos de 20 minutos.</TextString>
+        <TextString language="spanish">Termina el juego en menos de 20 minutos.</TextString>
+        <TextString language="titan">Beat the game in under 20 minutes</TextString>
+    </GameText>
+    <GameText id="TITAN_SOUL_name">
+        <TextString language="english">Titan Soul</TextString>
+        <TextString language="french">Âme de titan</TextString>
+        <TextString language="german">Titanenseele</TextString>
+        <TextString language="italian">Anima di Titano</TextString>
+        <TextString language="portuguese">Alma de Titã</TextString>
+        <TextString language="spanish">Alma de titán</TextString>
+        <TextString language="titan">Titan Soul</TextString>
+    </GameText>
+    <GameText id="TITAN_SOUL_desc">
+        <TextString language="english">Beat the Game</TextString>
+        <TextString language="french">Finir le jeu</TextString>
+        <TextString language="german">Schlag das Spiel</TextString>
+        <TextString language="italian">Completa il gioco</TextString>
+        <TextString language="portuguese">Vença o jogo.</TextString>
+        <TextString language="spanish">Termina el juego.</TextString>
+        <TextString language="titan">Beat the Game</TextString>
+    </GameText>
+    <GameText id="TRUTH_SOUL_name">
+        <TextString language="english">TRUTH</TextString>
+        <TextString language="french">VÉRITÉ</TextString>
+        <TextString language="german">WAHRHEIT</TextString>
+        <TextString language="italian">VERITÀ</TextString>
+        <TextString language="portuguese">VERDADE</TextString>
+        <TextString language="spanish">VERDAD</TextString>
+        <TextString language="titan">TRUTH</TextString>
+    </GameText>
+    <GameText id="TRUTH_SOUL_desc">
+        <TextString language="english">???</TextString>
+        <TextString language="french">???</TextString>
+        <TextString language="german">???</TextString>
+        <TextString language="italian">???</TextString>
+        <TextString language="portuguese">???</TextString>
+        <TextString language="spanish">???</TextString>
+        <TextString language="titan">???</TextString>
+    </GameText>
+    <GameText id="IRON_NORMAL_name">
+        <TextString language="english">Iron Human</TextString>
+        <TextString language="french">Humain héroïque</TextString>
+        <TextString language="german">Eisenmensch</TextString>
+        <TextString language="italian">Umano d'acciaio</TextString>
+        <TextString language="portuguese">Humano de aço</TextString>
+        <TextString language="spanish">Humano de hierro</TextString>
+        <TextString language="titan">Iron Human</TextString>
+    </GameText>
+    <GameText id="IRON_NORMAL_desc">
+        <TextString language="english">Beat the game in Iron Mode</TextString>
+        <TextString language="french">Finir le jeu en mode Intrépide</TextString>
+        <TextString language="german">Schlag das Spiel im Eisenhart-Modus</TextString>
+        <TextString language="italian">Completa il gioco in modalità Acciaio</TextString>
+        <TextString language="portuguese">Vença o jogo no Modo de Aço.</TextString>
+        <TextString language="spanish">Termina el juego en modo Hierro.</TextString>
+        <TextString language="titan">Beat the game in Iron Mode</TextString>
+    </GameText>
+    <GameText id="IRON_HARD_name">
+        <TextString language="english">Iron Titan</TextString>
+        <TextString language="french">Titan héroïque</TextString>
+        <TextString language="german">Eisentitan</TextString>
+        <TextString language="italian">Titano d'acciaio</TextString>
+        <TextString language="portuguese">Titã de aço</TextString>
+        <TextString language="spanish">Titán de hierro</TextString>
+        <TextString language="titan">Iron Titan</TextString>
+    </GameText>
+    <GameText id="IRON_HARD_desc">
+        <TextString language="english">Beat the game in Iron Mode with Hard Mode active</TextString>
+        <TextString language="french">Finir le jeu en Mode Intrépide, avec le Mode Difficile actif</TextString>
+        <TextString language="german">Schlag das Spiel im Eisenhart-Modus auf Schwierig</TextString>
+        <TextString language="italian">Completa il gioco in modalità Acciaio con la modalità Difficile attiva</TextString>
+        <TextString language="portuguese">Vença o jogo no Modo de Aço com o Modo Difícil ativo.</TextString>
+        <TextString language="spanish">Termina el juego en el modo Hierro con el modo Difícil activo.</TextString>
+        <TextString language="titan">Beat the game in Iron Mode with Hard Mode active</TextString>
+    </GameText>
+    <GameText id="NO_ROLLS_name">
+        <TextString language="english">Hard Bizkit</TextString>
+        <TextString language="french">Raide comme un piquet</TextString>
+        <TextString language="german">Hartes Brot</TextString>
+        <TextString language="italian">È sempre più dura</TextString>
+        <TextString language="portuguese">Osso duro de roer</TextString>
+        <TextString language="spanish">Hard Bizkit</TextString>
+        <TextString language="titan">Hard Bizkit</TextString>
+    </GameText>
+    <GameText id="NO_ROLLS_desc">
+        <TextString language="english">Beat the game without rolling rolling rolling (in No Roll mode)</TextString>
+        <TextString language="french">Finir le jeu sans roulades (en mode Sans Roulades)</TextString>
+        <TextString language="german">Schlag das Spiel ohne Abrollen (im Kein Rollen-Modus)</TextString>
+        <TextString language="italian">Completa il gioco senza rotolare (Modalità Non rotolare)</TextString>
+        <TextString language="portuguese">Vença o jogo no Modo Sem Rolar (sem rolar e sem fingir de morto).</TextString>
+        <TextString language="spanish">Termina el juego sin rodar, rodar, rodar (en modo Sin rodar).</TextString>
+        <TextString language="titan">Beat the game without rolling rolling rolling (in No Roll mode)</TextString>
+    </GameText>
+    <GameText id="SLIMEBALL_name">
+        <TextString language="english">Slimeball</TextString>
+        <TextString language="french">Boule visqueuse</TextString>
+        <TextString language="german">Schleimball</TextString>
+        <TextString language="italian">Palla di melma</TextString>
+        <TextString language="portuguese">Bola gosmenta</TextString>
+        <TextString language="spanish">Bola de fango</TextString>
+        <TextString language="titan">Slimeball</TextString>
+    </GameText>
+    <GameText id="SLIMEBALL_desc">
+        <TextString language="english">Kill the Sludge titan with no more possible divisions</TextString>
+        <TextString language="french">Tuer le Titan informe sans plus de divisions possibles</TextString>
+        <TextString language="german">Vernichte den Schleim-Titan nach allen möglichen Teilungen</TextString>
+        <TextString language="italian">Uccidi il Titano melma senza altre divisioni</TextString>
+        <TextString language="portuguese">Mate o Titã de lodo sem possíveis divisões.</TextString>
+        <TextString language="spanish">Mata al titán mancha sin más divisiones posibles.</TextString>
+        <TextString language="titan">Kill the Sludge titan with no more possible divisions</TextString>
+    </GameText>
+    <GameText id="HARD_MODE_name">
+        <TextString language="english">New Game+</TextString>
+        <TextString language="french">Nouvelle partie+</TextString>
+        <TextString language="german">Neues Spiel+</TextString>
+        <TextString language="italian">Nuova partita+</TextString>
+        <TextString language="portuguese">Novo jogo+</TextString>
+        <TextString language="spanish">Partida nueva+</TextString>
+        <TextString language="titan">New Game+</TextString>
+    </GameText>
+    <GameText id="HARD_MODE_desc">
+        <TextString language="english">Beat Hard Mode</TextString>
+        <TextString language="french">Finir le jeu en mode Difficile</TextString>
+        <TextString language="german">Schlag den Schwierig-Modus</TextString>
+        <TextString language="italian">Completa la modalità Difficile</TextString>
+        <TextString language="portuguese">Vença no Modo Difícil.</TextString>
+        <TextString language="spanish">Termina el modo Difícil.</TextString>
+        <TextString language="titan">Beat Hard Mode</TextString>
+    </GameText>
+    <GameText id="EYECUBE_name">
+        <TextString language="english">Laser Eye Surgery</TextString>
+        <TextString language="french">Chirurgie de l'œil au laser</TextString>
+        <TextString language="german">Laser-Augenkorrektur</TextString>
+        <TextString language="italian">Chirurgia oculistica al laser</TextString>
+        <TextString language="portuguese">Cirurgia ocular</TextString>
+        <TextString language="spanish">Cirugía ocular con láser</TextString>
+        <TextString language="titan">Laser Eye Surgery</TextString>
+    </GameText>
+    <GameText id="EYECUBE_desc">
+        <TextString language="english">Kill the Eye Cube while pulling back the arrow</TextString>
+        <TextString language="french">Tuer l'Œilcube en ramenant la flèche à vous </TextString>
+        <TextString language="german">Vernichte den Augenwürfel beim Zurückholen des Pfeils</TextString>
+        <TextString language="italian">Uccidi l'occhio cubico tirando indietro la freccia</TextString>
+        <TextString language="portuguese">Mate o Cubo Óptico puxando a flecha de volta.</TextString>
+        <TextString language="spanish">Mata al ojo cubo mientras tiras de la flecha.</TextString>
+        <TextString language="titan">Kill the Eye Cube while pulling back the arrow</TextString>
+    </GameText>
+    <GameText id="BRAIN_name">
+        <TextString language="english">Brain Freeze</TextString>
+        <TextString language="french">Rhume de cerveau</TextString>
+        <TextString language="german">Hirn auf Eis</TextString>
+        <TextString language="italian">Brainfreeze</TextString>
+        <TextString language="portuguese">Miolo Gelado</TextString>
+        <TextString language="spanish">Cerebro congelado</TextString>
+        <TextString language="titan">Brain Freeze</TextString>
+    </GameText>
+    <GameText id="BRAIN_desc">
+        <TextString language="english">Kill the Brain with a flaming arrow</TextString>
+        <TextString language="french">Tuer le Cerveau d'une flèche enflammée</TextString>
+        <TextString language="german">Vernichte das Hirn mit einem flammenden Pfeil</TextString>
+        <TextString language="italian">Uccidi il cervello con una freccia infuocata</TextString>
+        <TextString language="portuguese">Mate o Miolo com uma flecha de fogo.</TextString>
+        <TextString language="spanish">Mata al cerebro con una flecha en llamas.</TextString>
+        <TextString language="titan">Kill the Brain with a flaming arrow</TextString>
+    </GameText>
+    <GameText id="PLANT_VINES_name">
+        <TextString language="english">Short Back and Sides</TextString>
+        <TextString language="french">La nuque rasée et court sur les côtés</TextString>
+        <TextString language="german">Landschaftspflege</TextString>
+        <TextString language="italian">Una spuntatina qua e là</TextString>
+        <TextString language="portuguese">Aparando as arestas</TextString>
+        <TextString language="spanish">Corto por detrás y los lados</TextString>
+        <TextString language="titan">Short Back and Sides</TextString>
+    </GameText>
+    <GameText id="PLANT_VINES_desc">
+        <TextString language="english">Cut all the vines off the Plant Titan</TextString>
+        <TextString language="french">Couper toutes les tiges du Titan Végétal</TextString>
+        <TextString language="german">Schneide alle Ranken des Pflanzen-Titan ab</TextString>
+        <TextString language="italian">Taglia tutti i rami del Titano-pianta </TextString>
+        <TextString language="portuguese">Corte todos os galhos do Titã vegetal.</TextString>
+        <TextString language="spanish">Corta todas las parras del titán planta.</TextString>
+        <TextString language="titan">Cut all the vines off the Plant Titan</TextString>
+    </GameText>
+    <GameText id="BLAZEIT_name">
+        <TextString language="english">Drug Trial</TextString>
+        <TextString language="french">Épreuve stupéfiante</TextString>
+        <TextString language="german">Drogentest</TextString>
+        <TextString language="italian">Test allucinogeno</TextString>
+        <TextString language="portuguese">Experimento médico</TextString>
+        <TextString language="spanish">Prueba de drogas</TextString>
+        <TextString language="titan">Drug Trial</TextString>
+    </GameText>
+    <GameText id="BLAZEIT_desc">
+        <TextString language="english">Succumb to the effect of spores for 30 seconds total</TextString>
+        <TextString language="french">Résister aux effets des spores pendant un total de 30 secondes</TextString>
+        <TextString language="german">Unterliege dem Effekt der Sporen 30 Sekunden lang</TextString>
+        <TextString language="italian">Subisci l'effetto delle spore per 30 secondi</TextString>
+        <TextString language="portuguese">Sucumba ao efeito das esporas por um total de 30 segundos.</TextString>
+        <TextString language="spanish">Sucumbe al efecto de las esporas durante 30 segundos en total.</TextString>
+        <TextString language="titan">Succumb to the effect of spores for 30 seconds total</TextString>
+    </GameText>
+    <GameText id="ROCKY_name">
+        <TextString language="english">Demo Man</TextString>
+        <TextString language="french">Vandale</TextString>
+        <TextString language="german">Prachtkerl</TextString>
+        <TextString language="italian">Uomo demo</TextString>
+        <TextString language="portuguese">Destruidor</TextString>
+        <TextString language="spanish">Demoledor</TextString>
+        <TextString language="titan">Demo Man</TextString>
+    </GameText>
+    <GameText id="ROCKY_desc">
+        <TextString language="english">Kill the Knight after destroying all pillars</TextString>
+        <TextString language="french">Tuer le Chevalier après avoir détruit tous les piliers.</TextString>
+        <TextString language="german">Vernichte den Ritter, nachdem du alle Säulen zerstört hast</TextString>
+        <TextString language="italian">Uccidi il cavaliere dopo aver distrutto tutte le colonne</TextString>
+        <TextString language="portuguese">Mate o Cavaleiro depois de destruir todas as colunas.</TextString>
+        <TextString language="spanish">Mata al caballero después de destruir todos los pilares.</TextString>
+        <TextString language="titan">Kill the Knight after destroying all pillars</TextString>
+    </GameText>
+    <GameText id="AVARICE_name">
+        <TextString language="english">Ca$h Mon£y</TextString>
+        <TextString language="french">Grand argentier</TextString>
+        <TextString language="german">Onk£l Da$ob€rt</TextString>
+        <TextString language="italian">Tanti $o£di </TextString>
+        <TextString language="portuguese">Moeda$ e mais moeda$</TextString>
+        <TextString language="spanish">Din€ro en ef£ctivo</TextString>
+        <TextString language="titan">Ca$h Mon£y</TextString>
+    </GameText>
+    <GameText id="AVARICE_desc">
+        <TextString language="english">Produce 50 coins in the Chest fight</TextString>
+        <TextString language="french">Produire 50 pièces dans le combat du coffre</TextString>
+        <TextString language="german">Hol 50 Münzen im Truhen-Kampf</TextString>
+        <TextString language="italian">Produci 50 monete con il combattimento del forziere</TextString>
+        <TextString language="portuguese">Gere 50 moedas na luta do Baú.</TextString>
+        <TextString language="spanish">Genera 50 monedas en la lucha con el cofre.</TextString>
+        <TextString language="titan">Produce 50 coins in the Chest fight</TextString>
+    </GameText>
+    <GameText id="ROLLER_name">
+        <TextString language="english">COME AT ME BRO</TextString>
+        <TextString language="french">VIENS PAR ICI, PETIT !</TextString>
+        <TextString language="german">ZEIG ES MIR, MANN</TextString>
+        <TextString language="italian">VIENI, PICCOLINO</TextString>
+        <TextString language="portuguese">CHEGUE MAIS</TextString>
+        <TextString language="spanish">VEN A POR MÍ, COLEGA</TextString>
+        <TextString language="titan">COME AT ME BRO</TextString>
+    </GameText>
+    <GameText id="ROLLER_desc">
+        <TextString language="english">Kill the Rolling Titan in under 5 seconds</TextString>
+        <TextString language="french">Tuer le Titan qui fait des roulades en moins de 5 secondes</TextString>
+        <TextString language="german">Vernichte den rollenden Titan in unter 5 Sekunden</TextString>
+        <TextString language="italian">Uccidi il Titano rotolante in meno di 5 secondi</TextString>
+        <TextString language="portuguese">Mate o Titã rolador em menos de 5 segundos.</TextString>
+        <TextString language="spanish">Mata al titán rodante en menos de 5 segundos.</TextString>
+        <TextString language="titan">Kill the Rolling Titan in under 5 seconds</TextString>
+    </GameText>
+    <GameText id="BOMBER_name">
+        <TextString language="english">Bomberman</TextString>
+        <TextString language="french">Bomberman</TextString>
+        <TextString language="german">Alles Bombe</TextString>
+        <TextString language="italian">Bombarolo</TextString>
+        <TextString language="portuguese">Homem-bomba</TextString>
+        <TextString language="spanish">Bombardero</TextString>
+        <TextString language="titan">Bomberman</TextString>
+    </GameText>
+    <GameText id="BOMBER_desc">
+        <TextString language="english">Drop a bomb on the Lava Blob Titan's head</TextString>
+        <TextString language="french">Lâcher une bombe sur la tête du Titan informe en lave</TextString>
+        <TextString language="german">Platziere eine Bombe auf den Kopf des Lavablob-Titanen</TextString>
+        <TextString language="italian">Fai scoppiare una bomba sulla testa del Titano di lava</TextString>
+        <TextString language="portuguese">Jogue uma bomba na cabeça do Titã de lava.</TextString>
+        <TextString language="spanish">Lanza una bomba sobre la cabeza del titán de lava.</TextString>
+        <TextString language="titan">Drop a bomb on the Lava Blob Titan's head</TextString>
+    </GameText>
+    <GameText id="IK_SPIN_name">
+        <TextString language="english">Leak Spin</TextString>
+        <TextString language="french">Empêcheur de tourner en rond</TextString>
+        <TextString language="german">Todeswirbel</TextString>
+        <TextString language="italian">Gira gira gira</TextString>
+        <TextString language="portuguese">Morte giratória</TextString>
+        <TextString language="spanish">Giro mortal</TextString>
+        <TextString language="titan">Leak Spin</TextString>
+    </GameText>
+    <GameText id="IK_SPIN_desc">
+        <TextString language="english">Kill the Skull Titan as it spins</TextString>
+        <TextString language="french">Tuer le Titan-Crâne pendant qu'il tourne sur lui-même</TextString>
+        <TextString language="german">Vernichte den Schädel-Titan, während er sich dreht</TextString>
+        <TextString language="italian">Uccidi il Titano-teschio mentre gira</TextString>
+        <TextString language="portuguese">Mate o Titã caveira enquanto ele roda.</TextString>
+        <TextString language="spanish">Mata al titán calavera mientras gira.</TextString>
+        <TextString language="titan">Kill the Skull Titan as it spins</TextString>
+    </GameText>
+    <GameText id="BEAT_YETI_name">
+        <TextString language="english">Beating the Yeti</TextString>
+        <TextString language="french">Qui a peur du grand méchant Yéti ?</TextString>
+        <TextString language="german">Yeti jetzt, tot zuletzt</TextString>
+        <TextString language="italian">Batti lo Yeti</TextString>
+        <TextString language="portuguese">Abominável morte das neves</TextString>
+        <TextString language="spanish">Vencer al yeti</TextString>
+        <TextString language="titan">Beating the Yeti</TextString>
+    </GameText>
+    <GameText id="BEAT_YETI_desc">
+        <TextString language="english">Finish in under 10 seconds...</TextString>
+        <TextString language="french">Le tuer en moins de 10 secondes...</TextString>
+        <TextString language="german">Abschluss in unter 10 Sekunden...</TextString>
+        <TextString language="italian">Distruggilo in meno di 10 secondi...</TextString>
+        <TextString language="portuguese">Vença em menos de 10 segundos...</TextString>
+        <TextString language="spanish">Acaba con él en menos de 10 segundos...</TextString>
+        <TextString language="titan">Finish in under 10 seconds...</TextString>
+    </GameText>
+    <GameText id="DENTIST_name">
+        <TextString language="english">Dental Plan</TextString>
+        <TextString language="french">Dentiste de garde</TextString>
+        <TextString language="german">Grundversorgung</TextString>
+        <TextString language="italian">Piano dentale</TextString>
+        <TextString language="portuguese">Tiradentes</TextString>
+        <TextString language="spanish">Seguro dental</TextString>
+        <TextString language="titan">Dental Plan</TextString>
+    </GameText>
+    <GameText id="DENTIST_desc">
+        <TextString language="english">Remove all teeth from the Mountain Titan then kill it</TextString>
+        <TextString language="french">Extraire toutes les dents du Titan des Montagnes puis le tuer</TextString>
+        <TextString language="german">Nimm dem Berg-Titan alle Zähne, dann vernichte ihn</TextString>
+        <TextString language="italian">Togli tutti i denti dal Titano montagna e uccidilo</TextString>
+        <TextString language="portuguese">Remova todos os dentes do Titã montanha e mate-o.</TextString>
+        <TextString language="spanish">Quítale todos los dientes al titán de la montaña y luego mátalo.</TextString>
+        <TextString language="titan">Remove all teeth from the Mountain Titan then kill it</TextString>
+    </GameText>
+    <GameText id="SNAKE_name">
+        <TextString language="english">Titanic</TextString>
+        <TextString language="french">Titanic</TextString>
+        <TextString language="german">Titanic</TextString>
+        <TextString language="italian">Titanic</TextString>
+        <TextString language="portuguese">Titanic</TextString>
+        <TextString language="spanish">Titanic</TextString>
+        <TextString language="titan">Titanic</TextString>
+    </GameText>
+    <GameText id="SNAKE_desc">
+        <TextString language="english">Destroy all icebergs</TextString>
+        <TextString language="french">Détruire tous les icebergs</TextString>
+        <TextString language="german">Vernichte alle Eisberge</TextString>
+        <TextString language="italian">Distruggi tutti gli iceberg</TextString>
+        <TextString language="portuguese">Destrua todos os icebergs.</TextString>
+        <TextString language="spanish">Destruye todos los icebergs.</TextString>
+        <TextString language="titan">Destroy all icebergs</TextString>
+    </GameText>
+    <GameText id="KING_name">
+        <TextString language="english">A Collision of Souls</TextString>
+        <TextString language="french">Collision d'âmes</TextString>
+        <TextString language="german">Seelenkollision</TextString>
+        <TextString language="italian">Una collisione di anime</TextString>
+        <TextString language="portuguese">Colisão espiritual</TextString>
+        <TextString language="spanish">Un choque de almas</TextString>
+        <TextString language="titan">A Collision of Souls</TextString>
+    </GameText>
+    <GameText id="KING_desc">
+        <TextString language="english">Knock yourself out in the battle for the Titan Soul</TextString>
+        <TextString language="french">S'assommer tout seul dans la bataille contre l'Âme</TextString>
+        <TextString language="german">Schlag dich im Kampf um die Titan-Seele selbst k.o.</TextString>
+        <TextString language="italian">Esci dal combattimento per l'Anima del Titano</TextString>
+        <TextString language="portuguese">Perca os sentidos na batalha pela Alma de Titã.</TextString>
+        <TextString language="spanish">Pierde el conocimiento en la batalla por el alma del titán.</TextString>
+        <TextString language="titan">Knock yourself out in the battle for the Titan Soul</TextString>
+    </GameText>
+    <GameText id="SHAD_COLOS_name">
+        <TextString language="english">Shadow of the Colossus</TextString>
+        <TextString language="french">Shadow of the Colossus</TextString>
+        <TextString language="german">Im Schatten des Koloss</TextString>
+        <TextString language="italian">Ombra del Colosso</TextString>
+        <TextString language="portuguese">Sombra do Colosso</TextString>
+        <TextString language="spanish">Sombra del coloso</TextString>
+        <TextString language="titan">Shadow of the Colossus</TextString>
+    </GameText>
+    <GameText id="SHAD_COLOS_desc">
+        <TextString language="english">Kill the Broken Statue Titan while pulling back the arrow</TextString>
+        <TextString language="french">Tuer le Titan de la Statue Brisée en ramenant la flèche à vous</TextString>
+        <TextString language="german">Vernichte den Statuen-Titan beim Zurückholen des Pfeils</TextString>
+        <TextString language="italian">Uccidi il Titano statua rotta tirando indietro la freccia</TextString>
+        <TextString language="portuguese">Mate o Titã da estátua quebrada enquanto puxa a flecha de volta.</TextString>
+        <TextString language="spanish">Mata al titán estatua rota mientras tiras de la flecha.</TextString>
+        <TextString language="titan">Kill the Broken Statue Titan while pulling back the arrow</TextString>
+    </GameText>
+    <GameText id="FIRST_BLOOD_name">
+        <TextString language="english">First Blood</TextString>
+        <TextString language="french">Baptême du feu</TextString>
+        <TextString language="german">Erstes Blut</TextString>
+        <TextString language="italian">Primo sangue</TextString>
+        <TextString language="portuguese">A primeira vez</TextString>
+        <TextString language="spanish">Primera sangre</TextString>
+        <TextString language="titan">First Blood</TextString>
+    </GameText>
+    <GameText id="FIRST_BLOOD_desc">
+        <TextString language="english">Slay a Titan</TextString>
+        <TextString language="french">Tuer un Titan</TextString>
+        <TextString language="german">Vernichte einen Titan</TextString>
+        <TextString language="italian">Uccidi un Titano</TextString>
+        <TextString language="portuguese">Mate um Titã.</TextString>
+        <TextString language="spanish">Mata a un titán.</TextString>
+        <TextString language="titan">Slay a Titan</TextString>
+    </GameText>
+    <GameText id="GUARDIAN_name">
+        <TextString language="english">The Switch</TextString>
+        <TextString language="french">L'interrupteur</TextString>
+        <TextString language="german">Schalten und Walten</TextString>
+        <TextString language="italian">L'interruttore</TextString>
+        <TextString language="portuguese">O botão</TextString>
+        <TextString language="spanish">El interruptor</TextString>
+        <TextString language="titan">The Switch</TextString>
+    </GameText>
+    <GameText id="GUARDIAN_desc">
+        <TextString language="english">Trigger the Guardian's switches with the wrong hands and kill it</TextString>
+        <TextString language="french">Activer les interrupteurs du Gardien en inversant les mains et le tuer</TextString>
+        <TextString language="german">Betätige die Schalter des Wächters mit den falschen Händen und vernichte ihn</TextString>
+        <TextString language="italian">Attiva gli interruttori del guardiano premendo l'interruttore di sinistra con la mano destra e quello di destra con la mano sinistra e uccidilo</TextString>
+        <TextString language="portuguese">Ative os botões do Guardião com as mãos erradas e mate-o.</TextString>
+        <TextString language="spanish">Activa los interruptores del guardián con las manos equivocadas y mátalo.</TextString>
+        <TextString language="titan">Trigger the Guardian's switches with the wrong hands and kill it</TextString>
+    </GameText>
+    <GameText id="IRON_TRUTH_name">
+        <TextString language="english">Iron God</TextString>
+        <TextString language="french">Dieu de l'Intrépidité</TextString>
+        <TextString language="german">Eisengott</TextString>
+        <TextString language="italian">Divinità d'acciaio</TextString>
+        <TextString language="portuguese">Deus de aço</TextString>
+        <TextString language="spanish">Dios de hierro</TextString>
+        <TextString language="titan">Iron God</TextString>
+    </GameText>
+    <GameText id="IRON_TRUTH_desc">
+        <TextString language="english">Slay all Titans in Iron Mode</TextString>
+        <TextString language="french">Tuer tous les Titans en Mode Intrépide</TextString>
+        <TextString language="german">Vernichte alle Titanen im Eisenhart-Modus</TextString>
+        <TextString language="italian">Uccidi tutti i Titani in modalità Acciaio</TextString>
+        <TextString language="portuguese">Mate todos os Titãs no Modo de Aço.</TextString>
+        <TextString language="spanish">Mata a todos los titanes en modo Hierro.</TextString>
+        <TextString language="titan">Slay all Titans in Iron Mode</TextString>
+    </GameText>
+    <GameText id="Manual_LanguageName">
+        <TextString language="english">ENGLISH</TextString>
+        <TextString language="french">Français</TextString>
+        <TextString language="german">DEUTSCH</TextString>
+        <TextString language="italian">Italiano</TextString>
+        <TextString language="portuguese">Português</TextString>
+        <TextString language="spanish">Español</TextString>
+        <TextString language="titan">ENGLISH</TextString>
+    </GameText>
+    <GameText id="Manual_Controls">
+        <TextString language="english">CONTROLS</TextString>
+        <TextString language="french">COMMANDES</TextString>
+        <TextString language="german">STEUERUNG</TextString>
+        <TextString language="italian">COMANDI</TextString>
+        <TextString language="portuguese">CONTROLES</TextString>
+        <TextString language="spanish">CONTROLES</TextString>
+        <TextString language="titan">CONTROLS</TextString>
+    </GameText>
+    <GameText id="Manual_Move">
+        <TextString language="english">Move</TextString>
+        <TextString language="french">Se déplacer</TextString>
+        <TextString language="german">Bewegen</TextString>
+        <TextString language="italian">Spostati</TextString>
+        <TextString language="portuguese">Mover</TextString>
+        <TextString language="spanish">Mover</TextString>
+        <TextString language="titan">Move</TextString>
+    </GameText>
+    <GameText id="Manual_Fire">
+        <TextString language="english">Fire</TextString>
+        <TextString language="french">Tirer</TextString>
+        <TextString language="german">Feuer</TextString>
+        <TextString language="italian">Spara</TextString>
+        <TextString language="portuguese">Disparar</TextString>
+        <TextString language="spanish">Disparar</TextString>
+        <TextString language="titan">Fire</TextString>
+    </GameText>
+    <GameText id="Manual_Run">
+        <TextString language="english">Run (hold)</TextString>
+        <TextString language="french">Courir (maintenir)</TextString>
+        <TextString language="german">Laufen (Halten)</TextString>
+        <TextString language="italian">Corri (tieni premuto)</TextString>
+        <TextString language="portuguese">Correr (segure o botão)</TextString>
+        <TextString language="spanish">Correr (mantener)</TextString>
+        <TextString language="titan">Run (hold)</TextString>
+    </GameText>
+    <GameText id="Manual_Roll">
+        <TextString language="english">Roll</TextString>
+        <TextString language="french">Faire une roulade</TextString>
+        <TextString language="german">Abrollen</TextString>
+        <TextString language="italian">Rotola</TextString>
+        <TextString language="portuguese">Rolar</TextString>
+        <TextString language="spanish">Rodar</TextString>
+        <TextString language="titan">Roll</TextString>
+    </GameText>
+    <GameText id="Manual_License">
+        <TextString language="english">SOFTWARE LICENSED FOR PLAY ON PLAYSTATION®VITA SYSTEMS IN THE AMERICAS. USE OF PSN℠ IS SUBJECT TO APPLICABLE USER AGREEMENTS AND PRIVACY POLICIES FOUND AT: WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS</TextString>
+        <TextString language="french">LOGICIEL SOUS LICENCE POUR JOUER SUR LES SYSTÈMES PLAYSTATION®VITA EN AMÉRIQUE. L'UTILISATION DE PSN℠ EST SOUMISE AUX CONDITIONS D'UTILISATION ET AUX POLITIQUES DE CONFIDENTIALITÉ APPLICABLES QUE VOUS POUVEZ TROUVER À L'ADRESSE : WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS</TextString>
+        <TextString language="german">SOFTWARE LIZENZIERT ZUM SPIELEN AUF PLAYSTATION®VITA-SYSTEMEN IN DEN AMERIKAS. DIE NUTZUNG VON PSN℠ UNTERLIEGT DEN ENTSPRECHENDEN NUTZUNGSVEREINBARUNGEN UND DATENSCHUTZRICHTLINIEN UNTER: WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS</TextString>
+        <TextString language="italian">SOFTWARE CONCESSO IN LICENZA PER GIOCARE SUI SISTEMI PLAYSTATION®VITA IN AMERICA. L'UTILIZZO DI PSN℠ È SOGGETTO AI CONTRATTI DI LICENZA E ALLE NORME SULLA PRIVACY APPLICABILI DISPONIBILI ALL'INDIRIZZO: WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS.</TextString>
+        <TextString language="portuguese">SOFTWARE LICENCIADO PARA SISTEMAS PLAYSTATION®VITA NAS AMÉRICAS. O USO DA PSN℠ ESTÁ SUJEITO AOS CONTRATOS DE USUÁRIO E ÀS POLÍTICAS DE PRIVACIDADE QUE PODEM SER CONSULTADOS EM: HTTP://WWW.PLAYSTATION.COM/PT-BR/LEGAL/USER-AGREEMENTS/</TextString>
+        <TextString language="spanish">SOFTWARE CON LICENCIA PARA JUGAR EN SISTEMAS PLAYSTATION®VITA EN AMÉRICA. EL USO DE PSN℠ ESTÁ SUJETO A ACUERDOS DE USUARIO Y POLÍTICAS DE PRIVACIDAD APLICABLES QUE SE PUEDEN CONSULTAR EN: WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS</TextString>
+        <TextString language="titan">SOFTWARE LICENSED FOR PLAY ON PLAYSTATION®VITA SYSTEMS IN THE AMERICAS. USE OF PSN℠ IS SUBJECT TO APPLICABLE USER AGREEMENTS AND PRIVACY POLICIES FOUND AT: WWW.US.PLAYSTATION.COM/SUPPORT/USERAGREEMENTS</TextString>
+    </GameText>
+    <GameText id="Manual_MoreInfo">
+        <TextString language="english">FOR MORE INFORMATION ON THIS GAME, PLEASE VISIT WWW.DEVOLVERDIGITAL.COM</TextString>
+        <TextString language="french">POUR PLUS D'INFORMATIONS SUR CE JEU, VEUILLEZ CONSULTER WWW.DEVOLVERDIGITAL.COM</TextString>
+        <TextString language="german">WEITERE INFORMATIONEN ZU DIESEM SPIEL SIND UNTER WWW.DEVOLVERDIGITAL.COM ABRUFBAR</TextString>
+        <TextString language="italian">PER ULTERIORI INFORMAZIONI SUL GIOCO, VISITA IL SITO WWW.DEVOLVERDIGITAL.COM</TextString>
+        <TextString language="portuguese">PARA SABER MAIS SOBRE ESTE JOGO, VISITE WWW.DEVOLVERDIGITAL.COM</TextString>
+        <TextString language="spanish">PARA MÁS INFORMACIÓN SOBRE ESTE JUEGO, VISITA WWW.DEVOLVERDIGITAL.COM</TextString>
+        <TextString language="titan">FOR MORE INFORMATION ON THIS GAME, PLEASE VISIT WWW.DEVOLVERDIGITAL.COM</TextString>
+    </GameText>
+    <GameText id="Manual_PlayStation">
+        <TextString language="english">THE SONY COMPUTER ENTERTAINMENT LOGO IS A TRADEMARK OF SONY CORPORATION. “PLAYSTATION”, THE “PS” FAMILY LOGOS AND THE PS VITA LOGO ARE TRADEMARKS OF SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="french">LE LOGO DE SONY COMPUTER ENTERTAINMENT EST UNE MARQUE DÉPOSÉE DE SONY CORPORATION. "PLAYSTATION", LES LOGOS DE LA FAMILLE "PS" ET LE LOGO DE LA PS VITA SONT DES MARQUES DÉPOSÉES DE SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="german">DAS SONY COMPUTER ENTERTAINMENT-LOGO IST EIN WARENZEICHEN DER SONY CORPORATION. “PLAYSTATION”, DAS “PS”-FAMILIENLOGO UND DAS PS VITA-LOGO SIND WARENZEICHEN VON SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="italian">IL LOGO DI SONY COMPUTER ENTERTAINMENT È UN MARCHIO DI SONY CORPORATION. "PLAYSTATION", I LOGHI DELLA FAMIGLIA "PS" E IL LOGO DI PS VITA SONO MARCHI DI SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="portuguese">O LOGOTIPO SONY COMPUTER ENTERTAINMENT É UMA MARCA REGISTRADA DA SONY CORPORATION. “PLAYSTATION”, O LOGOTIPO DA FAMÍLIA “PS” E O LOGOTIPO PS VITA SÃO MARCAS REGISTRADAS DA SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="spanish">EL LOGOTIPO DE SONY COMPUTER ENTERTAINMENT ES UNA MARCA REGISTRADA DE SONY CORPORATION. “PLAYSTATION”, LOS LOGOTIPOS DE LA FAMILIA “PS” Y EL LOGOTIPO DE PS VITA SON MARCAS REGISTRADAS DE SONY COMPUTER ENTERTAINMENT INC.</TextString>
+        <TextString language="titan">THE SONY COMPUTER ENTERTAINMENT LOGO IS A TRADEMARK OF SONY CORPORATION. “PLAYSTATION”, THE “PS” FAMILY LOGOS AND THE PS VITA LOGO ARE TRADEMARKS OF SONY COMPUTER ENTERTAINMENT INC.</TextString>
+    </GameText>
+    <GameText id="SafeNotification_PSVita">
+        <TextString language="english">Please do not turn off your PlayStation®Vita system while the following icon is on screen</TextString>
+        <TextString language="french">Veuilez ne pas éteindre votre système PlayStation®Vita lorsque l'icone suivant s'affiche à l'écran.</TextString>
+        <TextString language="german">Wenn das folgende Symbol auf dem Bildschirm zu sehen ist, sollte Ihr PlayStation®Vita-System nicht abgeschaltet werden</TextString>
+        <TextString language="italian">Non spegnere il sistema PlayStation®Vita quando sullo schermo viene visualizzata l'icona seguente</TextString>
+        <TextString language="portuguese">Não desligue o sistema PlayStation®Vita enquanto este ícone estiver na tela.</TextString>
+        <TextString language="spanish">No apagues el sistema PlayStation®Vita mientras veas este icono en pantalla.</TextString>
+        <TextString language="titan">Please do not turn off your PlayStation®Vita system while the following icon is on screen</TextString>
+    </GameText>
+    <GameText id="SafeNotification_PSVita">
+        <TextString language="english">Please do not turn off your PlayStation®4 while the following icon is on screen</TextString>
+        <TextString language="french">Veuilez ne pas éteindre votre système PlayStation®4 lorsque l'icone suivant s'affiche à l'écran.</TextString>
+        <TextString language="german">Wenn das folgende Symbol auf dem Bildschirm zu sehen ist, sollte Ihre PlayStation®4 nicht abgeschaltet werden</TextString>
+        <TextString language="italian">Non spegnere il sistema PlayStation®4 quando sullo schermo viene visualizzata l'icona seguente</TextString>
+        <TextString language="portuguese">Não desligue o sistema PlayStation®4 enquanto este ícone estiver na tela.</TextString>
+        <TextString language="spanish">No apagues el sistema PlayStation®4 mientras veas este icono en pantalla.</TextString>
+        <TextString language="titan">Please do not turn off your PlayStation®4 while the following icon is on screen</TextString>
+    </GameText>
+    <GameText id="TRP_desc">
+        <TextString language="english">Trophy pack for Titan Souls</TextString>
+        <TextString language="french">Pack de trophées pour Titan Souls</TextString>
+        <TextString language="german">Trophäenpaket für Titan Souls</TextString>
+        <TextString language="italian">Pacchetto di trofei per Titan Souls</TextString>
+        <TextString language="portuguese">Pacote de troféus de Titan Souls</TextString>
+        <TextString language="spanish">Paquete de trofeos para Titan Souls</TextString>
+        <TextString language="titan">Trophy pack for Titan Souls</TextString>
+    </GameText>
+    <GameText id="psn_slain_sludge">
+        <TextString language="english">has just slain a ball of sludge</TextString>
+        <TextString language="french">vient de tuer une boule de fange</TextString>
+        <TextString language="german">hat soeben einen Schleimball erschlagen</TextString>
+        <TextString language="italian">ha appena ucciso una palla di melma</TextString>
+        <TextString language="portuguese">acaba de matar uma bola de lodo</TextString>
+        <TextString language="spanish">acaba de asesinar a una bola de lodo</TextString>
+        <TextString language="titan">has just slain a ball of sludge</TextString>
+    </GameText>
+    <GameText id="psn_killedby_sludge">
+        <TextString language="english">just got killed by a ball of sludge</TextString>
+        <TextString language="french">s'est fait tuer par une boule de fange</TextString>
+        <TextString language="german">wurde soeben von einem Schleimball umgebracht</TextString>
+        <TextString language="italian">è appena stato ucciso da una palla di melma</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma bola de lodo</TextString>
+        <TextString language="spanish">acaba de morir a manos de una bola de lodo</TextString>
+        <TextString language="titan">just got killed by a ball of sludge</TextString>
+    </GameText>
+    <GameText id="psn_slain_colossus">
+        <TextString language="english">has just slain a colossal statue</TextString>
+        <TextString language="french">vient de tuer une statue colossale</TextString>
+        <TextString language="german">hat soeben eine gewaltige Statue bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso una statua colossale</TextString>
+        <TextString language="portuguese">acaba de matar uma estátua colossal</TextString>
+        <TextString language="spanish">acaba de asesinar a una estatua colosal</TextString>
+        <TextString language="titan">has just slain a colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_killedby_colossus">
+        <TextString language="english">just got killed by a colossal statue</TextString>
+        <TextString language="french">s'est fait tuer par une statue colossale</TextString>
+        <TextString language="german">wurde soeben von einer gewaltigen Statue besiegt</TextString>
+        <TextString language="italian">è appena stato ucciso da una statua colossale</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma estátua colossal</TextString>
+        <TextString language="spanish">acaba de morir a manos de una estatua colosal</TextString>
+        <TextString language="titan">just got killed by a colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_slain_eyecube">
+        <TextString language="english">has just slain a giant eye cube</TextString>
+        <TextString language="french">vient de tuer un œil cube géant </TextString>
+        <TextString language="german">hat gerade einen riesigen Augenwürfel besiegt</TextString>
+        <TextString language="italian">ha appena ucciso un occhio cubico gigante</TextString>
+        <TextString language="portuguese">acaba de matar um cubo óptico gigante</TextString>
+        <TextString language="spanish">acaba de asesinar a un ojo cubo gigante</TextString>
+        <TextString language="titan">has just slain a giant eye cube</TextString>
+    </GameText>
+    <GameText id="psn_killedby_eyecube">
+        <TextString language="english">just got killed by a giant eye cube</TextString>
+        <TextString language="french">s'est fait tuer par un œil cube géant </TextString>
+        <TextString language="german">wurde soeben von einem riesigen Augenwürfel zerschmettert</TextString>
+        <TextString language="italian">è appena stato ucciso da un occhio cubico gigante</TextString>
+        <TextString language="portuguese">acaba de ser morto por um cubo óptico gigante</TextString>
+        <TextString language="spanish">acaba de morir a manos de un ojo cubo gigante</TextString>
+        <TextString language="titan">just got killed by a giant eye cube</TextString>
+    </GameText>
+    <GameText id="psn_slain_brain">
+        <TextString language="english">has just slain an icy brain</TextString>
+        <TextString language="french">vient de tuer un cerveau glacé</TextString>
+        <TextString language="german">hat ein eisiges Hirn getötet</TextString>
+        <TextString language="italian">ha appena ucciso un cervello congelato</TextString>
+        <TextString language="portuguese">acaba de matar um cérebro congelado</TextString>
+        <TextString language="spanish">acaba de asesinar a un cerebro congelado</TextString>
+        <TextString language="titan">has just slain an icy brain</TextString>
+    </GameText>
+    <GameText id="psn_killedby_brain">
+        <TextString language="english">just got killed by an icy brain</TextString>
+        <TextString language="french">s'est fait tuer par un cerveau glacé</TextString>
+        <TextString language="german">wurde von einem eisigen Hirn umgebracht</TextString>
+        <TextString language="italian">è appena stato ucciso da un cervello congelato</TextString>
+        <TextString language="portuguese">acaba de ser morto por um cérebro congelado</TextString>
+        <TextString language="spanish">acaba de morir a manos de un cerebro congelado</TextString>
+        <TextString language="titan">just got killed by an icy brain</TextString>
+    </GameText>
+    <GameText id="psn_slain_bomber">
+        <TextString language="english">has just slain a lava monster</TextString>
+        <TextString language="french">vient de tuer un monstre de lave</TextString>
+        <TextString language="german">hat soeben ein Lavamonster erledigt</TextString>
+        <TextString language="italian">ha appena ucciso un mostro di lava</TextString>
+        <TextString language="portuguese">acaba de matar um monstro de lava</TextString>
+        <TextString language="spanish">acaba de asesinar a un monstruo de lava</TextString>
+        <TextString language="titan">has just slain a lava monster</TextString>
+    </GameText>
+    <GameText id="psn_killedby_bomber">
+        <TextString language="english">just got killed by a lava monster</TextString>
+        <TextString language="french">s'est fait tuer par un monstre de lave</TextString>
+        <TextString language="german">wurde soeben von einem Lavamonster besiegt</TextString>
+        <TextString language="italian">è appena stato ucciso da un mostro di lava</TextString>
+        <TextString language="portuguese">acaba de ser morto por um monstro de lava</TextString>
+        <TextString language="spanish">acaba de morir a manos de un monstruo de lava</TextString>
+        <TextString language="titan">just got killed by a lava monster</TextString>
+    </GameText>
+    <GameText id="psn_slain_knuckle">
+        <TextString language="english">has just slain an angry skull</TextString>
+        <TextString language="french">vient de tuer un crâne furieux</TextString>
+        <TextString language="german">hat einen wütenden Schädel besiegt</TextString>
+        <TextString language="italian">ha appena ucciso un teschio arrabbiato</TextString>
+        <TextString language="portuguese">acaba de matar uma caveira furiosa</TextString>
+        <TextString language="spanish">acaba de asesinar a una calavera enfurecida</TextString>
+        <TextString language="titan">has just slain an angry skull</TextString>
+    </GameText>
+    <GameText id="psn_killedby_knuckle">
+        <TextString language="english">just got killed by an angry skull</TextString>
+        <TextString language="french">s'est fait tuer par un crâne furieux</TextString>
+        <TextString language="german">wurde von einem wütenden Schädel erledigt</TextString>
+        <TextString language="italian">è appena stato ucciso da un teschio arrabbiato</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma caveira furiosa</TextString>
+        <TextString language="spanish">acaba de morir a manos de una calavera enfurecida</TextString>
+        <TextString language="titan">just got killed by an angry skull</TextString>
+    </GameText>
+    <GameText id="psn_slain_roller">
+        <TextString language="english">has just slain a hot rock</TextString>
+        <TextString language="french">vient de tuer une roche chaude</TextString>
+        <TextString language="german">hat einen heißen Felsen ausgeschaltet</TextString>
+        <TextString language="italian">ha appena ucciso una roccia bollente</TextString>
+        <TextString language="portuguese">acaba de matar uma rocha em brasa</TextString>
+        <TextString language="spanish">acaba de asesinar a una piedra caliente</TextString>
+        <TextString language="titan">has just slain a hot rock</TextString>
+    </GameText>
+    <GameText id="psn_killedby_roller">
+        <TextString language="english">just got killed by a hot rock</TextString>
+        <TextString language="french">s'est fait tuer par une roche chaude</TextString>
+        <TextString language="german">wurde von einem heißen Felsen kaltgemacht</TextString>
+        <TextString language="italian">è appena stato ucciso da una roccia bollente</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma rocha em brasa</TextString>
+        <TextString language="spanish">acaba de morir a manos de una piedra caliente</TextString>
+        <TextString language="titan">just got killed by a hot rock</TextString>
+    </GameText>
+    <GameText id="psn_slain_yeti">
+        <TextString language="english">has just slain an angry yeti</TextString>
+        <TextString language="french">vient de tuer un yéti furieux</TextString>
+        <TextString language="german">hat einen wütenden Yeti zur Strecke gebracht</TextString>
+        <TextString language="italian">ha appena ucciso uno yeti arrabbiato</TextString>
+        <TextString language="portuguese">acaba de matar um yeti irritado</TextString>
+        <TextString language="spanish">acaba de asesinar a un yeti enfadado</TextString>
+        <TextString language="titan">has just slain an angry yeti</TextString>
+    </GameText>
+    <GameText id="psn_killedby_yeti">
+        <TextString language="english">just got killed by an angry yeti</TextString>
+        <TextString language="french">s'est fait tuer par un yéti furieux</TextString>
+        <TextString language="german">wurde von einem wütenden Yeti erbeutet</TextString>
+        <TextString language="italian">è appena stato ucciso da uno yeti arrabbiato</TextString>
+        <TextString language="portuguese">acaba de ser morto por um yeti irritado</TextString>
+        <TextString language="spanish">acaba de morir a manos de un yeti enfadado</TextString>
+        <TextString language="titan">just got killed by an angry yeti</TextString>
+    </GameText>
+    <GameText id="psn_slain_snowface">
+        <TextString language="english">has just slain a toothy grin</TextString>
+        <TextString language="french">vient de tuer un sourire tout en dents </TextString>
+        <TextString language="german">hat gerade ein zahniges Grinsen bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso un sorriso a 32 denti</TextString>
+        <TextString language="portuguese">acaba de matar um sorriso cheio de dentes</TextString>
+        <TextString language="spanish">acaba de asesinar a una sonrisa amplia</TextString>
+        <TextString language="titan">has just slain a toothy grin</TextString>
+    </GameText>
+    <GameText id="psn_killedby_snowface">
+        <TextString language="english">just got killed by a toothy grin</TextString>
+        <TextString language="french">s'est fait tuer par un sourire tout en dents </TextString>
+        <TextString language="german">wurde von einem zahnigen Grinsen kaltgemacht</TextString>
+        <TextString language="italian">è appena stato ucciso da un sorriso a 32 denti</TextString>
+        <TextString language="portuguese">acaba de ser morto por um sorriso cheio de dentes</TextString>
+        <TextString language="spanish">acaba de morir a manos de una sonrisa amplia</TextString>
+        <TextString language="titan">just got killed by a toothy grin</TextString>
+    </GameText>
+    <GameText id="psn_slain_onyx">
+        <TextString language="english">has just slain an icy serpent</TextString>
+        <TextString language="french">vient de tuer un serpent glacé</TextString>
+        <TextString language="german">hat eine eisige Schlange besiegt</TextString>
+        <TextString language="italian">ha appena ucciso un serpente congelato</TextString>
+        <TextString language="portuguese">acaba de matar uma serpente de gelo</TextString>
+        <TextString language="spanish">acaba de asesinar a una serpiente helada</TextString>
+        <TextString language="titan">has just slain an icy serpent</TextString>
+    </GameText>
+    <GameText id="psn_killedby_onyx">
+        <TextString language="english">just got killed by an icy serpent</TextString>
+        <TextString language="french">s'est fait tuer par un serpent glacé</TextString>
+        <TextString language="german">wurde von einer eisigen Schlange erbeutet</TextString>
+        <TextString language="italian">è appena stato ucciso da un serpente congelato</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma serpente de gelo</TextString>
+        <TextString language="spanish">acaba de morir a manos de una serpiente helada</TextString>
+        <TextString language="titan">just got killed by an icy serpent</TextString>
+    </GameText>
+    <GameText id="psn_slain_knight">
+        <TextString language="english">has just slain a heavily armored dude</TextString>
+        <TextString language="french">vient de tuer un gaillard lourdement armé</TextString>
+        <TextString language="german">hat einen gut gepanzerten Kerl bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso un tizio armato fino a denti</TextString>
+        <TextString language="portuguese">acaba de matar um cara cheio de armadura</TextString>
+        <TextString language="spanish">acaba de asesinar a un tipo muy blindado</TextString>
+        <TextString language="titan">has just slain a heavily armored dude</TextString>
+    </GameText>
+    <GameText id="psn_killedby_knight">
+        <TextString language="english">just got killed by a heavily armored dude</TextString>
+        <TextString language="french">s'est fait tuer par un gaillard lourdement armé</TextString>
+        <TextString language="german">wurde von einem gut gepanzerten Kerl platt gemacht</TextString>
+        <TextString language="italian">è appena stato ucciso da un tizio armato fino a denti</TextString>
+        <TextString language="portuguese">acaba de ser morto por um cara cheio de armadura</TextString>
+        <TextString language="spanish">acaba de morir a manos de un tipo muy blindado</TextString>
+        <TextString language="titan">just got killed by a heavily armored dude</TextString>
+    </GameText>
+    <GameText id="psn_slain_avarice">
+        <TextString language="english">has just slain an imposter</TextString>
+        <TextString language="french">vient de tuer un imposteur</TextString>
+        <TextString language="german">hat einen Betrüger erledigt</TextString>
+        <TextString language="italian">ha appena ucciso un impostore</TextString>
+        <TextString language="portuguese">acaba de matar um impostor</TextString>
+        <TextString language="spanish">acaba de asesinar a un impostor</TextString>
+        <TextString language="titan">has just slain an imposter</TextString>
+    </GameText>
+    <GameText id="psn_killedby_avarice">
+        <TextString language="english">just got killed by an imposter</TextString>
+        <TextString language="french">s'est fait tuer par un imposteur</TextString>
+        <TextString language="german">wurde von einem Betrüger besiegt</TextString>
+        <TextString language="italian">è appena stato ucciso da un impostore</TextString>
+        <TextString language="portuguese">acaba de ser morto por um impostor</TextString>
+        <TextString language="spanish">acaba de morir a manos de un impostor</TextString>
+        <TextString language="titan">just got killed by an imposter</TextString>
+    </GameText>
+    <GameText id="psn_slain_mask">
+        <TextString language="english">has just slain a mask</TextString>
+        <TextString language="french">vient de tuer un masque</TextString>
+        <TextString language="german">hat gerade eine Maske bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso una maschera</TextString>
+        <TextString language="portuguese">acaba de matar uma máscara</TextString>
+        <TextString language="spanish">acaba de asesinar a una máscara</TextString>
+        <TextString language="titan">has just slain a mask</TextString>
+    </GameText>
+    <GameText id="psn_killedby_mask">
+        <TextString language="english">just got killed by a mask</TextString>
+        <TextString language="french">s'est fait tuer par un masque</TextString>
+        <TextString language="german">wurde gerade von einer Maske besiegt</TextString>
+        <TextString language="italian">è appena stato ucciso da una maschera</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma máscara</TextString>
+        <TextString language="spanish">acaba de morir a manos de una máscara</TextString>
+        <TextString language="titan">just got killed by a mask</TextString>
+    </GameText>
+    <GameText id="psn_slain_plant">
+        <TextString language="english">has just slain a poisonous plant</TextString>
+        <TextString language="french">vient de tuer une plante vénéneuse</TextString>
+        <TextString language="german">hat gerade eine giftige Blume erledigt</TextString>
+        <TextString language="italian">ha appena ucciso una pianta velenosa</TextString>
+        <TextString language="portuguese">acaba de matar uma planta venenosa</TextString>
+        <TextString language="spanish">acaba de asesinar a una planta venenosa</TextString>
+        <TextString language="titan">has just slain a poisonous plant</TextString>
+    </GameText>
+    <GameText id="psn_killedby_plant">
+        <TextString language="english">just got killed by a poisonous plant</TextString>
+        <TextString language="french">s'est fait tuer par une plante vénéneuse</TextString>
+        <TextString language="german">wurde gerade von einer giftigen Blume getötet</TextString>
+        <TextString language="italian">è appena stato ucciso da una pianta velenosa</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma planta venenosa</TextString>
+        <TextString language="spanish">acaba de morir a manos de una planta venenosa</TextString>
+        <TextString language="titan">just got killed by a poisonous plant</TextString>
+    </GameText>
+    <GameText id="psn_slain_mushroom">
+        <TextString language="english">has just slain a bad mushroom</TextString>
+        <TextString language="french">vient de tuer un mauvais champignon</TextString>
+        <TextString language="german">hat einen Drogenpilz erschlagen</TextString>
+        <TextString language="italian">ha appena ucciso un fungo cattivo</TextString>
+        <TextString language="portuguese">acaba de matar um cogumelo estragado</TextString>
+        <TextString language="spanish">acaba de asesinar a una seta mala</TextString>
+        <TextString language="titan">has just slain a bad mushroom</TextString>
+    </GameText>
+    <GameText id="psn_killedby_mushroom">
+        <TextString language="english">just got killed by a bad mushroom</TextString>
+        <TextString language="french">s'est fait tuer par un mauvais champignon</TextString>
+        <TextString language="german">wurde von einem Drogenpilz besiegt</TextString>
+        <TextString language="italian">è appena stato ucciso da un fungo cattivo</TextString>
+        <TextString language="portuguese">acaba de ser morto por um cogumelo estragado</TextString>
+        <TextString language="spanish">acaba de morir a manos de una seta mala</TextString>
+        <TextString language="titan">just got killed by a bad mushroom</TextString>
+    </GameText>
+    <GameText id="psn_slain_guardian">
+        <TextString language="english">has just slain another colossal statue</TextString>
+        <TextString language="french">vient de tuer une autre statue colossale</TextString>
+        <TextString language="german">hat noch eine gewaltige Statue bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso un'altra statua colossale</TextString>
+        <TextString language="portuguese">acaba de matar outra estátua colossal</TextString>
+        <TextString language="spanish">acaba de asesinar a otra estatua colosal</TextString>
+        <TextString language="titan">has just slain another colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_killedby_guardian">
+        <TextString language="english">just got killed by another colossal statue</TextString>
+        <TextString language="french">s'est fait tuer par une autre statue colossale</TextString>
+        <TextString language="german">wurde von einer gewaltigen Statue zerschmettert</TextString>
+        <TextString language="italian">è appena stato ucciso da un'altra statua colossale</TextString>
+        <TextString language="portuguese">acaba de ser morto por outra estátua colossal</TextString>
+        <TextString language="spanish">acaba de morir a manos de otra estatua colosal</TextString>
+        <TextString language="titan">just got killed by another colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_slain_king">
+        <TextString language="english">has just slain a mirror image</TextString>
+        <TextString language="french">vient de tuer une image inversée</TextString>
+        <TextString language="german">hat gerade ein Spiegelbild bezwungen</TextString>
+        <TextString language="italian">ha appena ucciso un'immagine riflessa</TextString>
+        <TextString language="portuguese">acaba de matar uma imagem no espelho</TextString>
+        <TextString language="spanish">acaba de asesinar a una imagen reflejada</TextString>
+        <TextString language="titan">has just slain a mirror image</TextString>
+    </GameText>
+    <GameText id="psn_killedby_king">
+        <TextString language="english">just got killed by a mirror image</TextString>
+        <TextString language="french">s'est fait tuer par une image inversée</TextString>
+        <TextString language="german">wurde gerade von einem Spiegelbild umgebracht</TextString>
+        <TextString language="italian">è appena stato ucciso da un'immagine riflessa</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma imagem no espelho</TextString>
+        <TextString language="spanish">acaba de morir a manos de una imagen reflejada</TextString>
+        <TextString language="titan">just got killed by a mirror image</TextString>
+    </GameText>
+    <GameText id="psn_slain_truth">
+        <TextString language="english">has just slain something strange...</TextString>
+        <TextString language="french">vient de tuer quelque chose d'étrange...</TextString>
+        <TextString language="german">hat gerade etwas Seltsames erschlagen...</TextString>
+        <TextString language="italian">ha appena ucciso qualcosa di strano...</TextString>
+        <TextString language="portuguese">acaba de matar algo estranho...</TextString>
+        <TextString language="spanish">acaba de asesinar a algo extraño...</TextString>
+        <TextString language="titan">has just slain something strange...</TextString>
+    </GameText>
+    <GameText id="psn_killedby_truth">
+        <TextString language="english">just got killed by something strange...</TextString>
+        <TextString language="french">s'est fait tuer par quelque chose d'étrange...</TextString>
+        <TextString language="german">wurde gerade von etwas Seltsamem besiegt...</TextString>
+        <TextString language="italian">è appena stato ucciso da qualcosa di strano...</TextString>
+        <TextString language="portuguese">acaba de ser morto por algo estranho...</TextString>
+        <TextString language="spanish">acaba de morir a manos de algo extraño...</TextString>
+        <TextString language="titan">just got killed by something strange...</TextString>
+    </GameText>
+    <GameText id="psn_slain_elder">
+        <TextString language="english">has just slain a wise old creature...</TextString>
+        <TextString language="french">vient de tuer une vieille créature pleine de sagesse...</TextString>
+        <TextString language="german">hat gerade ein weises, altes Wesen erschlagen...</TextString>
+        <TextString language="italian">ha appena ucciso una creatura vecchia e saggia...</TextString>
+        <TextString language="portuguese">acaba de matar uma antiga criatura sábia...</TextString>
+        <TextString language="spanish">acaba de asesinar a una vieja criatura sabia...</TextString>
+        <TextString language="titan">has just slain a wise old creature...</TextString>
+    </GameText>
+    <GameText id="psn_killedby_elder">
+        <TextString language="english">just got killed by a wise old creature...</TextString>
+        <TextString language="french">s'est fait tuer par une vieille créature pleine de sagesse...</TextString>
+        <TextString language="german">wurde gerade von einem weisen, alten Wesen niedergestreckt...</TextString>
+        <TextString language="italian">è appena stato ucciso da una creatura vecchia e saggia...</TextString>
+        <TextString language="portuguese">acaba de ser morto por uma antiga criatura sábia...</TextString>
+        <TextString language="spanish">acaba de morir a manos de una vieja criatura sabia...</TextString>
+        <TextString language="titan">just got killed by a wise old creature...</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_sludge">
+        <TextString language="english">is fighting a ball of sludge</TextString>
+        <TextString language="french">se bat contre une boule de fange</TextString>
+        <TextString language="german">kämpft gegen einen Schleimball</TextString>
+        <TextString language="italian">sta combattendo una palla di melma</TextString>
+        <TextString language="portuguese">está lutando com uma bola de lodo</TextString>
+        <TextString language="spanish">está luchando contra una bola de lodo</TextString>
+        <TextString language="titan">is fighting a ball of sludge</TextString>
+    </GameText>
+    <GameText id="psn_explore_sludge">
+        <TextString language="english">is exploring a ball of sludge</TextString>
+        <TextString language="french">explore une boule de fange</TextString>
+        <TextString language="german">erforscht einen Schleimball</TextString>
+        <TextString language="italian">sta esplorando una palla di melma</TextString>
+        <TextString language="portuguese">está explorando uma bola de lodo</TextString>
+        <TextString language="spanish">está explorando una bola de lodo</TextString>
+        <TextString language="titan">is exploring a ball of sludge</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_colossus">
+        <TextString language="english">is fighting a colossal statue</TextString>
+        <TextString language="french">se bat contre une statue colossale</TextString>
+        <TextString language="german">kämpft gegen eine gewaltige Statue</TextString>
+        <TextString language="italian">sta combattendo una statua colossale</TextString>
+        <TextString language="portuguese">está lutando com uma estátua colossal</TextString>
+        <TextString language="spanish">está luchando contra una estatua colosal</TextString>
+        <TextString language="titan">is fighting a colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_explore_colossus">
+        <TextString language="english">is exploring a colossal statue</TextString>
+        <TextString language="french">explore une statue colossale</TextString>
+        <TextString language="german">erforscht eine gewaltige Statue</TextString>
+        <TextString language="italian">sta esplorando una statua colossale</TextString>
+        <TextString language="portuguese">está explorando uma estátua colossal</TextString>
+        <TextString language="spanish">está explorando una estatua colosal</TextString>
+        <TextString language="titan">is exploring a colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_eyecube">
+        <TextString language="english">is fighting a giant eye cube</TextString>
+        <TextString language="french">se bat contre un œil cube géant </TextString>
+        <TextString language="german">kämpft gegen einen gewaltigen Augenwürfel</TextString>
+        <TextString language="italian">sta combattendo un occhio cubico gigante</TextString>
+        <TextString language="portuguese">está lutando com um cubo óptico gigante</TextString>
+        <TextString language="spanish">está luchando contra un ojo cubo gigante</TextString>
+        <TextString language="titan">is fighting a giant eye cube</TextString>
+    </GameText>
+    <GameText id="psn_explore_eyecube">
+        <TextString language="english">is exploring a giant eye cube</TextString>
+        <TextString language="french">explore un œil cube géant </TextString>
+        <TextString language="german">erforscht einen gewaltigen Augenwürfel</TextString>
+        <TextString language="italian">sta esplorando un occhio cubico gigante</TextString>
+        <TextString language="portuguese">está explorando um cubo óptico gigante</TextString>
+        <TextString language="spanish">está explorando un ojo cubo gigante</TextString>
+        <TextString language="titan">is exploring a giant eye cube</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_brain">
+        <TextString language="english">is fighting an icy brain</TextString>
+        <TextString language="french">se bat contre un cerveau glacé</TextString>
+        <TextString language="german">kämpft gegen ein eisiges Hirn</TextString>
+        <TextString language="italian">sta combattendo un cervello congelato</TextString>
+        <TextString language="portuguese">está lutando com um cérebro congelado</TextString>
+        <TextString language="spanish">está luchando contra un cerebro congelado</TextString>
+        <TextString language="titan">is fighting an icy brain</TextString>
+    </GameText>
+    <GameText id="psn_explore_brain">
+        <TextString language="english">is exploring an icy brain</TextString>
+        <TextString language="french">explore  un cerveau glacé</TextString>
+        <TextString language="german">erforscht ein eisiges Hirn</TextString>
+        <TextString language="italian">sta esplorando un cervello congelato</TextString>
+        <TextString language="portuguese">está explorando um cérebro congelado</TextString>
+        <TextString language="spanish">está explorando un cerebro congelado</TextString>
+        <TextString language="titan">is exploring an icy brain</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_bomber">
+        <TextString language="english">is fighting a lava monster</TextString>
+        <TextString language="french">se bat contre un monstre de lave</TextString>
+        <TextString language="german">kämpft gegen ein Lavamonster</TextString>
+        <TextString language="italian">sta combattendo un mostro di lava</TextString>
+        <TextString language="portuguese">está lutando com um monstro de lava</TextString>
+        <TextString language="spanish">está luchando contra un monstruo de lava</TextString>
+        <TextString language="titan">is fighting a lava monster</TextString>
+    </GameText>
+    <GameText id="psn_explore_bomber">
+        <TextString language="english">is exploring a lava monster</TextString>
+        <TextString language="french">explore un monstre de lave</TextString>
+        <TextString language="german">erforscht ein Lavamonster</TextString>
+        <TextString language="italian">sta esplorando un mostro di lava</TextString>
+        <TextString language="portuguese">está explorando um monstro de lava</TextString>
+        <TextString language="spanish">está explorando un monstruo de lava</TextString>
+        <TextString language="titan">is exploring a lava monster</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_knuckle">
+        <TextString language="english">is fighting an angry skull</TextString>
+        <TextString language="french">se bat contre un crâne furieux</TextString>
+        <TextString language="german">kämpft gegen einen wütenden Schädel</TextString>
+        <TextString language="italian">sta combattendo un teschio arrabbiato</TextString>
+        <TextString language="portuguese">está lutando com uma caveira furiosa</TextString>
+        <TextString language="spanish">está luchando contra una calavera enfurecida</TextString>
+        <TextString language="titan">is fighting an angry skull</TextString>
+    </GameText>
+    <GameText id="psn_explore_knuckle">
+        <TextString language="english">is exploring an angry skull</TextString>
+        <TextString language="french">explore un crâne furieux</TextString>
+        <TextString language="german">erforscht einen wütenden Schädel</TextString>
+        <TextString language="italian">sta esplorando un teschio arrabbiato</TextString>
+        <TextString language="portuguese">está explorando uma caveira furiosa</TextString>
+        <TextString language="spanish">está explorando una calavera enfurecida</TextString>
+        <TextString language="titan">is exploring an angry skull</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_roller">
+        <TextString language="english">is fighting a hot rock</TextString>
+        <TextString language="french">se bat contre une roche chaude</TextString>
+        <TextString language="german">kämpft gegen ein heißen Fels</TextString>
+        <TextString language="italian">sta combattendo una roccia bollente</TextString>
+        <TextString language="portuguese">está lutando com uma rocha em brasa</TextString>
+        <TextString language="spanish">está luchando contra una piedra caliente</TextString>
+        <TextString language="titan">is fighting a hot rock</TextString>
+    </GameText>
+    <GameText id="psn_explore_roller">
+        <TextString language="english">is exploring a hot rock</TextString>
+        <TextString language="french">explore une roche chaude</TextString>
+        <TextString language="german">erforscht einen heißen Fels</TextString>
+        <TextString language="italian">sta esplorando una roccia bollente</TextString>
+        <TextString language="portuguese">está explorando uma rocha em brasa</TextString>
+        <TextString language="spanish">está explorando una piedra caliente</TextString>
+        <TextString language="titan">is exploring a hot rock</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_yeti">
+        <TextString language="english">is fighting an angry yeti</TextString>
+        <TextString language="french">se bat contre un yéti furieux</TextString>
+        <TextString language="german">kämpft gegen einen wütenden Yeti</TextString>
+        <TextString language="italian">sta combattendo uno yeti arrabbiato</TextString>
+        <TextString language="portuguese">está lutando com um yeti irritado</TextString>
+        <TextString language="spanish">está luchando contra un yeti enfadado</TextString>
+        <TextString language="titan">is fighting an angry yeti</TextString>
+    </GameText>
+    <GameText id="psn_explore_yeti">
+        <TextString language="english">is exploring an angry yeti</TextString>
+        <TextString language="french">explore un yéti furieux</TextString>
+        <TextString language="german">erforscht einen wütenden Yeti</TextString>
+        <TextString language="italian">sta esplorando uno yeti arrabbiato</TextString>
+        <TextString language="portuguese">está explorando um yeti irritado</TextString>
+        <TextString language="spanish">está explorando un yeti enfadado</TextString>
+        <TextString language="titan">is exploring an angry yeti</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_snowface">
+        <TextString language="english">is fighting a toothy grin</TextString>
+        <TextString language="french">se bat contre un sourire tout en dents </TextString>
+        <TextString language="german">kämpft gegen ein zahniges Grinsen</TextString>
+        <TextString language="italian">sta combattendo un sorriso a 32 denti</TextString>
+        <TextString language="portuguese">está lutando com um sorriso cheio de dentes</TextString>
+        <TextString language="spanish">está luchando contra una sonrisa amplia</TextString>
+        <TextString language="titan">is fighting a toothy grin</TextString>
+    </GameText>
+    <GameText id="psn_explore_snowface">
+        <TextString language="english">is exploring a toothy grin</TextString>
+        <TextString language="french">explore un sourire tout en dents </TextString>
+        <TextString language="german">erforscht ein zahniges Grinsen</TextString>
+        <TextString language="italian">sta esplorando un sorriso a 32 denti</TextString>
+        <TextString language="portuguese">está explorando um sorriso cheio de dentes</TextString>
+        <TextString language="spanish">está explorando una sonrisa amplia</TextString>
+        <TextString language="titan">is exploring a toothy grin</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_onyx">
+        <TextString language="english">is fighting an icy serpent</TextString>
+        <TextString language="french">se bat contre un serpent glacé</TextString>
+        <TextString language="german">kämpft gegen eine eisige Schlange</TextString>
+        <TextString language="italian">sta combattendo un serpente congelato</TextString>
+        <TextString language="portuguese">está lutando com uma serpente de gelo</TextString>
+        <TextString language="spanish">está luchando contra una serpiente helada</TextString>
+        <TextString language="titan">is fighting an icy serpent</TextString>
+    </GameText>
+    <GameText id="psn_explore_onyx">
+        <TextString language="english">is exploring an icy serpent</TextString>
+        <TextString language="french">explore un serpent glacé</TextString>
+        <TextString language="german">erforscht eine eisige Schlange</TextString>
+        <TextString language="italian">sta esplorando un serpente congelato</TextString>
+        <TextString language="portuguese">está explorando uma serpente de gelo</TextString>
+        <TextString language="spanish">está explorando una serpiente helada</TextString>
+        <TextString language="titan">is exploring an icy serpent</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_knight">
+        <TextString language="english">is fighting a heavily armored dude</TextString>
+        <TextString language="french">se bat contre un gaillard lourdement armé</TextString>
+        <TextString language="german">kämpft gegen einen gut gepanzerten Kerl</TextString>
+        <TextString language="italian">sta combattendo un tizio armato fino a denti</TextString>
+        <TextString language="portuguese">está lutando com um cara cheio de armadura</TextString>
+        <TextString language="spanish">está luchando contra un tipo muy blindado</TextString>
+        <TextString language="titan">is fighting a heavily armored dude</TextString>
+    </GameText>
+    <GameText id="psn_explore_knight">
+        <TextString language="english">is exploring a heavily armored dude</TextString>
+        <TextString language="french">explore un gaillard lourdement armé</TextString>
+        <TextString language="german">erforscht einen gut gepanzerten Kerl</TextString>
+        <TextString language="italian">sta esplorando un tizio armato fino a denti</TextString>
+        <TextString language="portuguese">está explorando um cara cheio de armadura</TextString>
+        <TextString language="spanish">está explorando un tipo muy blindado</TextString>
+        <TextString language="titan">is exploring a heavily armored dude</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_avarice">
+        <TextString language="english">is fighting an imposter</TextString>
+        <TextString language="french">se bat contre un imposteur</TextString>
+        <TextString language="german">kämpft gegen einen Betrüger</TextString>
+        <TextString language="italian">sta combattendo un impostore</TextString>
+        <TextString language="portuguese">está lutando com um impostor</TextString>
+        <TextString language="spanish">está luchando contra un impostor</TextString>
+        <TextString language="titan">is fighting an imposter</TextString>
+    </GameText>
+    <GameText id="psn_explore_avarice">
+        <TextString language="english">is exploring an imposter</TextString>
+        <TextString language="french">explore un imposteur</TextString>
+        <TextString language="german">erforscht einen Betrüger</TextString>
+        <TextString language="italian">sta esplorando un impostore</TextString>
+        <TextString language="portuguese">está explorando um impostor</TextString>
+        <TextString language="spanish">está explorando un impostor</TextString>
+        <TextString language="titan">is exploring an imposter</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_mask">
+        <TextString language="english">is fighting a mask</TextString>
+        <TextString language="french">se bat contre un masque</TextString>
+        <TextString language="german">kämpft gegen eine Maske</TextString>
+        <TextString language="italian">sta combattendo una maschera</TextString>
+        <TextString language="portuguese">está lutando com uma máscara</TextString>
+        <TextString language="spanish">está luchando contra una máscara</TextString>
+        <TextString language="titan">is fighting a mask</TextString>
+    </GameText>
+    <GameText id="psn_explore_mask">
+        <TextString language="english">is exploring a mask</TextString>
+        <TextString language="french">explore un masque</TextString>
+        <TextString language="german">erforscht eine Maske</TextString>
+        <TextString language="italian">sta esplorando una maschera</TextString>
+        <TextString language="portuguese">está explorando uma máscara</TextString>
+        <TextString language="spanish">está explorando una máscara</TextString>
+        <TextString language="titan">is exploring a mask</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_plant">
+        <TextString language="english">is fighting a poisonous plant</TextString>
+        <TextString language="french">se bat contre une plante vénéneuse</TextString>
+        <TextString language="german">kämpft gegen eine giftige Pflanze</TextString>
+        <TextString language="italian">sta combattendo una pianta velenosa</TextString>
+        <TextString language="portuguese">está lutando com uma planta venenosa</TextString>
+        <TextString language="spanish">está luchando contra una planta venenosa</TextString>
+        <TextString language="titan">is fighting a poisonous plant</TextString>
+    </GameText>
+    <GameText id="psn_explore_plant">
+        <TextString language="english">is exploring a poisonous plant</TextString>
+        <TextString language="french">explore une plante vénéneuse</TextString>
+        <TextString language="german">erforscht eine giftige Pflanze</TextString>
+        <TextString language="italian">sta esplorando una pianta velenosa</TextString>
+        <TextString language="portuguese">está explorando uma planta venenosa</TextString>
+        <TextString language="spanish">está explorando una planta venenosa</TextString>
+        <TextString language="titan">is exploring a poisonous plant</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_mushroom">
+        <TextString language="english">is fighting a bad mushroom</TextString>
+        <TextString language="french">se bat contre un mauvais champignon</TextString>
+        <TextString language="german">kämpft gegen einen Drogenpilz</TextString>
+        <TextString language="italian">sta combattendo un fungo cattivo</TextString>
+        <TextString language="portuguese">está lutando com um cogumelo estragado</TextString>
+        <TextString language="spanish">está luchando contra una seta mala</TextString>
+        <TextString language="titan">is fighting a bad mushroom</TextString>
+    </GameText>
+    <GameText id="psn_explore_mushroom">
+        <TextString language="english">is exploring a bad mushroom</TextString>
+        <TextString language="french">explore un mauvais champignon</TextString>
+        <TextString language="german">erforscht einen Drogenpilz</TextString>
+        <TextString language="italian">sta esplorando un fungo cattivo</TextString>
+        <TextString language="portuguese">está explorando um cogumelo estragado</TextString>
+        <TextString language="spanish">está explorando una seta mala</TextString>
+        <TextString language="titan">is exploring a bad mushroom</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_guardian">
+        <TextString language="english">is fighting another colossal statue</TextString>
+        <TextString language="french">se bat contre une autre statue colossale</TextString>
+        <TextString language="german">kämpft gegen noch eine gewaltige Statue</TextString>
+        <TextString language="italian">sta combattendo un'altra statua colossale</TextString>
+        <TextString language="portuguese">está lutando com outra estátua colossal</TextString>
+        <TextString language="spanish">está luchando contra otra estatua colosal</TextString>
+        <TextString language="titan">is fighting another colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_explore_guardian">
+        <TextString language="english">is exploring another colossal statue</TextString>
+        <TextString language="french">explore une autre statue colossale</TextString>
+        <TextString language="german">erforscht noch eine gewaltige Statue</TextString>
+        <TextString language="italian">sta esplorando un'altra statua colossale</TextString>
+        <TextString language="portuguese">está explorando outra estátua colossal</TextString>
+        <TextString language="spanish">está explorando otra estatua colosal</TextString>
+        <TextString language="titan">is exploring another colossal statue</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_king">
+        <TextString language="english">is fighting a mirror image</TextString>
+        <TextString language="french">se bat contre une image inversée</TextString>
+        <TextString language="german">kämpft gegen ein Spiegelbild</TextString>
+        <TextString language="italian">sta combattendo un'immagine riflessa</TextString>
+        <TextString language="portuguese">está lutando com uma imagem no espelho</TextString>
+        <TextString language="spanish">está luchando contra una imagen reflejada</TextString>
+        <TextString language="titan">is fighting a mirror image</TextString>
+    </GameText>
+    <GameText id="psn_explore_king">
+        <TextString language="english">is exploring a mirror image</TextString>
+        <TextString language="french">explore une image inversée</TextString>
+        <TextString language="german">erforscht ein Spiegelbild</TextString>
+        <TextString language="italian">sta esplorando un'immagine riflessa</TextString>
+        <TextString language="portuguese">está explorando uma imagem no espelho</TextString>
+        <TextString language="spanish">está explorando una imagen reflejada</TextString>
+        <TextString language="titan">is exploring a mirror image</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_truth">
+        <TextString language="english">is fighting something strange...</TextString>
+        <TextString language="french">se bat contre quelque chose d'étrange...</TextString>
+        <TextString language="german">kämpft gegen etwas Seltsames...</TextString>
+        <TextString language="italian">sta combattendo qualcosa di strano...</TextString>
+        <TextString language="portuguese">está lutando com algo estranho...</TextString>
+        <TextString language="spanish">está luchando contra algo extraño...</TextString>
+        <TextString language="titan">is fighting something strange...</TextString>
+    </GameText>
+    <GameText id="psn_explore_truth">
+        <TextString language="english">is exploring something strange...</TextString>
+        <TextString language="french">explore quelque chose d'étrange...</TextString>
+        <TextString language="german">erforscht etwas Seltsames...</TextString>
+        <TextString language="italian">sta esplorando qualcosa di strano...</TextString>
+        <TextString language="portuguese">está explorando algo estranho...</TextString>
+        <TextString language="spanish">está explorando algo extraño...</TextString>
+        <TextString language="titan">is exploring something strange...</TextString>
+    </GameText>
+    <GameText id="psn_isfighting_elder">
+        <TextString language="english">is fighting a wise old creature...</TextString>
+        <TextString language="french">se bat contre une vieille créature pleine de sagesse...</TextString>
+        <TextString language="german">kämpft gegen ein weises, altes Wesen...</TextString>
+        <TextString language="italian">sta combattendo una creatura vecchia e saggia...</TextString>
+        <TextString language="portuguese">está lutando com uma antiga criatura sábia...</TextString>
+        <TextString language="spanish">está luchando contra una vieja criatura sabia...</TextString>
+        <TextString language="titan">is fighting a wise old creature...</TextString>
+    </GameText>
+    <GameText id="psn_explore_elder">
+        <TextString language="english">is exploring a wise old creature...</TextString>
+        <TextString language="french">explore une vieille créature pleine de sagesse...</TextString>
+        <TextString language="german">erforscht ein weises, altes Wesen...</TextString>
+        <TextString language="italian">sta esplorando una creatura vecchia e saggia...</TextString>
+        <TextString language="portuguese">está explorando uma antiga criatura sábia...</TextString>
+        <TextString language="spanish">está explorando una vieja criatura sabia...</TextString>
+        <TextString language="titan">is exploring a wise old creature...</TextString>
+    </GameText>
+    <GameText id="SAVEDATA_SUBTITLE">
+        <TextString language="english">Progress Data</TextString>
+        <TextString language="french">Données de progression</TextString>
+        <TextString language="german">Fortschrittsdaten</TextString>
+        <TextString language="italian"></TextString>
+        <TextString language="portuguese"></TextString>
+        <TextString language="spanish">Dane postępu</TextString>
+        <TextString language="titan">Progress Data</TextString>
+    </GameText>
+    <GameText id="NETWORK_SERVICES_UNAVAILABLE">
+        <TextString language="english">You are currently not connected to PSN℠. Cross-Save will not be available until you reconnect.</TextString>
+        <TextString language="french">Vous n'êtes pas connecté au PSN℠. Cross-Save ne sera pas disponible tant que vous ne vous reconnecterez pas.</TextString>
+        <TextString language="german">Im Moment besteht keine Verbindung zum PSN℠. Cross-Save ist nur mit einer Verbindung möglich.</TextString>
+        <TextString language="italian">Non sei connesso a PSN℠. La funzione Cross-Save non sarà disponibile finché non esegui di nuovo la connessione.</TextString>
+        <TextString language="portuguese">Você não está conectado à PSN℠. Reconecte-se para que o recurso Cross-Save fique disponível.</TextString>
+        <TextString language="spanish">No estás conectado a PSN℠. La función Cross-Save no estará disponible hasta que te conectes de nuevo.</TextString>
+        <TextString language="titan">You are currently not connected to PSN℠. Cross-Save will not be available until you reconnect.</TextString>
+    </GameText>
+    <GameText id="NETWORK_SERVICES_DISCONNECT">
+        <TextString language="english">Connection to PSN℠ lost, Cross-Save will be unavailable.</TextString>
+        <TextString language="french">Connexion au PSN℠ interrompue, Cross-Save est indisponible.</TextString>
+        <TextString language="german">Verbindung zum PSN℠ verloren, Cross-Save ist nicht möglich.</TextString>
+        <TextString language="italian">La connessione a PSN℠ è stata interrotta. La funzione Cross-Save non sarà disponibile.</TextString>
+        <TextString language="portuguese">Você foi desconectado da PSN℠. O recurso Cross-Save ficará indisponível.</TextString>
+        <TextString language="spanish">Se ha perdido la conexión a PSN℠. La función Cross-Save no estará disponible.</TextString>
+        <TextString language="titan">Connection to PSN℠ lost, Cross-Save will be unavailable.</TextString>
+    </GameText>
+    <GameText id="CONTENT_RESTRICTION">
+        <TextString language="english">Cross-Save is disabled on your Sony Entertainment Network account due to parental control restrictions</TextString>
+        <TextString language="french">Cross-Save est désactivé sur votre compte Sony Entertainment Network en raison des restrictions liées au contrôle parental.</TextString>
+        <TextString language="german">Cross-Save ist für dieses Sony Entertainment Network-Konto durch Jugendschutz-Beschränkungen gesperrt</TextString>
+        <TextString language="italian">La funzione Cross-Save è disattivata per il tuo account Sony Entertainment Network a causa delle limitazioni del filtro contenuti.</TextString>
+        <TextString language="portuguese">O recurso Cross-Save está desabilitado na sua conta da Sony Entertainment Network devido às restrições do controle parental.</TextString>
+        <TextString language="spanish">La función Cross-Save está desactivada en tu cuenta de Sony Entertainment Network debido a restricciones de control paterno.</TextString>
+        <TextString language="titan">Cross-Save is disabled on your Sony Entertainment Network account due to parental control restrictions</TextString>
+    </GameText>
+    <GameText id="m_crossSaveDesc">
+        <TextString language="english">Enable Cross-Save</TextString>
+        <TextString language="french">Activer Cross-Save</TextString>
+        <TextString language="german">Cross-Save erlauben</TextString>
+        <TextString language="italian">Attiva Cross-Save</TextString>
+        <TextString language="portuguese">Habilitar Cross-Save</TextString>
+        <TextString language="spanish">Activar Cross-Save</TextString>
+        <TextString language="titan">Enable Cross-Save</TextString>
+    </GameText>
+    <GameText id="m_crossSaveOverwrite">
+        <TextString language="english">Overwrite existing Cross-Save?</TextString>
+        <TextString language="french">Écraser le Cross-Save existant ?</TextString>
+        <TextString language="german">Bestehenden Cross-Save überschreiben?</TextString>
+        <TextString language="italian">Sovrascrivere il salvataggio Cross-Save esistente?</TextString>
+        <TextString language="portuguese">Substituir Cross-Save existente?</TextString>
+        <TextString language="spanish">¿Sobrescribir Cross-Save existente?</TextString>
+        <TextString language="titan">Overwrite existing Cross-Save?</TextString>
+    </GameText>
+    <GameText id="m_crossSaveBusy">
+        <TextString language="english">Synchronizing Cross-Save</TextString>
+        <TextString language="french">Synchronisation du Cross-Save</TextString>
+        <TextString language="german">Synchronisiere Cross-Save</TextString>
+        <TextString language="italian">Sincronizzazione con Cross-Save</TextString>
+        <TextString language="portuguese">Sincronizando Cross-Save</TextString>
+        <TextString language="spanish">Sincronizando Cross-Save</TextString>
+        <TextString language="titan">Synchronizing Cross-Save</TextString>
+    </GameText>
+    <GameText id="m_crossSaveError">
+        <TextString language="english">Cross-Save failed</TextString>
+        <TextString language="french">Échec du Cross-Save</TextString>
+        <TextString language="german">Cross-Save fehlgeschlagen</TextString>
+        <TextString language="italian">Impossibile eseguire Cross-Save</TextString>
+        <TextString language="portuguese">Falha no Cross-Save</TextString>
+        <TextString language="spanish">Error de Cross-Save</TextString>
+        <TextString language="titan">Cross-Save failed</TextString>
+    </GameText>
+    <GameText id="m_crossSaveContinue">
+        <TextString language="english">An error occured during Cross-Save. Do you want to continue withouth synchronizing with Cross-Save?</TextString>
+        <TextString language="french">Une erreur s'est produite durant le Cross-Save. Voulez-vous poursuivre sans synchroniser avec Cross-Save ?</TextString>
+        <TextString language="german">Während des Cross-Save-Vorgangs ist ein Fehler aufgetreten. Ohne Synchronisation mit Cross-Save fortfahren?</TextString>
+        <TextString language="italian">Si è verificato un errore durante la sincronizzazione con Cross-Save. Continuare senza la sincronizzazione con Cross-Save?</TextString>
+        <TextString language="portuguese">Ocorreu um erro durante o Cross-Save. Gostaria de continuar sem sincronizar com o Cross-Save?</TextString>
+        <TextString language="spanish">Ha ocurrido un error durante la sincronización con Cross-Save. ¿Quieres continuar sin sincronizar con Cross-Save?</TextString>
+        <TextString language="titan">An error occured during Cross-Save. Do you want to continue withouth synchronizing with Cross-Save?</TextString>
+    </GameText>
+</data>

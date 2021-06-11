@@ -4,13 +4,13 @@ struct VS_INPUT_INST
 {
 	float3	vPos	:	POSITION;
 	float2	vUV	:	TEXCOORD;
-	float4	vColor	:	COLOR;
 	matrix	matWVP	:	WORLD;
 	float3	vPivot	:	PIVOT;
 	float3	vSize	:	SIZE;
 	float2	vTexSize	:	TEXSIZE;
 	float2	vStart	:	START;
 	float2	vEnd	:	END;
+	float4	vColor	:	COLOR;
 };
 
 struct VS_OUTPUT_INST
@@ -34,6 +34,7 @@ struct VS_OUTPUT_INST_COLLIDER
 	float4	vPos	:	SV_POSITION;
 	float4	vColor	:	COLOR;
 };
+
 
 VS_OUTPUT_INST VS_INST(VS_INPUT_INST input)
 {
@@ -63,10 +64,19 @@ PS_OUTPUT_COLOR PS_INST(VS_OUTPUT_INST input)
 {
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0.f;
 
-	output.vColor = gDiffuseMap.Sample(g_sPoint, input.vUV) * g_vDif;
+	output.vColor = gDiffuseMap.Sample(g_sPoint, input.vUV) * g_vDif * input.vColor;
 
 	if (output.vColor.a == 0.f)
 		clip(-1);
+
+	float3 gray = dot(float3(output.vColor.r, output.vColor.g, output.vColor.b),
+		float3(0.3333f, 0.3333f, 0.3333f));
+
+	float4 vGrayColor = float4(gray, output.vColor.a);
+
+	float4 vColor = lerp(output.vColor, vGrayColor, g_fGray);
+
+	output.vColor = vColor;
 
 	return output;
 }
@@ -88,6 +98,25 @@ PS_OUTPUT_COLOR PS_INST_COLLIDER(VS_OUTPUT_INST_COLLIDER input)
 	PS_OUTPUT_COLOR output = (PS_OUTPUT_COLOR)0.f;
 
 	output.vColor = input.vColor;
+
+	return output;
+}
+
+VS_OUT VS_Inst_3D(VS_INPUT_INST_3D input,
+	uint iId	:	SV_InstanceID)
+{
+	VS_OUT output = (VS_OUT)0.f;
+
+	Skin tSkin = Skinning(input.vPos, input.vNormal, input.vTangent, input.vBinormal,
+		input.vBlendWeight, input.vBlendIndex, iId);
+
+	output.vPos = mul(float4(tSkin.vPos,1.f), input.matWVP);
+	output.vUV = input.vUV;
+	output.vNormal = normalize(mul(float4(tSkin.vNormal, 0.f), input.matWV).xyz);
+	output.vTangent = normalize(mul(float4(tSkin.vTangent, 0.f), input.matWV).xyz);
+	output.vBinormal = normalize(mul(float4(tSkin.vBinormal, 0.f), input.matWV).xyz);
+	output.vShadowPos = mul(float4(tSkin.vPos, 1.f), input.matLightWVP);
+	output.vProjPos = output.vPos;
 
 	return output;
 }

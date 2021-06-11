@@ -1,0 +1,52 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[5] = { true, true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.25
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[5] = { true, true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[21] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[4] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[5] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[6] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[7] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[8] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[9] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[10] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[11] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[12] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[13] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[14] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[15] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[16] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[17] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[18] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[19] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+    Materials[20] = MaterialInstanceConstant'CH_PC_HumH_M_CM_Hair_201_F_MI_YNG'
+}

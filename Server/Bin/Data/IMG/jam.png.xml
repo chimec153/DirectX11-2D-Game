@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<animations>
+	
+<< WATER TILES >>
+
+	<anim speed="0.02" name="water1"> 	<data>1929,1930,1931,1932</data></anim>
+	<anim speed="0.02" name="water3"> 	<data>1993,1994,1995,1996</data></anim>
+	<anim speed="0.02" name="water5"> 	<data>2057,2058,2059,2060</data></anim>
+	<anim speed="0.02" name="water7"> 	<data>2121,2122,2123,2124</data></anim>
+	<anim speed="0.02" name="water9"> 	<data>2185,2186,2187,2188</data></anim>
+	<anim speed="0.02" name="water11"> 	<data>2249,2250,2251,2252</data></anim>
+	<anim speed="0.02" name="water12"> 	<data>2313,2314,2315,2316</data></anim>
+	<anim speed="0.02" name="water12"> 	<data>2377,2378,2379,2380</data></anim>
+	<anim speed="0.02" name="water13"> 	<data>2441,2442,2443,2444</data></anim>
+	<anim speed="0.02" name="water14"> 	<data>2505,2506,2507,2508</data></anim>
+	<anim speed="0.02" name="water15"> 	<data>2569,2570,2571,2572</data></anim>
+	<anim speed="0.02" name="water15"> 	<data>2633,2634,2635,2636</data></anim>
+
+	<anim speed="0.02" name="dwater1"> 	<data>2117,2118,2119,2120</data></anim>
+	<anim speed="0.02" name="dwater2"> 	<data>2181,2182,2183,2184</data></anim>
+	<anim speed="0.02" name="dwater3"> 	<data>2245,2246,2247,2248</data></anim>
+	<anim speed="0.02" name="dwater4"> 	<data>2309,2310,2311,2312</data></anim>
+	<anim speed="0.02" name="dwater5"> 	<data>2373,2374,2375,2376</data></anim>
+	<anim speed="0.02" name="dwater6"> 	<data>2437,2438,2439,2440</data></anim>
+	<anim speed="0.02" name="dwater7"> 	<data>2501,2502,2503,2504</data></anim>
+	<anim speed="0.02" name="dwater8"> 	<data>2565,2566,2567,2568</data></anim>
+
+	<anim speed="0.2" name="dwater8"> 	<data>2114,2178,2242,2306</data></anim>
+	<anim speed="0.2" name="dwater8"> 	<data>2115,2179,2243,2307</data></anim>
+	<anim speed="0.2" name="dwater8"> 	<data>2116,2180,2244,2308</data></anim>
+	<anim speed="0.2" name="dwater8"> 	<data>2370,2434,2498,2562</data></anim>
+
+	<anim speed="0.15" name="dwater8"> 	<data>2381,2445,2509,2573</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2382,2446,2510,2574</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2383,2447,2511,2575</data></anim>
+
+	<anim speed="0.15" name="dwater8"> 	<data>2637,2638,2639</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2703,2704,2705,2706</data></anim>
+
+	<anim speed="0.15" name="dwater8"> 	<data>2384,2448,2512</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2385,2449,2513</data></anim>
+
+	<anim speed="0.1" name="dwater8"> 	<data>2369,2433,2497,2561</data></anim>
+	<anim speed="0.1" name="dwater8"> 	<data>2371,2435,2499,2563</data></anim>
+	<anim speed="0.1" name="dwater8"> 	<data>2372,2436,2500,2564</data></anim>
+
+
+	<anim speed="0.15" name="dwater8"> 	<data>2008,2072,2136,2200</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2009,2073,2137,2201</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>2010,2074,2138,2202</data></anim>
+
+	<anim speed="0.15" name="dwater8"> 	<data>3584,3585,3586,3587</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>3648,3649,3650,3651</data></anim>
+	<anim speed="0.15" name="dwater8"> 	<data>3712,3713,3714,3715</data></anim>
+
+<< TREEBEARD IS THAT YOU? >>
+
+	<anim speed="0.08" name="beard"> 	<data>1980,2236,2492</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>1981,2237,2493</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>1982,2238,2494</data></anim>
+
+	<anim speed="0.08" name="beard"> 	<data>2043,2299,2555</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2044,2300,2556</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2045,2301,2557</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2046,2302,2558</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2047,2303,2559</data></anim>
+
+	<anim speed="0.08" name="beard"> 	<data>2107,2363,2619</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2108,2364,2620</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2109,2365,2621</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2110,2366,2622</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2111,2367,2623</data></anim>
+	
+	<anim speed="0.08" name="beard"> 	<data>2172,2428,2684</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2173,2429,2685</data></anim>
+	<anim speed="0.08" name="beard"> 	<data>2174,2430,2686</data></anim>
+
+<< SOME FUCKING BEARD I DUNNO >>
+
+	<anim speed="0.05" name="beard"> 	<data>1011,1012,1013</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1074,1075,1076</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1077,1078,1079</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1080,1081,1082</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1138,1139,1140</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1141,1142,1143</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1144,1145,1146</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1202,1203,1204</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1205,1206,1207</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1208,1209,1210</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1272,1273,1274</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1336,1337,1338</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1400,1401,1402</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1464,1465,1466</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1528,1529,1530</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1592,1593,1594</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1656,1657,1658</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1720,1721,1722</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1780,1781,1782</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1783,1784,1785</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1847,1848,1849</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>2827,2828,2829</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>2891,2892,2893</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1266,1267,1268</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1269,1270,1271</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1330,1331,1332</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1333,1334,1335</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1394,1395,1396</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1397,1398,1399</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1461,1462,1463</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1522,1523,1524</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1525,1526,1527</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1586,1587,1588</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1589,1590,1591</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1650,1651,1652</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1653,1654,1655</data></anim>
+
+	<anim speed="0.05" name="beard"> 	<data>1714,1715,1716</data></anim>
+	<anim speed="0.05" name="beard"> 	<data>1717,1718,1719</data></anim>
+
+<< CANOPY >>
+	<anim speed="0.1" name="canopy1"> 	<data>640,646,652</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>641,647,653</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>642,648,654</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>643,649,655</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>644,650,656</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>645,651,657</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>704,710,716</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>705,711,717</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>706,712,718</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>707,713,719</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>708,714,720</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>709,715,721</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>768,774,780</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>769,775,781</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>770,776,782</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>771,777,783</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>772,778,784</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>773,779,785</data></anim>
+
+<< CANOPY SHADOWS>>
+
+	<anim speed="0.1" name="canopy1"> 	<data>1056,1062,1068</data></anim>
+	<anim speed="0.1" name="canopy2"> 	<data>1057,1063,1069</data></anim>
+	<anim speed="0.1" name="canopy3"> 	<data>1058,1064,1070</data></anim>
+	<anim speed="0.1" name="canopy4"> 	<data>1059,1065,1071</data></anim>
+	<anim speed="0.1" name="canopy5"> 	<data>1060,1066,1072</data></anim>
+	<anim speed="0.1" name="canopy6"> 	<data>1061,1067,1073</data></anim>
+
+	<anim speed="0.1" name="canopy7"> 	<data>1120,1126,1132</data></anim>
+	<anim speed="0.1" name="canopy8"> 	<data>1121,1127,1133</data></anim>
+	<anim speed="0.1" name="canopy9"> 	<data>1122,1128,1134</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1123,1129,1135</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1124,1130,1136</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1125,1131,1137</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>1184,1190,1196</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1185,1191,1197</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1186,1192,1198</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1187,1193,1199</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1188,1194,1200</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1189,1195,1201</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>1248,1254,1260</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1249,1255,1261</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1250,1256,1262</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1251,1257,1263</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1252,1258,1264</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1253,1259,1265</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>1312,1318,1324</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1313,1319,1325</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1314,1320,1326</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1315,1321,1327</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1316,1322,1328</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1317,1323,1329</data></anim>
+
+	<anim speed="0.1" name="canopy1"> 	<data>1376,1382,1388</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1377,1383,1389</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1378,1384,1390</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1379,1385,1391</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1380,1386,1392</data></anim>
+	<anim speed="0.1" name="canopy1"> 	<data>1381,1387,1393</data></anim>
+
+
+<< BUSHES >>
+
+	<anim speed="0.05" name="bush1"> 	<data>1829,1832,1835</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1830,1833,1836</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1831,1834,1837</data></anim>
+
+	<anim speed="0.05" name="bush1"> 	<data>1893,1896,1899</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1894,1897,1900</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1895,1898,1901</data></anim>
+
+	<anim speed="0.05" name="bush1"> 	<data>1957,1960,1963</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1958,1961,1964</data></anim>
+	<anim speed="0.05" name="bush1"> 	<data>1959,1962,1965</data></anim>
+
+<< GRASS >>
+
+	<anim speed="0.05" name="grass1"> 	<data>3076,3077,3078</data></anim>
+	<anim speed="0.05" name="grass1"> 	<data>3140,3141,3142</data></anim>
+	<anim speed="0.05" name="grass1"> 	<data>3204,3205,3206</data></anim>
+	<anim speed="0.05" name="grass1"> 	<data>3268,3269,3270</data></anim>
+
+	<anim speed="0.05" name="grass2"> 	<data>18,19,20</data></anim>
+	<anim speed="0.05" name="grass2"> 	<data>82,83,84</data></anim>
+	<anim speed="0.05" name="grass2"> 	<data>146,147,148</data></anim>
+	<anim speed="0.05" name="grass2"> 	<data>210,211,212</data></anim>
+
+	<anim speed="0.05" name="grass2"> 	<data>3461,3462,3463</data></anim>
+	<anim speed="0.05" name="grass2"> 	<data>3525,3526,3527</data></anim>
+
+	<anim speed="0.05" name="grass2"> 	<data>3528,3529,3530</data></anim>
+
+	<anim speed="0.05" name="grass2"> 	<data>3467,3468,3469</data></anim>
+	<anim speed="0.05" name="grass2"> 	<data>3531,3532,3533</data></anim>
+</animations>

@@ -20,7 +20,7 @@ bool CMissile::Init()
 	if (!CObj::Init())
 		return false;
 
-	CSpriteComponent* pCom = CreateComponent<CSpriteComponent>("Sprite");
+	CSpriteComponent* pCom = CreateComponent<CSpriteComponent>("Sprite", m_pLayer);
 
 	pCom->SetWorldScale(32.f, 32.f, 0.f);
 	pCom->SetPivot(0.5f, 0.5f, 0.f);
@@ -29,7 +29,7 @@ bool CMissile::Init()
 
 	SetRootComponent(pCom);
 
-	CColliderCircle* pCC = CreateComponent<CColliderCircle>("MissileBody");
+	CColliderCircle* pCC = CreateComponent<CColliderCircle>("MissileBody", m_pLayer);
 
 	pCC->SetRadius(16.f);
 	pCC->SetCallBack<CMissile>(COLLISION_STATE::INIT, this, &CMissile::ColEnter);

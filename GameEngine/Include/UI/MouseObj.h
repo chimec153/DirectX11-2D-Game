@@ -12,7 +12,7 @@ public:
 
 private:
 	class CUISprite*		m_pImage;
-	class CColliderPoint*	m_pPC;
+	class CColliderRay*		m_pCollider;
 
 public:
 	virtual bool Init();

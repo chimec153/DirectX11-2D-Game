@@ -1,17 +1,15 @@
 #include "Mesh2D.h"
 #include "../Device.h"
+#include "../Resource/ResourceManager.h"
+#include "../Resource/ShaderManager.h"
 
-CMesh2D::CMesh2D() :
-	m_ePrimitive(D3D_PRIMITIVE_TOPOLOGY_UNDEFINED)
+CMesh2D::CMesh2D()
 {
-	memset(&m_tVB, 0, sizeof(VertexBuffer));
-	memset(&m_tIB, 0, sizeof(IndexBuffer));
+	m_eType = MESH_TYPE::MT_2D;
 }
 
 CMesh2D::~CMesh2D()
 {
-	SAFE_RELEASE(m_tVB.pBuffer);
-	SAFE_RELEASE(m_tIB.pBuffer);
 }
 
 bool CMesh2D::Init()
@@ -22,15 +20,42 @@ bool CMesh2D::Init()
 bool CMesh2D::CreateMesh(D3D_PRIMITIVE_TOPOLOGY eTop, void* pVtxData, int iVtxSz, int iVtxCnt, D3D11_USAGE eVtxUsg, 
 	void* pIdxData, int iIdxSz, int iIdxCnt, D3D11_USAGE eIdxUsg, DXGI_FORMAT eFmt)
 {
-	m_ePrimitive = eTop;
+	size_t iSize = m_vecContainer.size();
 
-	m_tVB.iSize = iVtxSz;
-	m_tVB.iCount = iVtxCnt;
-	m_tVB.eUsage = eVtxUsg;
+	for (size_t i = 0; i < iSize; i++)
+	{
+		SAFE_DELETE_ARRAY(m_vecContainer[i]->tVB.pData);
+		SAFE_RELEASE(m_vecContainer[i]->tVB.pBuffer);
+
+		size_t iIBSize = m_vecContainer[i]->vecSubSet.size();
+
+		for (size_t j = 0;j < iIBSize; j++)
+		{
+			SAFE_DELETE_ARRAY(m_vecContainer[i]->vecSubSet[j]->tIB.pData);
+			SAFE_RELEASE(m_vecContainer[i]->vecSubSet[j]->tIB.pBuffer);
+			SAFE_DELETE(m_vecContainer[i]->vecSubSet[j]);
+		}
+
+		SAFE_DELETE(m_vecContainer[i]);
+	}
+
+	m_vecContainer.clear();
+
+	PMESHCONTAINER pContainer = new MESHCONTAINER;
+
+	m_vecContainer.push_back(pContainer);
+
+	pContainer->tVB = VertexBuffer();
+
+	pContainer->eTopo = eTop;
+
+	pContainer->tVB.iSize = iVtxSz;
+	pContainer->tVB.iCount = iVtxCnt;
+	pContainer->tVB.eUsage = eVtxUsg;
 
 	D3D11_BUFFER_DESC tDesc = {};
 
-	tDesc.ByteWidth = m_tVB.iSize * m_tVB.iCount;
+	tDesc.ByteWidth = pContainer->tVB.iSize * pContainer->tVB.iCount;
 	tDesc.Usage = eVtxUsg;
 	tDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 
@@ -49,11 +74,14 @@ bool CMesh2D::CreateMesh(D3D_PRIMITIVE_TOPOLOGY eTop, void* pVtxData, int iVtxSz
 
 	tData.pSysMem = pVtxData;
 
-	if (FAILED(DEVICE->CreateBuffer(&tDesc, &tData, &m_tVB.pBuffer)))
+	if (FAILED(DEVICE->CreateBuffer(&tDesc, &tData, &pContainer->tVB.pBuffer)))
 		return false;
 
 	m_tMax = Vector3(-FLT_MAX, -FLT_MAX, -FLT_MAX);
 	m_tMin = Vector3(FLT_MAX, FLT_MAX, FLT_MAX);
+
+	pContainer->tVB.pData = new char[tDesc.ByteWidth];
+	memcpy(pContainer->tVB.pData, pVtxData, tDesc.ByteWidth);
 
 	char* pData = (char*)pVtxData;
 
@@ -84,14 +112,22 @@ bool CMesh2D::CreateMesh(D3D_PRIMITIVE_TOPOLOGY eTop, void* pVtxData, int iVtxSz
 
 	if (pIdxData)
 	{
-		m_tIB.iSize = iIdxSz;
-		m_tIB.iCount = iIdxCnt;
-		m_tIB.eUsage = eIdxUsg;
-		m_tIB.eFmt = eFmt;
+		PSUBSET pSub = new SUBSET;
+		pContainer->vecSubSet.push_back(pSub);
+		IndexBuffer tIB = {};
+		pSub->tIB = tIB;
+
+		pSub->tIB.iSize = iIdxSz;
+		pSub->tIB.iCount = iIdxCnt;
+		pSub->tIB.eUsage = eIdxUsg;
+		pSub->tIB.eFmt = eFmt;
+		
+		pSub->pMaterial = GET_SINGLE(CResourceManager)->FindMaterial("Color");
+		pSub->strShader = "Standard2D";
 
 		D3D11_BUFFER_DESC tIndexDesc = {};
 
-		tIndexDesc.ByteWidth = m_tIB.iSize * m_tIB.iCount;
+		tIndexDesc.ByteWidth = pSub->tIB.iSize * pSub->tIB.iCount;
 		tIndexDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 		tIndexDesc.Usage = eIdxUsg;
 
@@ -105,142 +141,82 @@ bool CMesh2D::CreateMesh(D3D_PRIMITIVE_TOPOLOGY eTop, void* pVtxData, int iVtxSz
 				D3D11_CPU_ACCESS_READ;
 			break;
 		}
+		pSub->tIB.pData = new char[tIndexDesc.ByteWidth];
+		memcpy(pSub->tIB.pData, pIdxData, tIndexDesc.ByteWidth);
 
 		D3D11_SUBRESOURCE_DATA tIndexData = {};
 
 		tIndexData.pSysMem = pIdxData;
 
-		if (FAILED(DEVICE->CreateBuffer(&tIndexDesc, &tIndexData, &m_tIB.pBuffer)))
+		if (FAILED(DEVICE->CreateBuffer(&tIndexDesc, &tIndexData, &pSub->tIB.pBuffer)))
 			return false;
 	}
 
 	return true;
 }
 
-bool CMesh2D::CreateMesh()
+void CMesh2D::Render(float fTime, int iContainer, int iSubset)
 {
-	m_ePrimitive = D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
-
-	VertexColor v[4] = {};
-
-	v[0].vPos = Vector3(0.f, 1.f, 0.f);
-	v[0].vUV = Vector2(0.f, 0.f);
-	v[0].vColor = Vector4::Red;
-
-	v[1].vPos = Vector3(1.f, 1.f, 0.f);
-	v[1].vUV = Vector2(1.f, 0.f);
-	v[1].vColor = Vector4::Green;
-
-	v[2].vPos = Vector3(0.f, 0.f, 0.f);
-	v[2].vUV = Vector2(0.f, 1.f);
-	v[2].vColor = Vector4(1.f, 1.f, 0.f, 1.f);
-
-	v[3].vPos = Vector3(1.f, 0.f, 0.f);
-	v[3].vUV = Vector2(1.f, 1.f);
-	v[3].vColor = Vector4(1.f, 0.f, 1.f, 1.f);
-
-	m_tVB.iSize = sizeof(VertexColor);
-	m_tVB.iCount = 4;
-	m_tVB.eUsage = D3D11_USAGE_IMMUTABLE;
-
-	D3D11_BUFFER_DESC tDesc = {};
-
-	tDesc.ByteWidth = m_tVB.iSize * m_tVB.iCount;
-	tDesc.Usage = D3D11_USAGE_IMMUTABLE;
-	tDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-
-	D3D11_SUBRESOURCE_DATA tData = {};
-
-	tData.pSysMem = v;
-
-	if (FAILED(DEVICE->CreateBuffer(&tDesc, &tData, &m_tVB.pBuffer)))
-		return false;
-
-	m_tMax = Vector3(1.f, 1.f, 0.f);
-	m_tMin = Vector3(0.f, 0.f, 0.f);
-
-	unsigned short iIdx[6] = {
-		0, 1, 3,
-		0, 3, 2
-	};
-
-	m_tIB.iSize = sizeof(unsigned short);
-	m_tIB.iCount = 6;
-	m_tIB.eUsage = D3D11_USAGE_IMMUTABLE;
-	m_tIB.eFmt = DXGI_FORMAT_R16_UINT;
-
-	D3D11_BUFFER_DESC tIndexDesc = {};
-
-	tIndexDesc.ByteWidth = m_tIB.iSize * m_tIB.iCount;
-	tIndexDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
-	tIndexDesc.Usage = D3D11_USAGE_IMMUTABLE;
-
-	D3D11_SUBRESOURCE_DATA tIndexData = {};
-
-	tIndexData.pSysMem = iIdx;
-
-	if (FAILED(DEVICE->CreateBuffer(&tIndexDesc, &tIndexData, &m_tIB.pBuffer)))
-		return false;
-
-	return true;
-}
-
-void CMesh2D::Render(float fTime)
-{
-	UINT	iStride = m_tVB.iSize;
+	UINT	iStride = m_vecContainer[iContainer]->tVB.iSize;
 	UINT	iOffset = 0;
 
-	CONTEXT->IASetPrimitiveTopology(m_ePrimitive);
-	CONTEXT->IASetVertexBuffers(0, 1, &m_tVB.pBuffer, &iStride, &iOffset);
+	CONTEXT->IASetPrimitiveTopology(m_vecContainer[iContainer]->eTopo);
+	CONTEXT->IASetVertexBuffers(0, 1, &m_vecContainer[iContainer]->tVB.pBuffer, &iStride, &iOffset);
 
-	if (m_tIB.pBuffer)
+	if (!m_vecContainer[iContainer]->vecSubSet.empty())
 	{
-		CONTEXT->IASetIndexBuffer(m_tIB.pBuffer, m_tIB.eFmt, 0);
-		CONTEXT->DrawIndexed(m_tIB.iCount, 0, 0);
+		CONTEXT->IASetIndexBuffer(m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.pBuffer, m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.eFmt, 0);
+		CONTEXT->DrawIndexed(m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.iCount, 0, 0);
 	}
 
 	else
 	{
 		CONTEXT->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
-		CONTEXT->Draw(m_tVB.iCount, 0);
+		CONTEXT->Draw(m_vecContainer[iContainer]->tVB.iCount, 0);
 	}
 }
 
-void CMesh2D::RenderInstancing(void* pInstancedBuffer, int iCnt, int iSize)
+void CMesh2D::RenderInstancing(void* pInstancedBuffer, int iCnt, int iSize, int iContainer, int iSubset )
 {
-	UINT iStride[2] = { sizeof(VertexColor), (UINT)iSize };
+	UINT iStride[2] = { (UINT)m_vecContainer[iContainer]->tVB.iSize, (UINT)iSize };
 	UINT iOffset[2] = { 0,0 };
 
-	ID3D11Buffer* ppBuffer[2] = { m_tVB.pBuffer, (ID3D11Buffer*)pInstancedBuffer };
+	ID3D11Buffer* ppBuffer[2] = { m_vecContainer[iContainer]->tVB.pBuffer, (ID3D11Buffer*)pInstancedBuffer };
 
 	CONTEXT->IASetVertexBuffers(0, 2, ppBuffer, iStride, iOffset);
-	CONTEXT->IASetPrimitiveTopology(m_ePrimitive);
+	CONTEXT->IASetPrimitiveTopology(m_vecContainer[iContainer]->eTopo);
 
-	if (m_tIB.pBuffer)
+	if (m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.pBuffer)
 	{
-		CONTEXT->IASetIndexBuffer(m_tIB.pBuffer, m_tIB.eFmt, 0);
-		CONTEXT->DrawIndexedInstanced(m_tIB.iCount, iCnt, 0, 0, 0);
+		CONTEXT->IASetIndexBuffer(m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.pBuffer, m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.eFmt, 0);
+		CONTEXT->DrawIndexedInstanced(m_vecContainer[iContainer]->vecSubSet[iSubset]->tIB.iCount, iCnt, 0, 0, 0);
 	}
 
 	else
 	{
 		CONTEXT->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
-		CONTEXT->DrawInstanced(m_tVB.iCount, iCnt, 0, 0);
+		CONTEXT->DrawInstanced(m_vecContainer[iContainer]->tVB.iCount, iCnt, 0, 0);
 	}
+}
+
+void CMesh2D::RenderParticle(int iCount, int iContainer, int iSubset)
+{
+	UINT iOffset = 0;
+	UINT iStride = m_vecContainer[iContainer]->tVB.iSize;
+
+	CONTEXT->IASetPrimitiveTopology(m_vecContainer[iContainer]->eTopo);
+	CONTEXT->IASetVertexBuffers(0, 1, &m_vecContainer[iContainer]->tVB.pBuffer, &iStride, &iOffset);
+
+	CONTEXT->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
+	CONTEXT->DrawInstanced(m_vecContainer[iContainer]->tVB.iCount, iCount, 0, 0);
 }
 
 void CMesh2D::Save(FILE* pFile)
 {
 	CMesh::Save(pFile);
-
-	fwrite(&m_ePrimitive, 4, 1, pFile);
 }
 
 void CMesh2D::Load(FILE* pFile)
 {
 	CMesh::Load(pFile);
-
-	fread(&m_ePrimitive, 4, 1, pFile);
-
-	CreateMesh();
 }

@@ -24,7 +24,7 @@ bool CCheckObj::Init()
 	if (!CUIObject::Init())
 		return false;
 
-	m_pBox = CreateComponent<CCheckBox>("CheckBox");
+	m_pBox = CreateComponent<CCheckBox>("CheckBox", m_pLayer);
 	m_pBox->SetTexture(BUTTON_STATE::OFF, "Box");
 	m_pBox->SetTexture(BUTTON_STATE::ON, "Box");
 	m_pBox->SetTexture(BUTTON_STATE::PUSH, "Box");
@@ -40,7 +40,7 @@ bool CCheckObj::Init()
 
 	SetRootComponent(m_pBox);
 
-	m_pText = CreateComponent<CUIFont>("Text");
+	m_pText = CreateComponent<CUIFont>("Text", m_pLayer);
 	m_pText->SetShadowColor(0.5f, 0.5f, 0.5f, 1.f);
 	m_pText->SetShadowOpacity(0.5f);
 	m_pText->SetColor(25, 150, 185, (BYTE)255);

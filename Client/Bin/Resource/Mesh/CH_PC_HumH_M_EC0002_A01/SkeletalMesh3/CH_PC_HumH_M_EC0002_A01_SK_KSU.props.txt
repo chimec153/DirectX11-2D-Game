@@ -1,0 +1,26 @@
+LODInfo[1] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[5] = { true, true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = false
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[5] =
+{
+    Materials[0] = MaterialInstanceConstant'CH_PC_HumH_M_ReferBody.CH_PC_HumH_M_CM_Body_MI_KTK'
+    Materials[1] = MaterialInstanceConstant'CH_PC_HumH_M_EC0002_A01_Upper_MI_KSU'
+    Materials[2] = MaterialInstanceConstant'CH_PC_HumH_M_EC0002_A01_Lower_MI_KSU'
+    Materials[3] = MaterialInstanceConstant'CH_PC_HumH_M_EC0002_A01_Shoulder_MI_KSU'
+    Materials[4] = MaterialInstanceConstant'CH_PC_HumH_M_EC0002_A01_Helmet_MI_KSU'
+}

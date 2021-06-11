@@ -1,0 +1,140 @@
+Parent = Material3'LV_MM_VolumetricFogSheet_UNL_TRS_2SD'
+ScalarParameterValues[17] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.0001
+        ParameterName = DepthBasedDensity
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 50
+        ParameterName = DBAlpha_Density
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Opacity
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.5
+        ParameterName = Edge_FalloffExponent
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = FadeOut_Far_Distance
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = FadeOut_Near_Distance
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = TextureBlend_Contrast
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex02_PanningSpeed
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex02_V
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex02_U
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex01_PanningSpeed
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Tex01_V
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Tex01_U
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 5
+        ParameterName = Opacity_DistortionTex_Tiling
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = Opacity_DistortionTex_PanningSpeed
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Tex01_Brightness
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Tex02_Brightness
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LightBeam.LV_Common_Volumetric_Lightbeam_DustPanner_C_PYO'
+        ParameterName = MultiplyTexture2
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.FX_Smoke_034_TEX_HKB'
+        ParameterName = MultiplyTexture1
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.640449, G=0.544654, B=0.478847, A=1 }
+        ParameterName = TOD_Day_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

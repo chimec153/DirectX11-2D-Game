@@ -4,7 +4,7 @@
 #include "../Resource/Texture.h"
 #include "../Resource/Mesh2D.h"
 #include "../Resource/ResourceManager.h"
-#include "../RenderManager.h"
+#include "../Render/RenderManager.h"
 
 CUIControl::CUIControl() :
 	m_bStart(false),

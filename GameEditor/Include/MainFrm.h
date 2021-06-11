@@ -16,6 +16,9 @@ protected:
 	CSplitterWnd	m_hSplitChild;
 	class CAniEdit* m_pEdit;
 
+public:
+
+
 // 특성입니다.
 public:
 

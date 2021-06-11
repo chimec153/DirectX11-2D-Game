@@ -54,6 +54,15 @@ public:
 	Vector3		m_vPos;
 	Vector3		m_vRot;
 	Vector3		m_vScale;
+	afx_msg void OnCbnSelchangeComboState();
+	CComboBox m_ComboStates;
+	afx_msg void OnEnChangeEdit1();
+	CString m_strScene;
+	afx_msg void OnEnChangeEditScene();
+	CString m_strLayer;
+	afx_msg void OnEnChangeEditLayer();
+	int m_iZOrder;
+	afx_msg void OnEnChangeEditZorder();
 };
 
 

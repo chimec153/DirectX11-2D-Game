@@ -1,0 +1,123 @@
+LODInfo[2] =
+{
+    LODInfo[0] =
+    {
+        DisplayFactor = 0
+        LODHysteresis = 0.02
+        LODMaterialMap[0] = {}
+        bEnableShadowCasting[29] =
+        {
+            bEnableShadowCasting[0] = true
+            bEnableShadowCasting[1] = true
+            bEnableShadowCasting[2] = true
+            bEnableShadowCasting[3] = true
+            bEnableShadowCasting[4] = true
+            bEnableShadowCasting[5] = true
+            bEnableShadowCasting[6] = true
+            bEnableShadowCasting[7] = true
+            bEnableShadowCasting[8] = true
+            bEnableShadowCasting[9] = true
+            bEnableShadowCasting[10] = true
+            bEnableShadowCasting[11] = true
+            bEnableShadowCasting[12] = true
+            bEnableShadowCasting[13] = true
+            bEnableShadowCasting[14] = true
+            bEnableShadowCasting[15] = true
+            bEnableShadowCasting[16] = true
+            bEnableShadowCasting[17] = true
+            bEnableShadowCasting[18] = true
+            bEnableShadowCasting[19] = true
+            bEnableShadowCasting[20] = true
+            bEnableShadowCasting[21] = true
+            bEnableShadowCasting[22] = true
+            bEnableShadowCasting[23] = true
+            bEnableShadowCasting[24] = true
+            bEnableShadowCasting[25] = true
+            bEnableShadowCasting[26] = true
+            bEnableShadowCasting[27] = true
+            bEnableShadowCasting[28] = true
+        }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+    LODInfo[1] =
+    {
+        DisplayFactor = 0.3
+        LODHysteresis = 0.02
+        LODMaterialMap[30] =
+        {
+            LODMaterialMap[0] = 0
+            LODMaterialMap[1] = 1
+            LODMaterialMap[2] = 2
+            LODMaterialMap[3] = 3
+            LODMaterialMap[4] = 4
+            LODMaterialMap[5] = 5
+            LODMaterialMap[6] = 6
+            LODMaterialMap[7] = 7
+            LODMaterialMap[8] = 8
+            LODMaterialMap[9] = 9
+            LODMaterialMap[10] = 10
+            LODMaterialMap[11] = 11
+            LODMaterialMap[12] = 12
+            LODMaterialMap[13] = 13
+            LODMaterialMap[14] = 14
+            LODMaterialMap[15] = 15
+            LODMaterialMap[16] = 16
+            LODMaterialMap[17] = 17
+            LODMaterialMap[18] = 18
+            LODMaterialMap[19] = 19
+            LODMaterialMap[20] = 20
+            LODMaterialMap[21] = 21
+            LODMaterialMap[22] = 22
+            LODMaterialMap[23] = 23
+            LODMaterialMap[24] = 24
+            LODMaterialMap[25] = 25
+            LODMaterialMap[26] = 26
+            LODMaterialMap[27] = 27
+            LODMaterialMap[28] = 28
+            LODMaterialMap[29] = 29
+        }
+        bEnableShadowCasting[4] = { true, true, true, true }
+        BonesToRemove[0] = {}
+        BonesToPrioritize[0] = {}
+        SourceImportFilename = ""
+    }
+}
+Sockets[0] = {}
+bHasVertexColors = true
+EnableTwistBoneFixers = true
+EnableClavicleFixer = true
+Skeleton = None
+Materials[30] =
+{
+    Materials[0] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_01'
+    Materials[1] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_02'
+    Materials[2] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_03'
+    Materials[3] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_04'
+    Materials[4] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_05'
+    Materials[5] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_06'
+    Materials[6] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_12'
+    Materials[7] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_07'
+    Materials[8] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_09'
+    Materials[9] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_10'
+    Materials[10] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_11'
+    Materials[11] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_13'
+    Materials[12] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_08'
+    Materials[13] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_14'
+    Materials[14] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_15'
+    Materials[15] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_16'
+    Materials[16] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_17'
+    Materials[17] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_18'
+    Materials[18] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_19'
+    Materials[19] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Face_INST_00'
+    Materials[20] = MaterialInstanceConstant'HumH_M.CH_PC_HumH_M_CM_FaceFur_MI_INST_00'
+    Materials[21] = MaterialInstanceConstant'HumH_M.CH_PC_HumH_M_CM_FaceFur_MI_INST_02'
+    Materials[22] = MaterialInstanceConstant'HumH_M.CH_PC_HumH_M_CM_FaceFur_MI_INST_03'
+    Materials[23] = MaterialInstanceConstant'HumH_M.CH_PC_HumH_M_CM_FaceFur_MI_INST_04'
+    Materials[24] = MaterialInstanceConstant'HumH_M.CH_PC_HumH_M_CM_FaceFur_MI_INST_05'
+    Materials[25] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_Eyelash_INST_01'
+    Materials[26] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeShadow_INST_00'
+    Materials[27] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeBall_INST_00'
+    Materials[28] = MaterialInstanceConstant'HumH_M.HumH_M_MIS_CM_EyeBall_INST_01'
+}

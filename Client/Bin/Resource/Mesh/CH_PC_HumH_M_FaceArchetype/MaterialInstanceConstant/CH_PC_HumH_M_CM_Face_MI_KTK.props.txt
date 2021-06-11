@@ -1,0 +1,500 @@
+Parent = Material3'CH_MM_PCSkin_CST_OPA_1SD_CM'
+ScalarParameterValues[53] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = PickingValueMax
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = SelectedSwitch
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = aging_eyes
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = aging_forehead
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = aging_Mouth
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Normal_Aging
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = NormalAging_Power
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = blusher_areasize
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = blusher_opacity
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = BlusherColorShade
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Eyebrow_opacity
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = EyeBrowColorShade
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Highlight_Intencity
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Highlight_power
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Lips_areasize
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Lips_HighlightArea
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Lips_highlightintencity
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Lips_opacity
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = CosmeticPearlPower
+    }
+    ScalarParameterValues[19] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Deco_Fleckle_Opacity
+    }
+    ScalarParameterValues[20] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Deco_Fleckle_Power
+    }
+    ScalarParameterValues[21] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = FleckleColorShade
+    }
+    ScalarParameterValues[22] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tatoo_Fixed_BlendType
+    }
+    ScalarParameterValues[23] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tatoo_Fixed_Power
+    }
+    ScalarParameterValues[24] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Tatoo_Rotate
+    }
+    ScalarParameterValues[25] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = TatooColorShade
+    }
+    ScalarParameterValues[26] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Helmet_ON
+    }
+    ScalarParameterValues[27] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Ear_Blend
+    }
+    ScalarParameterValues[28] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.5
+        ParameterName = NormalBlend_Power
+    }
+    ScalarParameterValues[29] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.35
+        ParameterName = Scar_Position_X
+    }
+    ScalarParameterValues[30] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.9
+        ParameterName = Scar_Position_Y
+    }
+    ScalarParameterValues[31] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Scar_Power
+    }
+    ScalarParameterValues[32] =
+    {
+        ParameterInfo = 
+        ParameterValue = 38.1846
+        ParameterName = Scar_Rotate
+    }
+    ScalarParameterValues[33] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Scar_Size
+    }
+    ScalarParameterValues[34] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Contrast
+    }
+    ScalarParameterValues[35] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = High
+    }
+    ScalarParameterValues[36] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Low
+    }
+    ScalarParameterValues[37] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = Phong_SpecularPower
+    }
+    ScalarParameterValues[38] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = Skin_BlendMethod
+    }
+    ScalarParameterValues[39] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1.6
+        ParameterName = Skin_Brightness
+    }
+    ScalarParameterValues[40] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Skin_Desaturation
+    }
+    ScalarParameterValues[41] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = Skin_EdgeFalloff
+    }
+    ScalarParameterValues[42] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Skin_EdgeWeight
+    }
+    ScalarParameterValues[43] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0
+        ParameterName = skin_moisturepower
+    }
+    ScalarParameterValues[44] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.05
+        ParameterName = Skin_ReflectionBrightSide_Weight
+    }
+    ScalarParameterValues[45] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.01
+        ParameterName = Skin_ReflectionDarkSide_Weight
+    }
+    ScalarParameterValues[46] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Skin_SingleScatterWeight
+    }
+    ScalarParameterValues[47] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = Skin_Specular1Power
+    }
+    ScalarParameterValues[48] =
+    {
+        ParameterInfo = 
+        ParameterValue = 3
+        ParameterName = Skin_Specular2Power
+    }
+    ScalarParameterValues[49] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = Skin_Specular_NoiseScale
+    }
+    ScalarParameterValues[50] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = Skin_SubSurfaceWeight
+    }
+    ScalarParameterValues[51] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.1
+        ParameterName = Skin_TransmissionWeight
+    }
+    ScalarParameterValues[52] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = SkinColorShade
+    }
+}
+TextureParameterValues[12] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Aging_N_UNG'
+        ParameterName = Normal_Aging
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Eyebrow001_M_YSC'
+        ParameterName = Eyebrow_Mask
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Black_CM_D_KTK'
+        ParameterName = Tatoo_Fixed_Mask
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Eye_N_HSI'
+        ParameterName = Ear_texture
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = None
+        ParameterName = BufferRenderTarget
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Black_CM_D_KTK'
+        ParameterName = Buffer_Scar
+    }
+    TextureParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'Texture.CH_MM_Eye_N_HSI'
+        ParameterName = Scar_Normal
+    }
+    TextureParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Face001_D_LJG'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Mask01_UNG'
+        ParameterName = Mask_1
+    }
+    TextureParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Mask02_UNG'
+        ParameterName = Mask_2
+    }
+    TextureParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Face001_N_LJG'
+        ParameterName = Normal
+    }
+    TextureParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_PC_HumH_M_CM_Face001_SP_LJG'
+        ParameterName = Specular
+    }
+}
+VectorParameterValues[15] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.2, G=1, B=1, A=1 }
+        ParameterName = Base_Tone
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = blusher_color
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.0384727, G=0.0134734, B=0.00775103, A=1 }
+        ParameterName = eyebrow_color
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.5, G=0.185, B=0, A=1 }
+        ParameterName = Eyebrow_UpperLeft
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.740304, G=0.0924166, B=0.0376796, A=1 }
+        ParameterName = Lips_color
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Deco_Fleckle_Color
+    }
+    VectorParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.00342007, G=0.0139788, B=0.0441973, A=1 }
+        ParameterName = Tatoo_Fixed_Color
+    }
+    VectorParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0, G=0, B=0, A=1 }
+        ParameterName = Tatoo_Position
+    }
+    VectorParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=0, A=1 }
+        ParameterName = Tatoo_Size
+    }
+    VectorParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Phong_SpecularColor
+    }
+    VectorParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.827726, G=0.535642, B=0.404541, A=1 }
+        ParameterName = Skin_ColorShift
+    }
+    VectorParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.348865, G=0.111299, B=0.056374, A=1 }
+        ParameterName = Skin_DeepScatter
+    }
+    VectorParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.891262, G=0.774227, B=0.991393, A=1 }
+        ParameterName = Skin_EdgeColor
+    }
+    VectorParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.487765, G=0.404541, B=0.325037, A=1 }
+        ParameterName = Skin_ShallowScatter
+    }
+    VectorParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1, G=1, B=1, A=1 }
+        ParameterName = Skin_SpecularColor
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

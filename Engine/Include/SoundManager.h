@@ -11,11 +11,14 @@ private:
 
 public:
 	bool Init();
+	void Update(float fTime);
 
+public:
 	FMOD::System* GetSystem()	const;
 	bool LoadSound(const std::string& strKey, SOUND_TYPE eType, const char* pFileName, const std::string strPathKey = SOUND_PATH);
 	void Play(const std::string& strKey);
 	void Stop(const std::string& strKey);
+	void Stop(SOUND_TYPE eType);
 
 public:
 	PSOUNDINFO FindSound(const std::string& strKey);

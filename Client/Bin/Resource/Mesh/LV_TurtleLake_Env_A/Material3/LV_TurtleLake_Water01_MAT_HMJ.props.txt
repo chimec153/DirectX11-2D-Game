@@ -1,0 +1,202 @@
+TwoSided = false
+bDisableDepthTest = false
+bIsMasked = false
+ReferencedTextures[6] =
+{
+    ReferencedTextures[0] = Texture2D'LV_Common_Volumetrics_CloudMask_M_HSI'
+    ReferencedTextures[1] = Texture2D'LV_Common_Liquid_Lake01_N_PYO'
+    ReferencedTextures[2] = Texture2D'DefaultDiffuse'
+    ReferencedTextures[3] = TextureCube3'LV_Common_Cubemap01_R_PYO'
+    ReferencedTextures[4] = Texture2D'LV_Common_Liquid_FloatingLeaves_D_HSI'
+    ReferencedTextures[5] = Texture2D'LV_TurtleLake_Env_Water01_R_HMJ'
+}
+Expressions[175] =
+{
+    Expressions[9] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_9'
+    Expressions[13] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_11'
+    Expressions[16] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_5'
+    Expressions[23] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_6'
+    Expressions[27] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_10'
+    Expressions[47] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_8'
+    Expressions[60] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_7'
+    Expressions[71] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_6'
+    Expressions[87] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_9'
+    Expressions[92] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_10'
+    Expressions[93] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_0'
+    Expressions[97] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_12'
+    Expressions[100] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_1'
+    Expressions[106] = MaterialExpressionStaticSwitchParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionStaticSwitchParameter_2'
+    Expressions[112] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_19'
+    Expressions[115] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_7'
+    Expressions[118] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_1'
+    Expressions[122] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_18'
+    Expressions[124] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_8'
+    Expressions[131] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_17'
+    Expressions[136] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_16'
+    Expressions[142] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_4'
+    Expressions[145] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_11'
+    Expressions[146] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_12'
+    Expressions[149] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_23'
+    Expressions[151] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_24'
+    Expressions[154] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_6'
+    Expressions[155] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_2'
+    Expressions[156] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_13'
+    Expressions[161] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_7'
+    Expressions[164] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_14'
+    Expressions[166] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_15'
+    Expressions[168] = MaterialExpressionTextureSampleParameter2D'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionTextureSampleParameter2D_0'
+    Expressions[169] = MaterialExpressionStaticSwitchParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionStaticSwitchParameter_0'
+    Expressions[170] = MaterialExpressionVectorParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionVectorParameter_3'
+    Expressions[172] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_0'
+    Expressions[174] = MaterialExpressionScalarParameter'LV_TurtleLake_Water01_MAT_HMJ.MaterialExpressionScalarParameter_2'
+}
+CachedExpressionData = 
+BlendMode = BLEND_Translucent (2)
+OpacityMaskClipValue = 0.333
+CollectedTextureParameters[8] =
+{
+    CollectedTextureParameters[0] =
+    {
+        Texture = Texture2D'LV_Common_Liquid_Lake01_N_PYO'
+        Name = WaterNormal01
+        Group = None
+    }
+    CollectedTextureParameters[1] =
+    {
+        Texture = Texture2D'LV_Common_Volumetrics_CloudMask_M_HSI'
+        Name = NormalDistortion
+        Group = None
+    }
+    CollectedTextureParameters[2] =
+    {
+        Texture = Texture2D'LV_Common_Volumetrics_CloudMask_M_HSI'
+        Name = WaterNormal_Distortion
+        Group = None
+    }
+    CollectedTextureParameters[3] =
+    {
+        Texture = Texture2D'LV_Common_Liquid_Lake01_N_PYO'
+        Name = WaterNormal01
+        Group = None
+    }
+    CollectedTextureParameters[4] =
+    {
+        Texture = Texture2D'LV_Common_Liquid_Lake01_N_PYO'
+        Name = WaterNormal01
+        Group = None
+    }
+    CollectedTextureParameters[5] =
+    {
+        Texture = Texture2D'LV_Common_Liquid_Lake01_N_PYO'
+        Name = WaterNormal01
+        Group = None
+    }
+    CollectedTextureParameters[6] =
+    {
+        Texture = Texture2D'LV_Common_Volumetrics_CloudMask_M_HSI'
+        Name = Mask
+        Group = None
+    }
+    CollectedTextureParameters[7] =
+    {
+        Texture = Texture2D'LV_TurtleLake_Env_Water01_R_HMJ'
+        Name = Reflection_Cubemap2D
+        Group = None
+    }
+}
+CollectedScalarParameters[17] =
+{
+    CollectedScalarParameters[0] = { Value=0.4, Name=Normal_PanningSpeed, Group=None }
+    CollectedScalarParameters[1] = { Value=0.05, Name=Normal_Tiling, Group=None }
+    CollectedScalarParameters[2] = { Value=0.5, Name=TexStain_Tiling, Group=None }
+    CollectedScalarParameters[3] = { Value=0.5, Name=reflection, Group=None }
+    CollectedScalarParameters[4] = { Value=0.5, Name=Diffuse, Group=None }
+    CollectedScalarParameters[5] = { Value=0.7, Name=Wave_Power, Group=None }
+    CollectedScalarParameters[6] = { Value=400, Name=Specular_Power, Group=None }
+    CollectedScalarParameters[7] = { Value=3, Name=Distortion_Power, Group=None }
+    CollectedScalarParameters[8] = { Value=1, Name=None, Group=None }
+    CollectedScalarParameters[9] = { Value=1, Name=Scale, Group=None }
+    CollectedScalarParameters[10] = { Value=1, Name=Reflection_Contrast, Group=None }
+    CollectedScalarParameters[11] =
+    {
+        Value = 0
+        Name = Reflection_Desaturation
+        Group = None
+    }
+    CollectedScalarParameters[12] = { Value=1, Name=RefWave_Brightness, Group=None }
+    CollectedScalarParameters[13] = { Value=1, Name=RefWave_Contrast, Group=None }
+    CollectedScalarParameters[14] = { Value=0.8, Name=Opacity, Group=None }
+    CollectedScalarParameters[15] = { Value=0.5, Name=Multiply, Group=None }
+    CollectedScalarParameters[16] = { Value=0.5, Name=Add, Group=None }
+}
+CollectedVectorParameters[10] =
+{
+    CollectedVectorParameters[0] =
+    {
+        Value = { R=1, G=1, B=1, A=1 }
+        Name = Reflection_Color
+        Group = None
+    }
+    CollectedVectorParameters[1] =
+    {
+        Value = { R=1, G=1, B=0, A=1 }
+        Name = Normal_Fluid
+        Group = None
+    }
+    CollectedVectorParameters[2] =
+    {
+        Value = { R=1, G=1, B=1, A=1 }
+        Name = Normal_Power
+        Group = None
+    }
+    CollectedVectorParameters[3] =
+    {
+        Value = { R=2, G=2, B=2, A=1 }
+        Name = Specular_Color
+        Group = None
+    }
+    CollectedVectorParameters[4] =
+    {
+        Value = { R=1, G=1, B=0.5, A=1 }
+        Name = Specular_Direction
+        Group = None
+    }
+    CollectedVectorParameters[5] =
+    {
+        Value = { R=1, G=1, B=1, A=1 }
+        Name = SpecularNormal_Power
+        Group = None
+    }
+    CollectedVectorParameters[6] =
+    {
+        Value = { R=1, G=1, B=1, A=1 }
+        Name = Reflection_Color
+        Group = None
+    }
+    CollectedVectorParameters[7] =
+    {
+        Value = { R=0.05, G=0.12, B=0.12, A=1 }
+        Name = Diffuse_Color
+        Group = None
+    }
+    CollectedVectorParameters[8] =
+    {
+        Value = { R=0.3, G=0.3, B=1, A=1 }
+        Name = FresnalNormal_Power
+        Group = None
+    }
+    CollectedVectorParameters[9] =
+    {
+        Value = { R=0.2, G=0.3, B=0.4, A=1 }
+        Name = Reflection02_Color
+        Group = None
+    }
+}
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

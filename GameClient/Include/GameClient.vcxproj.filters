@@ -13,15 +13,289 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\01. GameMode">
+      <UniqueIdentifier>{4c12de16-f568-4128-8174-27d70abf76e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Object">
+      <UniqueIdentifier>{d37063ed-116e-44d1-88c8-ef4895247b45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Object\01. UI">
+      <UniqueIdentifier>{89e74f2c-ca2b-43ca-8b33-9070e1aaf619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. State">
+      <UniqueIdentifier>{cab4fae1-3c94-4d1a-b275-23fe8e2b94c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04. Client">
+      <UniqueIdentifier>{277eaac0-1831-492c-948f-4fb6b4386bc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05. TinyXml">
+      <UniqueIdentifier>{b86a6976-2884-46eb-9416-f8c09f14dc6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06. Network">
+      <UniqueIdentifier>{9847c427-e7bd-4d79-bdfc-737a9433d9f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\ColossusMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\MainGameMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\StartGameMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\TileMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Arrow.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Bow.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Bullet.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Colossus.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Effect.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\IceBall.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Icicle.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Minion.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Player.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\UI\Button.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\UI\CheckObj.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\UI\Missile.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\UI\RadioObj.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\UI\UIBar.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\BrainFreeze.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Eyecube.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Fire.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\FireButton.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Light.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Soul.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\SoulMonster.cpp">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\BrainMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\EndGameMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\EyeCubeMode.cpp">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\DieState.cpp">
+      <Filter>소스 파일\03. State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\IdleState.cpp">
+      <Filter>소스 파일\03. State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\SleepState.cpp">
+      <Filter>소스 파일\03. State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\State.cpp">
+      <Filter>소스 파일\03. State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\StopState.cpp">
+      <Filter>소스 파일\03. State</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\BossManager.cpp">
+      <Filter>소스 파일\04. Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Client.cpp">
+      <Filter>소스 파일\04. Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\tinystr.cpp">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\tinyxml.cpp">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\tinyxmlerror.cpp">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\tinyxmlparser.cpp">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Client\SocketManager.cpp">
+      <Filter>소스 파일\06. Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\Include\Client\Object\TitanFont.cpp">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\ColossusMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\MainGameMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\StartGameMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\TileMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Arrow.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Bow.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Bullet.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Colossus.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Effect.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\IceBall.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Icicle.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Minion.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Player.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\UI\Button.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\UI\CheckObj.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\UI\Missile.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\UI\RadioObj.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\UI\UIBar.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\SoulMonster.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\BrainFreeze.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Eyecube.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Fire.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\FireButton.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Light.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Soul.h">
+      <Filter>소스 파일\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\BrainMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\EndGameMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\EyeCubeMode.h">
+      <Filter>소스 파일\01. GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\DieState.h">
+      <Filter>소스 파일\03. State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\IdleState.h">
+      <Filter>소스 파일\03. State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\SleepState.h">
+      <Filter>소스 파일\03. State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\State.h">
+      <Filter>소스 파일\03. State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\StopState.h">
+      <Filter>소스 파일\03. State</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\BossManager.h">
+      <Filter>소스 파일\04. Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Client.h">
+      <Filter>소스 파일\04. Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\tinystr.h">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\tinyxml.h">
+      <Filter>소스 파일\05. TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Client\SocketManager.h">
+      <Filter>소스 파일\06. Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\Include\Client\Object\TitanFont.h">
+      <Filter>소스 파일\02. Object\01. UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameClient.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="favicon.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>

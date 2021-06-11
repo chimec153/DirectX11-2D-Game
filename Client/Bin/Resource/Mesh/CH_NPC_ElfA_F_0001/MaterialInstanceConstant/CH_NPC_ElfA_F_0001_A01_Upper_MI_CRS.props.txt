@@ -1,0 +1,28 @@
+Parent = MaterialInstanceConstant'CH_NPC_ElfA_F_0001_A00_Upper_MI_CRS'
+ScalarParameterValues[0] = {}
+TextureParameterValues[0] = {}
+VectorParameterValues[2] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.226174, G=0.3817, B=0.642985, A=1 }
+        ParameterName = Variation_Color01
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.961329, G=1, B=0.922658, A=1 }
+        ParameterName = Variation_Color04
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

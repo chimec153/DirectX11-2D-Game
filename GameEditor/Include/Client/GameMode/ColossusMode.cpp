@@ -11,9 +11,18 @@
 #include "Camera/CameraManager.h"
 #include "Component/Camera.h"
 #include "../Object/Bullet.h"
+#include "../Object/Effect.h"
+#include "Component/SpriteComponent.h"
+#include "../BossManager.h"
+#include "../Object/TitanFont.h"
+#include "Device.h"
+#include "Resource/Material.h"
+
+bool CColossusMode::m_bClear = false;
 
 CColossusMode::CColossusMode()
 {
+	SetType(BOSS_TYPE::COLOSSUS);
 }
 
 CColossusMode::~CColossusMode()
@@ -22,33 +31,44 @@ CColossusMode::~CColossusMode()
 
 bool CColossusMode::Init()
 {
-	LoadResource();
+	if (!CTileMode::Init())
+		return false;
 
-	//LoadXml("MAPS\\JAM\\colossus.tmx");
-
-	m_pScene->SortInstText();
-
-	CLayer* pLayer = m_pScene->FindLayer("Default");
-
-	CPlayer* pPlayer = m_pScene->CreateObject<CPlayer>("player", pLayer);
-
-	pPlayer->SetWorldPos(488.f, 500.f, 0.f);
-
-	SetPlayer(pPlayer);
-
-	SAFE_RELEASE(pPlayer);
-
-	CColossus* pColossus = m_pScene->CreateObject<CColossus>("Colossus", pLayer);
-
-	pColossus->SetWorldPos(488.f, 640.f, 0.f);
-
-	SAFE_RELEASE(pColossus);
-
-	CBullet* pBullet = CScene::CreateProtoObj<CBullet>("Bullet", m_pScene, m_pScene->GetSceneType());
-
-	SAFE_RELEASE(pBullet);
+	m_pPlayer->SetWorldPos(480.f, 416.f, 0.f);
 
 	return true;
+}
+
+void CColossusMode::Start()
+{
+	CGameMode::Start();
+
+	int iSlot = GET_SINGLE(CBossManager)->GetSlot();
+	SLOTINFO tInfo = GET_SINGLE(CBossManager)->GetInfo(iSlot);
+
+	if ((int)tInfo.eType & (int)BOSS_TYPE::COLOSSUS)
+	{
+		GET_SINGLE(CBossManager)->Load();
+	}
+
+
+	CObj* pObj = GET_SINGLE(CBossManager)->FindMonster("boss_colossus");
+
+	if (pObj)
+	{
+		CObj* pPrevObj = m_pScene->FindLayer("Default")->FindObj("boss_colossus");
+
+		if (pPrevObj)
+		{
+			pPrevObj->Destroy();
+
+			pPrevObj->Release();
+		}
+
+		m_pScene->FindLayer("Default")->AddObj(pObj);
+
+		pObj->Release();
+	}
 }
 
 bool CColossusMode::LoadXml(const char* pFileName, const std::string& strPathKey)
@@ -63,7 +83,6 @@ void CColossusMode::searchXMLData(TiXmlElement* pElem)
 
 void CColossusMode::LoadResource()
 {
-	GET_SINGLE(CResourceManager)->LoadTexture("colossus", TEXT("BOSS\\COLOSSUS\\colossus.png"));
 
 	GET_SINGLE(CResourceManager)->CreateAni2DSeq("ColossusHeadIdle", "colossus");
 
@@ -76,8 +95,4 @@ void CColossusMode::LoadResource()
 	GET_SINGLE(CResourceManager)->CreateAni2DSeq("ColossusLeftHandIdle", "colossus");
 
 	GET_SINGLE(CResourceManager)->AddFrame("ColossusLeftHandIdle", Vector2(407.f, 214.f), Vector2(407.f, 214.f)+ Vector2(48.f, 48.f));
-
-	GET_SINGLE(CResourceManager)->CreateAni2DSeq("ColossusRightHandIdle", "colossus");
-
-	GET_SINGLE(CResourceManager)->AddFrame("ColossusRightHandIdle", Vector2(407.f, 214.f), Vector2(407.f, 214.f) + Vector2(48.f, 48.f));
 }

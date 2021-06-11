@@ -14,6 +14,7 @@ class CMaterial :
 	public CRef
 {
 	friend class CResourceManager;
+	friend class CMesh;
 
 private:
 	CMaterial();
@@ -21,7 +22,6 @@ private:
 	virtual ~CMaterial();
 
 private:
-	class CShader*					m_pShader;	
 	ShaderCBuffer					m_tCBuffer;
 	std::vector<PMaterialTexture>	m_vecTexture;
 
@@ -35,25 +35,38 @@ public:
 	void SetTextureFromFullPath(REGISTER_TYPE eType, const std::string& strTag, const TCHAR* pFullPath, int iRegister = 0, int iCount = 1,
 		unsigned int iType = (int)SHADER_CBUFFER_TYPE::CBUFFER_PIXEL | (int)SHADER_CBUFFER_TYPE::CBUFFER_VERTEX);
 	const Vector2 GetTextureSize(int idx = 0);
-	const Vector2 GetFrameStart(int idx = 0);
-	const Vector2 GetFrameEnd(int idx = 0);
 	size_t GetTextureCount()	const;
 	const Vector4& GetDif()	const;
+	const Vector4& GetAmb()	const;
 
 public:
-	void SetShader(const std::string& strName);
 	void SetDiffuseColor(const Vector4& v);
 	void SetDiffuseColor(float x, float y, float z, float w);
 	void SetAmbientColor(const Vector4& v);
 	void SetAmbientColor(float x, float y, float z, float w);
 	void SetSpecularColor(const Vector4& v);
 	void SetSpecularColor(float x, float y, float z, float w);
+	void SetEmissiveColor(const Vector4& v);
+	void SetEmissiveColor(float x, float y, float z, float w);
+	void SetSpecularPower(float fPower);
+	void SetAnimation(bool bGray);
+	void SetBump(bool bBump);
+	void SetDiffuseTexture(bool bDiffuseTexture);
+	void SetNormalTexture(bool bTexture);
+	void SetSpecularTexture(bool bTexture);
+	void SetEmissiveTexture(bool bTexture);
 	void SetMaterial();
+	void SetTexturePathKey(const std::string& strPathKey);
+	void ChangeTexturePath(const char* pPath);
+	void SetDecal(bool bDecal = true);
 	CMaterial* Clone();
 
 public:
 	void Save(FILE* pFile);
 	void Load(FILE* pFile);
+
+public:
+	void SpawnWindow();
 
 };
 

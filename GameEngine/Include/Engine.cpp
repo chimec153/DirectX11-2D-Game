@@ -2,12 +2,12 @@
 #include "Device.h"
 #include "Scene/SceneManager.h"
 #include "PathManager.h"
-#include "Timer.h"
+#include "TimerManager.h"
 #include "Resource/ResourceManager.h"
 #include "Resource/Mesh2D.h"
 #include "Resource/ShaderManager.h"
 #include "Resource/Shader.h"
-#include "RenderManager.h"
+#include "Render/RenderManager.h"
 #include "Input.h"
 #include "Collision/CollisionManager.h"
 #include "UI/UIManager.h"
@@ -15,6 +15,11 @@
 #include "FontManager.h"
 #include "UI/UIFont.h"
 #include "Camera/CameraManager.h"
+#include "Timer.h"
+#include "Component/Camera.h"
+#include "UI/imgui/ImguiManager.h"
+#include "Component/Light.h"
+#include "Component/Terrain.h"
 
 DEFINITION_SINGLE(CEngine)
 
@@ -27,11 +32,24 @@ CEngine::CEngine()	:
 	m_tRS(),
 	m_pCInst(nullptr),
 	m_pFont(nullptr),
-	m_pFontObj(nullptr)
+	m_pFontObj(nullptr),
+	m_tCBuffer(),
+#ifdef _DEBUG
+	m_bImguiEnable(true)
+#else
+	m_bImguiEnable(false)
+#endif
 {
-	CoInitializeEx(nullptr, 0);
+	int i = CoInitializeEx(nullptr, 0);
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//_CrtSetBreakAlloc(23545);
+
+	FILE* fp;
+
+	AllocConsole();
+	freopen_s(&fp, "CONIN$", "r", stdin);
+	freopen_s(&fp, "CONOUT$", "w", stdout);
+	freopen_s(&fp, "CONOUT$", "w", stderr);
 }
 
 CEngine::~CEngine()
@@ -43,15 +61,38 @@ CEngine::~CEngine()
 	DESTROY_SINGLE(CDevice);
 	DESTROY_SINGLE(CCameraManager);
 	DESTROY_SINGLE(CResourceManager);
-	DESTROY_SINGLE(CRenderManager);
 	DESTROY_SINGLE(CPathManager);
-	DESTROY_SINGLE(CTimer);
-	DESTROY_SINGLE(CSceneManager);
-	DESTROY_SINGLE(CInput);
-	DESTROY_SINGLE(CCollisionManager);
+	DESTROY_SINGLE(CTimerManager);
 	DESTROY_SINGLE(CUIManager);
-	DESTROY_SINGLE(CSoundManager);
 	DESTROY_SINGLE(CFontManager);
+	DESTROY_SINGLE(CSceneManager);
+	DESTROY_SINGLE(CSoundManager);
+	DESTROY_SINGLE(CInput);
+	CTerrain::Destroy();
+	DESTROY_SINGLE(CCollisionManager);
+	DESTROY_SINGLE(CRenderManager);
+	DESTROY_SINGLE(CImguiManager);
+	Light::Destroy();
+}
+
+HWND CEngine::GetHandle() const
+{
+	return m_hWnd;
+}
+
+void CEngine::SetImgui(bool bEnable)
+{
+	m_bImguiEnable = bEnable;
+}
+
+bool CEngine::IsImgui() const
+{
+	return m_bImguiEnable;
+}
+
+bool CEngine::IsLoop() const
+{
+	return m_bLoop;
 }
 
 bool CEngine::Init(const TCHAR* pClass, const TCHAR* pTitle,
@@ -63,7 +104,7 @@ bool CEngine::Init(const TCHAR* pClass, const TCHAR* pTitle,
 	m_tRS.iHeight = iHeight;
 
 	Register(pClass);
-	Create(pClass, pTitle, m_tRS.iWidth, m_tRS.iHeight);
+	Create(pClass, pTitle, m_tRS.iWidth, m_tRS.iHeight, bWindowMode);
 
 	return Init(hInst, m_hWnd, pClass, m_tRS.iWidth, m_tRS.iHeight, bWindowMode);
 }
@@ -76,6 +117,8 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd, const TCHAR* pClass, int iWidth, 
 	m_tRS.iWidth = iWidth;
 	m_tRS.iHeight = iHeight;
 
+	m_tCBuffer.vNoiseSize = Vector2(256.f, 256.f);
+
 	// 장치 초기화
 	if (!GET_SINGLE(CDevice)->Init(hWnd, iWidth, iHeight, bWindowMode))
 		return false;
@@ -85,7 +128,7 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd, const TCHAR* pClass, int iWidth, 
 		return false;
 
 	// 시간 관리자 초기화
-	if (!GET_SINGLE(CTimer)->Init())
+	if (!GET_SINGLE(CTimerManager)->Init())
 		return false;
 
 	// 경로 관리자 초기화
@@ -124,6 +167,10 @@ bool CEngine::Init(HINSTANCE hInst, HWND hWnd, const TCHAR* pClass, int iWidth, 
 	if (!GET_SINGLE(CCameraManager)->Init())
 		return false;
 
+	// ImGui 관리자 초기화
+	if (!GET_SINGLE(CImguiManager)->Init(m_hWnd, DEVICE, CONTEXT))
+		return false;
+
 	m_pFontObj = new CObj;
 
 	m_pFontObj->Init();
@@ -143,7 +190,6 @@ int CEngine::Run()
 {
 	MSG msg = {};
 
-	// 기본 메시지 루프입니다:
 	while (m_bLoop)
 	{
 		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
@@ -162,9 +208,13 @@ int CEngine::Run()
 
 void CEngine::Logic()
 {
-	GET_SINGLE(CTimer)->Update();
+	GET_SINGLE(CTimerManager)->Update();
 
-	float fTime = GET_SINGLE(CTimer)->GetDeltaTime();
+	CTimer* pTimer = GET_SINGLE(CTimerManager)->GetMainTimer();
+
+	float fTime = pTimer->GetDeltaTime();
+
+	SAFE_RELEASE(pTimer);
 
 	GET_SINGLE(CInput)->Update(fTime);
 
@@ -186,6 +236,11 @@ void CEngine::Logic()
 	PostRender(fTime);
 }
 
+void CEngine::ExitGame()
+{
+	m_bLoop = false;
+}
+
 int CEngine::Input(float fTime)
 {
 	return GET_SINGLE(CSceneManager)->Input(fTime);
@@ -195,11 +250,25 @@ int CEngine::Update(float fTime)
 {
 	TCHAR strFPS[MAX_PATH] = {};
 
-	swprintf_s(strFPS, TEXT("FPS: %.2f\nDT: %.5f"), GET_SINGLE(CTimer)->GetFPS(), GET_SINGLE(CTimer)->GetDeltaTime());
+	CTimer* pTimer = GET_SINGLE(CTimerManager)->GetMainTimer();
+
+	swprintf_s(strFPS, TEXT("FPS: %.2f\nDT: %.5f"), pTimer->GetFPS(), pTimer->GetDeltaTime());
+
+	SAFE_RELEASE(pTimer);
 
 	m_pFont->SetText(strFPS);
 
+	m_tCBuffer.fDeltaTime = fTime;
+	m_tCBuffer.fAccTime += fTime;
+	Resolution tRS = RESOLUTION;
+	m_tCBuffer.vResolution = Vector2(static_cast<float>(tRS.iWidth), static_cast<float>(tRS.iHeight));
+
+	GET_SINGLE(CShaderManager)->UpdateCBuffer("Global", &m_tCBuffer);
+	GET_SINGLE(CShaderManager)->Update(fTime);
+
 	GET_SINGLE(CCameraManager)->Update(fTime);
+
+	GET_SINGLE(CSoundManager)->Update(fTime);
 
 	return GET_SINGLE(CSceneManager)->Update(fTime);
 }
@@ -219,22 +288,36 @@ void CEngine::Collision(float fTime)
 
 void CEngine::PreRender(float fTime)
 {
+	if (m_bImguiEnable)
+	{
+		GET_SINGLE(CImguiManager)->PreRender(fTime);
+	}
+
 	GET_SINGLE(CSceneManager)->PreRender(fTime);
 	GET_SINGLE(CInput)->PreRender(fTime);
+	Light::SetLight();
+	GET_SINGLE(CRenderManager)->PreRender(fTime);
 }
 
 void CEngine::Render(float fTime)
 {
 	GET_SINGLE(CDevice)->ClearState();
 
-	//GET_SINGLE(CSceneManager)->Render(fTime);
 	GET_SINGLE(CRenderManager)->Render(fTime);
 
-	m_pFont->Render(fTime);
+	if (m_bImguiEnable)
+	{
+		m_pFont->Render(fTime);
+	}
 
 	GET_SINGLE(CInput)->Render();
 
 	GET_SINGLE(CRenderManager)->ClearComponent();
+
+	if (m_bImguiEnable)
+	{
+		GET_SINGLE(CImguiManager)->Render(fTime);
+	}
 
 	GET_SINGLE(CDevice)->Render();
 }
@@ -244,7 +327,7 @@ void CEngine::PostRender(float fTime)
 	GET_SINGLE(CSceneManager)->PostRender(fTime);
 }
 
-int CEngine::Create(const TCHAR* pClass, const TCHAR* pTitle, int iWidth, int iHeight)
+int CEngine::Create(const TCHAR* pClass, const TCHAR* pTitle, int iWidth, int iHeight, bool bWindow)
 {
 	m_hWnd = CreateWindowW(pClass, pTitle, WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, m_hInst, nullptr);
@@ -254,10 +337,13 @@ int CEngine::Create(const TCHAR* pClass, const TCHAR* pTitle, int iWidth, int iH
 		return FALSE;
 	}
 
+	if(!bWindow)
+	SetWindowLong(m_hWnd, GWL_STYLE, 0);
+
 	RECT tRect = { 0, 0, iWidth, iHeight };
 
 	AdjustWindowRect(&tRect, WS_MINIMIZEBOX | WS_SYSMENU | WS_CAPTION, false);
-	SetWindowPos(m_hWnd, 0, 100, 100, 
+	SetWindowPos(m_hWnd, 0, 0, 0, 
 		tRect.right - tRect.left, tRect.bottom - tRect.top, SWP_NOZORDER);
 
 	ShowWindow(m_hWnd, SW_SHOW);
@@ -282,13 +368,18 @@ int CEngine::Register(const TCHAR* pClass)
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = pClass;
-	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON1));
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_ICON3));
 
 	return RegisterClassExW(&wcex);
 }
 
 LRESULT __stdcall CEngine::WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, iMsg, wParam, lParam))
+	{
+		return true;
+	}
+
 	switch (iMsg)
 	{
 	case WM_DESTROY:

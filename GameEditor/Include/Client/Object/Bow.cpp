@@ -1,5 +1,6 @@
 #include "Bow.h"
 #include "Component/SpriteComponent.h"
+#include "Resource/Material.h"
 
 CBow::CBow()	:
 	m_pMesh(nullptr)
@@ -40,36 +41,64 @@ bool CBow::Init()
 	if (!CObj::Init())
 		return false;
 
-	m_pMesh = CreateComponent<CSpriteComponent>("Bow");
+	m_pMesh = CreateComponent<CSpriteComponent>("Bow", m_pLayer);
 
 	m_pMesh->SetWorldScale(16.f, 16.f, 1.f);
-	m_pMesh->CreateSprite("IdleU",	"BowIdleU", true);
-	m_pMesh->CreateSprite("IdleRU", "BowIdleRU", true);
-	m_pMesh->CreateSprite("IdleR",	"BowIdleR", true);
-	m_pMesh->CreateSprite("IdleRD", "BowIdleRD", true);
-	m_pMesh->CreateSprite("IdleD",	"BowIdleD", true);
-	m_pMesh->CreateSprite("WalkU",	"BowWalkU", true);
-	m_pMesh->CreateSprite("WalkRU", "BowWalkRU", true);
-	m_pMesh->CreateSprite("WalkR",	"BowWalkR", true);
-	m_pMesh->CreateSprite("WalkRD", "BowWalkRD", true);
-	m_pMesh->CreateSprite("WalkD",	"BowWalkD", true);
-	m_pMesh->CreateSprite("AttackU",	"BowAttackU", true);
-	m_pMesh->CreateSprite("AttackRU",	"BowAttackRU", true);
-	m_pMesh->CreateSprite("AttackR",	"BowAttackR", true);
-	m_pMesh->CreateSprite("AttackRD",	"BowAttackRD", true);
-	m_pMesh->CreateSprite("AttackD",	"BowAttackD", true);
-	m_pMesh->CreateSprite("CallU",	"BowCallU", true);
-	m_pMesh->CreateSprite("CallRU", "BowCallRU", true);
-	m_pMesh->CreateSprite("CallR",	"BowCallR", true);
-	m_pMesh->CreateSprite("CallRD", "BowCallRD", true);
-	m_pMesh->CreateSprite("CallD",	"BowCallD", true);
-	m_pMesh->CreateSprite("RollU",	"BowRollU", true);
-	m_pMesh->CreateSprite("RollRU", "BowRollRU", true);
-	m_pMesh->CreateSprite("RollR",	"BowRollR", true);
-	m_pMesh->CreateSprite("RollRD", "BowRollRD", true);
-	m_pMesh->CreateSprite("RollD",	"BowRollD", true);
+	m_pMesh->CreateSprite("IdleU",	"BowIdleU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleRU", "BowIdleRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleR",	"BowIdleR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleRD", "BowIdleRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleD",	"BowIdleD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("WalkU",	"BowWalkU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("WalkRU", "BowWalkRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("WalkR",	"BowWalkR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("WalkRD", "BowWalkRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("WalkD",	"BowWalkD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RunU",	"BowRunU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RunRU",	"BowRunRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RunR",	"BowRunR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RunRD",	"BowRunRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RunD",	"BowRunD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("AttackU",	"BowAttackU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("AttackRU",	"BowAttackRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("AttackR",	"BowAttackR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("AttackRD",	"BowAttackRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("AttackD",	"BowAttackD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("CallU",	"BowCallU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("CallRU", "BowCallRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("CallR",	"BowCallR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("CallRD", "BowCallRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("CallD",	"BowCallD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollU",	"BowRollU", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("RollRU", "BowRollRU", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("RollR",	"BowRollR", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("RollRD", "BowRollRD", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("RollD",	"BowRollD", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("SwimU", "BowSwimU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("SwimRU", "BowSwimRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("SwimR", "BowSwimR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("SwimRD", "BowSwimRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("SwimD", "BowSwimD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("DieU",	"BowDieU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("DieRU",	"BowDieRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("DieR",	"BowDieR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("DieRD",	"BowDieRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("DieD",	"BowDieD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("Turn", "BowTurn", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("TurnIdle", "BowTurnIdle", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("Randing", "BowRanding", LOOP_OPTION::ONCE_RETURN);
+	m_pMesh->CreateSprite("RandingIdle", "BowRandingIdle", LOOP_OPTION::LOOP);
+
 	m_pMesh->SetPivot(0.5f, 0.5f, 0.f);
 	m_pMesh->AddRenderState("Character");
+	m_pMesh->AddRenderState("NoCullBack");
+	m_pMesh->AddRenderState("AlphaBlend");
+
+	CMaterial* pMat = m_pMesh->GetMaterial();
+
+	//pMat->SetGray(false);
+
+	SAFE_RELEASE(pMat);
 
 	SetRootComponent(m_pMesh);
 

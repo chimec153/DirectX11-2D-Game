@@ -46,7 +46,7 @@ bool CColliderOBB2D::Init()
 		return false;
 
 #ifdef _DEBUG
-	m_pMesh =GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
 #endif
 
 	return true;
@@ -72,7 +72,11 @@ void CColliderOBB2D::PostUpdate(float fTime)
 	SetWorldScale(m_tInfo.fLength[(int)WORLD_AXIS::AXIS_X] * 2.f, m_tInfo.fLength[(int)WORLD_AXIS::AXIS_Y] * 2.f, m_tInfo.fLength[(int)WORLD_AXIS::AXIS_Z] * 2.f);
 
 	for (int i = 0; i < (int)WORLD_AXIS::AXIS_END; ++i)
-		m_tInfo.vAxis[i] = GetWorldAxis((WORLD_AXIS)i);
+	{
+		Matrix matRot = GetMatRot();
+
+		m_tInfo.vAxis[i] = DirectX::XMVector3TransformNormal(Vector3::Axis[i].Convert(), matRot.m);
+	}		
 
 	Vector3 vPt[2] =
 	{
@@ -134,11 +138,20 @@ CColliderOBB2D* CColliderOBB2D::Clone()
 void CColliderOBB2D::Save(FILE* pFile)
 {
 	CCollider::Save(pFile);
+
+	fwrite(&m_tInfo, sizeof(m_tInfo), 1, pFile);
 }
 
 void CColliderOBB2D::Load(FILE* pFile)
 {
 	CCollider::Load(pFile);
+
+	fread(&m_tInfo, sizeof(m_tInfo), 1, pFile);
+
+#ifdef _DEBUG
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+#endif
+
 }
 
 bool CColliderOBB2D::Collision(CCollider* pDest)

@@ -111,9 +111,8 @@ void CCameraManager::ChangeScene()
 
 	CObj* pObj = GET_SINGLE(CSceneManager)->GetScene()->GetGameMode()->GetPlayer();
 
-	if (pObj)
-	{
-		m_pMainCam->SetTarget(pObj);
-		pObj->Release();
-	}
+	m_pMainCam->SetTarget(pObj);
+	m_pMainCam->SetZoom(false);
+
+	SAFE_RELEASE(pObj);
 }

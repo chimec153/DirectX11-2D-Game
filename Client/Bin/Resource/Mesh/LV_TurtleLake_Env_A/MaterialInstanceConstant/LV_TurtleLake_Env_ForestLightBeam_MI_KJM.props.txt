@@ -1,0 +1,152 @@
+Parent = Material3'LV_MM_VolumetricLightBeam_UNL_TRS_2SD'
+ScalarParameterValues[19] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 20
+        ParameterName = Fade_FarDistance
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.8
+        ParameterName = Dust_Tex_Value
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = -3.5
+        ParameterName = Dust_Tex_PanningSpeed
+    }
+    ScalarParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = 4
+        ParameterName = Dust_Tex_Scale V
+    }
+    ScalarParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = 4
+        ParameterName = Dust_Tex_Scale U
+    }
+    ScalarParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Dust_Tex_Brightness
+    }
+    ScalarParameterValues[6] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Dust_Tex_Contrast
+    }
+    ScalarParameterValues[7] =
+    {
+        ParameterInfo = 
+        ParameterValue = -1
+        ParameterName = Tex03_PanningSpeed
+    }
+    ScalarParameterValues[8] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex03_Scale V
+    }
+    ScalarParameterValues[9] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex03_Scale U
+    }
+    ScalarParameterValues[10] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex03_Brightness
+    }
+    ScalarParameterValues[11] =
+    {
+        ParameterInfo = 
+        ParameterValue = 1
+        ParameterName = Tex03_Contrast
+    }
+    ScalarParameterValues[12] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Tex01_PanningSpeed
+    }
+    ScalarParameterValues[13] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.2
+        ParameterName = Tex01_Scale V
+    }
+    ScalarParameterValues[14] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2
+        ParameterName = Tex01_Scale U
+    }
+    ScalarParameterValues[15] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = Tex01_Brightness
+    }
+    ScalarParameterValues[16] =
+    {
+        ParameterInfo = 
+        ParameterValue = 2.2
+        ParameterName = Tex01_Contrast
+    }
+    ScalarParameterValues[17] =
+    {
+        ParameterInfo = 
+        ParameterValue = -1
+        ParameterName = BiasDensity
+    }
+    ScalarParameterValues[18] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.5
+        ParameterName = Brightness
+    }
+}
+TextureParameterValues[2] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LightBeam.LV_Common_Volumetric_Lightbeam_DustPanner_C_PYO'
+        ParameterName = Dust_Tex
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'LightBeam.LV_Common_Volumetric_Lightbeam_DustPanner_C_PYO'
+        ParameterName = Lightbeam_ShinePanner_Tex
+    }
+}
+VectorParameterValues[1] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.739897, G=0.93, B=0.792381, A=1 }
+        ParameterName = TOD_Day_Color
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}

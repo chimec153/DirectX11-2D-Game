@@ -46,7 +46,7 @@ bool CColliderPoint::Init()
 		return false;
 
 #ifdef _DEBUG
-	m_pMesh = GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
 #endif
 
 	return true;
@@ -122,11 +122,21 @@ CColliderPoint* CColliderPoint::Clone()
 void CColliderPoint::Save(FILE* pFile)
 {
 	CCollider::Save(pFile);
+
+	fwrite(&m_vPt, sizeof(Vector3), 1, pFile);
+	fwrite(&m_vUIPt, sizeof(Vector3), 1, pFile);
 }
 
 void CColliderPoint::Load(FILE* pFile)
 {
 	CCollider::Load(pFile);
+
+	fread(&m_vPt, sizeof(Vector3), 1, pFile);
+	fread(&m_vUIPt, sizeof(Vector3), 1, pFile);
+
+#ifdef _DEBUG
+	m_pDebugMesh = (CMesh2D*)GET_SINGLE(CResourceManager)->FindMesh("Collider2D");
+#endif
 }
 
 bool CColliderPoint::Collision(CCollider* pCol)

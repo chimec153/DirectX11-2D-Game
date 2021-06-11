@@ -45,7 +45,11 @@ CAnimation2DSequence::CAnimation2DSequence(const CAnimation2DSequence& seq)	:
 	{
 		CAnimation2DNotify* pNot = new CAnimation2DNotify;
 
-		*pNot = **iter;
+		pNot->m_fAccTime = 0.f;
+		pNot->m_fTime = (*iter)->m_fTime;
+		pNot->m_iFrame = (*iter)->m_iFrame;
+		pNot->m_strTag = (*iter)->m_strTag;
+		pNot->m_bCall = false;
 
 		m_NotifyList.push_back(pNot);
 	}
@@ -55,6 +59,14 @@ CAnimation2DSequence::~CAnimation2DSequence()
 {
 	SAFE_RELEASE(m_pTexture);
 	SAFE_DELETE_VECLIST(m_NotifyList);
+}
+
+const Frame CAnimation2DSequence::GetFrame(int idx) const
+{
+	if (m_vecFrame.size() <= idx)
+		return Frame();
+
+	return m_vecFrame[idx];
 }
 
 void CAnimation2DSequence::AddSprite(CSpriteComponent* pCom)
@@ -107,21 +119,14 @@ bool CAnimation2DSequence::Init(const TCHAR* pFileName, const std::string& strPa
 	return false;
 }
 
-void CAnimation2DSequence::Update(int iFrame)
+void CAnimation2DSequence::Update(int iFrame, float fTime, float fDeltaTime)
 {
 	std::list<CAnimation2DNotify*>::iterator iter = m_NotifyList.begin();
 	std::list<CAnimation2DNotify*>::iterator iterEnd = m_NotifyList.end();
 
 	for (; iter != iterEnd; ++iter)
 	{
-		if ((*iter)->m_iFrame == iFrame)
-		{
-			std::list<CSpriteComponent*>::iterator iter1 = m_SpriteList.begin();
-			std::list<CSpriteComponent*>::iterator iter1End = m_SpriteList.end();
-
-			for (; iter1 != iter1End; ++iter1)
-				(*iter1)->Notify((*iter)->m_strTag);
-		}
+		(*iter)->Update(fTime, iFrame, fDeltaTime);
 	}
 }
 
@@ -149,6 +154,73 @@ void CAnimation2DSequence::AddNotify(const std::string& strTag, int iFrame)
 	pNot->CreateNotify(strTag, iFrame);
 
 	m_NotifyList.push_back(pNot);
+}
+
+void CAnimation2DSequence::AddNotify(const std::string& strTag, float fTime)
+{
+	CAnimation2DNotify* pNot = new CAnimation2DNotify;
+
+	pNot->CreateNotify(strTag, fTime);
+
+	m_NotifyList.push_back(pNot);
+}
+
+void CAnimation2DSequence::AddCallBack(const std::string& strTag, void(*pFunc)(float))
+{
+	std::list<class CAnimation2DNotify*>::iterator iter = m_NotifyList.begin();
+	std::list<class CAnimation2DNotify*>::iterator iterEnd = m_NotifyList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		if ((*iter)->m_strTag == strTag)
+		{
+			(*iter)->AddFunc(pFunc);
+			break;
+		}
+	}
+}
+
+void CAnimation2DSequence::AddCallBack(const std::string& strTag, void(*pFunc)(int ,float))
+{
+	std::list<class CAnimation2DNotify*>::iterator iter = m_NotifyList.begin();
+	std::list<class CAnimation2DNotify*>::iterator iterEnd = m_NotifyList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		if ((*iter)->m_strTag == strTag)
+		{
+			(*iter)->AddFunc(pFunc);
+			break;
+		}
+	}
+}
+
+void CAnimation2DSequence::Clear()
+{
+	std::list<class CAnimation2DNotify*>::iterator iter = m_NotifyList.begin();
+	std::list<class CAnimation2DNotify*>::iterator iterEnd = m_NotifyList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		(*iter)->Clear();
+	}
+}
+
+void CAnimation2DSequence::DeleteNotify(const std::string& strTag)
+{
+	std::list<class CAnimation2DNotify*>::iterator iter = m_NotifyList.begin();
+	std::list<class CAnimation2DNotify*>::iterator iterEnd = m_NotifyList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		if ((*iter)->m_strTag == strTag)
+		{
+			m_NotifyList.erase(iter);
+			SAFE_DELETE((*iter));
+
+			return;
+		}
+	}
 }
 
 void CAnimation2DSequence::Save(FILE* pFile)

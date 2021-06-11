@@ -39,7 +39,7 @@ bool CMinion::Init()
 	if (!CObj::Init())
 		return false;
 
-	m_pMesh = CreateComponent<CSpriteComponent>("Sprite");
+	m_pMesh = CreateComponent<CSpriteComponent>("Sprite", m_pLayer);
 
 	SetRootComponent(m_pMesh);
 
@@ -47,16 +47,16 @@ bool CMinion::Init()
 	m_pMesh->SetRelativeScale(96.f, 96.f, 0.f);
 	m_pMesh->SetPivot(0.5f, 0.5f, 0.5f);
 
-	m_pMesh->CreateSprite("IdleR", "YetiIdleR", true);
-	m_pMesh->CreateSprite("IdleD", "YetiIdleD", true);
-	m_pMesh->CreateSprite("IdleU", "YetiIdleU", true);
-	m_pMesh->CreateSprite("IdleRU", "YetiIdleRU", true);
-	m_pMesh->CreateSprite("IdleRD", "YetiIdleRD", true);
-	m_pMesh->CreateSprite("RollR", "YetiRollR", true);
-	m_pMesh->CreateSprite("RollD", "YetiRollD", true);
-	m_pMesh->CreateSprite("RollU", "YetiRollU", true);
-	m_pMesh->CreateSprite("RollRU", "YetiRollRU", true);
-	m_pMesh->CreateSprite("RollRD", "YetiRollRD", true);
+	m_pMesh->CreateSprite("IdleR", "YetiIdleR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleD", "YetiIdleD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleU", "YetiIdleU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleRU", "YetiIdleRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("IdleRD", "YetiIdleRD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollR", "YetiRollR", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollD", "YetiRollD", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollU", "YetiRollU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollRU", "YetiRollRU", LOOP_OPTION::LOOP);
+	m_pMesh->CreateSprite("RollRD", "YetiRollRD", LOOP_OPTION::LOOP);
 	m_pMesh->CreateSprite("AttackR", "YetiAttackR");
 	m_pMesh->CreateSprite("AttackD", "YetiAttackD");
 	m_pMesh->CreateSprite("AttackU", "YetiAttackU");
@@ -74,7 +74,7 @@ bool CMinion::Init()
 	m_pMesh->SetEndFunc<CMinion>("AttackRU", this, &CMinion::AttackEnd);
 	m_pMesh->SetEndFunc<CMinion>("AttackRD", this, &CMinion::AttackEnd);
 
-	CColliderRect* pRC = CreateComponent<CColliderRect>("YetiBody");
+	CColliderRect* pRC = CreateComponent<CColliderRect>("YetiBody", m_pLayer);
 
 	pRC->SetExtent(96.f, 96.f);
 	pRC->SetProfile("Base");
@@ -83,7 +83,7 @@ bool CMinion::Init()
 
 	SAFE_RELEASE(pRC);
 
-	CSound* pSound = CreateComponent<CSound>("Sound");
+	CSound* pSound = CreateComponent<CSound>("Sound", m_pLayer);
 
 	pSound->SetSound("Slam");
 
@@ -125,11 +125,11 @@ bool CMinion::Init()
 
 	SAFE_RELEASE(pLC);*/
 
-	CSpriteComponent* pShadow = CreateComponent<CSpriteComponent>("Shadow");
+	CSpriteComponent* pShadow = CreateComponent<CSpriteComponent>("Shadow", m_pLayer);
 
 	pShadow->SetInheritScale(false);
 	pShadow->SetRelativeScale(80.f, 32.f, 1.f);
-	pShadow->CreateSprite("Shadow", "YetiShadow", true);
+	pShadow->CreateSprite("Shadow", "YetiShadow", LOOP_OPTION::LOOP);
 	pShadow->SetRelativePos(0.f, -36.f, 0.f);
 	pShadow->SetPivot(0.5f, 0.5f, 0.f);
 

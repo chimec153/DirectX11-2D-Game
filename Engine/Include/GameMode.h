@@ -14,11 +14,15 @@ protected:
 	class CScene*		m_pScene;
 	class CObj*			m_pPlayer;
 	int					m_iGameModeClassType;
+	bool				m_bStart;
+	class CObj*			m_pCubeMap;
 
 public:
 	void SetPlayer(class CObj* pPlayer);
 	class CObj* GetPlayer()	const;
 	int GetGameModeClassType()	const;
+	bool IsStart()	const;
+	void SetCubeMapTexture(const std::string& strKey);
 
 public:
 	virtual bool Init();

@@ -3,6 +3,7 @@
 #include "SceneCollision.h"
 #include "../Layer.h"
 #include "../Collision/CollisionManager.h"
+#include "../Engine.h"
 
 std::unordered_map<std::string, CObj*> CScene::m_mapProtoType[(int)SCENE_TYPE::SC_END];
 
@@ -12,16 +13,20 @@ CScene::CScene()	:
 {
 	m_pGameMode = new CGameMode;
 
-	CreateLayer("Back", INT_MAX);
-	CreateLayer("Default", -255);
-	CreateLayer("UI", -512);
+	CreateLayer(TERRAIN_LAYER	, static_cast<int>(LAYER_TYPE::TERRAIN));
+	CreateLayer(CUBEMAP_LAYER	, static_cast<int>(LAYER_TYPE::CUBEMAP));
+	CreateLayer(ALBEDO_LAYER	, static_cast<int>(LAYER_TYPE::ALBEDO));
+	CreateLayer(DECAL_LAYER		, static_cast<int>(LAYER_TYPE::DECAL));
+	CreateLayer(PARTICLE_LAYER	, static_cast<int>(LAYER_TYPE::PARTICLE));
+	CreateLayer(COLLIDER_LAYER	, static_cast<int>(LAYER_TYPE::COLLIDER));
+	CreateLayer(ALPHA_LAYER		, static_cast<int>(LAYER_TYPE::ALPHA));
+	CreateLayer(UI_LAYER		, static_cast<int>(LAYER_TYPE::UI));
 }
 
 CScene::~CScene()
 {
-	SAFE_DELETE(m_pGameMode);
-	SAFE_RELEASE_VECLIST(m_ObjList);
 	SAFE_RELEASE_VECLIST(m_LayerList);
+	SAFE_DELETE(m_pGameMode);
 }
 
 SCENE_TYPE CScene::GetSceneType() const
@@ -65,6 +70,11 @@ CLayer* CScene::FindLayer(const std::string& strKey)
 	}
 
 	return nullptr;
+}
+
+const std::list<class CLayer*>& CScene::GetLayerList() const
+{
+	return m_LayerList;
 }
 
 CGameMode* CScene::GetGameMode() const
@@ -171,6 +181,11 @@ void CScene::Update(float fTime)
 		++iter;
 	}
 
+	if (!m_pGameMode->IsStart())
+	{
+		m_pGameMode->Start();
+	}
+
 	m_pGameMode->Update(fTime);
 }
 
@@ -230,6 +245,8 @@ void CScene::Collision(float fTime)
 
 void CScene::PreRender(float fTime)
 {
+	m_pGameMode->PreRender(fTime);
+
 	std::list<CLayer*>::iterator iter = m_LayerList.begin();
 	std::list<CLayer*>::iterator iterEnd = m_LayerList.end();
 
@@ -252,12 +269,18 @@ void CScene::PreRender(float fTime)
 		(*iter)->PreRender(fTime);
 		++iter;
 	}
+
+	if (GET_SINGLE(CEngine)->IsImgui())
+	{
+		SpawnWindow();
+	}
 }
 
 void CScene::Render(float fTime)
 {
 	std::list<CLayer*>::iterator iter = m_LayerList.begin();
 	std::list<CLayer*>::iterator iterEnd = m_LayerList.end();
+
 
 	for (; iter != iterEnd;)
 	{
@@ -278,6 +301,8 @@ void CScene::Render(float fTime)
 		(*iter)->Render(fTime);
 		++iter;
 	}
+
+	m_pGameMode->Render(fTime);
 }
 
 void CScene::PostRender(float fTime)
@@ -381,6 +406,17 @@ void CScene::Load(const char* pFileName, const std::string& strRootPath)
 {
 }
 
+void CScene::CheckFrustum()
+{
+	std::list<CLayer*>::iterator iter = m_LayerList.begin();
+	std::list<CLayer*>::iterator iterEnd = m_LayerList.end();
+
+	for (; iter != iterEnd; ++iter)
+	{
+		(*iter)->CheckFrustum(); // ÆùÆ®Ä³½Ì
+	}
+}
+
 bool CScene::SortZ(CLayer* pSrc, CLayer* pDst)
 {
 	return pSrc->GetZOrder() > pDst->GetZOrder();
@@ -399,4 +435,43 @@ void CScene::SortInstText()
 		(*iter)->SetFontPos(Vector3(0.f, 20.f * i++, 0.f));
 	}
 
+}
+
+void CScene::SpawnWindow()
+{
+	std::list<CLayer*>::iterator iter = m_LayerList.begin();
+	std::list<CLayer*>::iterator iterEnd = m_LayerList.end();
+
+	char* strLayers[32] = {};
+	int i = 0;
+
+	static int item = 0;
+
+	for (; iter != iterEnd;++iter)
+	{
+		strLayers[i] = new char[256];
+
+		strcpy_s(strLayers[i++], (*iter)->GetName().length() + 1, (*iter)->GetName().c_str());
+
+		if (item == i - 1)
+		{
+			(*iter)->SpawnWindow();
+		}
+	}
+
+	if (GET_SINGLE(CEngine)->IsImgui())
+	{
+		if (ImGui::Begin("Layers"))
+		{
+			ImGui::ListBox("Layers", &item, strLayers, (int)m_LayerList.size());
+		}
+		ImGui::End();
+	}
+
+	size_t iSz = m_LayerList.size();
+
+	for (size_t i = 0; i < iSz; ++i)
+	{
+		delete[] strLayers[i];
+	}
 }

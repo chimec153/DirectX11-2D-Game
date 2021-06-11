@@ -11,12 +11,14 @@ private:
 	virtual ~CSound();
 
 private:
-	std::string		m_strName;
+	std::string		m_strSound;
 	PSOUNDINFO		m_pSound;
 	float			m_fMax;
 	float			m_fMin;
 	float			m_fMaxVol;
 	float			m_fMinVol;
+	bool			m_bFade;
+	bool			m_bIn;
 
 public:
 	void SetVol(float fVol);
@@ -27,6 +29,8 @@ public:
 	void SetMin(float fMin);
 	void SetMaxVol(float fMax);
 	void SetMinVol(float fMin);
+	void SetFade(bool bFade, bool bIn);
+	void SetSoundAndPlay(const std::string& strKey);
 
 public:
 	virtual bool Init();

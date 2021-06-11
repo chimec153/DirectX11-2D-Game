@@ -44,6 +44,26 @@ CLayer* CComponent::GetLayer() const
 	return m_pLayer;
 }
 
+CScene* CComponent::GetScene() const
+{
+	return m_pScene;
+}
+
+void CComponent::SetScene(CScene* pScene)
+{
+	m_pScene = pScene;
+}
+
+void CComponent::DeleteLayer()
+{
+	m_pLayer = nullptr;
+}
+
+void CComponent::SetLayer(CLayer* pLayer)
+{
+	m_pLayer = pLayer;
+}
+
 bool CComponent::IsStart() const
 {
 	return m_bStart;
@@ -52,6 +72,16 @@ bool CComponent::IsStart() const
 bool CComponent::Init()
 {
 	return true;
+}
+
+bool CComponent::Init(const char* pFileName, const std::string& strPathKey)
+{
+	return false;
+}
+
+bool CComponent::Init(FILE* pFile)
+{
+	return false;
 }
 
 void CComponent::Start()
@@ -96,4 +126,9 @@ void CComponent::Load(FILE* pFile)
 	fread(&m_eType, 4, 1, pFile);
 
 	m_bStart = false;
+}
+
+void CComponent::SpawnWindow()
+{
+	CRef::SpawnWindow();
 }

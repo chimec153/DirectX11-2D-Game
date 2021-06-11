@@ -1,5 +1,6 @@
 #include "Tile.h"
 #include "../Resource/Material.h"
+#include "TileMap.h"
 
 CTile::CTile()	:
 	m_eTileOption(TILE_OPTION::NONE),
@@ -7,19 +8,27 @@ CTile::CTile()	:
 	m_iIdx(0),
 	m_iX(0),
 	m_iY(0),
-	m_iXTexIdx(0),
-	m_iYTexIdx(0),
+	m_fXTexIdx(0),
+	m_fYTexIdx(0),
 	m_vSize(),
 	m_matWV(),
 	m_bAnim(false),
 	m_fFrameTime(0.f),
 	m_fMaxTime(0.f),
-	m_iFrame(0)
+	m_iFrame(0),
+	m_pMap(nullptr)
+	, m_bOpen(false)
+	, m_bClose(false)
+	, m_fH(0.f)
+	, m_fG(0.f)
+	, m_pParent(nullptr)
+	, m_vColor(Vector4::White)
 {
 }
 
 CTile::CTile(const CTile& tile)	:
 	CSceneComponent(tile)
+	, m_vColor(tile.m_vColor)
 {
 	m_eTileOption = tile.m_eTileOption;
 	m_eTileType = tile.m_eTileType;
@@ -27,11 +36,12 @@ CTile::CTile(const CTile& tile)	:
 	m_iIdx = tile.m_iIdx;
 	m_iX = tile.m_iX;
 	m_iY = tile.m_iY;
-	m_iXTexIdx = tile.m_iXTexIdx;
-	m_iYTexIdx = tile.m_iYTexIdx;
+	m_fXTexIdx = tile.m_fXTexIdx;
+	m_fYTexIdx = tile.m_fYTexIdx;
 	m_vSize = tile.m_vSize;
 	m_matWV = tile.m_matWV;
 	m_bAnim = tile.m_bAnim;
+	m_pMap = tile.m_pMap;
 
 	size_t iSz = tile.m_vecTexIdx.size();
 
@@ -51,7 +61,7 @@ CTile::~CTile()
 
 const Vector2 CTile::GetTexIdx() const
 {
-	return Vector2((float)m_iXTexIdx, (float)m_iYTexIdx);
+	return Vector2((float)m_fXTexIdx, (float)m_fYTexIdx);
 }
 
 const Vector2 CTile::GetSize() const
@@ -66,21 +76,112 @@ const Matrix& CTile::GetWV() const
 
 const Vector2 CTile::GetTextureSize() const
 {
-	return m_pMaterial->GetTextureSize();
+	return m_pMap->GetTextureSize();
 }
 
-void CTile::SetAnim(const Vector2& iStart, int iCount, float fMaxTime)
+void CTile::SetAnim(const std::vector<Vector2>& vecFrame,float fFrameTime)
 {
-	for (int i = 0; i < iCount; ++i)
-	{
-		Vector2 vFrm = iStart + Vector2((float)i, 0.f);
+	size_t iSz = vecFrame.size();
 
-		m_vecTexIdx.push_back(vFrm);
+	for (int i = 0; i < iSz; ++i)
+	{
+		m_vecTexIdx.push_back(vecFrame[i]);
 	}
 
-	m_fMaxTime = fMaxTime;
+	m_fMaxTime = fFrameTime;
 
 	m_bAnim = true;
+}
+
+CTileMap* CTile::GetMap() const
+{
+	return m_pMap;
+}
+
+TILE_OPTION CTile::GetTileOption() const
+{
+	return m_eTileOption;
+}
+
+void CTile::SetTileOption(TILE_OPTION eOp)
+{
+	m_eTileOption = eOp;
+}
+
+int CTile::GetIndexX() const
+{
+	return m_iX;
+}
+
+int CTile::GetIndexY() const
+{
+	return m_iY;
+}
+
+void CTile::SetOpen(bool bOpen)
+{
+	m_bOpen = bOpen;
+}
+
+void CTile::SetClose(bool bClose)
+{
+	m_bClose =bClose;
+}
+
+bool CTile::IsOpen() const
+{
+	return m_bOpen;
+}
+
+bool CTile::IsClose() const
+{
+	return m_bClose;
+}
+
+void CTile::SetH(float fH)
+{
+	m_fH = fH;
+}
+
+void CTile::SetG(float fG)
+{
+	m_fG = fG;
+}
+
+float CTile::GetH() const
+{
+	return m_fH;
+}
+
+float CTile::GetG() const
+{
+	return m_fG;
+}
+
+CTile* CTile::GetParent() const
+{
+	return m_pParent;
+}
+
+void CTile::SetParent(CTile* pParent)
+{
+	m_pParent = pParent;
+}
+
+void CTile::SetTexIdx(const Vector2& vIdx)
+{
+	m_fXTexIdx = vIdx.x;
+	m_fYTexIdx = vIdx.y;
+}
+
+void CTile::SetColor(const Vector4& vColor)
+{
+	m_vColor = vColor;
+}
+
+const Vector4& CTile::GetColor() const
+{
+	return m_vColor;
 }
 
 bool CTile::Init()
@@ -107,9 +208,9 @@ void CTile::PostUpdate(float fTime)
 	{
 		m_fFrameTime += fTime;
 
-		while (m_fFrameTime >= m_fMaxTime)
+		while (m_fFrameTime >= m_fMaxTime * 4.f)
 		{
-			m_fFrameTime -= m_fMaxTime;
+			m_fFrameTime -= m_fMaxTime * 4.f;
 
 			++m_iFrame;
 
@@ -118,8 +219,8 @@ void CTile::PostUpdate(float fTime)
 				m_iFrame = 0;
 			}
 
-			m_iXTexIdx = (int)(m_vecTexIdx[m_iFrame].x);
-			m_iYTexIdx = (int)(m_vecTexIdx[m_iFrame].y);
+			m_fXTexIdx = m_vecTexIdx[m_iFrame].x;
+			m_fYTexIdx = m_vecTexIdx[m_iFrame].y;
 		}
 	}
 }

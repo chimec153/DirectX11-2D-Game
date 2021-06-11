@@ -19,13 +19,3 @@ void CRenderState::SetState()
 void CRenderState::ResetState()
 {
 }
-
-const std::string& CRenderState::GetTag() const
-{
-	return m_strTag;
-}
-
-void CRenderState::SetTag(const std::string& strKey)
-{
-	m_strTag = strKey;
-}

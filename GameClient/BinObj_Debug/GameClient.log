@@ -1,1 +1,49 @@
-﻿  GameClient.vcxproj -> C:\Users\assort\source\repos\DirectX11FrameWork2\GameClient\Include\../Bin/GameClient_Debug.exe
+﻿  BossManager.cpp
+  Client.cpp
+  BrainMode.cpp
+  ColossusMode.cpp
+  EndGameMode.cpp
+  EyeCubeMode.cpp
+  MainGameMode.cpp
+  StartGameMode.cpp
+  TileMode.cpp
+  Arrow.cpp
+  Bow.cpp
+  BrainFreeze.cpp
+  Bullet.cpp
+  Colossus.cpp
+  Effect.cpp
+  Eyecube.cpp
+  Fire.cpp
+  FireButton.cpp
+  IceBall.cpp
+  Icicle.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  Light.cpp
+  Minion.cpp
+  Player.cpp
+  Soul.cpp
+  SoulMonster.cpp
+  TitanFont.cpp
+  Button.cpp
+  CheckObj.cpp
+  Missile.cpp
+  RadioObj.cpp
+  UIBar.cpp
+  DieState.cpp
+  IdleState.cpp
+  SleepState.cpp
+  State.cpp
+  StopState.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  SocketManager.cpp
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameClient\Include\Client\SocketManager.cpp(30,28): error C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\Users\assort\source\repos\DirectX11FrameWork2\GameClient\Include\Client\SocketManager.cpp(66,35): error C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  main.cpp
+  코드를 생성하고 있습니다...

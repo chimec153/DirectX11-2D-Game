@@ -46,7 +46,9 @@ void CCollisionSection::Collision(float fTime)
 	for (; iterCol != iterColEnd; ++iterCol)
 	{
 		if ((*iterCol)->IsCheck())
+		{
 			continue;
+		}
 
 		(*iterCol)->Check();
 		(*iterCol)->CheckPrevSec(fTime);
@@ -71,7 +73,9 @@ void CCollisionSection::Collision(float fTime)
 		for (; iter1 != iter1End; ++iter1)
 		{
 			if ((*iter)->HasObj((*iter1)->GetObj()))
+			{
 				continue;
+			}
 
 			PCollisionProfile pSrcProfile = (*iter)->GetProfile();
 			PCollisionProfile pDestProfile = (*iter1)->GetProfile();
@@ -80,7 +84,9 @@ void CCollisionSection::Collision(float fTime)
 			bool bDestIgn = pDestProfile->vecChannel[(int)pSrcProfile->eChannel].eType == COLLISION_TYPE::IGN;
 
 			if (bSrcIgn && bDestIgn)
+			{
 				continue;
+			}
 
 			if ((*iter)->Collision((*iter1)))
 			{
@@ -88,10 +94,14 @@ void CCollisionSection::Collision(float fTime)
 					(*iter1)->IsMouse())
 				{
 					if (m_bMouse)
+					{
 						continue;
+					}
 
 					else
+					{
 						m_bMouse = true;
+					}
 				}
 
 				if (!(*iter)->HasPrevCol((*iter1)))
@@ -99,20 +109,28 @@ void CCollisionSection::Collision(float fTime)
 					(*iter)->AddPrevCol((*iter1));
 					(*iter1)->AddPrevCol((*iter));
 
-					if(!bSrcIgn)
-					(*iter)->Call(COLLISION_STATE::INIT, (*iter1), fTime);
+					if (!bSrcIgn)
+					{
+						(*iter)->Call(COLLISION_STATE::INIT, (*iter1), fTime);
+					}
 
 					if (!bDestIgn)
-					(*iter1)->Call(COLLISION_STATE::INIT, (*iter), fTime);
+					{
+						(*iter1)->Call(COLLISION_STATE::INIT, (*iter), fTime);
+					}
 				}
 
 				else
 				{
 					if (!bSrcIgn)
+					{
 						(*iter)->Call(COLLISION_STATE::STAY, (*iter1), fTime);
+					}
 
 					if (!bDestIgn)
+					{
 						(*iter1)->Call(COLLISION_STATE::STAY, (*iter), fTime);
+					}
 				}
 			}
 
@@ -124,10 +142,14 @@ void CCollisionSection::Collision(float fTime)
 					(*iter1)->DeletePrevCol((*iter));
 
 					if (!bSrcIgn)
+					{
 						(*iter)->Call(COLLISION_STATE::END, (*iter1), fTime);
+					}
 
 					if (!bDestIgn)
+					{
 						(*iter1)->Call(COLLISION_STATE::END, (*iter), fTime);
+					}
 				}
 			}
 		}

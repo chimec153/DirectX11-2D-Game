@@ -31,6 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,12 +39,14 @@
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +54,7 @@
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -110,7 +114,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -138,7 +142,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -162,10 +166,97 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Engine\Include\Client\BossManager.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Client.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\BrainMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\ColossusMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\EndGameMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\EyeCubeMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\MainGameMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\StartGameMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\GameMode\TileMode.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Arrow.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Bow.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\BrainFreeze.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Bullet.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Colossus.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Effect.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Eyecube.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Fire.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\FireButton.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\IceBall.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Icicle.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Light.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Minion.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Player.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\Soul.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\SoulMonster.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\Object\TitanFont.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\UI\Button.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\UI\CheckObj.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\UI\Missile.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\UI\RadioObj.cpp" />
+    <ClCompile Include="..\..\Engine\Include\Client\UI\UIBar.cpp" />
+    <ClCompile Include="..\..\Engine\Include\DieState.cpp" />
+    <ClCompile Include="..\..\Engine\Include\IdleState.cpp" />
+    <ClCompile Include="..\..\Engine\Include\SleepState.cpp" />
+    <ClCompile Include="..\..\Engine\Include\State.cpp" />
+    <ClCompile Include="..\..\Engine\Include\StopState.cpp" />
+    <ClCompile Include="..\..\Engine\Include\tinystr.cpp" />
+    <ClCompile Include="..\..\Engine\Include\tinyxml.cpp" />
+    <ClCompile Include="..\..\Engine\Include\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\Engine\Include\tinyxmlparser.cpp" />
+    <ClCompile Include="Client\SocketManager.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Engine\Include\Client\BossManager.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Client.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\BrainMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\ColossusMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\EndGameMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\EyeCubeMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\MainGameMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\StartGameMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\GameMode\TileMode.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Arrow.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Bow.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\BrainFreeze.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Bullet.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Colossus.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Effect.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Eyecube.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Fire.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\FireButton.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\IceBall.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Icicle.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Light.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Minion.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Player.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\Soul.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\SoulMonster.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\Object\TitanFont.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\UI\Button.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\UI\CheckObj.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\UI\Missile.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\UI\RadioObj.h" />
+    <ClInclude Include="..\..\Engine\Include\Client\UI\UIBar.h" />
+    <ClInclude Include="..\..\Engine\Include\DieState.h" />
+    <ClInclude Include="..\..\Engine\Include\IdleState.h" />
+    <ClInclude Include="..\..\Engine\Include\SleepState.h" />
+    <ClInclude Include="..\..\Engine\Include\State.h" />
+    <ClInclude Include="..\..\Engine\Include\StopState.h" />
+    <ClInclude Include="..\..\Engine\Include\tinystr.h" />
+    <ClInclude Include="..\..\Engine\Include\tinyxml.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Client\SocketManager.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameClient.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

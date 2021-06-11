@@ -149,7 +149,7 @@ _tagVector2 _tagVector2::operator+(float f) const
 	return _tagVector2(x + f, y + f);
 }
 
-_tagVector2 _tagVector2::operator+=(const _tagVector2& v)
+_tagVector2& _tagVector2::operator+=(const _tagVector2& v)
 {
 	x += v.x;
 	y += v.y;
@@ -157,18 +157,17 @@ _tagVector2 _tagVector2::operator+=(const _tagVector2& v)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator+=(const DirectX::XMVECTOR& v)
+_tagVector2& _tagVector2::operator+=(const DirectX::XMVECTOR& v)
 {
-	DirectX::XMVECTOR v1 = Convert();
+	_tagVector2 v1 = v;
 
-	v1 += v;
+	x += v1.x;
+	y += v1.y;
 
-	Convert(v1);
-
-	return _tagVector2(v1);
+	return *this;
 }
 
-_tagVector2 _tagVector2::operator+=(const POINT& pt)
+_tagVector2& _tagVector2::operator+=(const POINT& pt)
 {
 	x += pt.x;
 	y += pt.y;
@@ -176,7 +175,7 @@ _tagVector2 _tagVector2::operator+=(const POINT& pt)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator+=(float f[2])
+_tagVector2& _tagVector2::operator+=(float f[2])
 {
 	x += f[0];
 	y += f[1];
@@ -184,7 +183,7 @@ _tagVector2 _tagVector2::operator+=(float f[2])
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator+=(float f)
+_tagVector2& _tagVector2::operator+=(float f)
 {
 	x += f;
 	y += f;
@@ -219,7 +218,7 @@ _tagVector2 _tagVector2::operator-(float f) const
 	return _tagVector2(x - f, y - f);
 }
 
-_tagVector2 _tagVector2::operator-=(const _tagVector2& v)
+_tagVector2& _tagVector2::operator-=(const _tagVector2& v)
 {
 	x -= v.x;
 	y -= v.y;
@@ -227,18 +226,17 @@ _tagVector2 _tagVector2::operator-=(const _tagVector2& v)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator-=(const DirectX::XMVECTOR& v)
+_tagVector2& _tagVector2::operator-=(const DirectX::XMVECTOR& v)
 {
-	DirectX::XMVECTOR v1 = Convert();
+	_tagVector2 v1 = v;
 
-	v1 -= v;
+	x -= v1.x;
+	y -= v1.y;
 
-	Convert(v1);
-
-	return _tagVector2(v1);
+	return *this;
 }
 
-_tagVector2 _tagVector2::operator-=(const POINT& pt)
+_tagVector2& _tagVector2::operator-=(const POINT& pt)
 {
 	x -= pt.x;
 	y -= pt.y;
@@ -246,7 +244,7 @@ _tagVector2 _tagVector2::operator-=(const POINT& pt)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator-=(float f[2])
+_tagVector2& _tagVector2::operator-=(float f[2])
 {
 	x -= f[0];
 	y -= f[1];
@@ -254,7 +252,7 @@ _tagVector2 _tagVector2::operator-=(float f[2])
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator-=(float f)
+_tagVector2& _tagVector2::operator-=(float f)
 {
 	x -= f;
 	y -= f;
@@ -289,7 +287,7 @@ _tagVector2 _tagVector2::operator*(float f) const
 	return _tagVector2(x * f, y * f);
 }
 
-_tagVector2 _tagVector2::operator*=(const _tagVector2& v)
+_tagVector2& _tagVector2::operator*=(const _tagVector2& v)
 {
 	x *= v.x;
 	y *= v.y;
@@ -297,18 +295,17 @@ _tagVector2 _tagVector2::operator*=(const _tagVector2& v)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator*=(const DirectX::XMVECTOR& v)
+_tagVector2& _tagVector2::operator*=(const DirectX::XMVECTOR& v)
 {
-	DirectX::XMVECTOR v1 = Convert();
+	_tagVector2 v1 = v;
 
-	v1 *= v;
+	x *= v1.x;
+	y *= v1.y;
 
-	Convert(v1);
-
-	return _tagVector2(v1);
+	return *this;
 }
 
-_tagVector2 _tagVector2::operator*=(const POINT& pt)
+_tagVector2& _tagVector2::operator*=(const POINT& pt)
 {
 	x *= pt.x;
 	y *= pt.y;
@@ -316,7 +313,7 @@ _tagVector2 _tagVector2::operator*=(const POINT& pt)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator*=(float f[2])
+_tagVector2& _tagVector2::operator*=(float f[2])
 {
 	x *= f[0];
 	y *= f[1];
@@ -324,7 +321,7 @@ _tagVector2 _tagVector2::operator*=(float f[2])
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator*=(float f)
+_tagVector2& _tagVector2::operator*=(float f)
 {
 	x *= f;
 	y *= f;
@@ -359,7 +356,7 @@ _tagVector2 _tagVector2::operator/(float f) const
 	return _tagVector2(x/f, y/f);
 }
 
-_tagVector2 _tagVector2::operator/=(const _tagVector2& v)
+_tagVector2& _tagVector2::operator/=(const _tagVector2& v)
 {
 	x /= v.x;
 	y /= v.y;
@@ -367,18 +364,17 @@ _tagVector2 _tagVector2::operator/=(const _tagVector2& v)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator/=(const DirectX::XMVECTOR& v)
+_tagVector2& _tagVector2::operator/=(const DirectX::XMVECTOR& v)
 {
-	DirectX::XMVECTOR v1 = Convert();
+	_tagVector2 v1 = v;
 
-	v1 /= v;
+	x /= v1.x;
+	y /= v1.y;
 
-	Convert(v1);
-
-	return _tagVector2(v1);
+	return *this;
 }
 
-_tagVector2 _tagVector2::operator/=(const POINT& pt)
+_tagVector2& _tagVector2::operator/=(const POINT& pt)
 {
 	x /= pt.x;
 	y /= pt.y;
@@ -386,7 +382,7 @@ _tagVector2 _tagVector2::operator/=(const POINT& pt)
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator/=(float f[2])
+_tagVector2& _tagVector2::operator/=(float f[2])
 {
 	x /= f[0];
 	y /= f[1];
@@ -394,7 +390,7 @@ _tagVector2 _tagVector2::operator/=(float f[2])
 	return *this;
 }
 
-_tagVector2 _tagVector2::operator/=(float f)
+_tagVector2& _tagVector2::operator/=(float f)
 {
 	x /= f;
 	y /= f;
@@ -465,4 +461,9 @@ float _tagVector2::Distance(const _tagVector2& v) const
 	v1 -= v2;
 
 	return DirectX::XMVectorGetX(DirectX::XMVector2Length(v1));
+}
+
+const _tagVector2 operator*(float f, const _tagVector2& v)
+{
+	return _tagVector2(f*v.x, f*v.y);
 }

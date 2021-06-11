@@ -56,21 +56,21 @@ _tagMatrix _tagMatrix::operator*(const Vector4 _v[4])	const
 	return m*_tagMatrix(_v).m;
 }
 
-_tagMatrix _tagMatrix::operator*=(const _tagMatrix& _m)
+_tagMatrix& _tagMatrix::operator*=(const _tagMatrix& _m)
 {
 	m = DirectX::XMMatrixMultiply(m, _m.m);
 
 	return *this;
 }
 
-_tagMatrix _tagMatrix::operator*=(const DirectX::XMMATRIX& _m)
+_tagMatrix& _tagMatrix::operator*=(const DirectX::XMMATRIX& _m)
 {
 	m *= _m;
 
 	return *this;
 }
 
-_tagMatrix _tagMatrix::operator*=(const Vector4 _v[4])
+_tagMatrix& _tagMatrix::operator*=(const Vector4 _v[4])
 {
 	for(int i=0;i<4;++i)
 		v[i] *= _v[i];
@@ -90,7 +90,9 @@ void _tagMatrix::Transpose()
 
 void _tagMatrix::Inverse()
 {
-	m = DirectX::XMMatrixInverse(&DirectX::XMMatrixDeterminant(m),m);
+	DirectX::XMVECTOR v = DirectX::XMMatrixDeterminant(m);
+
+	m = DirectX::XMMatrixInverse(&v,m);
 }
 
 void _tagMatrix::Scale(const _tagVector3& v)
@@ -153,6 +155,11 @@ void _tagMatrix::RotateAxis(const _tagVector3& v, float fAngle)
 	m = DirectX::XMMatrixRotationAxis(v1, DegToRad(fAngle));
 }
 
+void _tagMatrix::RotationQuaternion(const _tagVector4& q)
+{
+	m = DirectX::XMMatrixRotationQuaternion(q.Convert());
+}
+
 _tagMatrix _tagMatrix::StaticIdentity()
 {
 	return DirectX::XMMatrixIdentity();
@@ -165,7 +172,9 @@ _tagMatrix _tagMatrix::StaticTranspose(const _tagMatrix& m)
 
 _tagMatrix _tagMatrix::StaticInverse(const _tagMatrix& m)
 {
-	return DirectX::XMMatrixInverse(&DirectX::XMMatrixDeterminant(m.m), m.m);
+	DirectX::XMVECTOR v = DirectX::XMMatrixDeterminant(m.m);
+
+	return DirectX::XMMatrixInverse(&v, m.m);
 }
 
 _tagMatrix _tagMatrix::StaticScale(const _tagVector3& _v)
@@ -224,4 +233,9 @@ _tagMatrix _tagMatrix::StaticRotateZ(float z)
 _tagMatrix _tagMatrix::StaticRotateAxis(const _tagVector3& _v, float fAngle)
 {
 	return DirectX::XMMatrixRotationAxis(_v.Convert(), DegToRad(fAngle));
+}
+
+_tagMatrix _tagMatrix::StaticRotationQuaternion(const _tagVector4& q)
+{
+	return _tagMatrix(DirectX::XMMatrixRotationQuaternion(q.Convert()));
 }

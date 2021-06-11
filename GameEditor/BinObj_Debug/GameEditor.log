@@ -1,4 +1,97 @@
-﻿  Player.cpp
-  GameEditor.vcxproj -> C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Include\../Bin/GameEditor_Debug.exe
+﻿  pch.cpp
+  AniEdit.cpp
+  AttackState.cpp
+  BossManager.cpp
+  BrainMode.cpp
+  EndGameMode.cpp
+  EyeCubeMode.cpp
+  BrainFreeze.cpp
+  Eyecube.cpp
+  Fire.cpp
+  FireButton.cpp
+  Light.cpp
+  Soul.cpp
+  SoulMonster.cpp
+  TitanFont.cpp
+  DieState.cpp
+  GameEditor.cpp
+  GameEditorDoc.cpp
+  GameEditorView.cpp
+  IdleState.cpp
+  MainFrm.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  State.cpp
+  StopState.cpp
+  ViewManager.cpp
+  코드를 생성하고 있습니다...
+  ClientCreateSystem.cpp
+  Client.cpp
+  ColossusMode.cpp
+  MainGameMode.cpp
+  StartGameMode.cpp
+  TileMode.cpp
+  Arrow.cpp
+  Bow.cpp
+  Bullet.cpp
+  Colossus.cpp
+  Effect.cpp
+  IceBall.cpp
+  Icicle.cpp
+  Minion.cpp
+  Player.cpp
+  Button.cpp
+  CheckObj.cpp
+  Missile.cpp
+  RadioObj.cpp
+  UIBar.cpp
+  코드를 생성하고 있습니다...
+  DetailDlg.cpp
+  WorldDlg.cpp
+  코드를 생성하고 있습니다...
+     ../Bin/GameEditor_Debug.lib 라이브러리 및 ../Bin/GameEditor_Debug.exp 개체를 생성하고 있습니다.
+DirectXTex_Debug.lib(BC.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(BC.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(BC4BC5.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(BC4BC5.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(BC6HBC7.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(BC6HBC7.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexCompress.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexCompress.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexConvert.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexConvert.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexD3D11.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexD3D11.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexDDS.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexDDS.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexImage.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexImage.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexMipMaps.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexMipMaps.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexTGA.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexTGA.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexUtil.obj) : warning LNK4099: 'DirectXTex.pdb' PDB를 'DirectXTex_Debug.lib(DirectXTexUtil.obj)' 또는 'C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\DirectXTex.pdb'에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+DirectXTex_Debug.lib(DirectXTexWIC.obj) : warning LNK4099: '' PDB를 'DirectXTex_Debug.lib(DirectXTexWIC.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  GameEditor.vcxproj -> C:\Users\assort\source\repos\DirectX11FrameWork2\GameEditor\Bin\GameEditor_Debug.exe
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  .\GameEditor\Bin\Resource\Shader\3D.fx
+  .\GameEditor\Bin\Resource\Shader\Animation.fx
+  .\GameEditor\Bin\Resource\Shader\Light.fx
+  .\GameEditor\Bin\Resource\Shader\Line.fx
+  .\GameEditor\Bin\Resource\Shader\Post.fx
+  .\GameEditor\Bin\Resource\Shader\Share.fx
+  .\GameEditor\Bin\Resource\Shader\Terrain.fx
+  .\GameEditor\Bin\Resource\Shader\Test.fx
+  .\GameEditor\Bin\Resource\Shader\UI.fx
+  .\GameEditor\Bin\Resource\Shader\VertexShader.fx
+  10개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  0개 파일이 복사되었습니다.
+  .\GameEditor\Bin\Resource\Shader\3D.fx
+  .\GameEditor\Bin\Resource\Shader\Animation.fx
+  .\GameEditor\Bin\Resource\Shader\Light.fx
+  .\GameEditor\Bin\Resource\Shader\Line.fx
+  .\GameEditor\Bin\Resource\Shader\Post.fx
+  .\GameEditor\Bin\Resource\Shader\Share.fx
+  .\GameEditor\Bin\Resource\Shader\Terrain.fx
+  .\GameEditor\Bin\Resource\Shader\Test.fx
+  .\GameEditor\Bin\Resource\Shader\UI.fx
+  .\GameEditor\Bin\Resource\Shader\VertexShader.fx
+  10개 파일이 복사되었습니다.
   0개 파일이 복사되었습니다.
   0개 파일이 복사되었습니다.

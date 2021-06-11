@@ -48,7 +48,7 @@ public:
 	   bool CreateRasterizerState(const std::string& strTag);
 
 public:
-	bool CreateInstancing(class CMesh* pMesh, class CMaterial* pMtrl, int iCount, int iSize);
+	bool CreateInstancing(class CMesh* pMesh, class CMaterial* pMtrl,class CShader* pShader, int iCount, int iSize);
 	class CInstancing* FindInstancing(unsigned __int64 iKey);
 	void AddTileInstancingData(class CTile* pTile);
 	void RenderInstancing(float fTime);

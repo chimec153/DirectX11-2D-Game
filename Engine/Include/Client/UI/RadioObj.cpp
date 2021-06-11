@@ -20,7 +20,7 @@ bool CRadioObj::Init()
 	if (!CObj::Init())
 		return false;
 
-	CRadio* pRadio1 = CreateComponent<CRadio>("Radio1");
+	CRadio* pRadio1 = CreateComponent<CRadio>("Radio1", m_pLayer);
 
 	pRadio1->SetTexture(BUTTON_STATE::OFF, "Radio");
 	pRadio1->SetTexture(BUTTON_STATE::ON, "Radio");
@@ -33,7 +33,7 @@ bool CRadioObj::Init()
 	pRadio1->SetWorldPos(100.f, 100.f, 0.f);
 	pRadio1->SetSelTexture("RadioSel");
 
-	CSlider* pSlider = CreateComponent<CSlider>("Slider");
+	CSlider* pSlider = CreateComponent<CSlider>("Slider", m_pLayer);
 
 	pRadio1->AddChild(pSlider);
 
@@ -42,7 +42,7 @@ bool CRadioObj::Init()
 	SetRootComponent(pRadio1);
 
 
-	CRadio* pRadio2 = CreateComponent<CRadio>("Radio2");
+	CRadio* pRadio2 = CreateComponent<CRadio>("Radio2", m_pLayer);
 
 	pRadio2->SetTexture(BUTTON_STATE::OFF, "Radio");
 	pRadio2->SetTexture(BUTTON_STATE::ON, "Radio");
@@ -58,7 +58,7 @@ bool CRadioObj::Init()
 
 	pRadio1->AddChild(pRadio2);
 
-	CRadio* pRadio3 = CreateComponent<CRadio>("Radio3");
+	CRadio* pRadio3 = CreateComponent<CRadio>("Radio3", m_pLayer);
 
 	pRadio3->SetTexture(BUTTON_STATE::OFF, "Radio");
 	pRadio3->SetTexture(BUTTON_STATE::ON, "Radio");

@@ -19,9 +19,12 @@ CUIFont::CUIFont() :
 	m_fSize(0.f),
 	m_fOpacity(1.f),
 	m_fShadowOpacity(1.f),
+	m_tRect(),
 	m_eAlignH(TEXT_ALIGN_HORISONTAL::LEFT),
 	m_eAlignV(TEXT_ALIGN_VERTICAL::TOP)
 {
+	m_eSceneComponentClassType = SCENECOMPONENT_CLASS_TYPE::UI_FONT;
+
 	m_pText = new TCHAR[m_iLength];
 	m_pFont = new TCHAR[64];
 
@@ -51,11 +54,21 @@ CUIFont::CUIFont(const CUIFont& ui)	:
 	m_iColor = ui.m_iColor;
 	m_iShadowColor = ui.m_iShadowColor;
 	m_pColor = ui.m_pColor;
+	m_pShadowColor = ui.m_pShadowColor;
 	m_iLength = ui.m_iLength;
 	m_pFormat = ui.m_pFormat;
 	m_pLayout = ui.m_pLayout;
+
+	if (m_pLayout)
+	{
+		ui.m_pLayout->AddRef();
+	}
+
 	m_fSize = ui.m_fSize;
 	m_fOpacity = ui.m_fOpacity;
+	m_tRect = ui.m_tRect;
+	m_eAlignH = ui.m_eAlignH;
+	m_eAlignV = ui.m_eAlignV;
 
 	m_pText = ui.m_pText;
 	m_pFont = ui.m_pFont;
@@ -155,7 +168,7 @@ void CUIFont::Render(float fTime)
 
 	m_pTarget->DrawTextLayout(D2D1_POINT_2F(D2D1::Point2F(vPos.x, vPos.y)), m_pLayout, m_pColor);
 
-	m_pTarget->EndDraw();
+	HRESULT tResult = m_pTarget->EndDraw();
 }
 
 void CUIFont::PostRender(float fTime)
@@ -171,11 +184,59 @@ CUIFont* CUIFont::Clone()
 void CUIFont::Save(FILE* pFile)
 {
 	CUIControl::Save(pFile);
+
+	fwrite(&m_bShadow, 1, 1, pFile);
+	fwrite(&m_bAlpha, 1, 1, pFile);
+	fwrite(&m_bShadowAlpha, 1, 1, pFile);
+	fwrite(&m_vShadowOffset, sizeof(Vector3), 1, pFile);
+	fwrite(&m_iColor, sizeof(UINT), 1, pFile);
+	fwrite(&m_iShadowColor, sizeof(UINT), 1, pFile);
+	fwrite(&m_iLength, 4, 1, pFile);
+	fwrite(m_pText, sizeof(TCHAR), m_iLength, pFile);
+	int iLength = (int)lstrlen(m_pFont);
+	fwrite(&iLength, 4, 1, pFile);
+	fwrite(m_pFont, sizeof(TCHAR), iLength, pFile);
+	fwrite(&m_fSize, 4, 1, pFile);
+	fwrite(&m_fOpacity, 1, 1, pFile);
+	fwrite(&m_fShadowOpacity, 1, 1, pFile);
+	fwrite(&m_tRect, sizeof(D2D1_RECT_F), 1, pFile);
+	fwrite(&m_eAlignH, 4, 1, pFile);
+	fwrite(&m_eAlignV, 4, 1, pFile);
 }
 
 void CUIFont::Load(FILE* pFile)
 {
 	CUIControl::Load(pFile);
+
+	fread(&m_bShadow, 1, 1, pFile);
+	fread(&m_bAlpha, 1, 1, pFile);
+	fread(&m_bShadowAlpha, 1, 1, pFile);
+	fread(&m_vShadowOffset, sizeof(Vector3), 1, pFile);
+	fread(&m_iColor, sizeof(UINT), 1, pFile);
+	fread(&m_iShadowColor, sizeof(UINT), 1, pFile);
+	fread(&m_iLength, 4, 1, pFile);
+	if (m_iLength > 0)
+	{
+		fread(m_pText, sizeof(TCHAR), m_iLength, pFile);
+	}
+	int iLength = 0;
+	fread(&iLength, 4, 1, pFile);
+	if (iLength > 0)
+	{
+		fread(m_pFont, sizeof(TCHAR), iLength, pFile);
+	}
+	fread(&m_fSize, 4, 1, pFile);
+	fread(&m_fOpacity, 1, 1, pFile);
+	fread(&m_fShadowOpacity, 1, 1, pFile);
+	fread(&m_tRect, sizeof(D2D1_RECT_F), 1, pFile);
+	fread(&m_eAlignH, 4, 1, pFile);
+	fread(&m_eAlignV, 4, 1, pFile);
+
+	m_pTarget = RENDERTARGET2D;
+
+	SetColor(m_iColor);
+	SetShadowColor(m_iShadowColor);
+	CreateTextLayout();
 }
 
 void CUIFont::SetText(const TCHAR* pText)
@@ -266,7 +327,7 @@ void CUIFont::SetShadowColor(float r, float g, float b, float a)
 
 	m_pShadowColor = GET_SINGLE(CFontManager)->CreateBrush(r, g, b, a);
 
-	m_bShadow = true;
+	//m_bShadow = true;
 }
 
 void CUIFont::SetShadowColor(BYTE r, BYTE g, BYTE b, BYTE a)
@@ -275,7 +336,7 @@ void CUIFont::SetShadowColor(BYTE r, BYTE g, BYTE b, BYTE a)
 
 	m_pShadowColor = GET_SINGLE(CFontManager)->CreateBrush(r, g, b, a);
 
-	m_bShadow = true;
+	//m_bShadow = true;
 }
 
 void CUIFont::SetShadowColor(UINT iColor)
@@ -284,7 +345,7 @@ void CUIFont::SetShadowColor(UINT iColor)
 
 	m_pShadowColor = GET_SINGLE(CFontManager)->CreateBrush(iColor);
 
-	m_bShadow = true;
+	//m_bShadow = true;
 }
 
 void CUIFont::SetColor(float r, float g, float b, float a)
@@ -360,13 +421,13 @@ void CUIFont::SetAlignV(TEXT_ALIGN_VERTICAL eAlign)
 	switch (eAlign)
 	{
 	case TEXT_ALIGN_VERTICAL::TOP:
-		m_pLayout->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING);
+		m_pLayout->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR);
 		break;
 	case TEXT_ALIGN_VERTICAL::MID:
-		m_pLayout->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+		m_pLayout->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 		break;
 	case TEXT_ALIGN_VERTICAL::BOT:
-		m_pLayout->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_TRAILING);
+		m_pLayout->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_FAR);
 		break;
 	}
 

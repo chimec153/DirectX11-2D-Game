@@ -17,6 +17,7 @@ private:
 public:
 	const RectInfo& GetInfo()	const;
 	void SetExtent(float x, float y);
+	const Vector2& GetExtent()	const;
 
 public:
 	virtual bool Init();

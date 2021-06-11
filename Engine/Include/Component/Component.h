@@ -22,6 +22,10 @@ public:
 	class CObj* GetObj()	const;
 	COMPONENT_TYPE GetType()	const;
 	class CLayer* GetLayer()	const;
+	class CScene* GetScene()	const;
+	void SetScene(class CScene* pScene);
+	void DeleteLayer();
+	void SetLayer(class CLayer* pLayer);
 
 protected:
 	bool		m_bStart;
@@ -31,6 +35,8 @@ public:
 
 public:
 	virtual bool Init();
+	virtual bool Init(const char* pFileName, const std::string& strPathKey = DATA_PATH);
+	virtual bool Init(FILE* pFile);
 	virtual void Start();
 	virtual void Update(float fTime);
 	virtual void PostUpdate(float fTime);
@@ -41,5 +47,8 @@ public:
 	virtual CComponent* Clone() = 0;
 	virtual void Save(FILE* pFile);
 	virtual void Load(FILE* pFile);
+
+public:
+	void SpawnWindow() override;
 };
 

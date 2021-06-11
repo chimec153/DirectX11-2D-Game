@@ -1,0 +1,110 @@
+Parent = MaterialInstanceConstant'CH_NPC_ElfF_F_0001_C00_Helmet_MI_ALT'
+ScalarParameterValues[3] =
+{
+    ScalarParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = 15
+        ParameterName = Metal_SpecularPower
+    }
+    ScalarParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = 8
+        ParameterName = NonMetal_SpecularPower
+    }
+    ScalarParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = 0.3
+        ParameterName = Reflection_Weight
+    }
+}
+TextureParameterValues[6] =
+{
+    TextureParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_C1_ALT'
+        ParameterName = Channel_01
+    }
+    TextureParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_C2_ALT'
+        ParameterName = Channel_02
+    }
+    TextureParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_D_ALT'
+        ParameterName = Diffuse
+    }
+    TextureParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_N_ALT'
+        ParameterName = Normal
+    }
+    TextureParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_SP_ALT'
+        ParameterName = Specular
+    }
+    TextureParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = Texture2D'CH_NPC_ElfF_F_0001_A00_Upper_V_ALT'
+        ParameterName = Variation_Mask
+    }
+}
+VectorParameterValues[6] =
+{
+    VectorParameterValues[0] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=18.0623, G=18.11, B=23.7537, A=1 }
+        ParameterName = Metal_SpecularColor
+    }
+    VectorParameterValues[1] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=0.220986, G=0.218811, B=0.141282, A=1 }
+        ParameterName = NonMetal_FresnelColor
+    }
+    VectorParameterValues[2] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.39229, G=1.39229, B=1.39229, A=1 }
+        ParameterName = NonMetal_SpecularColor
+    }
+    VectorParameterValues[3] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.44798, G=1.2239, B=0.566283, A=1 }
+        ParameterName = Variation_Color01
+    }
+    VectorParameterValues[4] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.54698, G=1.4959, B=0.676283, A=1 }
+        ParameterName = Variation_Color02
+    }
+    VectorParameterValues[5] =
+    {
+        ParameterInfo = 
+        ParameterValue = { R=1.98894, G=1.2732, B=0.791224, A=1 }
+        ParameterName = Variation_Color03
+    }
+}
+BasePropertyOverrides = 
+StaticParameters = 
+FlattenedTexture = None
+MobileBaseTexture = None
+MobileNormalTexture = None
+bUseMobileSpecular = false
+MobileSpecularPower = 16
+MobileSpecularMask = MSM_Constant (0)
+MobileMaskTexture = None
+TextureStreamingData[0] = {}
